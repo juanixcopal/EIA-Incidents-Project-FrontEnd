@@ -1,5 +1,5 @@
 body {
-    background-color: #E0E0E0 !important;
+    background-color: #e0e0e0 !important;
     margin: 0;
     padding: 0;
 }
@@ -17,7 +17,7 @@ body {
     font-size: 4vh;
     margin-left: 50%;
     transform: translateX(-50%);
-    padding:  25px 0 0 0 ;
+    padding: 25px 0 0 0;
 }
 
 .logo {
@@ -46,11 +46,11 @@ body {
     border-radius: 100px;
     color: #fff;
     border: none;
-    background: #1766DC;
+    background: #1766dc;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    transition: .3s ease all;
+    transition: 0.3s ease all;
 }
 
 .button:hover {
@@ -63,6 +63,17 @@ body {
     align-items: center;
 }
 
+.sidebar .nav li > a {
+    font-size: 16px !important;
+}
+/* 
+.sidebar .logo {
+    padding: 16px 0 1px !important;
+}
+
+.sidebar .logo .simple-text {
+    font-size: 20px !important;
+} */
 
 /*----------------------------------------------------------*/
 
@@ -76,7 +87,7 @@ body {
     margin-left: 50%;
     transform: translateX(-50%);
     display: flex !important;
-    background-color: #F8F6F0 !important;
+    background-color: #f8f6f0 !important;
     border-radius: 50px !important;
     width: fit-content;
 }
@@ -85,7 +96,7 @@ body {
     width: 0 !important;
 }
 
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
     color: black !important;
 }
 
@@ -98,30 +109,13 @@ body {
     padding: 5vh 0 0 0;
 }
 
-
-
 /*--------------------------------------------------*/
-
-/* .css-46bh2p-MuiCardContent-root {
-    padding: 1px 16px 16px 16px !important;
-} */
-
-.status-success{
-    background-color: #03C04A;
+.status-success {
+    background-color: #03c04a;
     height: 15px;
 }
 
-.status-problem{
+.status-problem {
     background-color: #c0031c;
     height: 15px;
 }
-
-.css-106c1u2-MuiBadge-badge{
-    top: -5px !important;
-    right: -10px !important;
-}
-
-/* .css-1c32n2y-MuiBadge-root {
-    display: contents !important;
-    padding: 0 0 0 16px !important;
-} */

@@ -1,14 +1,11 @@
-import React from 'react';
-import '../../styles/staff/incidentsViews.css'
+import React from 'react'
 
-const FloorTwoIncidents = () =>{
-    return(
+const FloorTwoIncidents = () => {
+    return (
         <>
-        <div className='content'>
-            Hola planta 2
-        </div>
+            <div className='content'>Hola planta 2</div>
         </>
     )
 }
 
-export default FloorTwoIncidents;
+export default FloorTwoIncidents

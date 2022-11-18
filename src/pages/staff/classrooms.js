@@ -51,13 +51,13 @@ const PageClassrooms = () => {
                                     <td>{planta}</td>
                                     <td>
                                         <button className='btn btn-info'>
-                                            <AiFillEdit style={{ fontSize: '15px' }} />
+                                            <AiFillEdit style={{ fontSize: '18px' }} />
                                         </button>
-                                        <button style={{ marginLeft: '10px' }} className='btn btn-danger'>
-                                            <AiFillDelete style={{ fontSize: '15px' }} />
+                                        <button style={{ marginLeft: '18px' }} className='btn btn-danger'>
+                                            <AiFillDelete style={{ fontSize: '18px' }} />
                                         </button>
-                                        <button style={{ marginLeft: '10px' }} className='btn btn-success' onClick={() => toggle(null, 'Ver Aula')}>
-                                            <AiOutlineEye style={{ fontSize: '15px' }} />
+                                        <button style={{ marginLeft: '18px' }} className='btn btn-success' onClick={() => toggle(null, 'Ver Aula')}>
+                                            <AiOutlineEye style={{ fontSize: '18px' }} />
                                         </button>
                                     </td>
                                 </tr>

@@ -119,3 +119,8 @@ body {
     background-color: #c0031c;
     height: 15px;
 }
+
+.btn,
+.navbar .navbar-nav > a.btn {
+    padding: 8px 15px !important;
+}

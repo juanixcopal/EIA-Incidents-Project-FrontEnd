@@ -1,33 +1,21 @@
 import React, { useState } from 'react'
 import { GrAdd } from 'react-icons/gr'
-import { AiFillDelete, AiFillEdit, AiOutlineEye } from 'react-icons/ai'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import { useFetchInitClassrooms } from 'hooks/classrooms/index'
-import Modal from 'components/modal/Modal'
-import ViewClassrooms from 'components/viewClassroom'
+import Modal from './modal-components'
+
 const PageClassrooms = () => {
-    const { FetchClassrooms } = useFetchInitClassrooms()
+    const useFetchInit = useFetchInitClassrooms()
+    const { FetchClassrooms, toggle } = useFetchInit
     const { classrooms } = FetchClassrooms
-    const [stateModal, setStateModal] = useState({
-        open: false,
-        title: '',
-        component: '',
-        params: {}
-    })
-    const toggle = (_, title, component, params) => {
-        setStateModal({
-            ...stateModal,
-            open: !stateModal.open,
-            title,
-            component,
-            params
-        })
-    }
+
     return (
         <>
+            <Modal useFetchInit={useFetchInit} />
             <div className='content'>
                 <h2 className='text-center'>Lista de Aulas</h2>
                 <div>
-                    <button className='btn btn-primary' onClick={() => toggle(null, 'Crear Aula')}>
+                    <button className='btn btn-primary' onClick={() => toggle(null, 'Crear Clase', 'create-classroom')}>
                         <GrAdd />
                     </button>
                 </div>
@@ -53,11 +41,12 @@ const PageClassrooms = () => {
                                         <button className='btn btn-info'>
                                             <AiFillEdit style={{ fontSize: '18px' }} />
                                         </button>
-                                        <button style={{ marginLeft: '18px' }} className='btn btn-danger'>
+                                        <button
+                                            style={{ marginLeft: '18px' }}
+                                            className='btn btn-danger'
+                                            // onClick={() => toggle(null, 'Eliminar Aula', '', <DeleteClassrooms idAula={id_aula} />)}
+                                        >
                                             <AiFillDelete style={{ fontSize: '18px' }} />
-                                        </button>
-                                        <button style={{ marginLeft: '18px' }} className='btn btn-success' onClick={() => toggle(null, 'Ver Aula')}>
-                                            <AiOutlineEye style={{ fontSize: '18px' }} />
                                         </button>
                                     </td>
                                 </tr>
@@ -66,7 +55,6 @@ const PageClassrooms = () => {
                     </tbody>
                 </table>
             </div>
-            <Modal state={stateModal.open} statusChange={toggle} title={stateModal.title}></Modal>
         </>
     )
 }

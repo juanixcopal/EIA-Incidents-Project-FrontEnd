@@ -124,3 +124,8 @@ body {
 .navbar .navbar-nav > a.btn {
     padding: 8px 15px !important;
 }
+
+.css-106c1u2-MuiBadge-badge {
+    top: -4px !important;
+    right: -10px !important;
+}

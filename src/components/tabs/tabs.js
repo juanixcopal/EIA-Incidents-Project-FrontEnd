@@ -11,8 +11,8 @@ import { useFetchInitDataReports } from '../../hooks/dataReports/index'
 import Incidences from 'pages/reports/incidents'
 
 const Tabs = () => {
-    const { FetchFlats } = useFetchInitFlats()
-    const { flats } = FetchFlats
+    const { FetchFlatsData } = useFetchInitFlats()
+    const { flatsData } = FetchFlatsData
 
     const { FetchDataReports } = useFetchInitDataReports()
     const { reportsData } = FetchDataReports
@@ -26,7 +26,7 @@ const Tabs = () => {
         <TabContext value={String(value)}>
             <Box>
                 <TabList onChange={handleChanges} aria-label='lab API tabs example'>
-                    {flats.map(item => {
+                    {flatsData.map(item => {
                         const { id_planta, planta } = item
                         return (
                             <Tab

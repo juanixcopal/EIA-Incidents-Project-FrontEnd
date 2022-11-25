@@ -102,11 +102,11 @@ const Incidences = () => {
                         <form onSubmit={handleSubmit} action='#'>
                             <p>
                                 <label>Titulo</label>
-                                <input type='text' name='titulo' value={state.titulo} onChange={handleChange} />
+                                <input type='text' name='titulo' value={state.titulo} onChange={handleChange} required />
                             </p>
                             <p>
                                 <label>Descripcion</label>
-                                <textarea name='descripcion' rows='5' value={state.descripcion} onChange={handleChange}></textarea>
+                                <textarea name='descripcion' rows='5' value={state.descripcion} onChange={handleChange} required></textarea>
                             </p>
                             <button type='submit' className='rightButtonAccept'>
                                 Crear

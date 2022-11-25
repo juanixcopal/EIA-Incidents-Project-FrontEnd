@@ -29,7 +29,7 @@ function Sidebar(props) {
         <div className='sidebar' data-color={props.bgColor} data-active-color={props.activeColor}>
             <div className='logo'>
                 <a href='http://localhost:3000/user' className='simple-text logo-mini'>
-                    <div lassName='logo-img'>
+                    <div className='logo-img'>
                         <img src={logo} alt='react-logo' />
                     </div>
                 </a>

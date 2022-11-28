@@ -45,6 +45,7 @@ const PageClassrooms = () => {
                                             style={{ marginLeft: '18px' }}
                                             className='btn btn-danger'
                                             // onClick={() => toggle(null, 'Eliminar Aula', '', <DeleteClassrooms idAula={id_aula} />)}
+                                            onClick={() => toggle(null, 'Eliminar Clase', 'delete-classroom')}
                                         >
                                             <AiFillDelete style={{ fontSize: '18px' }} />
                                         </button>

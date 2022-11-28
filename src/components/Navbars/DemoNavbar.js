@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap'
 
+import { GoSignOut } from 'react-icons/go'
 import routes from '../../routes.js'
 
 function Header(props) {
@@ -76,7 +77,7 @@ function Header(props) {
                     <span className='navbar-toggler-bar navbar-kebab' />
                 </NavbarToggler>
                 <Collapse isOpen={isOpen} navbar className='justify-content-end'>
-                    <form>
+                    {/* <form>
                         <InputGroup className='no-border'>
                             <Input placeholder='Buscar...' />
                             <InputGroupAddon addonType='append'>
@@ -85,7 +86,11 @@ function Header(props) {
                                 </InputGroupText>
                             </InputGroupAddon>
                         </InputGroup>
-                    </form>
+                    </form> */}
+                    <div style={{ padding: '0 30px' }}>Bienvenido René</div>
+                    <button style={{ border: 'none', height: '25px', color: 'gray' }}>
+                        <GoSignOut />
+                    </button>
                     <Nav navbar></Nav>
                 </Collapse>
             </Container>

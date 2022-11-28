@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Login from 'pages/login/login'
 import BasicTabs from './components/basicTabs/basicTabs.js'
-import Tests from 'pages/tests/tests.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/scss/paper-dashboard.scss?v=0.1.0'
 import './assets/demo/demo.css'
@@ -19,7 +18,6 @@ root.render(
         <Switch>
             <Route path='/login' component={Login} />
             <Route path='/incidencias' component={BasicTabs} />
-            <Route path='/test' component={Tests} />
             <Route path='/user' render={props => <AdminLayout {...props} />} />
             <Redirect to='/incidencias' />
         </Switch>

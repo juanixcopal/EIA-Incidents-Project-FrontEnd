@@ -15,8 +15,6 @@ export const useActions = ({ FetchClassrooms, data, toggle }) => {
             return
         }
 
-        // console.log('SENDING: ', data)
-
         setLoadingOperation(true)
         await axios.post('http://172.27.20.128:3050/v1/classrooms/manager', data).then(({ data }) => {
             alertMessage(data, refreshClassrooms, toggle)

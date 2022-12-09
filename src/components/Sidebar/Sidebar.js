@@ -1,13 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Nav } from 'reactstrap'
-// javascript plugin used to create scrollbars on windows
+import Logo from '../../assets/img/incidencesLogo.png'
 import PerfectScrollbar from 'perfect-scrollbar'
 var ps
 
 function Sidebar(props) {
     const sidebar = React.useRef()
-    // verifies if routeName is the one active (in browser input)
     const activeRoute = routeName => {
         return props.location.pathname.indexOf(routeName) > -1 ? 'active' : ''
     }
@@ -29,7 +28,7 @@ function Sidebar(props) {
             <div className='logo'>
                 <a href='http://localhost:3000/user' className='simple-text logo-mini'>
                     <div className='logo-img'>
-                        <img src='' alt='LOGO' />
+                        <img src={Logo} alt='LOGO' />
                     </div>
                 </a>
                 <a href='http://localhost:3000/user' className='simple-text logo-normal'>

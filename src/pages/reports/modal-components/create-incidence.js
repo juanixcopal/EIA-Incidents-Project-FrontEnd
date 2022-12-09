@@ -2,15 +2,21 @@ import React from 'react'
 import { ModalBody, ModalFooter } from 'reactstrap'
 
 const CreateIncidence = ({ useFetchInit }) => {
-    const { FetchDataReports, data, toggle, handleInputChange, Actions, dataModal } = useFetchInit
+    const { data, toggle, handleInputChange, Actions, dataModal, FetchDataReports } = useFetchInit
     const { loadingOperation, createIncidence } = Actions
-    const { reportsData, loadingReportsData } = FetchDataReports
-
+    const { params } = dataModal
+    const { tipo_aula, aula } = params
     const { titulo, descripcion } = data
+    const { reportsData } = FetchDataReports
     return (
         <form onSubmit={createIncidence}>
             <ModalBody>
-                <div className='incident-formt mt-3 mb-5'>
+                <div>
+                    <div>
+                        <h6 style={{ color: '#409DC4' }}>
+                            {tipo_aula} {aula}
+                        </h6>
+                    </div>
                     <div className='form-group'>
                         <label>Titulo</label>
                         <input className='input-group form-control' type='text' name='titulo' value={titulo} onChange={handleInputChange} required />
@@ -20,6 +26,24 @@ const CreateIncidence = ({ useFetchInit }) => {
                         <input className='input-group form-control' type='text' name='descripcion' value={descripcion} onChange={handleInputChange} required />
                     </div>
                 </div>
+            </ModalBody>
+            <hr />
+            <ModalBody>
+                {reportsData.map(item => {
+                    const { titulo, descripcion, id_reporte } = item
+                    return (
+                        <div key={id_reporte}>
+                            <div>
+                                Titulo
+                                <p>{titulo}</p>
+                            </div>
+                            <div>
+                                Descripcion
+                                <p>{descripcion}</p>
+                            </div>
+                        </div>
+                    )
+                })}
             </ModalBody>
             <ModalFooter>
                 <div className='col-12'>

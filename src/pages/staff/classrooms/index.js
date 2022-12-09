@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GrAdd } from 'react-icons/gr'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import { useFetchInitClassrooms } from 'hooks/classrooms/index'
@@ -44,7 +44,6 @@ const PageClassrooms = () => {
                                         <button
                                             style={{ marginLeft: '18px' }}
                                             className='btn btn-danger'
-                                            // onClick={() => toggle(null, 'Eliminar Aula', '', <DeleteClassrooms idAula={id_aula} />)}
                                             onClick={() => toggle(null, 'Eliminar Clase', 'delete-classroom')}
                                         >
                                             <AiFillDelete style={{ fontSize: '18px' }} />

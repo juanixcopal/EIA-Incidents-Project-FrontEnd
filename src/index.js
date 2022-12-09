@@ -22,19 +22,4 @@ root.render(
             <Redirect to='/incidencias' />
         </Switch>
     </BrowserRouter>
-
-    // <React.StrictMode>
-    //     <Login />
-    // </React.StrictMode>
 )
-
-// <React.StrictMode>
-//     <BasicTabs />
-// </React.StrictMode>
-
-//  <BrowserRouter>
-//   <Switch>
-//     <Route path="/user" render={(props) => <AdminLayout {...props} />} />
-//     <Redirect to="/user/planta1" />
-//   </Switch>
-// </BrowserRouter>

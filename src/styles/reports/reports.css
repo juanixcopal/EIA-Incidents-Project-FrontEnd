@@ -40,6 +40,21 @@ body {
     justify-content: center;
 }
 
+.MapClassFilter {
+    justify-self: center;
+    max-width: 80.7vw;
+    width: 80.7vw;
+    display: grid;
+    gap: 60px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(4, 20.7%);
+    -moz-column-gap: 5.7vw;
+    column-gap: 5.7vw;
+    margin: auto;
+    margin-top: 40px;
+    justify-content: center;
+}
+
 .button {
     display: block;
     padding: 10px 30px;
@@ -120,6 +135,20 @@ body {
     height: 15px;
 }
 
+.statusFilter-success {
+    background-color: #03c04a;
+    height: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.statusFilter-problem {
+    background-color: #c0031c;
+    height: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
 .btn,
 .navbar .navbar-nav > a.btn {
     padding: 8px 15px !important;
@@ -128,4 +157,10 @@ body {
 .css-106c1u2-MuiBadge-badge {
     top: -4px !important;
     right: -10px !important;
+}
+
+.prueba {
+    cursor: not-allowed !important;
+    color: rgb(129, 129, 129) !important;
+    pointer-events: none;
 }

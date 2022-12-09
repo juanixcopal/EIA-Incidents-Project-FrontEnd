@@ -15,6 +15,7 @@ export const useFetchReportingData = () => {
                     console.log('error', error)
                 })
         })()
+        // eslint-disable-next-line
     }, [refresh])
     return { reportsData, refresIncidences }
 }

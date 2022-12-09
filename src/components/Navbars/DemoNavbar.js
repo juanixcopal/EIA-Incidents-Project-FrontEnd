@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container, InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 
 import { GoSignOut } from 'react-icons/go'
 import routes from '../../routes.js'
@@ -32,7 +32,6 @@ function Header(props) {
         document.documentElement.classList.toggle('nav-open')
         sidebarToggle.current.classList.toggle('toggled')
     }
-    // function that adds color dark/transparent to the navbar on resize (this is for the collapse)
     const updateColor = () => {
         if (window.innerWidth < 993 && isOpen) {
             setColor('dark')
@@ -50,7 +49,6 @@ function Header(props) {
         }
     }, [location])
     return (
-        // add or remove classes depending if we are on full-screen-maps page or not
         <Navbar
             color={props.location.pathname.indexOf('full-screen-maps') !== -1 ? 'dark' : color}
             expand='lg'
@@ -77,16 +75,6 @@ function Header(props) {
                     <span className='navbar-toggler-bar navbar-kebab' />
                 </NavbarToggler>
                 <Collapse isOpen={isOpen} navbar className='justify-content-end'>
-                    {/* <form>
-                        <InputGroup className='no-border'>
-                            <Input placeholder='Buscar...' />
-                            <InputGroupAddon addonType='append'>
-                                <InputGroupText>
-                                    <i className='nc-icon nc-zoom-split' />
-                                </InputGroupText>
-                            </InputGroupAddon>
-                        </InputGroup>
-                    </form> */}
                     <div style={{ padding: '0 30px' }}>Bienvenido René</div>
                     <button style={{ border: 'none', height: '25px', color: 'gray' }}>
                         <GoSignOut />

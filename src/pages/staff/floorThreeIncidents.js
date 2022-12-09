@@ -1,18 +1,17 @@
 import React from 'react'
+import { CardBody, CardTitle, Col, Row, Card, CardFooter } from 'reactstrap'
 import { useFetchInitClassrooms } from 'hooks/classrooms/index'
 import { useFetchInitDataReports } from 'hooks/dataReports/index'
-import { Card, CardBody, CardTitle, Col, Row, CardFooter } from 'reactstrap'
-import { CardActions, CardContent, Typography, Button } from '@mui/material'
+import { Button, CardActions, CardContent, Typography } from '@mui/material'
 import { AiFillLike, AiFillDislike, AiFillWarning } from 'react-icons/ai'
 
-const FloorOneIncidents = () => {
+const FloorThreeIncidents = () => {
     const { FetchClassrooms } = useFetchInitClassrooms()
     const { classrooms } = FetchClassrooms
 
     const useFetchInit = useFetchInitDataReports()
     const { FetchDataReports } = useFetchInit
     const { reportsData } = FetchDataReports
-
     return (
         <div className='content'>
             <Row>
@@ -28,7 +27,7 @@ const FloorOneIncidents = () => {
                                 <Col md='8' xs='7'>
                                     <div className='numbers'>
                                         <p className='card-category'>Total Abiertas</p>
-                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'abierto' && e.id_planta === 4).length} Incidencias</CardTitle>
+                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'abierto' && e.id_planta === 2).length} Incidencias</CardTitle>
                                     </div>
                                 </Col>
                             </Row>
@@ -51,7 +50,7 @@ const FloorOneIncidents = () => {
                                     <div className='numbers'>
                                         <p className='card-category'>Total Pendientes</p>
                                         <CardTitle tag='p'>
-                                            {reportsData.filter(e => e.estado === 'pendiente' && e.id_planta === 4).length} Incidencias
+                                            {reportsData.filter(e => e.estado === 'pendiente' && e.id_planta === 2).length} Incidencias
                                         </CardTitle>
                                     </div>
                                 </Col>
@@ -74,7 +73,7 @@ const FloorOneIncidents = () => {
                                 <Col md='8' xs='5'>
                                     <div className='numbers'>
                                         <p className='card-category'>Total Cerradas</p>
-                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'cerrado' && e.id_planta === 4).length} Incidencias</CardTitle>
+                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'cerrado' && e.id_planta === 2).length} Incidencias</CardTitle>
                                     </div>
                                 </Col>
                             </Row>
@@ -87,7 +86,7 @@ const FloorOneIncidents = () => {
             </Row>
             <Row>
                 {classrooms
-                    .filter(e => e.id_planta === 4)
+                    .filter(e => e.id_planta === 2)
                     .map(item => {
                         const { id_aula, aula, tipo_aula } = item
                         return (
@@ -121,4 +120,4 @@ const FloorOneIncidents = () => {
     )
 }
 
-export default FloorOneIncidents
+export default FloorThreeIncidents

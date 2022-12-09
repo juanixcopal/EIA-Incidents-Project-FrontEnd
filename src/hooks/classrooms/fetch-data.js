@@ -16,6 +16,7 @@ export const useFetchClassrooms = () => {
                     console.log('error', error)
                 })
         })()
+        // eslint-disable-next-line
     }, [refresh])
 
     return { classrooms, refreshClassrooms }

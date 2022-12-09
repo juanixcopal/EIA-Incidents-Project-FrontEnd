@@ -8,7 +8,6 @@ const BasicTabs = () => {
     return (
         <>
             <div className='Header'>
-                {/* <img src='public/incidences.PNG' /> */}
                 <h1 className='Title'>Reporte Incidencias</h1>
             </div>
 

@@ -2,15 +2,15 @@ import React from 'react'
 import { Avatar, Button, CssBaseline, TextField, Box, Typography, Container } from '@mui/material'
 import LockPersonIcon from '@mui/icons-material/LockPerson'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useFetchInitLogin } from '../../hooks/login'
+
 const Login = () => {
     const theme = createTheme()
-    const handleSubmit = event => {
-        const data = new FormData(event.currentTarget)
-        console.log({
-            user: data.get('user'),
-            password: data.get('password')
-        })
-    }
+    const FetchInit = useFetchInitLogin()
+    const { handleInputChange, login, message, loading } = FetchInit
+
+    const { message: _message, result } = message
+
     return (
         <ThemeProvider theme={theme}>
             <Container component='main' maxWidth='xs'>
@@ -29,8 +29,18 @@ const Login = () => {
                     <Typography component='h1' variant='h5'>
                         Incidencias EIA
                     </Typography>
-                    <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <TextField margin='normal' required fullWidth id='user' label='Usuario' name='user' autoComplete='user' autoFocus />
+                    <Box component='form' noValidate sx={{ mt: 1 }} onSubmit={login}>
+                        <TextField
+                            margin='normal'
+                            required
+                            fullWidth
+                            id='username'
+                            label='Usuario'
+                            name='username'
+                            autoComplete='username'
+                            onChange={handleInputChange}
+                            autoFocus
+                        />
                         <TextField
                             margin='normal'
                             required
@@ -40,7 +50,13 @@ const Login = () => {
                             type='password'
                             id='password'
                             autoComplete='current-password'
+                            onChange={handleInputChange}
                         />
+                        {loading ? (
+                            <span className='text-success'>Ingresando...</span>
+                        ) : (
+                            <span className={`text-${result ? 'success' : 'danger'}`}>{_message}</span>
+                        )}
                         <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
                             Acceder
                         </Button>

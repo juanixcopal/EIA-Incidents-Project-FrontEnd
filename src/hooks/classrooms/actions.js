@@ -16,7 +16,7 @@ export const useActions = ({ FetchClassrooms, data, toggle }) => {
         }
 
         setLoadingOperation(true)
-        await axios.post('http://172.27.20.128:3050/v1/classrooms/manager', data).then(({ data }) => {
+        await axios.post(`${process.env.REACT_APP_API_BASE}/v1/classrooms/manager`, data).then(({ data }) => {
             alertMessage(data, refreshClassrooms, toggle)
         })
         setLoadingOperation(false)

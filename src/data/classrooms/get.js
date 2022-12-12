@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getClassrooms = async () => {
     return await axios
-        .get('http://172.27.20.128:3050/v1/incidences/query', { headers: { service: 'classrooms' } })
+        .get(`${process.env.REACT_APP_API_BASE}/v1/incidences/query`, { headers: { service: 'classrooms' } })
         .then(response => {
             return response
         })
@@ -14,7 +14,7 @@ export const getClassrooms = async () => {
 
 export const getTypeClassrooms = async () => {
     return await axios
-        .get('http://172.27.20.128:3050/v1/typeClassrooms/query', { headers: { service: 'typeClassrooms' } })
+        .get(`${process.env.REACT_APP_API_BASE}/v1/typeClassrooms/query`, { headers: { service: 'typeClassrooms' } })
         .then(response => {
             return response
         })
@@ -26,7 +26,7 @@ export const getTypeClassrooms = async () => {
 
 export const getFlats = async () => {
     return await axios
-        .get(`http://172.27.20.128:3050/v1/incidences/query`, { headers: { service: 'floors' } })
+        .get(`${process.env.REACT_APP_API_BASE}/v1/incidences/query`, { headers: { service: 'floors' } })
         .then(response => {
             return response
         })

@@ -33,7 +33,7 @@ export default function CreateClassroom({ cancel, close }) {
             alertMessage({ result: false, message: 'Aun hay campos sin rellenar' })
             return
         }
-        axios.post('http://172.27.20.128:3050/v1/classrooms/manager', data).then(({ data }) => {
+        axios.post(`${process.env.REACT_APP_API_BASE}/v1/classrooms/manager`, data).then(({ data }) => {
             alertMessage(data)
         })
     }

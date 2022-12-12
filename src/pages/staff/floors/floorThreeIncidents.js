@@ -1,20 +1,20 @@
-import { Button, CardActions, CardContent, Typography } from '@mui/material'
 import React from 'react'
-import { Row, Col, Card, CardBody, CardTitle, CardFooter } from 'reactstrap'
+import { CardBody, CardTitle, Col, Row, Card, CardFooter } from 'reactstrap'
 import { useFetchInitClassrooms } from 'hooks/classrooms/index'
 import { useFetchInitDataReports } from 'hooks/dataReports/index'
+import { Button, CardActions, CardContent, Typography } from '@mui/material'
 import { AiFillLike, AiFillDislike, AiFillWarning } from 'react-icons/ai'
-
-const FloorFourIncidents = () => {
+import Modal from './modal-components'
+const FloorThreeIncidents = () => {
     const { FetchClassrooms } = useFetchInitClassrooms()
     const { classrooms } = FetchClassrooms
 
     const useFetchInit = useFetchInitDataReports()
-    const { FetchDataReports } = useFetchInit
+    const { FetchDataReports, toggle } = useFetchInit
     const { reportsData } = FetchDataReports
-
     return (
         <div className='content'>
+            <Modal useFetchInit={useFetchInit} />
             <Row>
                 <Col lg='4' md='4' sm='4'>
                     <Card className='card-stats'>
@@ -28,7 +28,7 @@ const FloorFourIncidents = () => {
                                 <Col md='8' xs='7'>
                                     <div className='numbers'>
                                         <p className='card-category'>Total Abiertas</p>
-                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'abierto' && e.id_planta === 1).length} Incidencias</CardTitle>
+                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'abierto' && e.id_planta === 2).length} Incidencias</CardTitle>
                                     </div>
                                 </Col>
                             </Row>
@@ -51,7 +51,7 @@ const FloorFourIncidents = () => {
                                     <div className='numbers'>
                                         <p className='card-category'>Total Pendientes</p>
                                         <CardTitle tag='p'>
-                                            {reportsData.filter(e => e.estado === 'pendiente' && e.id_planta === 1).length} Incidencias
+                                            {reportsData.filter(e => e.estado === 'pendiente' && e.id_planta === 2).length} Incidencias
                                         </CardTitle>
                                     </div>
                                 </Col>
@@ -74,7 +74,7 @@ const FloorFourIncidents = () => {
                                 <Col md='8' xs='5'>
                                     <div className='numbers'>
                                         <p className='card-category'>Total Cerradas</p>
-                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'cerrado' && e.id_planta === 1).length} Incidencias</CardTitle>
+                                        <CardTitle tag='p'>{reportsData.filter(e => e.estado === 'cerrado' && e.id_planta === 2).length} Incidencias</CardTitle>
                                     </div>
                                 </Col>
                             </Row>
@@ -87,18 +87,17 @@ const FloorFourIncidents = () => {
             </Row>
             <Row>
                 {classrooms
-                    .filter(e => e.id_planta === 1)
+                    .filter(e => e.id_planta === 2)
                     .map(item => {
                         const { id_aula, aula, tipo_aula } = item
                         return (
                             <Col lg='3' md='3' sm='3' key={id_aula}>
-                                <Card className='cards' key={id_aula}>
+                                <Card>
                                     <div
                                         className={`statusFilter-${
                                             reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'
                                         }`}
                                     />
-
                                     <CardContent>
                                         <Typography variant='h5' component='div'>
                                             {tipo_aula} {aula}
@@ -106,6 +105,7 @@ const FloorFourIncidents = () => {
                                     </CardContent>
                                     <CardActions>
                                         <Button
+                                            onClick={() => toggle(null, 'Modificar Incidencia', 'update-incidence', item)}
                                             className={`${
                                                 reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'button' : 'prueba'
                                             }`}
@@ -122,4 +122,4 @@ const FloorFourIncidents = () => {
     )
 }
 
-export default FloorFourIncidents
+export default FloorThreeIncidents

@@ -8,9 +8,9 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import AdminLayout from './layouts/Admin'
+import BasicTabs from './components/basicTabs/basicTabs.js'
 
 const Login = React.lazy(() => import('pages/login/login'))
-const BasicTabs = React.lazy(() => import('./components/basicTabs/basicTabs.js'))
 
 const App = () => {
     const token = localStorage.getItem('token')
@@ -20,17 +20,21 @@ const App = () => {
             <ToastContainer />
             <Switch>
                 <Route exact path='/login' component={Login} />
-                {/* <Route exact path='/incidencias' component={BasicTabs} /> */}
+                <Route exact path='/incidencias' component={BasicTabs} />
+
                 {token ? (
                     <>
-                        <Redirect to={'/user'} />
+                        <Route
+                            exact
+                            path={`/`}
+                            render={() => {
+                                return <Redirect to={`/user`} />
+                            }}
+                        />
                         <Route path='/user' render={props => <AdminLayout {...props} />} />
                     </>
                 ) : (
-                    <>
-                        <Route path='/incidencias' component={BasicTabs} />
-                        <Redirect from='/' to={'/incidencias'} />
-                    </>
+                    <Redirect to={'/incidencias'} />
                 )}
             </Switch>
         </BrowserRouter>

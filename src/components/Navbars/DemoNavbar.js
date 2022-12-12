@@ -10,6 +10,13 @@ function Header(props) {
     const [color, setColor] = React.useState('transparent')
     const sidebarToggle = React.useRef()
     const location = useLocation()
+    const username = localStorage.getItem('username')
+
+    const logout = () => {
+        localStorage.clear()
+        window.location.href = '/login'
+    }
+
     const toggle = () => {
         if (isOpen) {
             setColor('transparent')
@@ -75,8 +82,8 @@ function Header(props) {
                     <span className='navbar-toggler-bar navbar-kebab' />
                 </NavbarToggler>
                 <Collapse isOpen={isOpen} navbar className='justify-content-end'>
-                    <div style={{ padding: '0 30px' }}>Bienvenido René</div>
-                    <button style={{ border: 'none', height: '25px', color: 'gray' }}>
+                    <div style={{ padding: '0 30px' }}>Bienvenido {username || 'Usuario'}</div>
+                    <button style={{ border: 'none', height: '25px', color: 'gray' }} type='button' onClick={logout}>
                         <GoSignOut />
                     </button>
                     <Nav navbar></Nav>

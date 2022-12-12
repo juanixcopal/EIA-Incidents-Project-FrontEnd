@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
-
+import IncidencesSkeleton from 'components/SkeletonIncidences/SkeletonClassrooms.js'
 import Modal from './modal-components'
 
 const Incidences = () => {
@@ -23,33 +23,37 @@ const Incidences = () => {
     return (
         <>
             <Modal useFetchInit={useFetchInit} />
-            <div className='MapClass'>
-                {classrooms.map(item => {
-                    const { id_aula, aula, tipo_aula, id_planta } = item
-                    return (
-                        <TabPanel value={String(id_planta)} key={id_aula}>
-                            <Card className='cards'>
-                                <div
-                                    className={`status-${
-                                        reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'
-                                    }`}
-                                />
+            {classrooms.length === 0 ? (
+                <IncidencesSkeleton />
+            ) : (
+                <div className='MapClass'>
+                    {classrooms.map(item => {
+                        const { id_aula, aula, tipo_aula, id_planta } = item
+                        return (
+                            <TabPanel value={String(id_planta)} key={id_aula}>
+                                <Card className='cards'>
+                                    <div
+                                        className={`status-${
+                                            reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'
+                                        }`}
+                                    />
 
-                                <CardContent>
-                                    <Typography variant='h5' component='div'>
-                                        {tipo_aula} {aula}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size='small' onClick={() => toggle(null, 'Crear Incidencia', 'create-incidence', item)}>
-                                        Añadir Incidencia
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </TabPanel>
-                    )
-                })}
-            </div>
+                                    <CardContent>
+                                        <Typography variant='h5' component='div'>
+                                            {tipo_aula} {aula}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button size='small' onClick={() => toggle(null, 'Crear Incidencia', 'create-incidence', item)}>
+                                            Añadir Incidencia
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                            </TabPanel>
+                        )
+                    })}
+                </div>
+            )}
         </>
     )
 }

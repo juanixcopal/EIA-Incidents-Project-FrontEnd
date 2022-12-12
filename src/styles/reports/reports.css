@@ -164,3 +164,12 @@ body {
     color: rgb(129, 129, 129) !important;
     pointer-events: none;
 }
+
+.waterMark {
+    font-size: 1em;
+    color: #8c8c8c;
+    display: flex;
+    position: fixed;
+    user-select: none;
+    margin: 20px 0 0 20px;
+}

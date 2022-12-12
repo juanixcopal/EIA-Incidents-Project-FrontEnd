@@ -7,15 +7,17 @@ import { Button, CardActions, CardContent, Typography } from '@mui/material'
 
 import { AiFillLike, AiFillDislike, AiFillWarning } from 'react-icons/ai'
 
+import Modal from './modal-components'
 const FloorTwoIncidents = () => {
     const { FetchClassrooms } = useFetchInitClassrooms()
     const { classrooms } = FetchClassrooms
 
     const useFetchInit = useFetchInitDataReports()
-    const { FetchDataReports } = useFetchInit
+    const { FetchDataReports, toggle } = useFetchInit
     const { reportsData } = FetchDataReports
     return (
         <>
+            <Modal useFetchInit={useFetchInit} />
             <div className='content'>
                 <Row>
                     <Col lg='4' md='4' sm='4'>
@@ -111,6 +113,7 @@ const FloorTwoIncidents = () => {
                                         </CardContent>
                                         <CardActions>
                                             <Button
+                                                onClick={() => toggle(null, 'Modificar Incidencia', 'update-incidence', item)}
                                                 className={`${
                                                     reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'button' : 'prueba'
                                                 }`}

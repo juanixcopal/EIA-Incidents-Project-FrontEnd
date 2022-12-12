@@ -23,27 +23,33 @@ const Tabs = () => {
 
     const [value, setValue] = useState(1)
     return (
-        <TabContext value={String(value)}>
-            <Box>
-                <TabList onChange={handleChanges} aria-label='lab API tabs example'>
-                    {flatsData.map(item => {
-                        const { id_planta, planta } = item
-                        return (
-                            <Tab
-                                label={
-                                    <Badge badgeContent={reportsData.filter(e => e.estado === 'abierto' && e.id_planta === id_planta).length} color='primary'>
-                                        {planta}
-                                    </Badge>
-                                }
-                                value={String(id_planta)}
-                                key={id_planta}
-                            />
-                        )
-                    })}
-                </TabList>
-            </Box>
-            <Incidences />
-        </TabContext>
+        <>
+            <p className='waterMark'>By. Intervención Ágil</p>
+            <TabContext value={String(value)}>
+                <Box>
+                    <TabList onChange={handleChanges} aria-label='lab API tabs example'>
+                        {flatsData.map(item => {
+                            const { id_planta, planta } = item
+                            return (
+                                <Tab
+                                    label={
+                                        <Badge
+                                            badgeContent={reportsData.filter(e => e.estado === 'abierto' && e.id_planta === id_planta).length}
+                                            color='primary'
+                                        >
+                                            {planta}
+                                        </Badge>
+                                    }
+                                    value={String(id_planta)}
+                                    key={id_planta}
+                                />
+                            )
+                        })}
+                    </TabList>
+                </Box>
+                <Incidences />
+            </TabContext>
+        </>
     )
 }
 

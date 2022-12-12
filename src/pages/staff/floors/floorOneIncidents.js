@@ -4,17 +4,18 @@ import { useFetchInitDataReports } from 'hooks/dataReports/index'
 import { Card, CardBody, CardTitle, Col, Row, CardFooter } from 'reactstrap'
 import { CardActions, CardContent, Typography, Button } from '@mui/material'
 import { AiFillLike, AiFillDislike, AiFillWarning } from 'react-icons/ai'
-
+import Modal from './modal-components'
 const FloorOneIncidents = () => {
     const { FetchClassrooms } = useFetchInitClassrooms()
     const { classrooms } = FetchClassrooms
 
     const useFetchInit = useFetchInitDataReports()
-    const { FetchDataReports } = useFetchInit
+    const { FetchDataReports, toggle } = useFetchInit
     const { reportsData } = FetchDataReports
 
     return (
         <div className='content'>
+            <Modal useFetchInit={useFetchInit} />
             <Row>
                 <Col lg='4' md='4' sm='4'>
                     <Card className='card-stats'>
@@ -105,6 +106,7 @@ const FloorOneIncidents = () => {
                                     </CardContent>
                                     <CardActions>
                                         <Button
+                                            onClick={() => toggle(null, 'Modificar Incidencia', 'update-incidence', item)}
                                             className={`${
                                                 reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'button' : 'prueba'
                                             }`}

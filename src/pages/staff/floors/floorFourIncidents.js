@@ -4,6 +4,7 @@ import { Row, Col, Card, CardBody, CardTitle, CardFooter } from 'reactstrap'
 import { useFetchInitClassrooms } from 'hooks/classrooms/index'
 import { useFetchInitDataReports } from 'hooks/dataReports/index'
 import { AiFillLike, AiFillDislike, AiFillWarning } from 'react-icons/ai'
+import Footer from 'components/footer/footer.js'
 import Modal from './modal-components'
 const FloorFourIncidents = () => {
     const { FetchClassrooms } = useFetchInitClassrooms()
@@ -93,7 +94,7 @@ const FloorFourIncidents = () => {
                         const { id_aula, aula, tipo_aula } = item
                         return (
                             <Col lg='3' md='3' sm='3' key={id_aula}>
-                                <Card className='cards' key={id_aula}>
+                                <Card className='cards'>
                                     <div
                                         className={`statusFilter-${
                                             reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'
@@ -107,12 +108,12 @@ const FloorFourIncidents = () => {
                                     </CardContent>
                                     <CardActions>
                                         <Button
-                                            onClick={() => toggle(null, 'Modificar Incidencia', 'update-incidence', item)}
+                                            onClick={() => toggle(null, 'Incidencias Abiertas', 'update-incidence', item)}
                                             className={`${
                                                 reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'button' : 'prueba'
                                             }`}
                                         >
-                                            Cerrar Incidencia
+                                            Ver Incidencia
                                         </Button>
                                     </CardActions>
                                 </Card>
@@ -120,6 +121,7 @@ const FloorFourIncidents = () => {
                         )
                     })}
             </Row>
+            <Footer description='Project under development some functions are not available yet. version 1.0.0' />
         </div>
     )
 }

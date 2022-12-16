@@ -16,6 +16,7 @@ const Tabs = () => {
 
     const { FetchDataReports } = useFetchInitDataReports()
     const { reportsData } = FetchDataReports
+    // console.log(refresIncidences)
 
     const handleChanges = (event, newValue) => {
         setValue(newValue)

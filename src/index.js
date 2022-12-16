@@ -21,21 +21,15 @@ const App = () => {
             <Switch>
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/incidencias' component={BasicTabs} />
-
                 {token ? (
                     <>
-                        <Route
-                            exact
-                            path={`/`}
-                            render={() => {
-                                return <Redirect to={`/user`} />
-                            }}
-                        />
-                        <Route path='/user' render={props => <AdminLayout {...props} />} />
+                        <Route exact path={`/`} />
+                        <Route path='/' render={props => <AdminLayout {...props} />} />
                     </>
                 ) : (
                     <Redirect to={'/incidencias'} />
                 )}
+                <Redirect to={'/incidencias'} />
             </Switch>
         </BrowserRouter>
     )

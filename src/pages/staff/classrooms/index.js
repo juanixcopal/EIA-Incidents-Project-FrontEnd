@@ -2,6 +2,7 @@ import React from 'react'
 import { GrAdd } from 'react-icons/gr'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import { useFetchInitClassrooms } from 'hooks/classrooms/index'
+import Footer from 'components/footer/footer.js'
 import Modal from './modal-components'
 
 const PageClassrooms = () => {
@@ -38,13 +39,14 @@ const PageClassrooms = () => {
                                     <td>{aula}</td>
                                     <td>{planta}</td>
                                     <td>
-                                        <button className='btn btn-info'>
+                                        <button className='btn btn-info' disabled>
                                             <AiFillEdit style={{ fontSize: '18px' }} />
                                         </button>
                                         <button
                                             style={{ marginLeft: '18px' }}
                                             className='btn btn-danger'
                                             onClick={() => toggle(null, 'Eliminar Clase', 'delete-classroom')}
+                                            disabled
                                         >
                                             <AiFillDelete style={{ fontSize: '18px' }} />
                                         </button>
@@ -54,6 +56,7 @@ const PageClassrooms = () => {
                         })}
                     </tbody>
                 </table>
+                <Footer description='Project under development some functions are not available yet. version 1.0.0' />
             </div>
         </>
     )

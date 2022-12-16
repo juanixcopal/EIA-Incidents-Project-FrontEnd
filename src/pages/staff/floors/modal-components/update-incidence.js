@@ -1,51 +1,51 @@
 import React from 'react'
-import { ModalBody, ModalFooter } from 'reactstrap'
+import { ModalBody } from 'reactstrap'
+import { useFetchInitReports } from 'hooks/reports/index'
+import { Button } from '@mui/material'
 
 const UpdateIncidences = ({ useFetchInit }) => {
-    const { FetchDataReports, dataModal } = useFetchInit
-    const { reportsData } = FetchDataReports
+    const { dataModal } = useFetchInit
     const { id_aula } = dataModal.params
+
+    const { FetchReportsData } = useFetchInitReports()
+    const { dataReports } = FetchReportsData
 
     return (
         <>
             <ModalBody>
-                {reportsData
+                <h6 style={{ color: '#C9C9C9', paddingLeft: '15px' }}>Incidencias creadas:</h6>
+                {dataReports
                     .filter(e => e.id_aula === id_aula)
                     .map(item => {
-                        const { aula, descripcion, titulo, estado, id_aula, tipo_aula } = item
+                        const { titulo, descripcion, id_reporte } = item
                         return (
-                            <div key={id_aula}>
-                                <div>
-                                    <h6 style={{ color: '#409DC4' }}>
-                                        {tipo_aula} {aula}
-                                    </h6>
+                            <div
+                                key={id_reporte}
+                                className='md-12 row'
+                                style={{
+                                    borderStyle: 'dotted',
+                                    borderWidth: '2px',
+                                    borderRadius: '20px',
+                                    margin: '10px',
+                                    borderColor: '#a7a7a7',
+                                    padding: '10px'
+                                }}
+                            >
+                                <div className='md-4' style={{ display: 'flex' }}>
+                                    <h6>Titulo: </h6>
+                                    <p>{titulo}</p>
                                 </div>
-                                <div className='form-group'>
-                                    <label>Titulo</label>
-                                    <input className='input-group form-control' defaultValue={titulo} disabled />
+                                <div className='md-4' style={{ display: 'flex' }}>
+                                    <h6>Descripcion:</h6>
+                                    <p>{descripcion}</p>
                                 </div>
-                                <div className='form-group'>
-                                    <label>Descripcion</label>
-                                    <input className='input-group form-control' defaultValue={descripcion} disabled />
-                                </div>
-                                <div className='form-group'>
-                                    <label>Estado Incidencia</label>
-                                    <input className='input-group form-control' defaultValue={estado} disabled />
-                                </div>
-                                <div>
-                                    <label>Agente</label>
-                                    <input className='input-group form-control' />
+                                <div className='md-4' style={{ display: 'flow-root' }}>
+                                    <Button className='modifyIncidenceBtn'> Modificar incidencia </Button>
                                 </div>
                             </div>
                         )
                     })}
             </ModalBody>
-            <ModalFooter>
-                <div className='col-12'>
-                    <button className='rightButtonAccept'>Actualizar</button>
-                    <button className='leftButtonCancel'>Cancelar</button>
-                </div>
-            </ModalFooter>
         </>
     )
 }

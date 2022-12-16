@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { getFlats } from '../../data/flats/get.js'
-
+let refresh = false
 export const useFetchFlatsData = () => {
     const [flatsData, setFlatsData] = useState([])
+    const refresFlats = () => (refresh = !refresh)
 
     useEffect(() => {
         ;(async () => {
@@ -14,6 +15,7 @@ export const useFetchFlatsData = () => {
                     console.log('error', error)
                 })
         })()
-    }, [])
-    return { flatsData }
+        // eslint-disable-next-line
+    }, [refresh])
+    return { flatsData, refresFlats }
 }

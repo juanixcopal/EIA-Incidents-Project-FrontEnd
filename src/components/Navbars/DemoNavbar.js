@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Container } from 'reactstrap'
 
 import { GoSignOut } from 'react-icons/go'
 import routes from '../../routes.js'
@@ -21,12 +21,12 @@ function Header(props) {
         if (isOpen) {
             setColor('transparent')
         } else {
-            setColor('dark')
+            setColor('transparent')
         }
         setIsOpen(!isOpen)
     }
     const getBrand = () => {
-        let brandName = 'Default Brand'
+        let brandName = 'Bienvenido'
         routes.map((prop, key) => {
             if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
                 brandName = prop.name
@@ -82,11 +82,13 @@ function Header(props) {
                     <span className='navbar-toggler-bar navbar-kebab' />
                 </NavbarToggler>
                 <Collapse isOpen={isOpen} navbar className='justify-content-end'>
-                    <div style={{ padding: '0 30px' }}>Bienvenido {username || 'Usuario'}</div>
+                    <div style={{ padding: '0 30px' }}>
+                        <p>Bienvenido {username || 'Usuario'}</p>
+                    </div>
+                    {/* <Nav navbar></Nav> */}
                     <button style={{ border: 'none', height: '25px', color: 'gray' }} type='button' onClick={logout}>
                         <GoSignOut />
                     </button>
-                    <Nav navbar></Nav>
                 </Collapse>
             </Container>
         </Navbar>

@@ -45,7 +45,7 @@ const Incidences = () => {
                                     </CardContent>
                                     <CardActions>
                                         <Button size='small' onClick={() => toggle(null, 'Crear Incidencia', 'create-incidence', item)}>
-                                            Añadir Incidencia
+                                            Crear Incidencia
                                         </Button>
                                     </CardActions>
                                 </Card>

@@ -26,12 +26,12 @@ function Sidebar(props) {
     return (
         <div className='sidebar' data-color={props.bgColor} data-active-color={props.activeColor}>
             <div className='logo'>
-                <a href='http://localhost:3000/user' className='simple-text logo-mini'>
+                <a href='http://172.27.20.128:3000/user/planta1' className='simple-text logo-mini'>
                     <div className='logo-img'>
                         <img src={Logo} alt='LOGO' />
                     </div>
                 </a>
-                <a href='http://localhost:3000/user' className='simple-text logo-normal'>
+                <a href='http://172.27.20.128:3000/user/planta1' className='simple-text logo-normal'>
                     Incidencias EIA
                 </a>
             </div>

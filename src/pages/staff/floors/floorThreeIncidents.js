@@ -4,6 +4,7 @@ import { useFetchInitClassrooms } from 'hooks/classrooms/index'
 import { useFetchInitDataReports } from 'hooks/dataReports/index'
 import { Button, CardActions, CardContent, Typography } from '@mui/material'
 import { AiFillLike, AiFillDislike, AiFillWarning } from 'react-icons/ai'
+import Footer from 'components/footer/footer.js'
 import Modal from './modal-components'
 const FloorThreeIncidents = () => {
     const { FetchClassrooms } = useFetchInitClassrooms()
@@ -118,6 +119,7 @@ const FloorThreeIncidents = () => {
                         )
                     })}
             </Row>
+            <Footer description='Project under development some functions are not available yet. version 1.0.0' />
         </div>
     )
 }

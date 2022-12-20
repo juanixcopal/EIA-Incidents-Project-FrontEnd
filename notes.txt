@@ -1,37 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createRoot } from 'react-dom/client';
-// import BasicTabs from './pages/reports/incidents.js'
-// import Pruebas from 'pages/pruebas/pruebas.js';
-// import Login from './pages/login/login.js';
-// import FloorOneIncidents from './pages/staff/floorOneIncidents';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
-import "bootstrap/dist/css/bootstrap.css"
-import './assets/scss/paper-dashboard.scss?v=0.1.0'
-import "./assets/demo/demo.css"
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
-
-import AdminLayout from './layouts/Admin'
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/user" render={(props) => <AdminLayout {...props} />} />
-      <Redirect to="/user/planta1" />
-    </Switch>
-  </BrowserRouter>
-);
-
-
-// <React.StrictMode>
-//     <BasicTabs />
-// </React.StrictMode>
-
-//  <BrowserRouter>
-//   <Switch>
-//     <Route path="/user" render={(props) => <AdminLayout {...props} />} />
-//     <Redirect to="/user/planta1" />
-//   </Switch>
-// </BrowserRouter>
+Base de Datos 	17/01/2023 	14:30 hrs
+Mate. Numerica	19/01/2023	11:30 hrs
+Ing Soft	      20/01/2023	11:30 hrs
+Redes		        23/01/2023	14:30 hrs
+EDA I		        25/01/2023	17:30 hrs
+Estadística 	  27/01/2023 	8:30 hrs

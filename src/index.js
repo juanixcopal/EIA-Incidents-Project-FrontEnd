@@ -13,26 +13,26 @@ import BasicTabs from './components/basicTabs/basicTabs.js'
 const Login = React.lazy(() => import('pages/login/login'))
 
 const App = () => {
-    const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
 
-    return (
-        <BrowserRouter>
-            <ToastContainer />
-            <Switch>
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/incidencias' component={BasicTabs} />
-                {token ? (
-                    <>
-                        <Route exact path={`/`} />
-                        <Route path='/' render={props => <AdminLayout {...props} />} />
-                    </>
-                ) : (
-                    <Redirect to={'/incidencias'} />
-                )}
-                <Redirect to={'/incidencias'} />
-            </Switch>
-        </BrowserRouter>
-    )
+  return (
+    <BrowserRouter>
+      <ToastContainer />
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/incidencias' component={BasicTabs} />
+        {token ? (
+          <>
+            <Route exact path={`/`} />
+            <Route path='/' render={props => <AdminLayout {...props} />} />
+          </>
+        ) : (
+          <Redirect to={'/incidencias'} />
+        )}
+        <Redirect to={'/incidencias'} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

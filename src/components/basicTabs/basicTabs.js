@@ -5,17 +5,17 @@ import Tabs from 'components/tabs/tabs'
 import Box from '@mui/material/Box'
 
 const BasicTabs = () => {
-    return (
-        <>
-            <div className='Header'>
-                <h1 className='Title'>Reporte Incidencias</h1>
-            </div>
+  return (
+    <>
+      <div className='Header'>
+        <h1 className='Title'>Reporte de Aulas</h1>
+      </div>
 
-            <Box sx={{ width: '100%', typography: 'body1' }}>
-                <Tabs />
-            </Box>
-        </>
-    )
+      <Box sx={{ width: '100%', typography: 'body1' }}>
+        <Tabs />
+      </Box>
+    </>
+  )
 }
 
 export default BasicTabs

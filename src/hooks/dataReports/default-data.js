@@ -1,13 +1,13 @@
 export const defaultData = {
-    titulo: '',
-    descripcion: '',
-    id_aula: '',
-    id_estado_incidencia: 1
+  titulo: 'Revision Aula ',
+  descripcion: '',
+  id_aula: '',
+  id_estado_incidencia: 1
 }
 
 export const defaultDataModal = {
-    open: false,
-    title: '',
-    component: '',
-    params: {}
+  open: false,
+  title: '',
+  component: '',
+  params: {}
 }

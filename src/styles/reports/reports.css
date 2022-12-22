@@ -1,85 +1,85 @@
 body {
-    background-color: #e0e0e0 !important;
-    margin: 0;
-    padding: 0;
+  background-color: #e0e0e0 !important;
+  margin: 0;
+  padding: 0;
 }
 
 .Header {
-    background-color: #252525;
-    width: 100%;
-    height: 12vh;
-    color: white;
-    display: flex;
-    align-items: center;
+  background-color: #252525;
+  width: 100%;
+  height: 12vh;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
 .Title {
-    font-size: 4vh;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding: 25px 0 0 0;
+  font-size: 4vh;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 25px 0 0 0;
 }
 
 .logo {
-    width: auto;
-    padding-left: 40px;
+  width: auto;
+  padding-left: 40px;
 }
 
 .MapClass {
-    justify-self: center;
-    max-width: 80.7vw;
-    width: 80.7vw;
-    display: grid;
-    grid-template-columns: repeat(4, 20.7%);
-    gap: 60px;
-    grid-auto-rows: minmax(100px, auto);
-    -moz-column-gap: 5.7vw;
-    column-gap: 5.7vw;
-    margin: auto;
-    margin-top: 40px;
-    justify-content: center;
+  justify-self: center;
+  max-width: 80.7vw;
+  width: 80.7vw;
+  display: grid;
+  grid-template-columns: repeat(4, 20.7%);
+  gap: 60px;
+  grid-auto-rows: minmax(100px, auto);
+  -moz-column-gap: 5.7vw;
+  column-gap: 5.7vw;
+  margin: auto;
+  margin-top: 40px;
+  justify-content: center;
 }
 
 .MapClassFilter {
-    justify-self: center;
-    max-width: 80.7vw;
-    width: 80.7vw;
-    display: grid;
-    gap: 60px;
-    grid-auto-rows: minmax(100px, auto);
-    grid-template-columns: repeat(4, 20.7%);
-    -moz-column-gap: 5.7vw;
-    column-gap: 5.7vw;
-    margin: auto;
-    margin-top: 40px;
-    justify-content: center;
+  justify-self: center;
+  max-width: 80.7vw;
+  width: 80.7vw;
+  display: grid;
+  gap: 60px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(4, 20.7%);
+  -moz-column-gap: 5.7vw;
+  column-gap: 5.7vw;
+  margin: auto;
+  margin-top: 40px;
+  justify-content: center;
 }
 
 .button {
-    display: block;
-    padding: 10px 30px;
-    border-radius: 100px;
-    color: #fff;
-    border: none;
-    background: #1766dc;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    transition: 0.3s ease all;
+  display: block;
+  padding: 10px 30px;
+  border-radius: 100px;
+  color: #fff;
+  border: none;
+  background: #1766dc;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.3s ease all;
 }
 
 .button:hover {
-    background: #555555;
+  background: #555555;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar .nav li > a {
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
 /* 
 .sidebar .logo {
@@ -93,87 +93,87 @@ body {
 /*----------------------------------------------------------*/
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    color: white !important;
-    border-radius: 50px;
-    background-color: #888888;
+  color: white !important;
+  border-radius: 50px;
+  background-color: #888888;
 }
 
 .css-heg063-MuiTabs-flexContainer {
-    margin-left: 50%;
-    transform: translateX(-50%);
-    display: flex !important;
-    background-color: #f8f6f0 !important;
-    border-radius: 50px !important;
-    width: fit-content;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex !important;
+  background-color: #f8f6f0 !important;
+  border-radius: 50px !important;
+  width: fit-content;
 }
 
 .css-1aquho2-MuiTabs-indicator {
-    width: 0 !important;
+  width: 0 !important;
 }
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-    color: black !important;
+  color: black !important;
 }
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root:hover {
-    background-color: #888888;
-    border-radius: 50px;
+  background-color: #888888;
+  border-radius: 50px;
 }
 
 .css-1ujnqem-MuiTabs-root {
-    padding: 5vh 0 0 0;
+  padding: 5vh 0 0 0;
 }
 
 /*--------------------------------------------------*/
 .status-success {
-    background-color: #03c04a;
-    height: 15px;
+  background-color: #c0031c;
+  height: 15px;
 }
 
 .status-problem {
-    background-color: #c0031c;
-    height: 15px;
+  background-color: #03c04a;
+  height: 15px;
 }
 
 .statusFilter-success {
-    background-color: #03c04a;
-    height: 15px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  background-color: #03c04a;
+  height: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .statusFilter-problem {
-    background-color: #c0031c;
-    height: 15px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  background-color: #c0031c;
+  height: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .btn,
 .navbar .navbar-nav > a.btn {
-    padding: 8px 15px !important;
+  padding: 8px 15px !important;
 }
 
 .css-106c1u2-MuiBadge-badge {
-    top: -4px !important;
-    right: -10px !important;
+  top: -4px !important;
+  right: -10px !important;
 }
 
 .prueba {
-    cursor: not-allowed !important;
-    color: rgb(129, 129, 129) !important;
-    pointer-events: none;
+  cursor: not-allowed !important;
+  color: rgb(129, 129, 129) !important;
+  pointer-events: none;
 }
 
 .waterMark {
-    font-size: 1em;
-    color: #8c8c8c;
-    display: flex;
-    position: absolute;
-    user-select: none;
-    margin: 20px 0 0 20px;
+  font-size: 1em;
+  color: #8c8c8c;
+  display: flex;
+  position: absolute;
+  user-select: none;
+  margin: 20px 0 0 20px;
 }
 
 .css-1k76al1 {
-    background-color: #f4f3ef !important;
+  background-color: #f4f3ef !important;
 }

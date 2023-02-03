@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Incidents from './pages/incidents/index.js'
 import Pruebas from './pages/Pruebas.js'
+import Planta_0 from './pages/staff/planta0.js'
+import Planta_1 from './pages/staff/planta1.js'
+import Planta_S1 from './pages/staff/plantaS1.js'
+import Planta_S2 from './pages/staff/plantaS2.js'
 import PageNotFound from './pages/pageNotFound/Index.js'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -29,7 +33,6 @@ const App = () => {
 
         <Route exact path='/login' component={Login} />
         <Route exact path='/' component={Incidents} />
-        <Route exact path='/pruebas' component={Pruebas} />
         {/* <Route path='*' component={PageNotFound} /> */}
         {token ? (
           <>

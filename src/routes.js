@@ -1,17 +1,9 @@
-import Prueba from './pages/staff/prueba.js'
 import Planta_0 from './pages/staff/planta0.js'
 import Planta_1 from './pages/staff/planta1.js'
 import Planta_S1 from './pages/staff/plantaS1.js'
 import Planta_S2 from './pages/staff/plantaS2.js'
 
 var routes = [
-  {
-    path: '/prueba',
-    name: 'Prueba',
-    icon: 'ni ni-laptop text-primary',
-    component: Prueba,
-    layout: '/user'
-  },
   {
     path: '/planta1',
     name: 'Planta 1',

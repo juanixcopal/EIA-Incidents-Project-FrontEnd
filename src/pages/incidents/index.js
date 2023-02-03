@@ -42,12 +42,11 @@ const Incidents = () => {
 
   return (
     <>
-      <div className='Header row col-12 '>
-        <div className='Title-Content col-8'>
+      <div className='Header'>
+        <div className='Title-Content'>
           <h1 className='Title'>Reporte de Aulas</h1>
         </div>
-
-        <div className='Button-Content col-4'>
+        <div className='Button-Content'>
           <button type='button' className='btn btn-dark Button-Login' onClick={login}>
             Login
           </button>

@@ -15,35 +15,32 @@ const Dashboard = () => {
       <Header />
       <Container className='mt--7' fluid>
         <Row>
-          <Col>
-            <h1>Dashboard</h1>
-            {dataReports.map(item => {
-              const { id_reporte, aula, titulo, descripcion, planta, tipo_aula } = item
-              // console.log(item)
-              return (
-                // <div key={id_reporte}>
-                //   <h2>{aula}</h2>
-                // </div>
-                <div key={id_reporte} className='col-xl-3 col-md-4 col-sm-12'>
-                  <div className='Content-Cards'>
-                    <Card>
-                      <CardContent>
-                        <Typography>Planta: {planta}</Typography>
-                        <Typography>
-                          {tipo_aula} {aula}
-                        </Typography>
-                        <Typography>Titulo: {titulo}</Typography>
-                        <Typography>Descripcion: {descripcion}</Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button>Ver Incidencia</Button>
-                      </CardActions>
-                    </Card>
-                  </div>
+          {dataReports.map(item => {
+            const { id_reporte, aula, titulo, descripcion, planta, tipo_aula } = item
+            // console.log(item)
+            return (
+              // <div key={id_reporte}>
+              //   <h2>{aula}</h2>
+              // </div>
+              <div key={id_reporte} className='col-xl-3 col-md-4 col-sm-12'>
+                <div className='Content-Cards'>
+                  <Card className='shadow'>
+                    <CardContent>
+                      <Typography>Planta: {planta}</Typography>
+                      <Typography>
+                        {tipo_aula} {aula}
+                      </Typography>
+                      <Typography>Titulo: {titulo}</Typography>
+                      <Typography>Descripcion: {descripcion}</Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button>Ver Incidencia</Button>
+                    </CardActions>
+                  </Card>
                 </div>
-              )
-            })}
-          </Col>
+              </div>
+            )
+          })}
         </Row>
       </Container>
     </>

@@ -39,7 +39,7 @@ const User = props => {
         {...props}
         routes={routes}
         logo={{
-          innerLink: '/user/planta1',
+          innerLink: '/user/dashboard',
           imgSrc: require('../../images/logo-eia.jpg'),
           imgAlt: '...'
         }}
@@ -48,7 +48,7 @@ const User = props => {
         <Navbar {...props} brandText={getBrandText(props.location.pathname)} />
         <Switch>
           {getRoutes(routes)}
-          <Redirect from='*' to='/user/planta1' />
+          <Redirect from='*' to='/user/dashboard' />
         </Switch>
       </div>
     </>

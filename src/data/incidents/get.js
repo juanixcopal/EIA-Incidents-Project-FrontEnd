@@ -46,3 +46,23 @@ export const getReportingData = async () => {
       throw error
     })
 }
+
+export const getIncidencesForFloor = async ({ dataModal }) => {
+  console.log('BUSCAR ID ', dataModal.params)
+  const { id_aula } = dataModal.params
+
+  console.log('SIUUU ', id_aula)
+  return await axios
+    .get(`${process.env.REACT_APP_API_BASE}/v1/incidences/query`, {
+      headers: { service: 'classroom' },
+      params: {
+        id_classroom: 1
+      }
+    })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

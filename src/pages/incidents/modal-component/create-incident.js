@@ -1,19 +1,21 @@
 import React from 'react'
 import { ModalBody, ModalFooter } from 'reactstrap'
-import { useFetchInitIncidents } from '../../../hooks/incidents/index'
+// import { useFetchInitIncidents } from '../../../hooks/incidents/index'
 
 const CreateIncidence = ({ useFetchInit }) => {
-  const { dataIncident, toggle, handleInputChangeIncident, Actions } = useFetchInit
+  const { dataIncident, toggle, handleInputChangeIncident, Actions, FetchIncidencesForFloor } = useFetchInit
 
+  const { indicendesForFloor, loadingIncidencesForFloor } = FetchIncidencesForFloor
   const { loadingOperation, createIncidence } = Actions
   const { titulo, descripcion } = dataIncident
 
   const { dataModal } = useFetchInit
-  const { id_aula, tipo_aula, aula } = dataModal.params
+  const { tipo_aula, aula } = dataModal.params
 
-  const { FetchReportsData } = useFetchInitIncidents()
-  const { dataReports } = FetchReportsData
+  // const { FetchReportsData } = useFetchInitIncidents()
+  // const { dataReports } = FetchReportsData
 
+  console.log('INCIDENCES FOR FLOOR ', indicendesForFloor, loadingIncidencesForFloor)
   return (
     <form onSubmit={createIncidence}>
       <ModalBody>
@@ -35,7 +37,7 @@ const CreateIncidence = ({ useFetchInit }) => {
       </ModalBody>
 
       {/* <div className='Prueba'> */}
-      {dataReports.length}
+      {/* {dataReports.length} */}
       {/* <div className={`DataReports-Content ${dataReports.length < 1 && 'hidden'}`}>
         {dataReports
           .filter(e => e.id_aula === id_aula && e.id_estado_incidencia === 1)

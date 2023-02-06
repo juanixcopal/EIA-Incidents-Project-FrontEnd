@@ -50,7 +50,6 @@ export const getReportingData = async () => {
 export const getIncidencesForFloor = async ({ dataModal }) => {
   const { id_aula } = dataModal.params
 
-  console.log('BUSCANDO INCIDENCIAS DEL AULA: ', id_aula)
   return await axios
     .get(`${process.env.REACT_APP_API_BASE}/v1/incidences/query`, {
       headers: { service: 'classroom' },
@@ -58,6 +57,17 @@ export const getIncidencesForFloor = async ({ dataModal }) => {
         id_classroom: id_aula
       }
     })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}
+
+export const getStates = async () => {
+  return await axios
+    .get(`${process.env.REACT_APP_API_BASE}/v1/dashboard/query`, { headers: { service: 'status' } })
     .then(response => {
       return response
     })

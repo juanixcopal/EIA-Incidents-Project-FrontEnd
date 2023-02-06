@@ -18,7 +18,6 @@ export const useActions = ({ FetchDataReports, dataIncident, toggle, dataModal, 
     setLoadingOperation(true)
     await axios.post('http://172.27.20.128:3050/v1/incidences/manager', send_data).then(({ data }) => {
       alertMessage(data, _getReportingData, toggle)
-      console.log('CREATE_RESULT: ', data)
       sockets.incidencesSocket.emit('create_incidence', data)
     })
     setLoadingOperation(false)

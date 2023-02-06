@@ -3,19 +3,18 @@ import { ModalBody, ModalFooter } from 'reactstrap'
 // import { useFetchInitIncidents } from '../../../hooks/incidents/index'
 
 const CreateIncidence = ({ useFetchInit }) => {
-  const { dataIncident, toggle, handleInputChangeIncident, Actions, FetchIncidencesForFloor } = useFetchInit
+  const { dataIncident, toggle, handleInputChangeIncident, Actions, FetchIncidencesForFloor, dataModal } = useFetchInit
 
   const { indicendesForFloor, loadingIncidencesForFloor } = FetchIncidencesForFloor
   const { loadingOperation, createIncidence } = Actions
   const { titulo, descripcion } = dataIncident
 
-  const { dataModal } = useFetchInit
   const { tipo_aula, aula } = dataModal.params
 
   // const { FetchReportsData } = useFetchInitIncidents()
   // const { dataReports } = FetchReportsData
 
-  console.log('INCIDENCES FOR FLOOR ', indicendesForFloor, loadingIncidencesForFloor)
+  // console.log('INCIDENCES FOR FLOOR ', indicendesForFloor, loadingIncidencesForFloor)
   return (
     <form onSubmit={createIncidence}>
       <ModalBody>

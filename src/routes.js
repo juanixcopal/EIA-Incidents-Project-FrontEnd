@@ -2,7 +2,7 @@ import Planta_0 from './pages/staff/planta0.js'
 import Planta_1 from './pages/staff/planta1.js'
 import Planta_S1 from './pages/staff/plantaS1.js'
 import Planta_S2 from './pages/staff/plantaS2.js'
-import Dashboard from './pages/staff/Dashboard.js'
+import Dashboard from './pages/staff/Dashboard/index.js'
 
 var routes = [
   // {

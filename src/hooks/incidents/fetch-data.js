@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getFloors, getClassrooms, getReports, getReportingData, getIncidencesForFloor } from '../../data/incidents/get.js'
+import { getFloors, getClassrooms, getReports, getReportingData, getIncidencesForFloor, getStates } from '../../data/incidents/get.js'
 
 export const useFetchFloors = () => {
   const [floors, setFloors] = useState([])
@@ -20,6 +20,27 @@ export const useFetchFloors = () => {
   }, [])
 
   return { floors, loadingFloors }
+}
+
+export const useFetchStates = () => {
+  const [state, setState] = useState([])
+  const [loadinState, setLoadingState] = useState(false)
+
+  useEffect(() => {
+    ;(async () => {
+      setLoadingState(true)
+      await getStates()
+        .then(({ data }) => {
+          setState(data)
+        })
+        .catch(error => {
+          console.log('Error fetch-data states', error)
+        })
+      setLoadingState(false)
+    })()
+  }, [])
+
+  return { state, loadinState }
 }
 
 export const useFetchClassrooms = ({ data }) => {
@@ -119,7 +140,6 @@ export const useFetchIncidencesForFloor = ({ dataModal }) => {
 
   useEffect(() => {
     if (dataModal.params?.id_aula) {
-      console.log('BUSCANDO::: ')
       _getIncidencesForFloor()
     }
   }, [dataModal.params])

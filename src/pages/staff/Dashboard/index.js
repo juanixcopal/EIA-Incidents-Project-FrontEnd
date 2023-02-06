@@ -1,18 +1,19 @@
-import Header from '../../components/header/Header'
-import { Col, Container, Row } from 'reactstrap'
+import Header from '../../../components/header/Header'
+import { Container, Row } from 'reactstrap'
 import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
-import { useFetchReports } from '../../hooks/incidents/fetch-data'
-
+import { useFetchInitIncidents } from '../../../hooks/incidents/index'
+import MainModal from './modal-component/index.js'
+import '../../../styles/pages/dashboard.css'
 const Dashboard = () => {
-  const mainHook = useFetchReports()
+  const mainHook = useFetchInitIncidents()
 
-  const { dataReports } = mainHook
-
-  // const { id_reporte, id_aula, id_estado_incidencia, titulo, descripcion, fecha_creacionfecha_creacion } = dataReports
+  const { FetchReportsData, toggle } = mainHook
+  const { dataReports } = FetchReportsData
 
   return (
     <>
       <Header />
+      <MainModal useFetchInit={mainHook} />
       <Container className='mt--7' fluid>
         <Row>
           {dataReports.map(item => {
@@ -24,8 +25,8 @@ const Dashboard = () => {
               // </div>
               <div key={id_reporte} className='col-xl-3 col-md-4 col-sm-12'>
                 <div className='Content-Cards'>
-                  <Card className='shadow'>
-                    <CardContent>
+                  <Card className='ClassroomCard'>
+                    <CardContent className='classroomContent'>
                       <Typography>Planta: {planta}</Typography>
                       <Typography>
                         {tipo_aula} {aula}
@@ -34,7 +35,9 @@ const Dashboard = () => {
                       <Typography>Descripcion: {descripcion}</Typography>
                     </CardContent>
                     <CardActions>
-                      <Button>Ver Incidencia</Button>
+                      <Button size='small' type='button' onClick={() => toggle(null, 'Cerrar Incidencia', 'resolve-incidence', item)}>
+                        Ver Incidencia
+                      </Button>
                     </CardActions>
                   </Card>
                 </div>

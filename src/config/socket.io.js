@@ -1,6 +1,9 @@
 import io from 'socket.io-client'
 
-const URL_BASE = 'http://localhost:4000'
-const socket = io(URL_BASE)
+const URL_BASE = 'http://172.27.20.128:4000'
+const incidencesSocket = io(`${URL_BASE}/incidences`)
 
-export default socket
+const sockets = {
+  incidencesSocket
+}
+export default sockets

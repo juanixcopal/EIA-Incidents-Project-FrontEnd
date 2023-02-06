@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { getFloors, getClassrooms, getReports, getReportingData } from '../../data/incidents/get.js'
-let refresh = false
 
 export const useFetchFloors = () => {
   const [floors, setFloors] = useState([])
@@ -63,38 +62,44 @@ export const useFetchReports = () => {
     })()
     // eslint-disable-next-line
   }, [])
+
   return { dataReports, loadingReports }
 }
 
-export const useFetchReportingData = ({ socket }) => {
+export const useFetchReportingData = ({ sockets }) => {
   const [reportsData, setReportsData] = useState([])
-  const refresIncidences = () => (refresh = !refresh)
+
+  const _getReportingData = async () => {
+    console.log('First')
+    await getReportingData()
+      .then(({ data }) => {
+        console.log('Second', data)
+        setReportsData(data)
+        // setTestRefresh(false)
+      })
+      .catch(error => {
+        console.log('error', error)
+      })
+    console.log('Final')
+  }
 
   useEffect(() => {
-    ;(async () => {
-      await getReportingData()
-        .then(({ data }) => {
-          setReportsData(data)
-        })
-        .catch(error => {
-          console.log('error', error)
-        })
-    })()
-    // eslint-disable-next-line
-  }, [refresh])
+    _getReportingData()
+  }, [])
 
   const receiveMessage = message => {
-    console.log('BROADCAST RECEIVED', message)
+    console.log('BROADCAST RECEIVED: ', message)
+    _getReportingData()
   }
 
   useEffect(() => {
     console.log('LOADING EVENT')
-    socket.on('broadcastTest', receiveMessage)
+    sockets.incidencesSocket.on('refresh_report_incidences', receiveMessage)
 
     return () => {
-      socket.off('broadcastTest', receiveMessage)
+      sockets.incidencesSocket.off('refresh_report_incidences', receiveMessage)
     }
   }, [])
 
-  return { reportsData, refresIncidences }
+  return { reportsData, _getReportingData }
 }

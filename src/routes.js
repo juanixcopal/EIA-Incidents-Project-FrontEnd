@@ -1,5 +1,4 @@
 import Prueba from './pages/staff/prueba.js'
-
 var routes = [
   {
     path: '/prueba',

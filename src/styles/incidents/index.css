@@ -47,7 +47,7 @@ body {
 }
 
 .header {
-  background: linear-gradient(to top, lime, 20%, cyan);
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
 .Title-Content {

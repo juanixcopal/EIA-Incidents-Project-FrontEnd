@@ -2,7 +2,7 @@ import Header from '../../components/header/Header'
 import { Col, Container, Row } from 'reactstrap'
 import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
 import { useFetchReports } from '../../hooks/incidents/fetch-data'
-
+import '../../styles/pages/dashboard.css';
 const Dashboard = () => {
   const mainHook = useFetchReports()
 
@@ -15,8 +15,6 @@ const Dashboard = () => {
       <Header />
       <Container className='mt--7' fluid>
         <Row>
-          <Col>
-            <h1>Dashboard</h1>
             {dataReports.map(item => {
               const { id_reporte, aula, titulo, descripcion, planta, tipo_aula } = item
               // console.log(item)
@@ -26,8 +24,8 @@ const Dashboard = () => {
                 // </div>
                 <div key={id_reporte} className='col-xl-3 col-md-4 col-sm-12'>
                   <div className='Content-Cards'>
-                    <Card>
-                      <CardContent>
+                    <Card className='ClassroomCard'>
+                      <CardContent className='classroomContent'>
                         <Typography>Planta: {planta}</Typography>
                         <Typography>
                           {tipo_aula} {aula}
@@ -43,7 +41,6 @@ const Dashboard = () => {
                 </div>
               )
             })}
-          </Col>
         </Row>
       </Container>
     </>

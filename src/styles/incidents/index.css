@@ -73,7 +73,11 @@ body {
 }
 @media screen and (max-width: 900px){
   .Title-Content{
+    margin-top: 26px;
     width: 150px;
+  }
+  .Title{
+    width: 135px;
   }
 }
 @media screen and (max-width: 700px){

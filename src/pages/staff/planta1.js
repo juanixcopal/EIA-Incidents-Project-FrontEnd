@@ -1,5 +1,6 @@
 import Header from '../../components/header/Header.js'
 import { Col, Container, Row } from 'reactstrap'
+
 const Planta_1 = () => {
     return (
         <>

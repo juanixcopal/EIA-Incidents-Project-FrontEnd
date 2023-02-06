@@ -70,17 +70,14 @@ export const useFetchReportingData = ({ sockets }) => {
   const [reportsData, setReportsData] = useState([])
 
   const _getReportingData = async () => {
-    console.log('First')
     await getReportingData()
       .then(({ data }) => {
-        console.log('Second', data)
         setReportsData(data)
         // setTestRefresh(false)
       })
       .catch(error => {
         console.log('error', error)
       })
-    console.log('Final')
   }
 
   useEffect(() => {
@@ -93,7 +90,6 @@ export const useFetchReportingData = ({ sockets }) => {
   }
 
   useEffect(() => {
-    console.log('LOADING EVENT')
     sockets.incidencesSocket.on('refresh_report_incidences', receiveMessage)
 
     return () => {

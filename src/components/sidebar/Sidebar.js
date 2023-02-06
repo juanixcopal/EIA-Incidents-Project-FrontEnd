@@ -8,11 +8,6 @@ import {
   DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Media,
   NavbarBrand,
   Navbar,
@@ -45,6 +40,7 @@ const Sidebar = props => {
   }
   // creates the links that appear in the left menu / Sidebar
   const createLinks = routes => {
+    console.log('Routes', routes)
     return routes.map((prop, key) => {
       return (
         <NavItem key={key}>
@@ -98,9 +94,6 @@ const Sidebar = props => {
               </Media>
             </DropdownToggle>
             <DropdownMenu className='dropdown-menu-arrow' right>
-              {/* <DropdownItem className='noti-title' header tag='div'>
-                <h6 className='text-overflow m-0'>Bienvenid@ {username || 'User'}</h6>
-              </DropdownItem> */}
               <DropdownItem divider />
               <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
                 <i className='ni ni-user-run' />
@@ -152,18 +145,11 @@ Sidebar.defaultProps = {
 }
 
 Sidebar.propTypes = {
-  // links that will be displayed inside the component
   routes: PropTypes.arrayOf(PropTypes.object),
   logo: PropTypes.shape({
-    // innerLink is for links that will direct the user within the app
-    // it will be rendered as <Link to="...">...</Link> tag
     innerLink: PropTypes.string,
-    // outterLink is for links that will direct the user outside the app
-    // it will be rendered as simple <a href="...">...</a> tag
     outterLink: PropTypes.string,
-    // the image src of the logo
     imgSrc: PropTypes.string.isRequired,
-    // the alt for the img
     imgAlt: PropTypes.string.isRequired
   })
 }

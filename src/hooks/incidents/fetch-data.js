@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getFloors, getClassrooms, getReports, getReportingData } from '../../data/incidents/get.js'
+import { getFloors, getClassrooms, getReports, getReportingData, getIncidencesForFloor } from '../../data/incidents/get.js'
 
 export const useFetchFloors = () => {
   const [floors, setFloors] = useState([])
@@ -98,4 +98,28 @@ export const useFetchReportingData = ({ sockets }) => {
   }, [])
 
   return { reportsData, _getReportingData }
+}
+
+export const useFetchIncidencesForFloor = ({ dataModal }) => {
+  const [indicendesForFloor, setIndicendesForFloor] = useState([])
+  const [loadingIncidencesForFloor, setLoadingIncidencesForFloor] = useState(false)
+
+  const _getIncidencesForFloor = async () => {
+    setLoadingIncidencesForFloor(true)
+    await getIncidencesForFloor({ dataModal })
+      .then(({ data }) => {
+        setIndicendesForFloor(data)
+        // setTestRefresh(false)
+      })
+      .catch(error => {
+        console.log('error', error)
+      })
+    setLoadingIncidencesForFloor(false)
+  }
+
+  useEffect(() => {
+    _getIncidencesForFloor()
+  }, [dataModal.params])
+
+  return { indicendesForFloor, loadingIncidencesForFloor }
 }

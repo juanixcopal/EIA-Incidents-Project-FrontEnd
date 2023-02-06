@@ -2,8 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Incidents from './pages/incidents/index.js'
-// import Pruebas from './pages/Pruebas.js'
-// import PageNotFound from './pages/pageNotFound/Index.js'
+import PageNotFound from './pages/pageNotFound/Index.js'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -29,7 +28,6 @@ const App = () => {
 
         <Route exact path='/login' component={Login} />
         <Route exact path='/' component={Incidents} />
-        {/* <Route exact path='/pruebas' component={Pruebas} /> */}
         {/* <Route path='*' component={PageNotFound} /> */}
         {token ? (
           <>

@@ -36,42 +36,70 @@
 
 body {
   background-color: #e0e0e0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 .Header {
+  height: 130px;
   background-color: #252525;
-  height: 12vh;
-  margin: 0 !important;
+  display: flex;
+  gap: screen();
 }
 
 .header {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
-.Title-Content {
-  display: block;
+.Title-Content{
+  height: 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 40px;
+}
+.Title{
+  color: #e0e0e0;
+  text-align: center;
+  width: 230px;
 }
 
-.Title {
-  padding-top: 3vh;
-  padding-right: 15vh;
-  float: right;
-  color: white;
+.Button-Content{
+  margin-top: 35px;
+  margin-left: 20%;
 }
 
-.Button-Content {
-  padding-top: 15px;
-  padding-right: 20px !important;
+@media screen and (max-width: 1200px){
+  .Button-Content{
+    margin-left: 10%;
+  }
+}
+@media screen and (max-width: 900px){
+  .Title-Content{
+    margin-top: 26px;
+    width: 150px;
+  }
+  .Title{
+    width: 135px;
+  }
+}
+@media screen and (max-width: 700px){
+  .Title{
+    width: 135px;
+  }
+  .Title-Content{
+    margin-top: 26px;
+    width:min-content;
+  }
+  .Button-Content{
+    margin-top: 40px;
+    margin-left: 0;
+  }
 }
 
-.Button-Login {
-  float: right;
+.btn.btn-dark.Button-Login{
+  font-size: 20px;
+  background-color: #4e4e4e;
 }
-
-.Button-Login:hover {
-  background-color: #333333;
+.btn.btn-dark.Button-Login:hover {
+  background-color: #8c8c8c;
 }
 
 .waterMark {

@@ -31,7 +31,7 @@ var routes = [
     icon: 'ni ni-laptop text-primary',
     component: Planta_S2,
     layout: '/user'
-  },
+  }
 ]
 
 export default routes

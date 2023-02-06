@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useActions } from './actions.js'
-import { defaultData, defaultDataIncidents, defaultDataModal, defaultDataClassroom } from './default-data'
+import { defaultData, defaultDataIncidents, defaultDataModal } from './default-data'
 import { useFetchFloors, useFetchClassrooms, useFetchReports, useFetchReportingData } from './fetch-data'
-import socket from '../../config/socket.io'
+import sockets from '../../config/socket.io'
 
 export const useFetchInitIncidents = () => {
   const [data, setData] = useState(defaultData)
@@ -30,9 +30,9 @@ export const useFetchInitIncidents = () => {
   const FetchFloors = useFetchFloors()
   const FetchClassrooms = useFetchClassrooms({ data })
   const FetchReportsData = useFetchReports()
-  const FetchDataReports = useFetchReportingData({ socket }) // INTEGRATE TEST FOR EMIT BROADCAST EVENT
+  const FetchDataReports = useFetchReportingData({ sockets }) // INTEGRATE TEST FOR EMIT BROADCAST EVENT
 
-  const Actions = useActions({ FetchDataReports, dataIncident, toggle, dataModal, socket })
+  const Actions = useActions({ FetchDataReports, dataIncident, toggle, dataModal, sockets })
 
   return {
     data,

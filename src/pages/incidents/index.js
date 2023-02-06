@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Box, Tab } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { useFetchInitIncidents } from '../../hooks/incidents/index'
@@ -6,7 +6,6 @@ import { useFetchInitIncidents } from '../../hooks/incidents/index'
 import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
 import MainModal from './modal-component/index.js'
 import '../../styles/incidents/index.css'
-import socket from '../../config/socket.io'
 
 const Incidents = () => {
   const mainHook = useFetchInitIncidents()

@@ -41,7 +41,7 @@ export const useFetchInitLogin = () => {
           localStorage.setItem('username', username)
           window.location.href = redirect
           setTimeout(() => {
-            history.push(`/user/prueba`)
+            history.push(`/user/planta1`)
           }, 200)
         }
       })

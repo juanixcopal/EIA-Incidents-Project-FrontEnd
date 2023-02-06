@@ -118,7 +118,10 @@ export const useFetchIncidencesForFloor = ({ dataModal }) => {
   }
 
   useEffect(() => {
-    _getIncidencesForFloor()
+    if (dataModal.params?.id_aula) {
+      console.log('BUSCANDO::: ')
+      _getIncidencesForFloor()
+    }
   }, [dataModal.params])
 
   return { indicendesForFloor, loadingIncidencesForFloor }

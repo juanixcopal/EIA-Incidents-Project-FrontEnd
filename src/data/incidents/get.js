@@ -48,15 +48,14 @@ export const getReportingData = async () => {
 }
 
 export const getIncidencesForFloor = async ({ dataModal }) => {
-  console.log('BUSCAR ID ', dataModal.params)
   const { id_aula } = dataModal.params
 
-  console.log('SIUUU ', id_aula)
+  console.log('BUSCANDO INCIDENCIAS DEL AULA: ', id_aula)
   return await axios
     .get(`${process.env.REACT_APP_API_BASE}/v1/incidences/query`, {
       headers: { service: 'classroom' },
       params: {
-        id_classroom: 1
+        id_classroom: id_aula
       }
     })
     .then(response => {

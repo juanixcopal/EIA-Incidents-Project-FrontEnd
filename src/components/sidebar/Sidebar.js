@@ -40,7 +40,6 @@ const Sidebar = props => {
   }
   // creates the links that appear in the left menu / Sidebar
   const createLinks = routes => {
-    console.log('Routes', routes)
     return routes.map((prop, key) => {
       return (
         <NavItem key={key}>

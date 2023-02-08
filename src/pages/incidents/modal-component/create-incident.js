@@ -11,6 +11,8 @@ const CreateIncidence = ({ useFetchInit }) => {
 
   const { tipo_aula, aula } = dataModal.params
 
+  // console.log(handleInputChangeIncident)
+
   // const { FetchReportsData } = useFetchInitIncidents()
   // const { dataReports } = FetchReportsData
 
@@ -65,41 +67,6 @@ const CreateIncidence = ({ useFetchInit }) => {
           )
         })}
       </div>
-      {/* <div className='Prueba'> */}
-      {/* {dataReports.length} */}
-      {/* <div className={`DataReports-Content ${dataReports.length < 1 && 'hidden'}`}>
-        {dataReports
-          .filter(e => e.id_aula === id_aula && e.id_estado_incidencia === 1)
-          .map(item => {
-            const { titulo, descripcion, id_reporte } = item
-            return (
-              <div key={id_reporte}>
-                <hr />
-                <div
-                  className='md-12 row '
-                  style={{
-                    borderStyle: 'dotted',
-                    borderWidth: '2px',
-                    borderRadius: '20px',
-                    margin: '10px',
-                    borderColor: '#a7a7a7',
-                    padding: '5px'
-                  }}
-                >
-                  <div className='md-6' style={{ display: 'flex', color: '#a7a7a7' }}>
-                    <h6>Reporte: </h6>
-                    <p>{titulo}</p>
-                  </div>
-                  <div className='md-6' style={{ display: 'flex', color: '#a7a7a7' }}>
-                    <h6>Descripción: </h6>
-                    <p>{descripcion}</p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-      </div> */}
-      {/* </div> */}
 
       <ModalFooter>
         <div className='col-12'>

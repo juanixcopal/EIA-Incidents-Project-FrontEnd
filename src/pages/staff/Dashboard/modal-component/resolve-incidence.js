@@ -4,17 +4,28 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
 const ResolveIncidence = ({ useFetchInit }) => {
   const { dataModal, Actions, toggle, FetchStates } = useFetchInit
-  const { tipo_aula, aula } = dataModal.params
-  const { loadingOperation, createIncidence } = Actions
+  const { tipo_aula, aula, id_reporte, comentario, id_estado_incidencia } = dataModal.params
 
-  const { state, loadingState } = FetchStates
+  const { loadingOperation } = Actions
 
-  const [hola, setState] = useState('')
-  const handleChange = event => {
-    setState(event.target.value)
+  // console.log('DataModal', dataModal.params)
+
+  const { state } = FetchStates
+
+  const [id_estado, setId_Estado] = useState('')
+
+  const handleChange = async e => {
+    setId_Estado(e.target.value)
+    // console.log('Value', event.target.value)
+    console.log(e.target)
   }
+
+  const prueba = async e => {
+    e.preventDefault()
+  }
+
   return (
-    <form>
+    <form onSubmit={prueba}>
       <ModalBody>
         <div>
           <div>
@@ -29,13 +40,13 @@ const ResolveIncidence = ({ useFetchInit }) => {
           <div className='form-group'>
             <FormControl fullWidth>
               <InputLabel id='demo-simple-select-label'>Estado</InputLabel>
-              <Select labelId='demo-simple-select-label' id='demo-simple-select' value={hola} label='Estado' onChange={handleChange}>
+              <Select labelId='demo-simple-select-label' id='demo-simple-select' value={id_estado} label='Estado' onChange={handleChange}>
                 {state.map(item => {
                   const { id_estado_incidencia, estado } = item
                   return (
-                    <div key={id_estado_incidencia}>
-                      <MenuItem value={id_estado_incidencia}>{estado}</MenuItem>
-                    </div>
+                    <MenuItem key={id_estado_incidencia} value={id_estado_incidencia}>
+                      {estado}
+                    </MenuItem>
                   )
                 })}
               </Select>

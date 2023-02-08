@@ -17,7 +17,7 @@ const Dashboard = () => {
       <Container className='mt--7' fluid>
         <Row>
           {dataReports.map(item => {
-            const { id_reporte, aula, titulo, descripcion, planta, tipo_aula } = item
+            const { id_reporte, aula, titulo, descripcion, planta, tipo_aula, fecha_creacion } = item
             // console.log(item)
             return (
               // <div key={id_reporte}>
@@ -33,6 +33,7 @@ const Dashboard = () => {
                       </Typography>
                       <Typography>Titulo: {titulo}</Typography>
                       <Typography>Descripcion: {descripcion}</Typography>
+                      <Typography>Fecha Creacion: {fecha_creacion}</Typography>
                     </CardContent>
                     <CardActions>
                       <Button size='small' type='button' onClick={() => toggle(null, 'Cerrar Incidencia', 'resolve-incidence', item)}>

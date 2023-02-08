@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Tab } from '@mui/material'
+import { Box, Tab, Badge } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { useFetchInitIncidents } from '../../hooks/incidents/index'
 
@@ -10,30 +10,15 @@ import '../../styles/incidents/index.css'
 const Incidents = () => {
   const mainHook = useFetchInitIncidents()
 
-  //----------------------
-  // const [prueba, setPrueba] = useState([])
-  // useEffect(() => {
-  //   socket.on('data', results => {
-  //     setPrueba(results)
-  //   })
-
-  //   socket.emit('getData')
-  // }, [])
-
-  // console.log(prueba)
-
   const { data, handleInputChange, FetchFloors, FetchClassrooms, FetchDataReports, toggle, Actions } = mainHook
-  const { floors, loadingFloors } = FetchFloors
-  // console.log(FetchFloors)
-  const { classrooms, loadingClassrooms } = FetchClassrooms
+  const { floors } = FetchFloors
+  const { classrooms } = FetchClassrooms
 
   const { reportsData } = FetchDataReports
 
   const { id_floor } = data
 
-  // DELETEME=================
-  const { testEmitedEvent } = Actions
-  // DELETEME=================
+  console.log('Lenght de reportes', reportsData.length)
 
   const login = () => {
     window.location.href = '/login'
@@ -60,7 +45,7 @@ const Incidents = () => {
           <Box>
             <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })} aria-label='lab API tabs example'>
               {floors.map(({ id_planta, planta }) => {
-                return <Tab key={id_planta} label={`Planta ${planta}`} value={String(id_planta)} />
+                return <Tab key={id_planta} label={`Planta ${planta}`} value={String(id_planta)}></Tab>
               })}
             </TabList>
           </Box>
@@ -72,7 +57,7 @@ const Incidents = () => {
                   <div className='Content-Cards'>
                     <Card className='Cards'>
                       <div
-                        className={`Status-${reportsData.filter(e => e.estado === 'abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
+                        className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
                       />
 
                       <CardContent>

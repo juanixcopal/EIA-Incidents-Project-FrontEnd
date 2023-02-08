@@ -6,7 +6,9 @@ export const defaultDataIncidents = {
   titulo: '',
   descripcion: '',
   id_aula: '',
-  id_estado_incidencia: 1
+  id_estado_incidencia: 1,
+  comentario: '',
+  id_reporte: ''
 }
 
 export const defaultDataModal = {

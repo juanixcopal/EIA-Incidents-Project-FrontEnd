@@ -3,6 +3,7 @@ import { Container, Row } from 'reactstrap'
 import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
 import { useFetchInitIncidents } from '../../../hooks/incidents/index'
 import MainModal from './modal-component/index.js'
+
 import '../../../styles/pages/dashboard.css'
 const Dashboard = () => {
   const mainHook = useFetchInitIncidents()

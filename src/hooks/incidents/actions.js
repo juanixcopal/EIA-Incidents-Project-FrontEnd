@@ -23,10 +23,6 @@ export const useActions = ({ FetchDataReports, dataIncident, toggle, dataModal, 
     setLoadingOperation(false)
   }
 
-  const testEmitedEvent = () => {
-    console.log('EMITED EVENT')
-  }
-
   // const updateIncidence = async e => {
   //   e.preventDefault()
   //   const { comentario, id_estado_incidencia, id_reporte } = dataModal.params
@@ -39,5 +35,5 @@ export const useActions = ({ FetchDataReports, dataIncident, toggle, dataModal, 
   //   await axios.patch('http://172.27.20.128:3050/v1/dashboard/manager', { params: { id_reporte } })
   // }
 
-  return { loadingOperation, createIncidence, testEmitedEvent }
+  return { loadingOperation, createIncidence }
 }

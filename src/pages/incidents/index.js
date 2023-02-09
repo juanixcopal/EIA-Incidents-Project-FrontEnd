@@ -18,8 +18,6 @@ const Incidents = () => {
 
   const { id_floor } = data
 
-  console.log('Lenght de reportes', reportsData.length)
-
   const login = () => {
     window.location.href = '/login'
   }
@@ -45,7 +43,19 @@ const Incidents = () => {
           <Box>
             <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })} aria-label='lab API tabs example'>
               {floors.map(({ id_planta, planta }) => {
-                return <Tab key={id_planta} label={`Planta ${planta}`} value={String(id_planta)}></Tab>
+                return (
+                  <Tab
+                    key={id_planta}
+                    label={
+                      <>
+                        <Badge color='primary' badgeContent={reportsData.filter(e => e.estado === 'Abierto' && e.id_planta === id_planta).length}>
+                          Planta {planta}
+                        </Badge>
+                      </>
+                    }
+                    value={String(id_planta)}
+                  />
+                )
               })}
             </TabList>
           </Box>
@@ -56,9 +66,10 @@ const Incidents = () => {
                 <TabPanel key={id_aula} value={String(id_planta)} className='col-xl-3 col-md-4 col-sm-12 '>
                   <div className='Content-Cards'>
                     <Card className='Cards'>
-                      <div
-                        className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
-                      />
+                      <div className={`Status-${reportsData.filter(e => e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`} />
+
+                      {/* <h2>{reportsData.filter(e => e.estado === 'Abierto' && e.id_planta === id_planta).length}</h2> */}
+                      {/* <Badge badgeContent={reportsData.filter(e => e.estado === 'Abierto' && e.id_planta === id_planta).length} /> */}
 
                       <CardContent>
                         <Typography>
@@ -76,10 +87,6 @@ const Incidents = () => {
               )
             })}
           </div>
-
-          {/* <button className='btn btn-primary' type='button' onClick={testEmitedEvent}>
-            EMIT EVENT
-          </button> */}
         </TabContext>
       </Box>
     </>

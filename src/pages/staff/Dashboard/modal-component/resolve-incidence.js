@@ -8,8 +8,6 @@ const ResolveIncidence = ({ useFetchInit }) => {
 
   const { loadingOperation } = Actions
 
-  // console.log('DataModal', dataModal.params)
-
   const { state } = FetchStates
 
   const [id_estado, setId_Estado] = useState('')
@@ -17,11 +15,12 @@ const ResolveIncidence = ({ useFetchInit }) => {
   const handleChange = async e => {
     setId_Estado(e.target.value)
     // console.log('Value', event.target.value)
-    console.log(e.target)
+    // console.log(e.target)
   }
 
   const prueba = async e => {
     e.preventDefault()
+    console.log('Id_Estado', id_estado)
   }
 
   return (
@@ -40,7 +39,7 @@ const ResolveIncidence = ({ useFetchInit }) => {
           <div className='form-group'>
             <FormControl fullWidth>
               <InputLabel id='demo-simple-select-label'>Estado</InputLabel>
-              <Select labelId='demo-simple-select-label' id='demo-simple-select' value={id_estado} label='Estado' onChange={handleChange}>
+              <Select labelId='demo-simple-select-label' id='demo-simple-select' value={id_estado} label='Estado' onChange={handleChange} required>
                 {state.map(item => {
                   const { id_estado_incidencia, estado } = item
                   return (

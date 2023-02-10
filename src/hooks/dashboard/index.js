@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { defaultData } from './default-data'
+import { defaultData, defaultDataModal, defaultDataIncidents } from './default-data'
+import { useActions } from './actions.js'
+import { useFetchReports, useFetchStates } from './fetch-data'
 
-// import { useActions } from './actions.js'
-// import { useFetchFloors, useFetchClassrooms, useFetchReports, useFetchReportingData, useFetchIncidencesForFloor, useFetchStates } from './fetch-data'
-
-export const useFetchInitIncidents = () => {
+export const useFetchInitDashboard = () => {
   const [data, setData] = useState(defaultData)
-  //   const [dataIncident, setDataIncident] = useState(defaultDataIncidents)
+  const [dataIncident, setDataIncident] = useState(defaultDataIncidents)
   const [dataModal, setDataModal] = useState(defaultDataModal)
 
   const handleInputChange = event => {
@@ -25,21 +24,18 @@ export const useFetchInitIncidents = () => {
     })
   }
 
-  //   const FetchFloors = useFetchFloors()
-  //   const FetchClassrooms = useFetchClassrooms({ data })
-  //   const FetchReportsData = useFetchReports()
-  //   const FetchDataReports = useFetchReportingData({ sockets }) // INTEGRATE TEST FOR EMIT BROADCAST EVENT
-  //   const FetchIncidencesForFloor = useFetchIncidencesForFloor({ dataModal })
-  //   const FetchStates = useFetchStates()
-
-  //   const Actions = useActions({ FetchDataReports, dataIncident, toggle, dataModal, sockets })
+  const FetchReportsData = useFetchReports()
+  const FetchStates = useFetchStates()
+  const Actions = useActions({ data, toggle, dataModal })
 
   return {
     data,
     handleInputChange,
     dataModal,
-    toggle
-    // Actions,
-    // FetchStates
+    toggle,
+    FetchReportsData,
+    FetchStates,
+    dataIncident,
+    Actions
   }
 }

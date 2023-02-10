@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getFloors, getClassrooms, getReports, getReportingData, getIncidencesForFloor, getStates } from '../../data/incidents/get.js'
+import { getFloors, getClassrooms, getReports, getReportingData, getIncidencesForFloor } from '../../data/incidents/get.js'
 
 export const useFetchFloors = () => {
   const [floors, setFloors] = useState([])
@@ -22,27 +22,6 @@ export const useFetchFloors = () => {
   return { floors, loadingFloors }
 }
 
-export const useFetchStates = () => {
-  const [state, setState] = useState([])
-  const [loadinState, setLoadingState] = useState(false)
-
-  useEffect(() => {
-    ;(async () => {
-      setLoadingState(true)
-      await getStates()
-        .then(({ data }) => {
-          setState(data)
-        })
-        .catch(error => {
-          console.log('Error fetch-data states', error)
-        })
-      setLoadingState(false)
-    })()
-  }, [])
-
-  return { state, loadinState }
-}
-
 export const useFetchClassrooms = ({ data }) => {
   const { id_floor } = data
   const [classrooms, setClassrooms] = useState([])
@@ -60,6 +39,7 @@ export const useFetchClassrooms = ({ data }) => {
         })
       setLoadingClassrooms(false)
     })()
+    // eslint-disable-next-line
   }, [id_floor])
 
   return { classrooms, loadingClassrooms }
@@ -89,12 +69,22 @@ export const useFetchReports = () => {
 
 export const useFetchReportingData = ({ sockets }) => {
   const [reportsData, setReportsData] = useState([])
+  const [dataReporte, setDataReports] = useState([])
 
   const _getReportingData = async () => {
     await getReportingData()
       .then(({ data }) => {
         setReportsData(data)
-        // setTestRefresh(false)
+      })
+      .catch(error => {
+        console.log('error', error)
+      })
+  }
+
+  const _getReportsData = async () => {
+    await getReports()
+      .then(({ data }) => {
+        setDataReports(data)
       })
       .catch(error => {
         console.log('error', error)
@@ -103,11 +93,12 @@ export const useFetchReportingData = ({ sockets }) => {
 
   useEffect(() => {
     _getReportingData()
+    _getReportsData()
   }, [])
 
-  const receiveMessage = message => {
-    console.log('BROADCAST RECEIVED: ', message)
+  const receiveMessage = () => {
     _getReportingData()
+    _getReportsData()
   }
 
   useEffect(() => {
@@ -116,9 +107,9 @@ export const useFetchReportingData = ({ sockets }) => {
     return () => {
       sockets.incidencesSocket.off('refresh_report_incidences', receiveMessage)
     }
+    // eslint-disable-next-line
   }, [])
-
-  return { reportsData, _getReportingData }
+  return { dataReporte, reportsData, _getReportingData }
 }
 
 export const useFetchIncidencesForFloor = ({ dataModal }) => {
@@ -142,7 +133,7 @@ export const useFetchIncidencesForFloor = ({ dataModal }) => {
     if (dataModal.params?.id_aula) {
       _getIncidencesForFloor()
     }
+    // eslint-disable-next-line
   }, [dataModal.params])
-
   return { indicendesForFloor, loadingIncidencesForFloor }
 }

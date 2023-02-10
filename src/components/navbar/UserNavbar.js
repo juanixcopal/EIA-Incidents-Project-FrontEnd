@@ -1,25 +1,9 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Avatar from '../../images/userImage.jpg'
 // reactstrap components
-import {
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  Form,
-  FormGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Input,
-  InputGroup,
-  Navbar,
-  Nav,
-  Container,
-  Media
-} from 'reactstrap'
+import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Navbar, Nav, Container, Media } from 'reactstrap'
 
 const UserNavbar = props => {
-  const location = useLocation()
   const username = localStorage.getItem('username')
 
   const logout = () => {
@@ -46,11 +30,6 @@ const UserNavbar = props => {
                 </Media>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu-arrow' right>
-                {/* <DropdownItem className='noti-title' header tag='div'>
-                  <h6 className='text-overflow m-0'>Bienvenido!</h6>
-                </DropdownItem> */}
-
-                {/* <DropdownItem divider /> */}
                 <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
                   <i className='ni ni-user-run' />
                   <span onClick={logout}>Logout</span>

@@ -27,18 +27,13 @@ const Sidebar = props => {
     window.location.href = '/login'
   }
   const [collapseOpen, setCollapseOpen] = useState()
-  // const activeRoute = routeName => {
-  //   return props.location.pathname.indexOf(routeName) > -1 ? 'active' : ''
-  // }
-  // toggles collapse between opened and closed (true/false)
+
   const toggleCollapse = () => {
     setCollapseOpen(data => !data)
   }
-  // closes the collapse
   const closeCollapse = () => {
     setCollapseOpen(false)
   }
-  // creates the links that appear in the left menu / Sidebar
   const createLinks = routes => {
     return routes.map((prop, key) => {
       return (

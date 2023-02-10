@@ -63,11 +63,5 @@ export const useFetchInitLogin = () => {
     setLoading(false)
   }
 
-  /* 
-    window.location.href = '/inicio'
-    setTimeout(() => {
-        history.push(`/inicio`)
-    }, 200) */
-
   return { data, handleInputChange, login, message, loading }
 }

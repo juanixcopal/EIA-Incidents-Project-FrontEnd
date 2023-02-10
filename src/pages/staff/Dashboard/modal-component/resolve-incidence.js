@@ -3,28 +3,21 @@ import { ModalBody, ModalFooter } from 'reactstrap'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
 const ResolveIncidence = ({ useFetchInit }) => {
-  const { dataModal, Actions, toggle, FetchStates } = useFetchInit
-  const { tipo_aula, aula, id_reporte, comentario, id_estado_incidencia } = dataModal.params
+  const { dataModal, Actions, toggle, FetchStates, handleInputChange } = useFetchInit
+  const { loadingOperation, updateIncidence } = Actions
+  const { tipo_aula, aula } = dataModal.params
 
-  const { loadingOperation } = Actions
-
-  const { state } = FetchStates
+  const { state, loadinState } = FetchStates
 
   const [id_estado, setId_Estado] = useState('')
 
-  const handleChange = async e => {
+  const handleChange = e => {
     setId_Estado(e.target.value)
-    // console.log('Value', event.target.value)
-    // console.log(e.target)
-  }
-
-  const prueba = async e => {
-    e.preventDefault()
-    console.log('Id_Estado', id_estado)
+    handleInputChange(e)
   }
 
   return (
-    <form onSubmit={prueba}>
+    <form onSubmit={updateIncidence}>
       <ModalBody>
         <div>
           <div>
@@ -34,12 +27,12 @@ const ResolveIncidence = ({ useFetchInit }) => {
           </div>
           <div className='form-group'>
             <label>Comentario</label>
-            <input className='input-group form-control' type='text' required />
+            <input className='input-group form-control' type='text' name='comentario' onChange={handleInputChange} required />
           </div>
           <div className='form-group'>
             <FormControl fullWidth>
-              <InputLabel id='demo-simple-select-label'>Estado</InputLabel>
-              <Select labelId='demo-simple-select-label' id='demo-simple-select' value={id_estado} label='Estado' onChange={handleChange} required>
+              <InputLabel>Estado</InputLabel>
+              <Select value={id_estado} label='Estado' onChange={handleChange} name='id_estado_incidencia' required>
                 {state.map(item => {
                   const { id_estado_incidencia, estado } = item
                   return (
@@ -68,3 +61,7 @@ const ResolveIncidence = ({ useFetchInit }) => {
 }
 
 export default ResolveIncidence
+
+// const prueba = async e => {
+//   setId_Estado(e.target.value)
+// }

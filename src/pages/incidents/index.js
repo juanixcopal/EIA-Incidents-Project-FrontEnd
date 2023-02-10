@@ -10,7 +10,7 @@ import '../../styles/incidents/index.css'
 const Incidents = () => {
   const mainHook = useFetchInitIncidents()
 
-  const { data, handleInputChange, FetchFloors, FetchClassrooms, FetchDataReports, toggle, Actions } = mainHook
+  const { data, handleInputChange, FetchFloors, FetchClassrooms, FetchDataReports, toggle } = mainHook
   const { floors } = FetchFloors
   const { classrooms } = FetchClassrooms
 
@@ -65,11 +65,10 @@ const Incidents = () => {
               return (
                 <TabPanel key={id_aula} value={String(id_planta)} className='col-xl-3 col-md-4 col-sm-12 '>
                   <div className='Content-Cards'>
-                    <Card className='Cards'>
-                      <div className={`Status-${reportsData.filter(e => e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`} />
-
-                      {/* <h2>{reportsData.filter(e => e.estado === 'Abierto' && e.id_planta === id_planta).length}</h2> */}
-                      {/* <Badge badgeContent={reportsData.filter(e => e.estado === 'Abierto' && e.id_planta === id_planta).length} /> */}
+                    <Card>
+                      <div
+                        className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
+                      />
 
                       <CardContent>
                         <Typography>

@@ -49,52 +49,52 @@ body {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
-.Title-Content{
+.Title-Content {
   height: 0;
   margin-left: 50%;
   transform: translateX(-50%);
   margin-top: 40px;
 }
-.Title{
+.Title {
   color: #e0e0e0;
   text-align: center;
   width: 230px;
 }
 
-.Button-Content{
+.Button-Content {
   margin-top: 35px;
   margin-left: 20%;
 }
 
-@media screen and (max-width: 1200px){
-  .Button-Content{
+@media screen and (max-width: 1200px) {
+  .Button-Content {
     margin-left: 10%;
   }
 }
-@media screen and (max-width: 900px){
-  .Title-Content{
+@media screen and (max-width: 900px) {
+  .Title-Content {
     margin-top: 26px;
     width: 150px;
   }
-  .Title{
+  .Title {
     width: 135px;
   }
 }
-@media screen and (max-width: 700px){
-  .Title{
+@media screen and (max-width: 700px) {
+  .Title {
     width: 135px;
   }
-  .Title-Content{
+  .Title-Content {
     margin-top: 26px;
-    width:min-content;
+    width: min-content;
   }
-  .Button-Content{
+  .Button-Content {
     margin-top: 40px;
     margin-left: 0;
   }
 }
 
-.btn.btn-dark.Button-Login{
+.btn.btn-dark.Button-Login {
   font-size: 16px;
   background-color: #4e4e4e;
 }
@@ -128,10 +128,6 @@ body {
   font-size: 1.4rem !important;
   line-height: 1.334 !important;
   letter-spacing: 0em !important;
-}
-
-.Cards {
-  width: auto;
 }
 
 .Content-Cards {

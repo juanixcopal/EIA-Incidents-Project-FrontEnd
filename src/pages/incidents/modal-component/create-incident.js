@@ -11,12 +11,6 @@ const CreateIncidence = ({ useFetchInit }) => {
 
   const { tipo_aula, aula } = dataModal.params
 
-  // console.log(handleInputChangeIncident)
-
-  // const { FetchReportsData } = useFetchInitIncidents()
-  // const { dataReports } = FetchReportsData
-
-  // console.log('INCIDENCES FOR FLOOR ', indicendesForFloor, loadingIncidencesForFloor)
   return (
     <form onSubmit={createIncidence}>
       <ModalBody>

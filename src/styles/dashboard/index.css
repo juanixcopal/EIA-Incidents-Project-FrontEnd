@@ -5,3 +5,7 @@
 .radius-10 {
   border-radius: 10px !important;
 }
+
+.border-success {
+  border-left: 5px solid #15ca20 !important;
+}

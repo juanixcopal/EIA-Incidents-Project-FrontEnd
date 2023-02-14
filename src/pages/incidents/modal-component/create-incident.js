@@ -32,7 +32,7 @@ const CreateIncidence = ({ useFetchInit }) => {
       </ModalBody>
 
       <div className='col-12'>
-        {indicendesForFloor.map(item => {
+        {/* {indicendesForFloor.map(item => {
           const { descripcion, id_estado_incidencia, titulo } = item
           return (
             <div key={id_estado_incidencia}>
@@ -59,7 +59,7 @@ const CreateIncidence = ({ useFetchInit }) => {
               </div>
             </div>
           )
-        })}
+        })} */}
       </div>
 
       <ModalFooter>

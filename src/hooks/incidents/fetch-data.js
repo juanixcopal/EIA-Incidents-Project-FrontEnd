@@ -69,7 +69,6 @@ export const useFetchReports = () => {
 
 export const useFetchReportingData = ({ sockets }) => {
   const [reportsData, setReportsData] = useState([])
-  const [dataReporte, setDataReports] = useState([])
 
   const _getReportingData = async () => {
     await getReportingData()
@@ -81,24 +80,13 @@ export const useFetchReportingData = ({ sockets }) => {
       })
   }
 
-  const _getReportsData = async () => {
-    await getReports()
-      .then(({ data }) => {
-        setDataReports(data)
-      })
-      .catch(error => {
-        console.log('error', error)
-      })
-  }
-
   useEffect(() => {
     _getReportingData()
-    _getReportsData()
   }, [])
 
   const receiveMessage = () => {
+    // console.log('MESSAGE')
     _getReportingData()
-    _getReportsData()
   }
 
   useEffect(() => {
@@ -109,7 +97,7 @@ export const useFetchReportingData = ({ sockets }) => {
     }
     // eslint-disable-next-line
   }, [])
-  return { dataReporte, reportsData, _getReportingData }
+  return { reportsData, _getReportingData }
 }
 
 export const useFetchIncidencesForFloor = ({ dataModal }) => {

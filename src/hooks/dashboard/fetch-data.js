@@ -1,26 +1,57 @@
 import { useState, useEffect } from 'react'
-import { getReports, getStates } from '../../data/dashboard/get.js'
+import { getStates, getReports } from '../../data/dashboard/get.js'
 
-export const useFetchReports = () => {
+export const useFetchReports = ({ sockets }) => {
   const [dataReports, setDataReports] = useState([])
-  const [loadingReports, setLoadingReports] = useState(false)
+
+  const _getReports = async () => {
+    await getReports()
+      .then(({ data }) => {
+        setDataReports(data)
+      })
+      .catch(error => {
+        console.log('Error', error)
+      })
+  }
 
   useEffect(() => {
-    ;(async () => {
-      setLoadingReports(true)
-      await getReports()
-        .then(({ data }) => {
-          setDataReports(data)
-        })
-        .catch(error => {
-          console.log('error', error)
-        })
-      setLoadingReports(false)
-    })()
+    _getReports()
+  }, [])
+
+  const receiveMessage = () => {
+    // console.log('RECEIVE MESSAGE')
+    _getReports()
+  }
+
+  useEffect(() => {
+    sockets.incidencesSocket.on('refresh_report_incidences', receiveMessage)
+
+    return () => {
+      sockets.incidencesSocket.on('refresh_report_incidences', receiveMessage)
+    }
     // eslint-disable-next-line
   }, [])
 
-  return { dataReports, loadingReports }
+  return { dataReports, _getReports }
+
+  // const [loadingReports, setLoadingReports] = useState(false)
+
+  // useEffect(() => {
+  //   ;(async () => {
+  //     setLoadingReports(true)
+  //     await getReports()
+  //       .then(({ data }) => {
+  //         setDataReports(data)
+  //       })
+  //       .catch(error => {
+  //         console.log('error', error)
+  //       })
+  //     setLoadingReports(false)
+  //   })()
+  //   // eslint-disable-next-line
+  // }, [])
+
+  // return { dataReports, loadingReports }
 }
 
 export const useFetchStates = () => {

@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { alertMessage } from '../common/toast-alert'
 import axios from 'axios'
 
-export const useActions = ({ data, toggle, dataModal }) => {
+export const useActions = ({ FetchReportsData, data, toggle, dataModal, sockets }) => {
   const [loadingOperation, setLoadingOperation] = useState(false)
+  const { _getReports } = FetchReportsData
 
   const updateIncidence = async e => {
     e.preventDefault()
@@ -16,9 +17,12 @@ export const useActions = ({ data, toggle, dataModal }) => {
     }
 
     setLoadingOperation(true)
-    await axios.put(`http://172.27.20.128:3050/v1/dashboard/manager?id_reporte=${id_reporte}`, update_data).then(({ data }) => {
-      alertMessage(data, toggle)
-    })
+    await axios
+      .put(`http://172.27.20.128:3050/v1/dashboard/manager?id_reporte=${id_reporte}`, update_data, { headers: { token: localStorage.token } })
+      .then(({ data }) => {
+        alertMessage(data, _getReports, toggle)
+        sockets.incidencesSocket.emit('update_incidence', data)
+      })
     setLoadingOperation(false)
   }
 

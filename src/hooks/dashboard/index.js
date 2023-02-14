@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { defaultData, defaultDataModal, defaultDataIncidents } from './default-data'
 import { useActions } from './actions.js'
 import { useFetchReports, useFetchStates } from './fetch-data'
+import sockets from '../../config/socket.io'
 
 export const useFetchInitDashboard = () => {
   const [data, setData] = useState(defaultData)
@@ -24,9 +25,9 @@ export const useFetchInitDashboard = () => {
     })
   }
 
-  const FetchReportsData = useFetchReports()
+  const FetchReportsData = useFetchReports({ sockets })
   const FetchStates = useFetchStates()
-  const Actions = useActions({ data, toggle, dataModal })
+  const Actions = useActions({ FetchReportsData, data, toggle, dataModal, sockets })
 
   return {
     data,

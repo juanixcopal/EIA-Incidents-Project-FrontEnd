@@ -55,6 +55,7 @@ body {
   transform: translateX(-50%);
   margin-top: 40px;
 }
+
 .Title {
   color: #e0e0e0;
   text-align: center;
@@ -66,28 +67,74 @@ body {
   margin-left: 32%;
 }
 
-@media screen and (max-width: 1200px) {
+
+@media screen and (max-width: 2800px) {
   .Button-Content {
-    margin-left: 10%;
+    margin-top: 40px;
+    margin-left: 30%;
   }
 }
+
+@media screen and (max-width: 1800px) {
+  .Button-Content {
+    margin-top: 40px;
+    margin-left: 25%;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .Button-Content {
+    margin-top: 40px;
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Button-Content {
+    margin-top: 40px;
+    margin-left: 10%;
+  }
+
+}
+
 @media screen and (max-width: 900px) {
   .Title-Content {
     margin-top: 26px;
     width: 150px;
   }
+
   .Title {
     width: 135px;
   }
 }
+
 @media screen and (max-width: 700px) {
   .Title {
     width: 135px;
   }
+
   .Title-Content {
     margin-top: 26px;
     width: min-content;
   }
+
+  .Button-Content {
+    margin-top: 40px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Title {
+    width: 100px;
+    font-size: 22px;
+  }
+
+  .Title-Content {
+    margin-top: 28px;
+    width: min-content;
+  }
+
   .Button-Content {
     margin-top: 40px;
     margin-left: 0;
@@ -98,6 +145,7 @@ body {
   font-size: 16px;
   background-color: #4e4e4e;
 }
+
 .btn.btn-dark.Button-Login:hover {
   background-color: #8c8c8c;
 }

@@ -2,8 +2,8 @@
   color: white !important;
   border-radius: 50px !important;
   background-color: #888888;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
 }
 
 .css-heg063-MuiTabs-flexContainer {
@@ -62,8 +62,8 @@ body {
 }
 
 .Button-Content {
-  margin-top: 35px;
-  margin-left: 20%;
+  margin-top: 25px;
+  margin-left: 32%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -144,4 +144,15 @@ body {
 .hidden {
   display: none;
   visibility: hidden;
+}
+
+/*-------------------------*/
+.css-106c1u2-MuiBadge-badge {
+  /* position: relative !important; */
+  right: -7px !important;
+  top: -3px !important;
+}
+
+.navbar-vertical.navbar-expand-md .navbar-brand-img {
+  max-height: 4.7rem !important;
 }

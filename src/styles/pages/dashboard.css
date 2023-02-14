@@ -1,4 +1,8 @@
-.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.ClassroomCard.css-bhp9pd-MuiPaper-root-MuiCard-root{
-    border-radius: 12px;
-    box-shadow: 40px solid black;
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.ClassroomCard.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  border-radius: 12px;
+  box-shadow: 40px solid black;
+}
+
+.navbar-vertical.navbar-expand-md .navbar-brand-img {
+  max-height: 3.5rem !important;
 }

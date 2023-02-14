@@ -40,7 +40,7 @@ const User = props => {
         routes={routes}
         logo={{
           innerLink: '/user/dashboard',
-          imgSrc: require('../../images/logo-eia.jpg'),
+          imgSrc: require('../../images/logo2.PNG'),
           imgAlt: '...'
         }}
       />

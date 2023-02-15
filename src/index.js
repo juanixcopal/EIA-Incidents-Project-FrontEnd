@@ -16,6 +16,8 @@ const Login = React.lazy(() => import('./pages/login/index'))
 const App = () => {
   const token = localStorage.getItem('token')
 
+  // console.log(token)
+
   return (
     <BrowserRouter>
       <ToastContainer />
@@ -35,7 +37,8 @@ const App = () => {
             <Route path='/user' render={props => <UserLayout {...props} />} />
           </>
         ) : (
-          <Redirect to={'/'} />
+          // window.location.href= '/login'
+          <Route to={'/'} component={Login} />
         )}
         {/* <Route path='*' component={PageNotFound} /> */}
       </Switch>

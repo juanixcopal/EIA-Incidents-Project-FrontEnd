@@ -17,18 +17,29 @@ const Dashboard = () => {
       {dataReports.length > 0 ? (
         <div className='col-12 mt--8 row'>
           {dataReports.map(item => {
-            const { id_reporte, aula, titulo, descripcion, planta, tipo_aula, fecha_creacion } = item
+            const { id_reporte, aula, titulo, descripcion, tipo_aula, fecha_creacion } = item
             return (
               <div key={id_reporte} className='Content-Cards col-xl-4 col-md-6 col-sm-12'>
                 <Card className='border-danger radius-10 '>
                   <CardContent>
                     {/* <Typography>Planta: {planta}</Typography> */}
-                    <Typography>
+                    <Typography gutterBottom variant='h6' component='div'>
                       {tipo_aula} {aula}
                     </Typography>
-                    <Typography>Titulo: {titulo}</Typography>
-                    <Typography>Descripcion: {descripcion}</Typography>
-                    <Typography>Fecha Creacion: {fecha_creacion}</Typography>
+                    <hr></hr>
+                    <div>
+                      <Typography variant='body' color='text.secondary'>
+                        <Typography>Titulo:</Typography> {titulo}
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography variant='body' color='text.secondary'>
+                        <Typography>Descripcion:</Typography> {descripcion}
+                      </Typography>
+                    </div>
+                    <Typography variant='body' color='text.secondary'>
+                      <Typography>Fecha Creacion:</Typography> {fecha_creacion}
+                    </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size='small' type='button' onClick={() => toggle(null, 'Cerrar Incidencia', 'resolve-incidence', item)}>

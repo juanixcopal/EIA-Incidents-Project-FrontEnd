@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Incidents from './pages/incidents/index.js'
 // import PageNotFound from './pages/pageNotFound/Index.js'
 import { ToastContainer } from 'react-toastify'

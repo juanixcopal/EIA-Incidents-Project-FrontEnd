@@ -9,3 +9,8 @@
 .border-success {
   border-left: 8px solid #15ca20 !important;
 }
+
+hr {
+  margin-top: 5px !important;
+  margin-bottom: 10px !important;
+}

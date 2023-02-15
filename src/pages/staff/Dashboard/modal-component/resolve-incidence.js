@@ -7,7 +7,7 @@ const ResolveIncidence = ({ useFetchInit }) => {
   const { loadingOperation, updateIncidence } = Actions
   const { tipo_aula, aula } = dataModal.params
 
-  const { state, loadinState } = FetchStates
+  const { state } = FetchStates
 
   const [id_estado, setId_Estado] = useState('')
 

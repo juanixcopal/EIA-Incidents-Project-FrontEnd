@@ -1,5 +1,5 @@
 import Header from '../../../components/header/Header'
-import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
+import { Card, CardContent, Typography } from '@mui/material'
 import { useFetchInitHistorial } from '../../../hooks/historial/index'
 
 const Historial = () => {
@@ -12,20 +12,39 @@ const Historial = () => {
       <Header />
       <div className='col-12 mt--8 row '>
         {incidences.map(item => {
-          const { id_reporte, aula, titulo, descripcion, planta, tipo_aula, fecha_creacion, comentario, estado } = item
+          const { id_reporte, aula, titulo, descripcion, tipo_aula, fecha_creacion, comentario, estado } = item
           return (
             <div key={id_reporte} className='Content-Cards col-xl-4 col-md-6 col-sm-12'>
               <Card className='border-success radius-10 '>
                 <CardContent>
-                  <Typography>Planta: {planta}</Typography>
-                  <Typography>
+                  {/* <Typography>Planta: {planta}</Typography> */}
+                  <Typography gutterBottom variant='h6' component='div'>
                     {tipo_aula} {aula}
                   </Typography>
-                  <Typography>Titulo: {titulo}</Typography>
-                  <Typography>Descripcion: {descripcion}</Typography>
-                  <Typography>Comentario: {comentario}</Typography>
-                  <Typography>Estado: {estado}</Typography>
-                  <Typography>Fecha Creacion: {fecha_creacion}</Typography>
+                  <hr></hr>
+                  <div>
+                    <Typography variant='body' color='text.secondary'>
+                      <Typography>Titulo:</Typography> {titulo}
+                    </Typography>
+                  </div>
+                  <div>
+                    <Typography variant='body' color='text.secondary'>
+                      <Typography>Descripcion:</Typography> {descripcion}
+                    </Typography>
+                  </div>
+                  <div>
+                    <Typography variant='body' color='text.secondary'>
+                      <Typography>Comentario:</Typography> {comentario}
+                    </Typography>
+                  </div>
+                  <div>
+                    <Typography variant='body' color='text.secondary'>
+                      <Typography>Estado:</Typography> {estado}
+                    </Typography>
+                  </div>
+                  <Typography variant='body' color='text.secondary'>
+                    <Typography>Fecha Creacion:</Typography> {fecha_creacion}
+                  </Typography>
                 </CardContent>
               </Card>
             </div>

@@ -23,13 +23,12 @@ const Incidents = () => {
   const login = () => {
     window.location.href = '/login'
   }
-
   return (
     <>
       <div className='Header'>
-        {/* <img src={Logo} /> */}
+        <img src={Logo} alt='Logo EIA' className='logoUneat' />
         <div className='Title-Content'>
-          <h1 className='Title'>Reporte de Aulas</h1>
+          <h1 className='Title'>Incidencias de Aulas</h1>
         </div>
         <div className='Button-Content'>
           <button type='button' className='btn btn-white Button-Login' onClick={login}>
@@ -68,7 +67,7 @@ const Incidents = () => {
               return (
                 <TabPanel key={id_aula} value={String(id_planta)} className='col-xl-3 col-md-4 col-sm-12 '>
                   <div className='Content-Cards'>
-                    <Card>
+                    <Card className='Cards'>
                       <div
                         className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
                       />

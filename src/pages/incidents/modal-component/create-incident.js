@@ -3,9 +3,8 @@ import { ModalBody, ModalFooter } from 'reactstrap'
 // import { useFetchInitIncidents } from '../../../hooks/incidents/index'
 
 const CreateIncidence = ({ useFetchInit }) => {
-  const { dataIncident, toggle, handleInputChangeIncident, Actions, FetchIncidencesForFloor, dataModal } = useFetchInit
+  const { dataIncident, toggle, handleInputChangeIncident, Actions, dataModal } = useFetchInit
 
-  const { indicendesForFloor, loadingIncidencesForFloor } = FetchIncidencesForFloor
   const { loadingOperation, createIncidence } = Actions
   const { titulo, descripcion } = dataIncident
 

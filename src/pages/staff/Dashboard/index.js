@@ -22,7 +22,7 @@ const Dashboard = () => {
               <div key={id_reporte} className='Content-Cards col-xl-4 col-md-6 col-sm-12'>
                 <Card className='border-danger radius-10 '>
                   <CardContent>
-                    <Typography>Planta: {planta}</Typography>
+                    {/* <Typography>Planta: {planta}</Typography> */}
                     <Typography>
                       {tipo_aula} {aula}
                     </Typography>

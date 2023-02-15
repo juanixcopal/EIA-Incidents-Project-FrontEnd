@@ -7,6 +7,8 @@ import { Card, CardContent, CardActions, Typography, Button } from '@mui/materia
 import MainModal from './modal-component/index.js'
 import '../../styles/incidents/index.css'
 
+import Logo from '../../images/logoWhite-new.png'
+
 const Incidents = () => {
   const mainHook = useFetchInitIncidents()
 
@@ -25,12 +27,13 @@ const Incidents = () => {
   return (
     <>
       <div className='Header'>
+        {/* <img src={Logo} /> */}
         <div className='Title-Content'>
           <h1 className='Title'>Reporte de Aulas</h1>
         </div>
         <div className='Button-Content'>
           <button type='button' className='btn btn-white Button-Login' onClick={login}>
-            Login
+            Iniciar Sesión
           </button>
         </div>
       </div>

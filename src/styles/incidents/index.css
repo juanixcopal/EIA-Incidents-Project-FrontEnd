@@ -66,8 +66,8 @@ body {
 }
 
 .Button-Content {
-  margin-top: 25px;
-  margin-left: 27%;
+  margin-top: 40px;
+  margin-left: 24%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -99,6 +99,7 @@ body {
 }
 
 .btn.btn-dark.Button-Login {
+  width: auto;
   font-size: 16px;
   background-color: #4e4e4e;
 }

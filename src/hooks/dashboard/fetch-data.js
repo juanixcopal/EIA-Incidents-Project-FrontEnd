@@ -9,8 +9,12 @@ export const useFetchReports = ({ sockets }) => {
       .then(({ data }) => {
         setDataReports(data)
       })
-      .catch(error => {
-        console.log('Error', error)
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
       })
   }
 
@@ -65,8 +69,12 @@ export const useFetchStates = () => {
         .then(({ data }) => {
           setState(data)
         })
-        .catch(error => {
-          console.log('Error fetch-data states', error)
+        .catch(({ response }) => {
+          if (response.status === 401) {
+            localStorage.clear()
+            window.location.reload()
+          }
+          console.log('Error fetch-data states', response)
         })
       setLoadingState(false)
     })()

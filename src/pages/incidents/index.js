@@ -29,7 +29,7 @@ const Incidents = () => {
           <h1 className='Title'>Reporte de Aulas</h1>
         </div>
         <div className='Button-Content'>
-          <button type='button' className='btn btn-dark Button-Login' onClick={login}>
+          <button type='button' className='btn btn-white Button-Login' onClick={login}>
             Login
           </button>
         </div>

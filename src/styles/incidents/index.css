@@ -35,12 +35,14 @@
 /*-------------------------------------------*/
 
 body {
-  background-color: #e0e0e0 !important;
+  /* background-color: #c4c4c4 !important; */
+  background-color: #cccccc !important;
 }
 
 .Header {
   height: 130px;
-  background-color: #252525;
+  /* background-color: #252525; */
+  background-color: #016b9b;
   display: flex;
   gap: screen();
 }
@@ -59,12 +61,14 @@ body {
 .Title {
   color: #e0e0e0;
   text-align: center;
-  width: 230px;
+  /* width: 230px; */
+  width: 20rem;
+  font-size: 35px;
 }
 
 .Button-Content {
   margin-top: 25px;
-  margin-left: 32%;
+  margin-left: 27%;
 }
 
 
@@ -162,7 +166,7 @@ body {
 /*-------------------------------*/
 
 .Status-success {
-  background-color: #03c04a;
+  background-color: hsl(199, 100%, 29%);
   height: 15px;
 }
 

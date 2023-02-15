@@ -36,43 +36,53 @@
 
 body {
   /* background-color: #c4c4c4 !important; */
-  background-color: #cccccc !important;
+  background-color: #dedede !important;
 }
 
 .Header {
   height: 130px;
-  /* background-color: #252525; */
-  background-color: #016b9b;
+  background-color: #252525;
   display: flex;
-  gap: screen();
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .header {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
+.logoUneat {
+  /* margin-top: 25px; */
+  /* margin-left: 20px; */
+  height: 70px;
+}
+
 .Title-Content {
-  height: 0;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  margin-top: 40px;
+  margin-right: 4%;
 }
 
 .Title {
+  margin-top: 10px;
   color: #e0e0e0;
   text-align: center;
-  /* width: 230px; */
+  font-size: 30px;
   width: 20rem;
-  font-size: 35px;
 }
 
 .Button-Content {
-  margin-top: 25px;
-  margin-left: 27%;
+  padding-top: 12px;
+  margin-right: 80px;
 }
 
+.btn.btn-white.Button-Login {
+  background-color: #1f7eb9;
+  border-color: #282828;
+  color: #e0e0e0;
+}
 
-@media screen and (max-width: 2800px) {
+/* @media screen and (max-width: 2800px) {
   .Button-Content {
     margin-top: 40px;
     margin-left: 30%;
@@ -143,7 +153,7 @@ body {
     margin-top: 40px;
     margin-left: 0;
   }
-}
+} */
 
 .btn.btn-dark.Button-Login {
   font-size: 16px;
@@ -166,7 +176,7 @@ body {
 /*-------------------------------*/
 
 .Status-success {
-  background-color: hsl(199, 100%, 29%);
+  background-color: #1f7eb9;
   height: 15px;
 }
 

@@ -6,6 +6,8 @@ import { useFetchInitIncidents } from '../../hooks/incidents/index'
 import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
 import MainModal from './modal-component/index.js'
 import '../../styles/incidents/index.css'
+import logo from "../../images/UNEAT.png"
+
 
 const Incidents = () => {
   const mainHook = useFetchInitIncidents()
@@ -21,10 +23,10 @@ const Incidents = () => {
   const login = () => {
     window.location.href = '/login'
   }
-
   return (
     <>
       <div className='Header'>
+        <img src={logo} className='logoUneat' />
         <div className='Title-Content'>
           <h1 className='Title'>Reporte de Aulas</h1>
         </div>

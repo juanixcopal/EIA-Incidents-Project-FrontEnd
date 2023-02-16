@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useActions } from './actions.js'
 import { defaultData, defaultDataIncidents, defaultDataModal } from './default-data'
-import { useFetchFloors, useFetchClassrooms, useFetchReports, useFetchReportingData, useFetchIncidencesForFloor } from './fetch-data'
+import { useFetchFloors, useFetchClassrooms, useFetchReportingData, useFetchIncidencesForFloor } from './fetch-data'
 import sockets from '../../config/socket.io'
 
 export const useFetchInitIncidents = () => {
@@ -29,7 +29,6 @@ export const useFetchInitIncidents = () => {
 
   const FetchFloors = useFetchFloors()
   const FetchClassrooms = useFetchClassrooms({ data })
-  const FetchReportsData = useFetchReports()
   const FetchDataReports = useFetchReportingData({ sockets }) // INTEGRATE TEST FOR EMIT BROADCAST EVENT
   const FetchIncidencesForFloor = useFetchIncidencesForFloor({ dataModal })
 
@@ -40,7 +39,6 @@ export const useFetchInitIncidents = () => {
     handleInputChange,
     FetchFloors,
     FetchClassrooms,
-    FetchReportsData,
     FetchDataReports,
     dataModal,
     dataIncident,

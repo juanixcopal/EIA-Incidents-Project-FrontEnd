@@ -51,7 +51,7 @@ export const getIncidencesForFloor = async ({ dataModal }) => {
 
   return await axios
     .get(`${process.env.REACT_APP_API_BASE}/v1/incidences/query`, {
-      headers: { service: 'classroom' },
+      headers: { service: 'incidenceByclassroom' },
       params: {
         id_classroom: id_aula
       }

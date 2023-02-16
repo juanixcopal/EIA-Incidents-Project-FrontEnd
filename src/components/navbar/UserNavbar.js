@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom'
 import Avatar from '../../images/userImage.jpg'
 // reactstrap components
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Navbar, Nav, Container, Media } from 'reactstrap'
-import { Typography } from '@mui/material'
 
 const UserNavbar = props => {
   const username = localStorage.getItem('username')

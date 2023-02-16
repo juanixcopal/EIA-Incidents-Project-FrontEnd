@@ -61,7 +61,3 @@ const ResolveIncidence = ({ useFetchInit }) => {
 }
 
 export default ResolveIncidence
-
-// const prueba = async e => {
-//   setId_Estado(e.target.value)
-// }

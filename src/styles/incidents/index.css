@@ -36,13 +36,11 @@
 /*-------------------------------------------*/
 
 body {
-  /* background-color: #c4c4c4 !important; */
   background-color: #dcdcdc !important;
 }
 
 .Header {
   height: 130px;
-  /* background-color: #252525; */
   display: flex;
   justify-content: space-between;
   padding-top: 25px;
@@ -56,8 +54,6 @@ body {
 }
 
 .logoUneat {
-  /* margin-top: 25px; */
-  /* margin-left: 20px; */
   height: 70px;
 }
 
@@ -134,7 +130,6 @@ body {
 
 /*-------------------------*/
 .css-106c1u2-MuiBadge-badge {
-  /* position: relative !important; */
   right: -7px !important;
   top: -3px !important;
 }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Avatar from '../../images/userImage.jpg'
 // reactstrap components
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Navbar, Nav, Container, Media } from 'reactstrap'
+import { Typography } from '@mui/material'
 
 const UserNavbar = props => {
   const username = localStorage.getItem('username')
@@ -14,9 +15,7 @@ const UserNavbar = props => {
     <>
       <Navbar className='navbar-top navbar-dark' expand='md' id='navbar-main'>
         <Container fluid>
-          <Link className='h4 mb-0 text-white text-uppercase d-none d-lg-inline-block' to='/user'>
-            {props.brandText}
-          </Link>
+          <h2 className='mb-0 text-white text-uppercase d-none d-lg-inline-block'>{props.brandText}</h2>
           <Nav className='align-items-center d-none d-md-flex' navbar>
             <UncontrolledDropdown nav>
               <DropdownToggle className='pr-0' nav>
@@ -32,7 +31,7 @@ const UserNavbar = props => {
               <DropdownMenu className='dropdown-menu-arrow' right>
                 <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
                   <i className='ni ni-user-run' />
-                  <span onClick={logout}>Logout</span>
+                  <span onClick={logout}>Cerrar Sesión</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

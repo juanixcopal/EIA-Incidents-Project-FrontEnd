@@ -28,11 +28,11 @@ const Incidents = () => {
       <div className='Header'>
         <img src={Logo} alt='Logo EIA' className='logoUneat' />
         <div className='Title-Content'>
-          <h1 className='Title'>Incidencias de Aulas</h1>
+          <h1 className='Title'>Incidencias de aulas</h1>
         </div>
         <div className='Button-Content'>
           <button type='button' className='btn btn-white Button-Login' onClick={login}>
-            Iniciar Sesión
+            Iniciar sesión
           </button>
         </div>
       </div>
@@ -40,7 +40,7 @@ const Incidents = () => {
       <MainModal useFetchInit={mainHook} />
 
       <Box sx={{ width: '100%', typography: 'body1' }}>
-        <p className='waterMark'>By. Intervención Ágil</p>
+        <p className='waterMark'>Por: Intervención Ágil</p>
         <TabContext value={String(id_floor)}>
           <Box>
             <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })} aria-label='lab API tabs example'>

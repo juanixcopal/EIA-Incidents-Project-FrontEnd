@@ -27,11 +27,11 @@ const Login = () => {
             alignItems: 'center'
           }}
         >
-          <Avatar sx={{ m: 1, background: '#9c27b0' }}>
+          <Avatar sx={{ m: 1, background: '#017dc0' }}>
             <LockPersonIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-            Sign in
+            Inicio de sesión
           </Typography>
           <Box component='form' noValidate sx={{ mt: 1 }} onSubmit={login}>
             <TextField
@@ -39,7 +39,7 @@ const Login = () => {
               required
               fullWidth
               id='username'
-              label='Username'
+              label='Usuario'
               name='username'
               autoComplete='username'
               onChange={handleInputChange}
@@ -50,7 +50,7 @@ const Login = () => {
               required
               fullWidth
               name='password'
-              label='Password'
+              label='Contraseña'
               type='password'
               id='password'
               autoComplete='current-password'

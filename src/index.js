@@ -13,6 +13,7 @@ const Login = React.lazy(() => import('./pages/login/index'))
 
 const App = () => {
   const token = localStorage.getItem('token')
+
   return (
     <BrowserRouter>
       <ToastContainer />

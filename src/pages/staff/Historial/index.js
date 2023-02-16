@@ -11,8 +11,9 @@ const Historial = () => {
     <>
       <Header />
       <div className='col-12 mt--8 row '>
+        {console.log(incidences)}
         {incidences.map(item => {
-          const { id_reporte, aula, titulo, descripcion, tipo_aula, fecha_creacion, comentario, estado } = item
+          const { id_reporte, aula, titulo, descripcion, tipo_aula, fecha_creacion, comentario, estado, fecha_cierre } = item
           return (
             <div key={id_reporte} className='Content-Cards col-xl-4 col-md-6 col-sm-12'>
               <Card className='border-success radius-10 '>
@@ -42,8 +43,13 @@ const Historial = () => {
                       <Typography>Estado:</Typography> {estado}
                     </Typography>
                   </div>
+                  <div>
+                    <Typography variant='body' color='text.secondary'>
+                      <Typography>Fecha Creacion:</Typography> {fecha_creacion}
+                    </Typography>
+                  </div>
                   <Typography variant='body' color='text.secondary'>
-                    <Typography>Fecha Creacion:</Typography> {fecha_creacion}
+                    <Typography>Fecha Modificacion: </Typography> {fecha_cierre}
                   </Typography>
                 </CardContent>
               </Card>

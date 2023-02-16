@@ -11,7 +11,6 @@ const Historial = () => {
     <>
       <Header />
       <div className='col-12 mt--8 row '>
-        {console.log(incidences)}
         {incidences.map(item => {
           const { id_reporte, aula, titulo, descripcion, tipo_aula, fecha_creacion, comentario, estado, fecha_cierre } = item
           return (

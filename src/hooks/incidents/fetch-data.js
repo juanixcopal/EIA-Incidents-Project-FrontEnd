@@ -45,28 +45,6 @@ export const useFetchClassrooms = ({ data }) => {
   return { classrooms, loadingClassrooms }
 }
 
-export const useFetchReports = () => {
-  const [dataReports, setDataReports] = useState([])
-  const [loadingReports, setLoadingReports] = useState(false)
-
-  useEffect(() => {
-    ;(async () => {
-      setLoadingReports(true)
-      await getReports()
-        .then(({ data }) => {
-          setDataReports(data)
-        })
-        .catch(error => {
-          console.log('error', error)
-        })
-      setLoadingReports(false)
-    })()
-    // eslint-disable-next-line
-  }, [])
-
-  return { dataReports, loadingReports }
-}
-
 export const useFetchReportingData = ({ sockets }) => {
   const [reportsData, setReportsData] = useState([])
 

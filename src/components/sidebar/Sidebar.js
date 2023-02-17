@@ -36,14 +36,29 @@ const Sidebar = props => {
   }
   const createLinks = routes => {
     return routes.map((prop, key) => {
-      return (
-        <NavItem key={key}>
-          <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
-            <i className={prop.icon} />
-            {prop.name}
-          </NavLink>
-        </NavItem>
-      )
+      if (prop.layout === '/user') {
+        return (
+          <NavItem key={key}>
+            <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
+              <i className={prop.icon} />
+              {prop.name}
+            </NavLink>
+          </NavItem>
+        )
+      }
+      // else if (props.layout === '/admin') {
+      //   return (
+      //     <NavItem key={key}>
+      //       <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
+      //         <i className={prop.icon} />
+      //         {prop.name}
+      //       </NavLink>
+      //     </NavItem>
+      //   )
+      // }
+      else {
+        return null
+      }
     })
   }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal, ModalHeader } from 'reactstrap'
 import QrScann from './Qr-Scann'
 import '../../../../styles/modal/index.css'

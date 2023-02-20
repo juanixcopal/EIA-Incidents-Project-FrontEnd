@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 import QrReader from 'react-qr-reader'
 import { ModalBody, ModalFooter } from 'reactstrap'
 
-const QrScann = ({ toggle }) => {
-  const [qrscan, setQrscan] = useState('No result')
+const QrScann = ({ toggle, onScan }) => {
+  const [qrData, setQrData] = useState(null)
   const handleScan = data => {
     if (data) {
-      setQrscan(data)
+      setQrData(data)
+      onScan(JSON.parse(data))
     }
   }
   const handleError = err => {
     console.error(err)
   }
 
-  console.log(qrscan)
+  console.log(qrData)
 
   return (
     <>
@@ -26,7 +27,7 @@ const QrScann = ({ toggle }) => {
           </center>
         </div>
 
-        <h2 style={{ fontSize: '40px', width: '40px', height: '40px', color: 'black' }} defaultValue={qrscan} value={qrscan} />
+        {/* <h2 style={{ fontSize: '40px', width: '40px', height: '40px', color: 'black' }} value={qrscan} /> */}
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>

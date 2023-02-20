@@ -48,6 +48,7 @@ const User = props => {
         <Navbar {...props} brandText={getBrandText(props.location.pathname)} />
         <Switch>
           {getRoutes(routes)}
+          {/* AQUI SE PUEDE INGRESAR LA PÁGINA NO ENCONTRADA */}
           <Redirect from='*' to='/user/dashboard' />
         </Switch>
       </div>

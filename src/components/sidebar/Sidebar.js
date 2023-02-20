@@ -104,7 +104,7 @@ const Sidebar = props => {
             </DropdownToggle>
             <DropdownMenu className='dropdown-menu-arrow' right>
               <DropdownItem divider />
-              <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
+              <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
                 <i className='ni ni-user-run' />
                 <span onClick={logout}>Logout</span>
               </DropdownItem>

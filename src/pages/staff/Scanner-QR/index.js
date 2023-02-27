@@ -4,7 +4,7 @@ const ScannerQR = () => {
   return (
     <>
       <Header />
-      <div className='mt--8 row' style={{ paddingLeft: '6em' }}>
+      <div className='col-12 mt--8'>
         <CreateRegister />
       </div>
     </>

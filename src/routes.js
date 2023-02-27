@@ -8,17 +8,17 @@ var routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    icon: 'ni ni-laptop text-primary',
+    icon: 'bi bi-laptop text-primary',
     component: Dashboard,
     layout: '/user'
   },
   {
     path: '/historial',
     name: 'Historial Incidencias',
-    icon: 'ni ni-archive-2 text-primary',
+    icon: 'bi bi-clock-history text-primary',
     component: Historial,
     layout: '/user'
-  },
+  }
   // {
   //   path: '/inventario',
   //   name: 'Inventario',
@@ -26,20 +26,20 @@ var routes = [
   //   component: Inventario,
   //   layout: '/user'
   // },
-  {
-    path: '/qrscann',
-    name: 'QR SCANN',
-    icon: 'ni ni-archive-2 text-primary',
-    component: ScannerQR,
-    layout: '/user'
-  },
-  {
-    path: '/qrgenerate',
-    name: 'QR GENERATE',
-    icon: 'ni ni-archive-2 text-primary',
-    component: GenerateQR,
-    layout: '/user'
-  }
+  // {
+  //   path: '/qrscann',
+  //   name: 'QR SCANN',
+  //   icon: 'bi bi-qr-code-scan text-primary',
+  //   component: ScannerQR,
+  //   layout: '/user'
+  // },
+  // {
+  //   path: '/qrgenerate',
+  //   name: 'QR GENERATE',
+  //   icon: 'bi bi-qr-code text-primary',
+  //   component: GenerateQR,
+  //   layout: '/user'
+  // }
 ]
 
 export default routes

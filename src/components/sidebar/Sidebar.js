@@ -46,6 +46,7 @@ const Sidebar = props => {
           </NavItem>
         )
       }
+
       // else if (props.layout === '/admin') {
       //   return (
       //     <NavItem key={key}>

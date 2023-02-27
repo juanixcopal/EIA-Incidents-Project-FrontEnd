@@ -6,6 +6,8 @@ import Incidents from './pages/incidents/index.js'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
 import './assets/plugins/nucleo/css/nucleo.css'
 import './assets/scss/argon-dashboard-react.scss'
 

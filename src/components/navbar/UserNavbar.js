@@ -4,6 +4,7 @@ import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Navba
 
 const UserNavbar = props => {
   const username = localStorage.getItem('username')
+  const score = localStorage.getItem('score')
 
   const logout = () => {
     localStorage.clear()
@@ -27,9 +28,13 @@ const UserNavbar = props => {
                 </Media>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu-arrow' right>
-                <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
+                <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
                   <i className='ni ni-user-run' />
                   <span onClick={logout}>Cerrar Sesión</span>
+                </DropdownItem>
+                <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
+                  <i className='ni ni-check-bold' />
+                  <span>Puntaje Actual: {score || 'Score'} pts</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

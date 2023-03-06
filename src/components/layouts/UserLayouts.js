@@ -48,7 +48,7 @@ const User = props => {
         <Navbar {...props} brandText={getBrandText(props.location.pathname)} />
         <Switch>
           {getRoutes(routes)}
-          <Redirect from='/' to='/' />
+          <Redirect from='/' to='/user/dashboard' />
         </Switch>
       </div>
     </>

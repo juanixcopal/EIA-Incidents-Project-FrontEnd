@@ -19,7 +19,7 @@ var routes = [
   },
   {
     path: '/score',
-    name: 'Contador de Tickets',
+    name: 'Score',
     icon: 'bi bi-clipboard2-data text-primary',
     component: Score,
     layout: '/user'

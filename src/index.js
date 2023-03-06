@@ -31,7 +31,7 @@ const App = () => {
             <Route path='/user' render={props => <UserLayout {...props} />} />
           </>
         ) : (
-          <Route to={'/'} component={Login} />
+          <Route to={'/login'} component={Login} />
         )}
       </Switch>
     </BrowserRouter>

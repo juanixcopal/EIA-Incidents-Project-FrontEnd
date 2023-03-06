@@ -23,3 +23,15 @@ export const getDemerits = async () => {
       throw error
     })
 }
+
+export const getMerits = async () => {
+  return await axios
+
+    .get(`${process.env.REACT_APP_API_BASE}/v1/score/query`, { headers: { service: 'merits', token: localStorage.getItem('token') } })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

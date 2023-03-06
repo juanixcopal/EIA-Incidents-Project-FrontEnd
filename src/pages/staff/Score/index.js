@@ -41,7 +41,7 @@ const Score = () => {
                         </th>
                         <td>{score} puntos</td>
                         <td>
-                          <IconButton color='primary' aria-label='upload picture' component='label'>
+                          <IconButton onClick={() => toggle(null, 'Méritos', 'merits', item)} color='primary' aria-label='upload picture' component='label'>
                             <AddCircle />
                           </IconButton>
                           <IconButton onClick={() => toggle(null, 'Deméritos', 'demerits', item)} color='primary' aria-label='upload picture' component='label'>

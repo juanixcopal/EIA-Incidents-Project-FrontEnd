@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getUsersAndScore, getDemerits } from '../../data/score/get.js'
+import { getUsersAndScore, getDemerits, getMerits } from '../../data/score/get.js'
 
 export const useFetchUsersAndScore = () => {
   const [score, setScore] = useState([])
@@ -33,4 +33,21 @@ export const useFetchDemerits = () => {
     })()
   }, [])
   return { demerits }
+}
+
+export const useFetchMerits = () => {
+  const [merits, setMerits] = useState([])
+
+  useEffect(() => {
+    ;(async () => {
+      await getMerits()
+        .then(({ data }) => {
+          setMerits(data)
+        })
+        .catch(error => {
+          console.log('ERROR', error)
+        })
+    })()
+  }, [])
+  return { merits }
 }

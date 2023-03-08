@@ -13,8 +13,10 @@ export const useFetchInitUsersAndScore = () => {
   const [scoreToDeduct, setScoreToDeduct] = useState(0)
 
   const toggle = (_, title, component, params) => {
-    dataModal.open && setSelectedMerits([])
-    dataModal.open && setSelectedDemerits([])
+    if (dataModal.open) {
+      setSelectedMerits([])
+      setSelectedDemerits([])
+    }
     setDataModal({
       ...dataModal,
       open: !dataModal.open,
@@ -48,7 +50,7 @@ export const useFetchInitUsersAndScore = () => {
   const FetchDemerits = useFetchDemerits()
   const FetchMerits = useFetchMerits()
 
-  const Actions = useActions({ dataModal, scoreToDeduct, toggle, FetchDemerits })
+  const Actions = useActions({ dataModal, scoreToDeduct, toggle, FetchDemerits, FetchUsersAndScore, scoreToAdd, setScoreToAdd, setScoreToDeduct })
 
   return {
     FetchUsersAndScore,

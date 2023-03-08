@@ -2,16 +2,18 @@ import { ModalBody, ModalFooter } from 'reactstrap'
 import { Table } from 'reactstrap'
 
 const Merits = ({ useFetchInit }) => {
-  const { toggle, FetchMerits, selectedMerits, handleMeritSelection, scoreToAdd, dataModal } = useFetchInit
+  const { toggle, FetchMerits, selectedMerits, handleMeritSelection, scoreToAdd, dataModal, Actions } = useFetchInit
   const { merits } = FetchMerits
-
-  console.log(dataModal.params)
+  const { loadingOperation, addMerits } = Actions
+  const { username } = dataModal.params
 
   return (
-    <>
+    <form onSubmit={addMerits}>
       <ModalBody>
         <h4>Seleccione los méritos que deseas sumar</h4>
-
+        <h5>
+          Puntos a meritar a {username}: {scoreToAdd}
+        </h5>
         <Table className='align-items-center table-flush' responsive>
           <thead className='thead-light'>
             <tr>
@@ -40,22 +42,18 @@ const Merits = ({ useFetchInit }) => {
             })}
           </tbody>
         </Table>
-
-        <button type='button' onClick={() => console.log('Puntos a sumar: ', scoreToAdd)}>
-          MMMS
-        </button>
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>
-          <button type='submit' className='rightButtonAccept'>
+          <button disabled={loadingOperation} type='submit' className='rightButtonAccept'>
             Meritar
           </button>
-          <button className='leftButtonCancel' type='button' onClick={toggle}>
+          <button disabled={loadingOperation} className='leftButtonCancel' type='button' onClick={toggle}>
             Cancelar
           </button>
         </div>
       </ModalFooter>
-    </>
+    </form>
   )
 }
 

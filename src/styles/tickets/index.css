@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.thermometer {
+  width: 30px;
+  height: 200px;
+  border: 2px solid gray;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  background-color: #e6e6e6;
+}
+
+.mercury {
+  width: 26px;
+  border-radius: 13px;
+}
+
+input[type='range'] {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 20px;
+}

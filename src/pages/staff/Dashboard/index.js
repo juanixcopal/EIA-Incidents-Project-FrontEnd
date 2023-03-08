@@ -52,7 +52,7 @@ const Dashboard = () => {
         </div>
       ) : (
         <div className='col-12 mt--8 row' style={{ paddingLeft: '6em' }}>
-          <h1>NO HAY INCIDENCIAS</h1>
+          <h1 className='notIncidences'>NO HAY INCIDENCIAS</h1>
         </div>
       )}
     </>

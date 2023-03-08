@@ -4,18 +4,24 @@ import { getUsersAndScore, getDemerits, getMerits } from '../../data/score/get.j
 export const useFetchUsersAndScore = () => {
   const [score, setScore] = useState([])
 
+  const _Score = async () => {
+    await getUsersAndScore()
+      .then(({ data }) => {
+        setScore(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
   useEffect(() => {
-    ;(async () => {
-      await getUsersAndScore()
-        .then(({ data }) => {
-          setScore(data)
-        })
-        .catch(error => {
-          console.log('ERROR', error)
-        })
-    })()
+    _Score()
   }, [])
-  return { score }
+  return { score, _Score }
 }
 
 export const useFetchDemerits = () => {
@@ -27,8 +33,12 @@ export const useFetchDemerits = () => {
         .then(({ data }) => {
           setDemerits(data)
         })
-        .catch(error => {
-          console.log('ERROR', error)
+        .catch(({ response }) => {
+          if (response.status === 401) {
+            localStorage.clear()
+            window.location.reload()
+          }
+          console.log('Error', response)
         })
     })()
   }, [])
@@ -44,8 +54,12 @@ export const useFetchMerits = () => {
         .then(({ data }) => {
           setMerits(data)
         })
-        .catch(error => {
-          console.log('ERROR', error)
+        .catch(({ response }) => {
+          if (response.status === 401) {
+            localStorage.clear()
+            window.location.reload()
+          }
+          console.log('Error', response)
         })
     })()
   }, [])

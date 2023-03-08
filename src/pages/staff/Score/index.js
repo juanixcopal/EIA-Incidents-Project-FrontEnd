@@ -24,7 +24,7 @@ const Score = () => {
                 <thead className='thead-light'>
                   <tr>
                     <th scope='col'>Usuario</th>
-                    <th scope='col'>Puntaje</th>
+                    <th scope='col'>Puntaje (Max 30 pts)</th>
                     <th scope='col'>Acciones</th>
                   </tr>
                 </thead>

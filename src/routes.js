@@ -1,6 +1,7 @@
 import Dashboard from './pages/staff/Dashboard/index.js'
 import Historial from './pages/staff/Historial/index.js'
 import Score from './pages/staff/Score/index.js'
+import Tickets from './pages/staff/Tickets/index.js'
 
 var routes = [
   {
@@ -22,6 +23,13 @@ var routes = [
     name: 'Score',
     icon: 'bi bi-clipboard2-data text-primary',
     component: Score,
+    layout: '/user'
+  },
+  {
+    path: '/tickets',
+    name: 'Contador Tickets',
+    icon: 'bi bi-ticket text-primary',
+    component: Tickets,
     layout: '/user'
   }
 ]

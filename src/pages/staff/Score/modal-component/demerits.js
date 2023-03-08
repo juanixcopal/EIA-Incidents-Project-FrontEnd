@@ -2,16 +2,19 @@ import { ModalBody, ModalFooter } from 'reactstrap'
 import { Table } from 'reactstrap'
 
 const Demerits = ({ useFetchInit }) => {
-  const { toggle, FetchDemerits, selectedDemerits, handleDemeritSelection, scoreToDeduct, Actions } = useFetchInit
+  const { toggle, FetchDemerits, selectedDemerits, handleDemeritSelection, scoreToDeduct, Actions, dataModal } = useFetchInit
   const { demerits } = FetchDemerits
 
   const { loadingOperation, addDemerits } = Actions
+  const { username } = dataModal.params
 
   return (
     <form onSubmit={addDemerits}>
       <ModalBody>
         <h4>Seleccione los deméritos a descontar</h4>
-
+        <h5>
+          Puntos a demeritar a {username}: {scoreToDeduct}
+        </h5>
         <Table className='align-items-center table-flush' responsive>
           <thead className='thead-light'>
             <tr>
@@ -40,9 +43,6 @@ const Demerits = ({ useFetchInit }) => {
             })}
           </tbody>
         </Table>
-        {/* <button type='button' onClick={() => console.log('Puntos a restar: ', scoreToDeduct)}>
-          MMMS
-        </button> */}
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>

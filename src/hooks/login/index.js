@@ -34,7 +34,6 @@ export const useFetchInitLogin = () => {
     setLoading(true)
     await postLogin({ data })
       .then(({ token, result, redirect, username, score }) => {
-        console.log('RESULTADO', token, result, redirect, username, score)
         if (result) {
           localStorage.clear()
           localStorage.setItem('token', token)
@@ -47,7 +46,6 @@ export const useFetchInitLogin = () => {
         }
       })
       .catch(error => {
-        console.log('ERROR: ', error)
         if (error) {
           const { message, result } = error.data
           setMessage({

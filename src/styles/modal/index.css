@@ -61,16 +61,3 @@ svg {
 .modal-body {
   padding-top: 5px !important;
 }
-
-.Reports {
-  display: flex !important;
-  color: #a7a7a7 !important;
-}
-
-.Report {
-  color: #a7a7a7 !important;
-}
-
-.Description {
-  color: #a7a7a7 !important;
-}

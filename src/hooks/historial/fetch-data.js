@@ -10,8 +10,12 @@ export const useFetchIncidencesByUser = () => {
         .then(({ data }) => {
           setIncidences(data)
         })
-        .catch(error => {
-          console.log('ERROR', error)
+        .catch(({ response }) => {
+          if (response.status === 401) {
+            localStorage.clear()
+            window.location.reload()
+          }
+          console.log('Error', response)
         })
     })()
   }, [])

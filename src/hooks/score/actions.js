@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { alertMessage } from '../common/toast-alert'
 import axios from 'axios'
 
-export const useActions = ({ dataModal, scoreToDeduct, toggle, FetchDemerits }) => {
+export const useActions = ({ dataModal, scoreToDeduct, toggle, FetchDemerits, FetchUsersAndScore, scoreToAdd, setScoreToAdd, setScoreToDeduct }) => {
   const [loadingOperation, setLoadingOperation] = useState(false)
-  const { demerits } = FetchDemerits
+  const { _Score } = FetchUsersAndScore
+
   const addDemerits = async e => {
     e.preventDefault()
     const { id_user } = dataModal.params
@@ -13,18 +14,31 @@ export const useActions = ({ dataModal, scoreToDeduct, toggle, FetchDemerits }) 
       id_user,
       scoreToDeduct
     }
-    console.log('SEND DATA', send_data)
 
     setLoadingOperation(true)
-    await axios.put('http://172.27.20.128:3050/v1/score/demerits', send_data).then(({ data }) => {
-      console.log('STEP 2')
-      alertMessage(data, demerits, toggle)
+    await axios.put('http://172.27.20.128:3050/v1/score/demerits', send_data, { headers: { token: localStorage.token } }).then(({ data }) => {
+      alertMessage(data, _Score, toggle)
     })
-    console.log('STEP 3')
+    setScoreToDeduct(0)
     setLoadingOperation(false)
   }
 
-  return { loadingOperation, addDemerits }
-}
+  const addMerits = async e => {
+    e.preventDefault()
+    const { id_user } = dataModal.params
 
-// dataModal, scoreToDeduct, toggle, FetchDemerits
+    const send_data = {
+      id_user,
+      scoreToAdd
+    }
+
+    setLoadingOperation(true)
+    await axios.put('http://172.27.20.128:3050/v1/score/merits', send_data, { headers: { token: localStorage.token } }).then(({ data }) => {
+      alertMessage(data, _Score, toggle)
+    })
+    setScoreToAdd(0)
+    setLoadingOperation(false)
+  }
+
+  return { loadingOperation, addDemerits, addMerits }
+}

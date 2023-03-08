@@ -1,7 +1,8 @@
+/*Tab Button*/
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  color: white !important;
+  color: #e6e6e6 !important;
   border-radius: 50px !important;
-  background-color: #a0a0a0;
+  background-color: #797979;
   padding-left: 25px !important;
   padding-right: 25px !important;
 }
@@ -10,7 +11,7 @@
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
   display: flex !important;
-  background-color: #ececec !important;
+  background-color: #c5c5c5 !important;
   border-radius: 50px !important;
   width: max-content !important;
 }
@@ -20,12 +21,13 @@
 }
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  color: #74777b !important;
+  color: #424242 !important;
   padding: 12px 18px !important;
 }
 
+/*Hover*/
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root:hover {
-  background-color: #9e9e9e;
+  background-color: #5c5c5c;
   border-radius: 50px;
 }
 
@@ -36,7 +38,7 @@
 /*-------------------------------------------*/
 
 body {
-  background-color: #dcdcdc !important;
+  background-color: #e1e1e1 !important;
 }
 
 .Header {
@@ -46,11 +48,11 @@ body {
   padding-top: 25px;
   padding-left: 3%;
   padding-right: 3%;
-  background: linear-gradient(87deg, #47adf7 0, #017dc0 100%) !important;
+  background: #333642;
 }
 
 .header {
-  background: linear-gradient(87deg, #47adf7 0, #017dc0 100%) !important;
+  background: linear-gradient(87deg, #4d92c0 0, #1b557c 100%) !important;
 }
 
 .logoUneat {
@@ -63,7 +65,7 @@ body {
 
 .Title {
   margin-top: 10px;
-  color: #e0e0e0;
+  color: white;
   text-align: center;
   font-size: 35px;
   width: 25rem;
@@ -81,7 +83,7 @@ body {
 }
 
 .Button-Login:hover {
-  background-color: #b8b7b7 !important ;
+  background-color: #e7e7e7 !important ;
 }
 
 .waterMark {
@@ -131,7 +133,7 @@ body {
 /*-------------------------*/
 .css-106c1u2-MuiBadge-badge {
   right: -7px !important;
-  top: -3px !important;
+  top: -4px !important;
 }
 
 .navbar-vertical.navbar-expand-md .navbar-brand-img {

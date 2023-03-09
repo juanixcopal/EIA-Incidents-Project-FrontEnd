@@ -18,13 +18,13 @@ var routes = [
     component: Historial,
     layout: '/user'
   },
-  {
-    path: '/score',
-    name: 'Score',
-    icon: 'bi bi-clipboard2-data text-primary',
-    component: Score,
-    layout: '/user'
-  },
+  // {
+  //   path: '/score',
+  //   name: 'Score',
+  //   icon: 'bi bi-clipboard2-data text-primary',
+  //   component: Score,
+  //   layout: '/user'
+  // },
   {
     path: '/tickets',
     name: 'Contador Tickets',

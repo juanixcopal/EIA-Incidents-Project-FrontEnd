@@ -21,7 +21,7 @@ const Incidents = () => {
   const { id_floor } = data
 
   const login = () => {
-    window.location.href = '/login'
+    window.location.href = '/user/dashboard'
   }
   return (
     <>

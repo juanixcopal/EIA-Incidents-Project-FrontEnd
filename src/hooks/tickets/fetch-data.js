@@ -68,21 +68,28 @@ export const useFetchOpenTickets = () => {
   const [openTickets, setOpenTickets] = useState([])
   const [totalTickets, setTotalTickets] = useState(0)
 
+  const _getOpenTickets = async () => {
+    await getOpenTickets()
+      .then(({ data }) => {
+        setOpenTickets(data)
+        setTotalTickets(data[0].tickets_abiertos)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
   useEffect(() => {
-    ;(async () => {
-      await getOpenTickets()
-        .then(({ data }) => {
-          setOpenTickets(data)
-          setTotalTickets(data[0].tickets_abiertos)
-        })
-        .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
-          console.log('Error', response)
-        })
-    })()
+    const timer = setInterval(() => {
+      _getOpenTickets()
+    }, 120000)
+    _getOpenTickets()
+    return () => clearInterval(timer)
   }, [])
+
   return { openTickets, totalTickets }
 }

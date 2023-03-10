@@ -2,6 +2,7 @@ import React from 'react'
 import '../../styles/pageNotFound/index.css'
 const PageNotFound = () => {
   return (
+    // eslint-disable-next-line
     <a target='_blank'>
       <header class='top-header'></header>
 
@@ -32,7 +33,8 @@ const PageNotFound = () => {
             </p>
           </div>
           <div class='error__nav e-nav'>
-            <a href='http://localhost:3001' target='_blanck' class='e-nav__link'></a>
+            {/* eslint-disable-next-line */}
+            <a href='http://172.27.20.128:3001' target='_blanck' class='e-nav__link'></a>
           </div>
         </div>
       </section>

@@ -1,33 +1,29 @@
 import Header from '../../../components/header/Header'
-import { useState } from 'react'
 import { Container, Card, CardHeader, Row, CardBody, Table } from 'reactstrap'
 import { useFetchTickets } from '../../../hooks/tickets/index'
 import '../../../styles/tickets/index.css'
 
 const Tickets = () => {
   const mainHook = useFetchTickets()
-  const { FetchClosedTicketsCurrentMonth, FetchClosedTicketsFirstSemester, FetchClosedTicketsSecondSemester, FetchOpenTickets } = mainHook
+  const { FetchClosedTicketsCurrentMonth, FetchClosedTicketsSecondSemester, FetchOpenTickets } = mainHook
 
   const { closedMonth } = FetchClosedTicketsCurrentMonth
-  const { closedFirstSemester } = FetchClosedTicketsFirstSemester
   const { closedSecondSemester } = FetchClosedTicketsSecondSemester
   const { totalTickets } = FetchOpenTickets
-  // const [value, setValue] = useState(6)
 
   const mercuryHeight = () => {
     if (totalTickets === 0) {
-      return (Math.min(10 * 10, 100))
+      return Math.min(10 * 10, 100)
     } else if (totalTickets === 1) {
-      return (Math.min(11 * 2, 100))
+      return Math.min(11 * 2, 100)
     } else if (totalTickets === 2) {
-      return (Math.min(12.5 * 2, 100))
+      return Math.min(12.5 * 2, 100)
     } else {
-      return (Math.min(totalTickets * 10, 100))
+      return Math.min(totalTickets * 10, 100)
     }
   }
 
   const newOpenTickets = mercuryHeight()
-
 
   const getTicketsColor = () => {
     if (totalTickets === 0) {
@@ -43,17 +39,16 @@ const Tickets = () => {
       <Header />
       <Container className='mt--8' fluid>
         <Row>
-          <div className='col-7'>
+          <div className='col-xl-7 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Termometro Tickets Abiertos</h3>
               </CardHeader>
               <CardBody>
                 <div className='App'>
-                  <div className='thermometer' id='thermometer' href="#">
+                  <div className='thermometer' id='thermometer' href='#'>
                     <div className='mercury' style={{ height: `${newOpenTickets}%`, backgroundColor: getTicketsColor() }}></div>
-                    <div className='thermometerBase' style={{ backgroundColor: getTicketsColor() }} >
-                    </div>
+                    <div className='thermometerBase' style={{ backgroundColor: getTicketsColor() }}></div>
                   </div>
                   <p>Tickets abiertos: {totalTickets}</p>
                 </div>
@@ -61,7 +56,7 @@ const Tickets = () => {
             </Card>
           </div>
 
-          <div className='col-5' style={{ paddingBottom: '25px' }}>
+          <div className='col-xl-5 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Tickets Cerrados Mes Actual</h3>
@@ -127,7 +122,7 @@ const Tickets = () => {
             </Card>
           </div> */}
 
-          <div className='col-6' style={{ paddingBottom: '40px' }}>
+          <div className='col-xl-6 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Tickets Cerrados Segundo Semestre</h3>
@@ -160,7 +155,7 @@ const Tickets = () => {
             </Card>
           </div>
         </Row>
-      </Container >
+      </Container>
     </>
   )
 }

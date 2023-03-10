@@ -18,7 +18,7 @@ export const useActions = ({ FetchReportsData, data, toggle, dataModal, sockets 
 
     setLoadingOperation(true)
     await axios
-      .put(`http://172.27.20.128:3050/v1/dashboard/manager?id_reporte=${id_reporte}`, update_data, { headers: { token: localStorage.token } })
+      .put(`${process.env.REACT_APP_API_BASE}/v1/dashboard/manager?id_reporte=${id_reporte}`, update_data, { headers: { token: localStorage.token } })
       .then(({ data }) => {
         alertMessage(data, _getReports, toggle)
         sockets.incidencesSocket.emit('update_incidence', data)

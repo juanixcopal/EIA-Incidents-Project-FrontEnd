@@ -1,6 +1,6 @@
 import Dashboard from './pages/staff/Dashboard/index.js'
 import Historial from './pages/staff/Historial/index.js'
-import Score from './pages/staff/Score/index.js'
+// import Score from './pages/staff/Score/index.js'
 import Tickets from './pages/staff/Tickets/index.js'
 
 var routes = [

@@ -16,7 +16,7 @@ export const useActions = ({ dataModal, scoreToDeduct, toggle, FetchDemerits, Fe
     }
 
     setLoadingOperation(true)
-    await axios.put('http://172.27.20.128:3050/v1/score/demerits', send_data, { headers: { token: localStorage.token } }).then(({ data }) => {
+    await axios.put(`${process.env.REACT_APP_API_BASE}/v1/score/demerits`, send_data, { headers: { token: localStorage.token } }).then(({ data }) => {
       alertMessage(data, _Score, toggle)
     })
     setScoreToDeduct(0)
@@ -33,7 +33,7 @@ export const useActions = ({ dataModal, scoreToDeduct, toggle, FetchDemerits, Fe
     }
 
     setLoadingOperation(true)
-    await axios.put('http://172.27.20.128:3050/v1/score/merits', send_data, { headers: { token: localStorage.token } }).then(({ data }) => {
+    await axios.put(`${process.env.REACT_APP_API_BASE}/v1/score/merits`, send_data, { headers: { token: localStorage.token } }).then(({ data }) => {
       alertMessage(data, _Score, toggle)
     })
     setScoreToAdd(0)

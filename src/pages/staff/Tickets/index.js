@@ -12,12 +12,30 @@ const Tickets = () => {
   const { closedFirstSemester } = FetchClosedTicketsFirstSemester
   const { closedSecondSemester } = FetchClosedTicketsSecondSemester
   const { totalTickets } = FetchOpenTickets
+  // const [value, setValue] = useState(6)
 
-  const newOpenTickets = Math.min(totalTickets * 10, 100)
+  const mercuryHeight = () => {
+    if (totalTickets === 0) {
+      return (Math.min(10 * 10, 100))
+    } else if (totalTickets === 1) {
+      return (Math.min(11 * 2, 100))
+    } else if (totalTickets === 2) {
+      return (Math.min(12.5 * 2, 100))
+    } else {
+      return (Math.min(totalTickets * 10, 100))
+    }
+  }
+
+  const newOpenTickets = mercuryHeight()
+
 
   const getTicketsColor = () => {
-    const hue = (1 - newOpenTickets / 100) * 120
-    return `hsl(${hue}, 100%, 50%)`
+    if (totalTickets === 0) {
+      return `hsl(${0}, 0%, 90%)`
+    } else {
+      const hue = (1 - newOpenTickets / 100) * 120
+      return `hsl(${hue}, 100%, 50%)`
+    }
   }
 
   return (
@@ -32,8 +50,10 @@ const Tickets = () => {
               </CardHeader>
               <CardBody>
                 <div className='App'>
-                  <div className='thermometer'>
+                  <div className='thermometer' id='thermometer' href="#">
                     <div className='mercury' style={{ height: `${newOpenTickets}%`, backgroundColor: getTicketsColor() }}></div>
+                    <div className='thermometerBase' style={{ backgroundColor: getTicketsColor() }} >
+                    </div>
                   </div>
                   <p>Tickets abiertos: {totalTickets}</p>
                 </div>
@@ -140,7 +160,7 @@ const Tickets = () => {
             </Card>
           </div>
         </Row>
-      </Container>
+      </Container >
     </>
   )
 }

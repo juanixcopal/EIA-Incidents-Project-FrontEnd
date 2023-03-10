@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useLocation, Route, Switch, Redirect } from 'react-router-dom'
+import { Container } from 'reactstrap'
 import Navbar from '../navbar/UserNavbar.js'
 import Sidebar from '../sidebar/Sidebar.js'
 import routes from '../../routes.js'
+import Footer from '../Footers/AdminFooter.js'
 
 const User = props => {
   const mainContent = React.useRef(null)
@@ -50,6 +52,9 @@ const User = props => {
           {getRoutes(routes)}
           <Redirect from='/' to='/user/dashboard' />
         </Switch>
+        {/* <Container fluid>
+          <Footer />
+        </Container> */}
       </div>
     </>
   )

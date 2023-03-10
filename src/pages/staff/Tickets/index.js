@@ -13,21 +13,12 @@ const Tickets = () => {
   const { closedSecondSemester } = FetchClosedTicketsSecondSemester
   const { totalTickets } = FetchOpenTickets
 
-  const [prueba, setPrueba] = useState(2)
-
   const newOpenTickets = Math.min(totalTickets * 10, 100)
 
   const getTicketsColor = () => {
     const hue = (1 - newOpenTickets / 100) * 120
     return `hsl(${hue}, 100%, 50%)`
   }
-
-  // const newOpenTickets = Math.min(prueba * 10, 100)
-
-  // const getTicketsColor = () => {
-  //   const hue = (1 - newOpenTickets / 100) * 120
-  //   return `hsl(${hue}, 100%, 50%)`
-  // }
 
   return (
     <>
@@ -83,7 +74,7 @@ const Tickets = () => {
             </Card>
           </div>
 
-          <div className='col-6'>
+          {/* <div className='col-6'>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Tickets Cerrados Primer Semestre</h3>
@@ -114,9 +105,9 @@ const Tickets = () => {
                 </tbody>
               </Table>
             </Card>
-          </div>
+          </div> */}
 
-          <div className='col-6'>
+          <div className='col-6' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Tickets Cerrados Segundo Semestre</h3>

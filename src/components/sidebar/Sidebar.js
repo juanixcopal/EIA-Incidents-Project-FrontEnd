@@ -109,10 +109,10 @@ const Sidebar = props => {
                 <i className='ni ni-user-run' />
                 <span onClick={logout}>Logout</span>
               </DropdownItem>
-              <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
+              {/* <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
                 <i className='ni ni-check-bold' />
                 <span>Puntaje Actual: {score || 'Score'} pts</span>
-              </DropdownItem>
+              </DropdownItem> */}
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

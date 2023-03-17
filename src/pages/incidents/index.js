@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Tab, Badge } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { useFetchInitIncidents } from '../../hooks/incidents/index'
-
+import { Container, Row } from 'reactstrap'
 import { Card, CardContent, CardActions, Typography, Button } from '@mui/material'
 import MainModal from './modal-component/index.js'
 import '../../styles/incidents/index.css'
@@ -61,33 +61,35 @@ const Incidents = () => {
               })}
             </TabList>
           </Box>
-          <div className='col-12 row'>
-            {classrooms.map(item => {
-              const { id_aula, aula, tipo_aula, id_planta } = item
-              return (
-                <TabPanel key={id_aula} value={String(id_planta)} className='col-xl-3 col-md-4 col-sm-12 '>
-                  <div className='Content-Cards'>
-                    <Card className='Cards'>
-                      <div
-                        className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
-                      />
+          <Container fluid>
+            <Row>
+              {classrooms.map(item => {
+                const { id_aula, aula, tipo_aula, id_planta } = item
+                return (
+                  <TabPanel key={id_aula} value={String(id_planta)} className='col-xl-3 col-md-4 col-sm-12 '>
+                    <div className='Content-Cards'>
+                      <Card className='Cards'>
+                        <div
+                          className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
+                        />
 
-                      <CardContent>
-                        <Typography>
-                          {tipo_aula} {aula}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size='small' type='button' onClick={() => toggle(null, 'Crear Incidencia', 'create-incidence', item)}>
-                          Crear Reporte
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </div>
-                </TabPanel>
-              )
-            })}
-          </div>
+                        <CardContent>
+                          <Typography>
+                            {tipo_aula} {aula}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Button size='small' type='button' onClick={() => toggle(null, 'Crear Incidencia', 'create-incidence', item)}>
+                            Crear Reporte
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    </div>
+                  </TabPanel>
+                )
+              })}
+            </Row>
+          </Container>
         </TabContext>
       </Box>
     </>

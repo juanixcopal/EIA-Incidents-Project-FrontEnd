@@ -4,7 +4,6 @@ import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Navba
 
 const UserNavbar = props => {
   const username = localStorage.getItem('username')
-  const score = localStorage.getItem('score')
 
   const logout = () => {
     localStorage.clear()

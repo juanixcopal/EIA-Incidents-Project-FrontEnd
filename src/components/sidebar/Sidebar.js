@@ -21,7 +21,6 @@ import {
 
 const Sidebar = props => {
   const username = localStorage.getItem('username')
-  const score = localStorage.getItem('score')
 
   const logout = () => {
     localStorage.clear()

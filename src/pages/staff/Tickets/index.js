@@ -39,7 +39,7 @@ const Tickets = () => {
       <Header />
       <Container className='mt--8' fluid>
         <Row>
-          <div className='col-xl-7 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
+          <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Termometro Tickets Abiertos</h3>
@@ -56,7 +56,7 @@ const Tickets = () => {
             </Card>
           </div>
 
-          <div className='col-xl-5 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
+          <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Tickets Cerrados Mes Actual</h3>
@@ -122,7 +122,7 @@ const Tickets = () => {
             </Card>
           </div> */}
 
-          <div className='col-xl-6 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
+          <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
             <Card className='shadow'>
               <CardHeader>
                 <h3 className='mb-0'>Tickets Cerrados Segundo Semestre</h3>

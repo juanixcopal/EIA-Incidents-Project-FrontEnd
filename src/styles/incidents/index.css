@@ -20,9 +20,37 @@
   width: 0 !important;
 }
 
+/*MODIFICAR TAMAÑO CUANDO ES CELULAR*/
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
   color: #424242 !important;
   padding: 12px 18px !important;
+}
+
+@media screen and (max-width: 390px) {
+  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    width: 80px !important;
+  }
+
+  .logoUneat {
+    height: 40px !important;
+  }
+
+  .Title-Content {
+    padding-top: 30px !important;
+  }
+
+  .Title {
+    font-size: 20px !important;
+    width: 100px !important;
+  }
+
+  .Button-Content {
+    padding-top: 0 !important;
+  }
+
+  .Button-Login {
+    font-size: 10px !important;
+  }
 }
 
 /*Hover*/
@@ -32,7 +60,7 @@
 }
 
 .css-1ujnqem-MuiTabs-root {
-  padding: 5vh 0 0 0;
+  padding: 6vh 0 0 0;
 }
 
 /*-------------------------------------------*/
@@ -115,9 +143,7 @@ body {
 }
 
 .Content-Cards {
-  padding-right: 60px;
-  padding-left: 60px;
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .DataReports-Content {
@@ -137,7 +163,7 @@ body {
 }
 
 .navbar-vertical.navbar-expand-md .navbar-brand-img {
-  max-height: 4.7rem !important;
+  max-height: 3rem !important;
 }
 
 .Cards {

@@ -14,24 +14,25 @@ var routes = [
   {
     path: '/historial',
     name: 'Historial Incidencias',
-    icon: 'bi bi-clock-history text-primary',
+    icon: 'bi bi-clock-history text-info',
     component: Historial,
     layout: '/user'
   },
-  // {
-  //   path: '/score',
-  //   name: 'Score',
-  //   icon: 'bi bi-clipboard2-data text-primary',
-  //   component: Score,
-  //   layout: '/user'
-  // },
   {
     path: '/tickets',
     name: 'Contador Tickets',
-    icon: 'bi bi-ticket text-primary',
+    icon: 'bi bi-ticket text-warning',
     component: Tickets,
     layout: '/user'
   }
+  //    text-primary
+  //    text-warning
+  //    text-info
+  //    text-success
+  //    text-danger
+  //    text-dark
+  //    text-light
+  //    text-darker
 ]
 
 export default routes

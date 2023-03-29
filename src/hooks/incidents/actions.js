@@ -25,5 +25,3 @@ export const useActions = ({ FetchDataReports, dataIncident, toggle, dataModal, 
 
   return { loadingOperation, createIncidence }
 }
-
-// FetchDataReports, dataIncident, toggle, dataModal, sockets

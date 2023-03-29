@@ -21,7 +21,6 @@ const Login = () => {
       <Container component='main' maxWidth='xs' style={{ paddingTop: '8%' }}>
         <Card style={{ borderRadius: '5%', background: '#EFEEEE' }}>
           <CardContent>
-            {/* <CssBaseline /> */}
             <Box
               sx={{
                 marginTop: 8,

@@ -1,30 +1,60 @@
 import Dashboard from './pages/staff/Dashboard/index.js'
 import Historial from './pages/staff/Historial/index.js'
-// import Score from './pages/staff/Score/index.js'
 import Tickets from './pages/staff/Tickets/index.js'
+import Chromebooks from './pages/staff/Chromebooks/index.js'
+import Score from './pages/staff/Score/index.js'
+import Usuarios from './pages/staff/Usuarios/index.js'
 
 var routes = [
   {
     path: '/dashboard',
-    name: 'Dashboard',
-    icon: 'bi bi-laptop text-primary',
+    name: 'Incidencias',
+    icon: 'bi bi-building-exclamation text-danger',
     component: Dashboard,
-    layout: '/user'
+    layout: '/staff',
+    roles: ['usuario', 'superadmin', 'administrador']
   },
   {
     path: '/historial',
     name: 'Historial Incidencias',
     icon: 'bi bi-clock-history text-info',
     component: Historial,
-    layout: '/user'
+    layout: '/staff',
+    roles: ['usuario', 'superadmin', 'administrador']
   },
   {
     path: '/tickets',
-    name: 'Contador Tickets',
-    icon: 'bi bi-ticket text-warning',
+    name: 'Datos osTickets',
+    icon: 'bi bi-ticket text-primary',
     component: Tickets,
-    layout: '/user'
+    layout: '/staff',
+    roles: ['usuario', 'superadmin', 'administrador']
+  },
+  {
+    path: '/chromebooks',
+    name: 'Chromebooks',
+    icon: 'bi bi-laptop text-success',
+    component: Chromebooks,
+    layout: '/staff',
+    roles: ['superadmin']
+  },
+  {
+    path: '/score',
+    name: 'Score EIA',
+    icon: 'bi bi-clipboard-data text-warning',
+    component: Score,
+    layout: '/staff',
+    roles: ['superadmin', 'administrador']
+  },
+  {
+    path: '/usuarios',
+    name: 'Usuarios',
+    icon: 'bi bi-person-fill-check text-info',
+    component: Usuarios,
+    layout: '/staff',
+    roles: ['superadmin', 'administrador']
   }
+
   //    text-primary
   //    text-warning
   //    text-info

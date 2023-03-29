@@ -9,6 +9,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import './assets/plugins/nucleo/css/nucleo.css'
 import './assets/scss/argon-dashboard-react.scss'
+
 import UserLayout from './components/layouts/UserLayouts.js'
 
 const Login = React.lazy(() => import('./pages/login/index'))
@@ -26,7 +27,7 @@ const App = () => {
         {token ? (
           <>
             <Route exact path={`/`} />
-            <Route path='/user' render={props => <UserLayout {...props} />} />
+            <Route path='/staff' render={props => <UserLayout {...props} />} />
           </>
         ) : (
           <Route to={'/login'} component={Login} />

@@ -1,6 +1,5 @@
 import { Modal, ModalHeader } from 'reactstrap'
-import ResolveIncidence from './resolve-incidence'
-import '../../../../styles/modal/index.css'
+import ModifyUser from './modify-user'
 
 const MainModal = ({ useFetchInit }) => {
   const { dataModal, toggle } = useFetchInit
@@ -10,7 +9,7 @@ const MainModal = ({ useFetchInit }) => {
     <>
       <Modal isOpen={open} toggle={toggle} centered={true} size='lg' className='modal-body'>
         <ModalHeader toggle={toggle}>{title}</ModalHeader>
-        {component === 'resolve-incidence' && <ResolveIncidence useFetchInit={useFetchInit} />}
+        {component === 'modify-user' && <ModifyUser useFetchInit={useFetchInit} />}
       </Modal>
     </>
   )

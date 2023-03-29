@@ -13,6 +13,7 @@ svg {
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s ease all;
+  height: auto;
 }
 
 .rightButtonAccept:hover {
@@ -60,4 +61,8 @@ svg {
 
 .modal-body {
   padding-top: 5px !important;
+}
+
+.modal-footer {
+  padding: 0.25rem !important;
 }

@@ -21,7 +21,7 @@ const Incidents = () => {
   const { id_floor } = data
 
   const login = () => {
-    window.location.href = '/user/dashboard'
+    window.location.href = '/staff/dashboard'
   }
   return (
     <>
@@ -40,7 +40,6 @@ const Incidents = () => {
       <MainModal useFetchInit={mainHook} />
 
       <Box sx={{ width: '100%', typography: 'body1' }}>
-        <p className='waterMark'>Por: Intervención Ágil</p>
         <TabContext value={String(id_floor)}>
           <Box>
             <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })} aria-label='lab API tabs example'>
@@ -68,7 +67,7 @@ const Incidents = () => {
                 return (
                   <TabPanel key={id_aula} value={String(id_planta)} className='col-xl-3 col-md-4 col-sm-12 '>
                     <div className='Content-Cards'>
-                      <Card className='Cards'>
+                      <Card>
                         <div
                           className={`Status-${reportsData.filter(e => e.estado === 'Abierto' && e.id_aula === id_aula).length > 0 ? 'problem' : 'success'}`}
                         />
@@ -91,6 +90,7 @@ const Incidents = () => {
             </Row>
           </Container>
         </TabContext>
+        <p className='waterMark'>Por: Intervención Ágil</p>
       </Box>
     </>
   )

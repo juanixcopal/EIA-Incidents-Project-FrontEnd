@@ -33,14 +33,15 @@ export const useFetchInitLogin = () => {
 
     setLoading(true)
     await postLogin({ data })
-      .then(({ token, result, redirect, username, score }) => {
+      .then(({ token, result, redirect, username, rol_usuario }) => {
         if (result) {
           localStorage.clear()
           localStorage.setItem('token', token)
           localStorage.setItem('username', username)
+          localStorage.setItem('rol', rol_usuario)
           window.location.href = redirect
           setTimeout(() => {
-            history.push(`/user/dashboard`)
+            history.push(`/staff/dashboard`)
           }, 200)
         }
       })

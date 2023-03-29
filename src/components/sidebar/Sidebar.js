@@ -21,6 +21,7 @@ import {
 
 const Sidebar = props => {
   const username = localStorage.getItem('username')
+  const rol = localStorage.getItem('rol')
 
   const logout = () => {
     localStorage.clear()
@@ -36,7 +37,7 @@ const Sidebar = props => {
   }
   const createLinks = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === '/user') {
+      if (prop.layout === '/staff' && prop.roles.includes(rol)) {
         return (
           <NavItem key={key}>
             <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
@@ -45,18 +46,7 @@ const Sidebar = props => {
             </NavLink>
           </NavItem>
         )
-      }
-      // else if (props.layout === '/admin') {
-      //   return (
-      //     <NavItem key={key}>
-      //       <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
-      //         <i className={prop.icon} />
-      //         {prop.name}
-      //       </NavLink>
-      //     </NavItem>
-      //   )
-      // }
-      else {
+      } else {
         return null
       }
     })
@@ -106,7 +96,7 @@ const Sidebar = props => {
               <DropdownItem divider />
               <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
                 <i className='ni ni-user-run' />
-                <span onClick={logout}>Logout</span>
+                <span onClick={logout}>Cerrar Sesión</span>
               </DropdownItem>
               {/* <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
                 <i className='ni ni-check-bold' />
@@ -147,6 +137,14 @@ const Sidebar = props => {
           <hr className='my-3' />
           {/* Heading */}
           {/* Navigation */}
+          <Nav className='mb-md-3' navbar>
+            <NavItem className='active-pro active'>
+              <NavLink href='#version'>
+                <i className='bi bi-info-circle' />
+                Version 0.8.9
+              </NavLink>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Container>
     </Navbar>

@@ -23,7 +23,6 @@ export const useFetchReports = ({ sockets }) => {
   }, [])
 
   const receiveMessage = () => {
-    // console.log('RECEIVE MESSAGE')
     _getReports()
   }
 

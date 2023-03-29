@@ -63,7 +63,6 @@ export const useFetchReportingData = ({ sockets }) => {
   }, [])
 
   const receiveMessage = () => {
-    // console.log('MESSAGE')
     _getReportingData()
   }
 
@@ -87,7 +86,6 @@ export const useFetchIncidencesForFloor = ({ dataModal }) => {
     await getIncidencesForFloor({ dataModal })
       .then(({ data }) => {
         setIndicendesForFloor(data)
-        // setTestRefresh(false)
       })
       .catch(error => {
         console.log('error', error)

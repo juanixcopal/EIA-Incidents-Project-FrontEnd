@@ -7,6 +7,7 @@ import routes from '../../routes.js'
 const User = props => {
   const mainContent = React.useRef(null)
   const location = useLocation()
+  const rol = localStorage.getItem('rol')
 
   useEffect(() => {
     document.documentElement.scrollTop = 0
@@ -15,8 +16,10 @@ const User = props => {
   }, [location])
 
   const getRoutes = routes => {
-    return routes.map((prop, key) => {
-      if (prop.layout === '/user') {
+    const authorizedRoutes = routes.filter(route => route.roles.includes(rol))
+
+    return authorizedRoutes.map((prop, key) => {
+      if (prop.layout === '/staff') {
         return <Route path={prop.layout + prop.path} component={prop.component} key={key} />
       } else {
         return null
@@ -47,8 +50,8 @@ const User = props => {
       <div className='main-content' ref={mainContent}>
         <Navbar {...props} brandText={getBrandText(props.location.pathname)} />
         <Switch>
-          {getRoutes(routes)}
-          <Redirect from='/' to='/user/dashboard' />
+          {getRoutes([...routes])}
+          <Redirect from='/' to='/staff/dashboard' />
         </Switch>
       </div>
     </>

@@ -1,9 +1,12 @@
 import axios from 'axios'
 
-export const getIncidencesByUser = async () => {
+export const getIncidencesByUser = async ({ formattedDate }) => {
   return await axios
 
-    .get(`${process.env.REACT_APP_API_BASE}/v1/historial/query`, { headers: { service: 'incidences-user', token: localStorage.getItem('token') } })
+    .get(`${process.env.REACT_APP_API_BASE}/v1/historial/query`, {
+      headers: { service: 'search-incidences-user', token: localStorage.getItem('token') },
+      params: { formattedDate }
+    })
     .then(response => {
       return response
     })

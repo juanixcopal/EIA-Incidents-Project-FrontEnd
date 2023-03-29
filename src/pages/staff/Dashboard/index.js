@@ -13,6 +13,8 @@ const Dashboard = () => {
   useEffect(() => {
     if (dataReports.length > 0) {
       document.title = `(${dataReports.length}) Incidencias Uneatlantico`
+    } else if (dataReports.length === 0) {
+      document.title = 'Incidencias Uneatlantico'
     }
   }, [dataReports])
 

@@ -89,6 +89,7 @@ const Tickets = () => {
             </Card>
           </div>
 
+          {/*Card de los tickets del primer semestre */}
           {/* <div className='col-6'>
             <Card className='shadow'>
               <CardHeader>

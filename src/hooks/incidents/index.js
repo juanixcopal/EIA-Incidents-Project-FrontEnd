@@ -29,7 +29,7 @@ export const useFetchInitIncidents = () => {
 
   const FetchFloors = useFetchFloors()
   const FetchClassrooms = useFetchClassrooms({ data })
-  const FetchDataReports = useFetchReportingData({ sockets }) // INTEGRATE TEST FOR EMIT BROADCAST EVENT
+  const FetchDataReports = useFetchReportingData({ sockets })
   const FetchIncidencesForFloor = useFetchIncidencesForFloor({ dataModal })
 
   const Actions = useActions({ FetchDataReports, dataIncident, toggle, dataModal, sockets })

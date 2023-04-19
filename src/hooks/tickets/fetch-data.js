@@ -1,66 +1,93 @@
 import { useEffect, useState } from 'react'
-import { getClosedTicketsCurrentMonth, getClosedTicketsFirstSemester, getClosedTicketsSecondSemester, getOpenTickets } from '../../data/tickets/get.js'
+import {
+  getClosedTicketsCurrentMonth,
+  getClosedTicketsFirstSemester,
+  getClosedTicketsSecondSemester,
+  getOpenTickets,
+  getTypeIncidencesClosed
+} from '../../data/tickets/get.js'
 
 export const useFetchClosedTicketsCurrentMonth = () => {
   const [closedMonth, setClosedMonth] = useState([])
 
+  const _getClosedTicketsCurrentMonth = async () => {
+    await getClosedTicketsCurrentMonth()
+      .then(({ data }) => {
+        setClosedMonth(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
   useEffect(() => {
-    ;(async () => {
-      await getClosedTicketsCurrentMonth()
-        .then(({ data }) => {
-          setClosedMonth(data)
-        })
-        .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
-          console.log('Error', response)
-        })
-    })()
+    const timer = setInterval(() => {
+      _getClosedTicketsCurrentMonth()
+    }, 120000)
+    _getClosedTicketsCurrentMonth()
+    return () => clearInterval(timer)
   }, [])
+
   return { closedMonth }
 }
 
 export const useFetchClosedTicketsFirstSemester = () => {
   const [closedFirstSemester, setClosedFirstSemester] = useState([])
 
+  const _getClosedTicketsFirstSemester = async () => {
+    await getClosedTicketsFirstSemester()
+      .then(({ data }) => {
+        setClosedFirstSemester(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
   useEffect(() => {
-    ;(async () => {
-      await getClosedTicketsFirstSemester()
-        .then(({ data }) => {
-          setClosedFirstSemester(data)
-        })
-        .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
-          console.log('Error', response)
-        })
-    })()
+    const timer = setInterval(() => {
+      _getClosedTicketsFirstSemester()
+    }, 120000)
+    _getClosedTicketsFirstSemester()
+    return () => clearInterval(timer)
   }, [])
+
   return { closedFirstSemester }
 }
 
 export const useFetchClosedTicketsSecondSemester = () => {
   const [closedSecondSemester, setClosedSecondSemester] = useState([])
 
+  const _getClosedTicketSecondSemester = async () => {
+    await getClosedTicketsSecondSemester()
+      .then(({ data }) => {
+        setClosedSecondSemester(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
   useEffect(() => {
-    ;(async () => {
-      await getClosedTicketsSecondSemester()
-        .then(({ data }) => {
-          setClosedSecondSemester(data)
-        })
-        .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
-          console.log('Error', response)
-        })
-    })()
+    const timer = setInterval(() => {
+      _getClosedTicketSecondSemester()
+    }, 120000)
+    _getClosedTicketSecondSemester()
+    return () => clearInterval(timer)
   }, [])
+
   return { closedSecondSemester }
 }
 
@@ -92,4 +119,31 @@ export const useFetchOpenTickets = () => {
   }, [])
 
   return { openTickets, totalTickets }
+}
+
+export const useFetchTypeIncidencesClosed = () => {
+  const [typeIncidencesClosed, setTypeIncidencesClosed] = useState([])
+
+  const _getTypeIncidencesClosed = async () => {
+    await getTypeIncidencesClosed()
+      .then(({ data }) => {
+        setTypeIncidencesClosed(data[0])
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      _getTypeIncidencesClosed()
+    }, 120000)
+    _getTypeIncidencesClosed()
+    return () => clearInterval(timer)
+  }, [])
+  return { typeIncidencesClosed }
 }

@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "Incidencias_UNEAT",
+      "script": "./src/index.js",
+      "watch": true
+    }
+  ]
+}

@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useLocation, Route, Switch, Redirect } from 'react-router-dom'
 import Navbar from '../navbar/UserNavbar.js'
 import Sidebar from '../sidebar/Sidebar.js'
 import routes from '../../routes.js'
+import { AuthContext } from '../../provider/global.provider.js'
 
 const User = props => {
+  const { authData } = useContext(AuthContext)
   const mainContent = React.useRef(null)
   const location = useLocation()
-  const rol = localStorage.getItem('rol')
+  const rol = authData.rol_usuario
 
   useEffect(() => {
     document.documentElement.scrollTop = 0

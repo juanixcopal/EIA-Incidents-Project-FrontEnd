@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { NavLink as NavLinkRRD, Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
+import { AuthContext } from '../../provider/global.provider'
 import Avatar from '../../images/userImage.jpg'
 import {
   Collapse,
@@ -20,8 +21,9 @@ import {
 } from 'reactstrap'
 
 const Sidebar = props => {
+  const { authData } = useContext(AuthContext)
   const username = localStorage.getItem('username')
-  const rol = localStorage.getItem('rol')
+  const rol = authData.rol_usuario
 
   const logout = () => {
     localStorage.clear()
@@ -141,7 +143,7 @@ const Sidebar = props => {
             <NavItem className='active-pro active'>
               <NavLink href='#version'>
                 <i className='bi bi-info-circle' />
-                Version 0.8.9
+                Version 0.9.10
               </NavLink>
             </NavItem>
           </Nav>

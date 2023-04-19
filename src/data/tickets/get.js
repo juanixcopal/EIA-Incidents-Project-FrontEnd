@@ -47,3 +47,15 @@ export const getClosedTicketsCurrentMonth = async () => {
       throw error
     })
 }
+
+export const getTypeIncidencesClosed = async () => {
+  return await axios
+
+    .get(`${process.env.REACT_APP_API_BASE}/v1/tickets/query`, { headers: { service: 'type-incidences-closed', token: localStorage.getItem('token') } })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

@@ -36,7 +36,7 @@ var routes = [
     icon: 'bi bi-laptop text-success',
     component: Chromebooks,
     layout: '/staff',
-    roles: ['superadmin']
+    roles: ['superadmin', 'administrador', 'usuario']
   },
   {
     path: '/score',
@@ -44,7 +44,7 @@ var routes = [
     icon: 'bi bi-clipboard-data text-warning',
     component: Score,
     layout: '/staff',
-    roles: ['superadmin', 'administrador']
+    roles: ['superadmin']
   },
   {
     path: '/usuarios',
@@ -52,7 +52,7 @@ var routes = [
     icon: 'bi bi-person-fill-check text-info',
     component: Usuarios,
     layout: '/staff',
-    roles: ['superadmin', 'administrador']
+    roles: ['superadmin']
   }
 
   //    text-primary

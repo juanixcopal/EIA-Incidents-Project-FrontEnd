@@ -33,12 +33,11 @@ export const useFetchInitLogin = () => {
 
     setLoading(true)
     await postLogin({ data })
-      .then(({ token, result, redirect, username, rol_usuario }) => {
+      .then(({ token, result, redirect, username }) => {
         if (result) {
           localStorage.clear()
           localStorage.setItem('token', token)
           localStorage.setItem('username', username)
-          localStorage.setItem('rol', rol_usuario)
           window.location.href = redirect
           setTimeout(() => {
             history.push(`/staff/dashboard`)
@@ -54,7 +53,7 @@ export const useFetchInitLogin = () => {
           })
         } else {
           setMessage({
-            message: 'No hay comunicación con los servicios :(',
+            message: 'No hay comunicación con los servicios, verifica tu internet',
             result: false
           })
         }

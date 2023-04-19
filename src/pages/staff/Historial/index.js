@@ -1,12 +1,11 @@
-import Header from '../../../components/header/Header'
-import { useFetchInitHistorial } from '../../../hooks/historial/index'
-import { Search } from '@mui/icons-material'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { useFetchInitHistorial } from '../../../hooks/historial/index'
+import { Card, CardContent, Typography, Box } from '@mui/material'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { Box } from '@mui/material'
+import Header from '../../../components/header/Header'
 import { Container, Row, Button } from 'reactstrap'
-import { Card, CardContent, Typography } from '@mui/material'
+import { Search } from '@mui/icons-material'
 
 const Historial = () => {
   const mainHook = useFetchInitHistorial()

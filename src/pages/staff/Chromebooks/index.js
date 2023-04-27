@@ -19,9 +19,9 @@ const Chromebooks = () => {
       <Container className='mt--8' fluid>
         <Row>
           <div className='col-xl-12 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
-            {rol === 'superadmin' || rol === 'administrador' ? (
+            {rol === 'superadmin' ? (
               <div>
-                <Button onClick={() => toggle(null, 'Crear Chromebook', 'create-chromebook')}>
+                <Button disabled={false} onClick={() => toggle(null, 'Crear Chromebook', 'create-chromebook')}>
                   <AddCircleOutlineIcon /> Crear Chromebook
                 </Button>
               </div>

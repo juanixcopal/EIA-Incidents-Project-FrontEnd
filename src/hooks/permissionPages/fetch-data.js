@@ -13,10 +13,6 @@ export const useFetchPermissionPageDatosOsTicket = () => {
           setPermissionPageOsTicket(data)
         })
         .catch(({ response }) => {
-          // if (response.status === 401) {
-          //   localStorage.clear()
-          //   window.location.reload()
-          // }
           console.log('Error fetch-data permission page Datos OsTicket', response)
         })
       setLoadingPermission(false)

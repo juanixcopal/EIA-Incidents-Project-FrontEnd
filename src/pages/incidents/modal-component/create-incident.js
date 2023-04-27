@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalBody, ModalFooter } from 'reactstrap'
+import { ModalBody, ModalFooter, Button } from 'reactstrap'
 
 const CreateIncidence = ({ useFetchInit }) => {
   const { dataIncident, toggle, handleInputChangeIncident, Actions, dataModal } = useFetchInit
@@ -31,12 +31,12 @@ const CreateIncidence = ({ useFetchInit }) => {
 
       <ModalFooter>
         <div className='col-12'>
-          <button disabled={loadingOperation} type='submit' className='rightButtonAccept'>
+          <Button disabled={loadingOperation} type='submit' style={{ float: 'right' }} color='success'>
             Crear
-          </button>
-          <button disabled={loadingOperation} className='leftButtonCancel' type='button' onClick={toggle}>
+          </Button>
+          <Button disabled={loadingOperation} type='button' style={{ float: 'left' }} onClick={toggle} color='danger'>
             Cancelar
-          </button>
+          </Button>
         </div>
       </ModalFooter>
     </form>

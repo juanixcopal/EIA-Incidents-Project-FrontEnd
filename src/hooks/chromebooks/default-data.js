@@ -5,6 +5,13 @@ export const defaultDataModal = {
   params: {}
 }
 
+export const defaultDataSubModal = {
+  subOpen: false,
+  subTitle: '',
+  subComponent: '',
+  subParams: {}
+}
+
 export const defaultData = {
   id_carrito: '',
   id_estado_chromebook: '',

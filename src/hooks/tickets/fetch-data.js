@@ -4,7 +4,8 @@ import {
   getClosedTicketsFirstSemester,
   getClosedTicketsSecondSemester,
   getOpenTickets,
-  getTypeIncidencesClosed
+  getTypeIncidencesClosed,
+  getpermissionPageDatosOsTicket
 } from '../../data/tickets/get.js'
 
 export const useFetchClosedTicketsCurrentMonth = () => {
@@ -146,4 +147,24 @@ export const useFetchTypeIncidencesClosed = () => {
     return () => clearInterval(timer)
   }, [])
   return { typeIncidencesClosed }
+}
+
+export const useFetchPermissionPageDatosOsTicket = () => {
+  const [permissionPageOsTicket, setPermissionPageOsTicket] = useState([])
+  const [loadingPermission, setLoadingPermission] = useState(false)
+
+  useEffect(() => {
+    ;(async () => {
+      setLoadingPermission(true)
+      await getpermissionPageDatosOsTicket()
+        .then(({ data }) => {
+          setPermissionPageOsTicket(data)
+        })
+        .catch(({ response }) => {
+          console.log('Error fetch-data permission page Datos OsTicket', response)
+        })
+      setLoadingPermission(false)
+    })()
+  }, [])
+  return { permissionPageOsTicket, loadingPermission }
 }

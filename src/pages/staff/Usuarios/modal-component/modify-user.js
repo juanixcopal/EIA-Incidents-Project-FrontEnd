@@ -1,4 +1,4 @@
-import { ModalBody, ModalFooter } from 'reactstrap'
+import { ModalBody, ModalFooter, Button } from 'reactstrap'
 import { FormControl, Select, MenuItem } from '@mui/material'
 import { useState } from 'react'
 
@@ -40,12 +40,12 @@ const ModifyUser = ({ useFetchInit }) => {
         </ModalBody>
         <ModalFooter>
           <div className='col-12'>
-            <button disabled={loadingRoles} type='submit' className='rightButtonAccept'>
+            <Button disabled={loadingRoles} type='submit' style={{ float: 'right' }} color='success'>
               Guardar
-            </button>
-            <button disabled={loadingRoles} type='button' className='leftButtonCancel' onClick={toggle}>
+            </Button>
+            <Button disabled={loadingRoles} type='button' style={{ float: 'left' }} onClick={toggle} color='danger'>
               Cancelar
-            </button>
+            </Button>
           </div>
         </ModalFooter>
       </form>

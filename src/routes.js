@@ -36,7 +36,7 @@ var routes = [
     icon: 'bi bi-laptop text-success',
     component: Chromebooks,
     layout: '/staff',
-    roles: ['superadmin', 'administrador', 'usuario']
+    roles: ['usuario', 'superadmin', 'administrador']
   },
   {
     path: '/score',

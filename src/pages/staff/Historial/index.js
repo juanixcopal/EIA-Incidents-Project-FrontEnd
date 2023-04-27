@@ -10,7 +10,7 @@ import { Search } from '@mui/icons-material'
 const Historial = () => {
   const mainHook = useFetchInitHistorial()
   const { FetchIncidencesByUser, selectedDate, handleDateChange, handleSubmit } = mainHook
-  const { incidences } = FetchIncidencesByUser
+  const { incidences, loadingIncidences } = FetchIncidencesByUser
 
   return (
     <>
@@ -32,7 +32,7 @@ const Historial = () => {
             >
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker value={selectedDate} onChange={handleDateChange} />
-                <Button variant='contained' onClick={handleSubmit} style={{ width: 'auto' }}>
+                <Button variant='contained' onClick={handleSubmit} style={{ width: 'auto' }} disabled={loadingIncidences}>
                   <Search />
                   Buscar Incidencias
                 </Button>

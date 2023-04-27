@@ -1,12 +1,21 @@
 import { ModalBody } from 'reactstrap'
 import { Table } from 'reactstrap'
+import { AuthContext } from '../../../../provider/global.provider'
+import { useContext } from 'react'
+import { IconButton } from '@mui/material'
+import ComputerIcon from '@mui/icons-material/Computer'
+import SubMainModal from './subModal/index.js'
 
 const ViewChromebooks = ({ useFetchInit }) => {
-  const { FetchChromebooksByArmario } = useFetchInit
+  const { FetchChromebooksByArmario, subToggle } = useFetchInit
   const { chromebooksByArmario } = FetchChromebooksByArmario
+
+  const { authData } = useContext(AuthContext)
+  const rol = authData.rol_usuario
 
   return (
     <>
+      <SubMainModal useFetchInit={useFetchInit} />
       <ModalBody>
         <h5>{`Chromebooks Operativas: ${chromebooksByArmario.filter(e => e.id_estado_chromebook === 1).length}`}</h5>
         <Table className='align-items-center table-flush' responsive>
@@ -16,6 +25,7 @@ const ViewChromebooks = ({ useFetchInit }) => {
               <th scope='col'>Prod ID</th>
               <th scope='col'>SN</th>
               <th scope='col'>Estado</th>
+              {rol === 'superadmin' ? <th scope='col'>Modificar</th> : <></>}
             </tr>
           </thead>
           <tbody>
@@ -52,6 +62,20 @@ const ViewChromebooks = ({ useFetchInit }) => {
                       }}
                     ></span>
                   </td>
+                  {rol === 'superadmin' ? (
+                    <td>
+                      <IconButton
+                        color='primary'
+                        aria-label='upload picture'
+                        component='label'
+                        onClick={() => subToggle(null, 'Modificar Chromebook', 'modify-chromebook', item)}
+                      >
+                        <ComputerIcon />
+                      </IconButton>
+                    </td>
+                  ) : (
+                    <></>
+                  )}
                 </tr>
               )
             })}

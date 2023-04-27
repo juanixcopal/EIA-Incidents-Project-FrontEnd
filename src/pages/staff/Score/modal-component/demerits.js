@@ -1,5 +1,4 @@
-import { ModalBody, ModalFooter } from 'reactstrap'
-import { Table } from 'reactstrap'
+import { ModalBody, ModalFooter, Table, Button } from 'reactstrap'
 
 const Demerits = ({ useFetchInit }) => {
   const { toggle, FetchDemerits, selectedDemerits, handleDemeritSelection, scoreToDeduct, Actions, dataModal } = useFetchInit
@@ -46,12 +45,12 @@ const Demerits = ({ useFetchInit }) => {
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>
-          <button disabled={loadingOperation} type='submit' className='rightButtonAccept'>
+          <Button disabled={loadingOperation} type='submit' style={{ float: 'right' }} color='success'>
             Demeritar
-          </button>
-          <button disabled={loadingOperation} className='leftButtonCancel' type='button' onClick={toggle}>
+          </Button>
+          <Button disabled={loadingOperation} type='button' style={{ float: 'left' }} onClick={toggle} color='danger'>
             Cancelar
-          </button>
+          </Button>
         </div>
       </ModalFooter>
     </form>

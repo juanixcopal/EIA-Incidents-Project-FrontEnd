@@ -82,9 +82,9 @@ const Tickets = () => {
       <Container className='mt--8' fluid>
         <Row>
           <div className='col-xl-12 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
-            {rol === 'superadmin' || rol === 'administrador' ? (
+            {rol === 'superadmin' ? (
               <div>
-                <Button onClick={() => toggle(null, 'Crear Chromebook', 'modify-item-view')}>
+                <Button onClick={() => toggle(null, 'Modificar Vista', 'modify-item-view')}>
                   <GradingIcon /> Administrar Vista
                 </Button>
               </div>

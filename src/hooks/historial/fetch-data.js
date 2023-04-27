@@ -3,9 +3,11 @@ import { getIncidencesByUser } from '../../data/historial/get.js'
 
 export const useFetchIncidencesByUser = ({ formattedDate }) => {
   const [incidences, setIncidences] = useState([])
+  const [loadingIncidences, setLoadingIncidences] = useState(false)
 
   useEffect(() => {
     ;(async () => {
+      setLoadingIncidences(true)
       await getIncidencesByUser({ formattedDate })
         .then(({ data }) => {
           setIncidences(data)
@@ -17,7 +19,8 @@ export const useFetchIncidencesByUser = ({ formattedDate }) => {
           }
           console.log('Error', response)
         })
+      setLoadingIncidences(false)
     })()
   }, [formattedDate])
-  return { incidences }
+  return { incidences, loadingIncidences }
 }

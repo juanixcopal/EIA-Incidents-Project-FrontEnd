@@ -2,7 +2,7 @@ import Header from '../../../components/header/Header'
 import { Container, Row, Card, CardHeader, Table, Media } from 'reactstrap'
 import { useFetchInitUsers } from '../../../hooks/users/index'
 import { Typography, IconButton } from '@mui/material'
-import PersonSearchIcon from '@mui/icons-material/PersonSearch'
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
 import MainModal from './modal-component'
 
 const Usuarios = () => {
@@ -47,7 +47,7 @@ const Usuarios = () => {
                             component='label'
                             onClick={() => toggle(null, 'Modificar rol de usuario', 'modify-user', item)}
                           >
-                            <PersonSearchIcon />
+                            <ManageAccountsIcon />
                           </IconButton>
                         </td>
                       </tr>

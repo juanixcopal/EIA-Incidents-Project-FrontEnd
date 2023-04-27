@@ -29,6 +29,10 @@ const Sidebar = props => {
     localStorage.clear()
     window.location.href = '/login'
   }
+
+  const redirectOsTicket = () => {
+    window.open('https://soporte.uneatlantico.es/scp/')
+  }
   const [collapseOpen, setCollapseOpen] = useState()
 
   const toggleCollapse = () => {
@@ -95,15 +99,15 @@ const Sidebar = props => {
               </Media>
             </DropdownToggle>
             <DropdownMenu className='dropdown-menu-arrow' right>
-              <DropdownItem divider />
-              <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
-                <i className='ni ni-user-run' />
-                <span onClick={logout}>Cerrar Sesión</span>
+              <DropdownItem href='#Redirect-OsTicket' onClick={redirectOsTicket}>
+                <i className='bi bi-ticket' />
+                <span>Ir a OsTicket</span>
               </DropdownItem>
-              {/* <DropdownItem href='#rene' onClick={e => e.preventDefault()}>
-                <i className='ni ni-check-bold' />
-                <span>Puntaje Actual: {score || 'Score'} pts</span>
-              </DropdownItem> */}
+              <DropdownItem divider />
+              <DropdownItem href='#Logout' onClick={logout}>
+                <i className='ni ni-user-run' />
+                <span>Cerrar Sesión</span>
+              </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

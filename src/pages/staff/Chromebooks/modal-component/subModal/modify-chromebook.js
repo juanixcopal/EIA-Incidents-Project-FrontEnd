@@ -1,43 +1,41 @@
-import { ModalBody, ModalFooter } from 'reactstrap'
+import { ModalBody, ModalFooter, Button } from 'reactstrap'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 import { useState } from 'react'
-import { Button } from 'reactstrap'
-
-const CreateChromebook = ({ useFetchInit }) => {
-  const { FetchCarritosChromebook, FetchEstadosChromebook, toggle, Actions, handleInputChange } = useFetchInit
-  const { carritos, loadingCarritos } = FetchCarritosChromebook
+const ModifyChromebook = ({ useFetchInit }) => {
+  const { dataSubModal, subToggle, handleInputChangeModify, FetchCarritosChromebook, FetchEstadosChromebook } = useFetchInit
+  const { id_estado_chromebook, numero_chromebook, prodid, sn, armario } = dataSubModal.subParams
   const { estadoChromebook } = FetchEstadosChromebook
-  const { createChromebook } = Actions
+  const { carritos } = FetchCarritosChromebook
 
-  const [id_Carrito, setId_Carrito] = useState('')
-  const [id_Estado_Chromebook, setId_Estado_Chromebook] = useState('')
+  const [id_Carrito, setId_Carrito] = useState(armario)
+  const [id_Estado_Chromebook, setId_Estado_Chromebook] = useState(id_estado_chromebook)
 
   const handleChangeCarrito = e => {
     setId_Carrito(e.target.value)
-    handleInputChange(e)
+    handleInputChangeModify(e)
   }
 
   const handleChangeEstadoChromebook = e => {
     setId_Estado_Chromebook(e.target.value)
-    handleInputChange(e)
+    handleInputChangeModify(e)
   }
-
   return (
-    <form onSubmit={createChromebook}>
+    <>
       <ModalBody>
         <div>
           <div className='form-group'>
             <label>Numero de Chromebook</label>
-            <input className='input-group form-control' type='number' name='numero_chromebook' onChange={handleInputChange} required />
+            <input className='input-group form-control' name='numero_chromebook' defaultValue={numero_chromebook} disabled />
           </div>
           <div className='form-group'>
             <label>Prod ID</label>
-            <input className='input-group form-control' type='text' name='prodid' onChange={handleInputChange} required />
+            <input className='input-group form-control' name='prodid' defaultValue={prodid} disabled />
           </div>
           <div className='form-group'>
             <label>SN</label>
-            <input className='input-group form-control' type='text' name='sn' onChange={handleInputChange} required />
+            <input className='input-group form-control' name='sn' defaultValue={sn} disabled />
           </div>
+
           <div className='form-group'>
             <FormControl fullWidth>
               <InputLabel>Armario de Chromebook</InputLabel>
@@ -53,6 +51,7 @@ const CreateChromebook = ({ useFetchInit }) => {
               </Select>
             </FormControl>
           </div>
+
           <div className='form-group'>
             <FormControl fullWidth>
               <InputLabel>Estado de la Chromebook</InputLabel>
@@ -68,20 +67,32 @@ const CreateChromebook = ({ useFetchInit }) => {
               </Select>
             </FormControl>
           </div>
+
+          {/* {id_Estado_Chromebook === 2 ? (
+            <>
+              <hr />
+              <div className='form-group'>
+                <label>Comentario</label>
+                <input className='input-group form-control' type='text' name='comentario' onChange={handleInputChangeModify} required />
+              </div>
+            </>
+          ) : (
+            <></>
+          )} */}
         </div>
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>
-          <Button disabled={loadingCarritos} type='submit' style={{ float: 'right' }} color='success'>
+          <Button disabled={true} type='submit' style={{ float: 'right' }} color='success'>
             Guardar
           </Button>
-          <Button disabled={loadingCarritos} type='button' style={{ float: 'left' }} onClick={toggle} color='danger'>
+          <Button disabled={false} type='button' style={{ float: 'left' }} onClick={subToggle} color='danger'>
             Cancelar
           </Button>
         </div>
       </ModalFooter>
-    </form>
+    </>
   )
 }
 
-export default CreateChromebook
+export default ModifyChromebook

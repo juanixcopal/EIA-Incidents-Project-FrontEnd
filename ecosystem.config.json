@@ -2,7 +2,13 @@
   "apps": [
     {
       "name": "Incidencias_UNEAT",
-      "script": "./src/index.js",
+      "script": "npm",
+      "args": "run start",
+      "cwd": "./src/index.js",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 3001
+      },
       "watch": true
     }
   ]

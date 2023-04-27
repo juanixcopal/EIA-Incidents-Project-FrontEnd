@@ -5,16 +5,25 @@ import {
   useFetchClosedTicketsFirstSemester,
   useFetchClosedTicketsSecondSemester,
   useFetchOpenTickets,
-  useFetchTypeIncidencesClosed
+  useFetchTypeIncidencesClosed,
+  useFetchPermissionPageDatosOsTicket
 } from './fetch-data'
 import { useActions } from './actions'
 
 export const useFetchTickets = () => {
   const [dataModal, setDataModal] = useState(defaultDataModal)
-  const [viewsEditing, setViewsEditing] = useState({})
 
-  const handleInputChange = e => {
-    setViewsEditing({ ...viewsEditing, [e.target.name]: e.target.value === 'on' })
+  const [checkedItems, setCheckedItems] = useState({})
+
+  const handleCheckboxChange = event => {
+    setCheckedItems({
+      ...checkedItems,
+      [event.target.name]: event.target.checked
+    })
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
   }
 
   const toggle = (_, title, component, params) => {
@@ -32,19 +41,20 @@ export const useFetchTickets = () => {
   const FetchClosedTicketsSecondSemester = useFetchClosedTicketsSecondSemester()
   const FetchOpenTickets = useFetchOpenTickets()
   const FetchTypeIncidencesClosed = useFetchTypeIncidencesClosed()
-
+  const FetchPermissionPageDatosOsTicket = useFetchPermissionPageDatosOsTicket()
   const Actions = useActions({})
 
   return {
     Actions,
     toggle,
     dataModal,
-    viewsEditing,
-    handleInputChange,
     FetchClosedTicketsCurrentMonth,
     FetchClosedTicketsFirstSemester,
     FetchClosedTicketsSecondSemester,
     FetchOpenTickets,
-    FetchTypeIncidencesClosed
+    FetchTypeIncidencesClosed,
+    FetchPermissionPageDatosOsTicket,
+    handleCheckboxChange,
+    handleSubmit
   }
 }

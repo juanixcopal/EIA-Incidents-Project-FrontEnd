@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { defaultDataModal, defaultData } from './default-data'
+import { defaultDataModal, defaultData, defaultDataSubModal } from './default-data'
 import { useFetchCarritosChromebook, useFetchEstadosChromebook, useFetchChromebooksByArmario } from './fetch-data'
 import { useActions } from './actions.js'
 
 export const useFetchInitChromebooks = () => {
   const [dataModal, setDataModal] = useState(defaultDataModal)
+  const [dataSubModal, setDataSubModal] = useState(defaultDataSubModal)
   const [data, setData] = useState(defaultData)
 
   const toggle = (_, title, component, params) => {
@@ -14,6 +15,16 @@ export const useFetchInitChromebooks = () => {
       title,
       component,
       params
+    })
+  }
+
+  const subToggle = (_, subTitle, subComponent, subParams) => {
+    setDataSubModal({
+      ...dataSubModal,
+      subOpen: !dataSubModal.subOpen,
+      subTitle,
+      subComponent,
+      subParams
     })
   }
 
@@ -28,7 +39,9 @@ export const useFetchInitChromebooks = () => {
 
   return {
     dataModal,
+    dataSubModal,
     toggle,
+    subToggle,
     FetchCarritosChromebook,
     FetchEstadosChromebook,
     FetchChromebooksByArmario,

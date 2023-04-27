@@ -61,7 +61,6 @@ const AuthProvider = ({ children }) => {
         permissionPageOsTicket
       }}
     >
-      {/* {console.log('Token decodificado', authData)} */}
       {children}
     </AuthContext.Provider>
   )

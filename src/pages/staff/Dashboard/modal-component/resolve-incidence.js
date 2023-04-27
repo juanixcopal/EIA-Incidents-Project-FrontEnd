@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ModalBody, ModalFooter } from 'reactstrap'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import { Button } from 'reactstrap'
 
 const ResolveIncidence = ({ useFetchInit }) => {
   const { dataModal, Actions, toggle, FetchStates, handleInputChange } = useFetchInit
@@ -48,12 +49,12 @@ const ResolveIncidence = ({ useFetchInit }) => {
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>
-          <button disabled={loadingOperation} type='submit' className='rightButtonAccept'>
+          <Button disabled={loadingOperation} type='submit' style={{ float: 'right' }} color='success'>
             Guardar
-          </button>
-          <button disabled={loadingOperation} type='button' className='leftButtonCancel' onClick={toggle}>
+          </Button>
+          <Button disabled={loadingOperation} type='button' style={{ float: 'left' }} onClick={toggle} color='danger'>
             Cancelar
-          </button>
+          </Button>
         </div>
       </ModalFooter>
     </form>

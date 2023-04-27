@@ -9,6 +9,10 @@ const UserNavbar = props => {
     localStorage.clear()
     window.location.href = '/login'
   }
+
+  const redirectOsTicket = () => {
+    window.open('https://soporte.uneatlantico.es/scp/')
+  }
   return (
     <>
       <Navbar className='navbar-top navbar-dark' expand='md' id='navbar-main'>
@@ -27,9 +31,14 @@ const UserNavbar = props => {
                 </Media>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu-arrow' right>
-                <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
+                <DropdownItem href='#Redirect-OsTicket' onClick={redirectOsTicket}>
+                  <i className='bi bi-ticket' />
+                  <span>Ir a OsTicket</span>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem href='#Logout' onClick={logout}>
                   <i className='ni ni-user-run' />
-                  <span onClick={logout}>Cerrar Sesión</span>
+                  <span>Cerrar Sesión</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Modal, ModalHeader } from 'reactstrap'
 import ResolveIncidence from './resolve-incidence'
 import '../../../../styles/modal/index.css'

@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { NavLink as NavLinkRRD, Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
+import { AuthContext } from '../../provider/global.provider'
 import Avatar from '../../images/userImage.jpg'
 import {
   Collapse,
@@ -20,11 +21,17 @@ import {
 } from 'reactstrap'
 
 const Sidebar = props => {
+  const { authData } = useContext(AuthContext)
   const username = localStorage.getItem('username')
+  const rol = authData.rol_usuario
 
   const logout = () => {
     localStorage.clear()
     window.location.href = '/login'
+  }
+
+  const redirectOsTicket = () => {
+    window.open('https://soporte.uneatlantico.es/scp/')
   }
   const [collapseOpen, setCollapseOpen] = useState()
 
@@ -36,7 +43,7 @@ const Sidebar = props => {
   }
   const createLinks = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === '/user') {
+      if (prop.layout === '/staff' && prop.roles.includes(rol)) {
         return (
           <NavItem key={key}>
             <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
@@ -45,18 +52,7 @@ const Sidebar = props => {
             </NavLink>
           </NavItem>
         )
-      }
-      // else if (props.layout === '/admin') {
-      //   return (
-      //     <NavItem key={key}>
-      //       <NavLink to={prop.layout + prop.path} tag={NavLinkRRD} onClick={closeCollapse} activeClassName='active'>
-      //         <i className={prop.icon} />
-      //         {prop.name}
-      //       </NavLink>
-      //     </NavItem>
-      //   )
-      // }
-      else {
+      } else {
         return null
       }
     })
@@ -103,10 +99,14 @@ const Sidebar = props => {
               </Media>
             </DropdownToggle>
             <DropdownMenu className='dropdown-menu-arrow' right>
+              <DropdownItem href='#Redirect-OsTicket' onClick={redirectOsTicket}>
+                <i className='bi bi-ticket' />
+                <span>Ir a OsTicket</span>
+              </DropdownItem>
               <DropdownItem divider />
-              <DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
+              <DropdownItem href='#Logout' onClick={logout}>
                 <i className='ni ni-user-run' />
-                <span onClick={logout}>Logout</span>
+                <span>Cerrar Sesión</span>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -143,6 +143,14 @@ const Sidebar = props => {
           <hr className='my-3' />
           {/* Heading */}
           {/* Navigation */}
+          <Nav className='mb-md-3' navbar>
+            <NavItem className='active-pro active'>
+              <NavLink href='#version'>
+                <i className='bi bi-info-circle' />
+                Version 0.9.10
+              </NavLink>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Container>
     </Navbar>

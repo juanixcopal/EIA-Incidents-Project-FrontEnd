@@ -23,7 +23,6 @@ export const useFetchReports = ({ sockets }) => {
   }, [])
 
   const receiveMessage = () => {
-    // console.log('RECEIVE MESSAGE')
     _getReports()
   }
 
@@ -37,25 +36,6 @@ export const useFetchReports = ({ sockets }) => {
   }, [])
 
   return { dataReports, _getReports }
-
-  // const [loadingReports, setLoadingReports] = useState(false)
-
-  // useEffect(() => {
-  //   ;(async () => {
-  //     setLoadingReports(true)
-  //     await getReports()
-  //       .then(({ data }) => {
-  //         setDataReports(data)
-  //       })
-  //       .catch(error => {
-  //         console.log('error', error)
-  //       })
-  //     setLoadingReports(false)
-  //   })()
-  //   // eslint-disable-next-line
-  // }, [])
-
-  // return { dataReports, loadingReports }
 }
 
 export const useFetchStates = () => {

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useLocation, Route, Switch, Redirect } from 'react-router-dom'
 import Navbar from '../navbar/UserNavbar.js'
 import Sidebar from '../sidebar/Sidebar.js'
 import routes from '../../routes.js'
+import { AuthContext } from '../../provider/global.provider.js'
 
 const User = props => {
+  const { authData } = useContext(AuthContext)
   const mainContent = React.useRef(null)
   const location = useLocation()
+  const rol = authData.rol_usuario
 
   useEffect(() => {
     document.documentElement.scrollTop = 0
@@ -15,8 +18,10 @@ const User = props => {
   }, [location])
 
   const getRoutes = routes => {
-    return routes.map((prop, key) => {
-      if (prop.layout === '/user') {
+    const authorizedRoutes = routes.filter(route => route.roles.includes(rol))
+
+    return authorizedRoutes.map((prop, key) => {
+      if (prop.layout === '/staff') {
         return <Route path={prop.layout + prop.path} component={prop.component} key={key} />
       } else {
         return null
@@ -39,7 +44,7 @@ const User = props => {
         {...props}
         routes={routes}
         logo={{
-          innerLink: '/user/dashboard',
+          innerLink: '/',
           imgSrc: require('../../images/logo2.PNG'),
           imgAlt: '...'
         }}
@@ -47,8 +52,8 @@ const User = props => {
       <div className='main-content' ref={mainContent}>
         <Navbar {...props} brandText={getBrandText(props.location.pathname)} />
         <Switch>
-          {getRoutes(routes)}
-          <Redirect from='*' to='/user/dashboard' />
+          {getRoutes([...routes])}
+          <Redirect from='/' to='/staff/dashboard' />
         </Switch>
       </div>
     </>

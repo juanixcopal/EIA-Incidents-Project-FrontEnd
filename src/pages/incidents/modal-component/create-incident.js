@@ -1,6 +1,5 @@
 import React from 'react'
-import { ModalBody, ModalFooter } from 'reactstrap'
-// import { useFetchInitIncidents } from '../../../hooks/incidents/index'
+import { ModalBody, ModalFooter, Button } from 'reactstrap'
 
 const CreateIncidence = ({ useFetchInit }) => {
   const { dataIncident, toggle, handleInputChangeIncident, Actions, dataModal } = useFetchInit
@@ -30,45 +29,14 @@ const CreateIncidence = ({ useFetchInit }) => {
         </div>
       </ModalBody>
 
-      <div className='col-12'>
-        {/* {indicendesForFloor.map(item => {
-          const { descripcion, id_estado_incidencia, titulo } = item
-          return (
-            <div key={id_estado_incidencia}>
-              <hr />
-              <div
-                className='md-12 row '
-                style={{
-                  borderStyle: 'dotted',
-                  borderWidth: '2px',
-                  borderRadius: '20px',
-                  margin: '10px',
-                  borderColor: '#a7a7a7',
-                  padding: '5px'
-                }}
-              >
-                <div className='md-6' style={{ display: 'flex', color: '#a7a7a7' }}>
-                  <h6>Reporte: </h6>
-                  <p>{titulo}</p>
-                </div>
-                <div className='md-6' style={{ display: 'flex', color: '#a7a7a7' }}>
-                  <h6>Descripción: </h6>
-                  <p>{descripcion}</p>
-                </div>
-              </div>
-            </div>
-          )
-        })} */}
-      </div>
-
       <ModalFooter>
         <div className='col-12'>
-          <button disabled={loadingOperation} type='submit' className='rightButtonAccept'>
+          <Button disabled={loadingOperation} type='submit' style={{ float: 'right' }} color='success'>
             Crear
-          </button>
-          <button disabled={loadingOperation} className='leftButtonCancel' type='button' onClick={toggle}>
+          </Button>
+          <Button disabled={loadingOperation} type='button' style={{ float: 'left' }} onClick={toggle} color='danger'>
             Cancelar
-          </button>
+          </Button>
         </div>
       </ModalFooter>
     </form>

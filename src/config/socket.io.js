@@ -1,7 +1,6 @@
 import io from 'socket.io-client'
 
-const URL_BASE = 'http://172.27.20.128:4000'
-const incidencesSocket = io(`${URL_BASE}/incidences`)
+const incidencesSocket = io(`${process.env.REACT_APP_API_BASE_SOCKET}/incidences`)
 
 const sockets = {
   incidencesSocket

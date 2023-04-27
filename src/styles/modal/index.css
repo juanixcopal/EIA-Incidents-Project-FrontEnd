@@ -3,43 +3,6 @@ svg {
   height: 100%;
 }
 
-.rightButtonAccept {
-  float: right;
-  padding: 10px 30px;
-  border-radius: 100px;
-  color: #fff;
-  border: none;
-  background: #8bc34a;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s ease all;
-}
-
-.rightButtonAccept:hover {
-  background: #689f38;
-}
-
-.leftButtonCancel {
-  float: left;
-  padding: 10px 30px;
-  border-radius: 100px;
-  color: #fff;
-  border: none;
-  background: #ca3433;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s ease all;
-}
-
-.leftButtonCancel:hover {
-  background: #8d021f;
-}
-
-.modifyIncidenceBtn {
-  float: right;
-  color: #3677ff !important;
-}
-
 .close {
   border: none !important;
   height: 25px;
@@ -62,15 +25,6 @@ svg {
   padding-top: 5px !important;
 }
 
-.Reports {
-  display: flex !important;
-  color: #a7a7a7 !important;
-}
-
-.Report {
-  color: #a7a7a7 !important;
-}
-
-.Description {
-  color: #a7a7a7 !important;
+.modal-footer {
+  padding: 0.25rem !important;
 }

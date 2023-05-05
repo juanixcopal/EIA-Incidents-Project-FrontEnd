@@ -42,7 +42,7 @@ const Incidents = () => {
       <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={String(id_floor)}>
           <Box>
-            <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })} aria-label='lab API tabs example'>
+            <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })}>
               {floors.map(({ id_planta, planta }) => {
                 return (
                   <Tab

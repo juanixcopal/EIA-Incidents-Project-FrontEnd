@@ -12,6 +12,10 @@ const Tickets = () => {
   const { authData, verItemTermometro, verTablaMesActual, verTablaPrimerSemestre, verTablaSegundoSemestre, verGrafica } = useContext(AuthContext)
   const rol = authData.rol_usuario
 
+  const fecha = new Date()
+
+  const mesActual = fecha.toLocaleString('default', { month: 'long' }).replace(/^\w/, c => c.toUpperCase())
+
   const mainHook = useFetchTickets()
   const {
     FetchClosedTicketsCurrentMonth,
@@ -85,7 +89,7 @@ const Tickets = () => {
             {rol === 'superadmin' ? (
               <div>
                 <Button onClick={() => toggle(null, 'Modificar Vista', 'modify-item-view')}>
-                  <GradingIcon /> Administrar Vista
+                  <GradingIcon /> Administrar vista
                 </Button>
               </div>
             ) : (
@@ -97,7 +101,7 @@ const Tickets = () => {
             <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
               <Card className='shadow'>
                 <CardHeader>
-                  <h3 className='mb-0'>Termometro Tickets Abiertos</h3>
+                  <h3 className='mb-0'>Termometro tickets abiertos</h3>
                 </CardHeader>
                 <CardBody>
                   <div className='App'>
@@ -118,13 +122,13 @@ const Tickets = () => {
             <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
               <Card className='shadow'>
                 <CardHeader>
-                  <h3 className='mb-0'>Tickets Cerrados Mes Actual</h3>
+                  <h3 className='mb-0'>Tickets cerrados del mes: {mesActual}</h3>
                 </CardHeader>
                 <Table className='align-items-center table-flush' responsive>
                   <thead className='thead-light'>
                     <tr>
                       <th scope='col'>Agente</th>
-                      <th scope='col'>Tickets Cerrados</th>
+                      <th scope='col'>Tickets cerrados</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -139,7 +143,7 @@ const Tickets = () => {
                               {lastname}
                             </span>
                           </th>
-                          <td>{mes_actual} Tickets Cerrados</td>
+                          <td>{mes_actual} Tickets cerrados</td>
                         </tr>
                       )
                     })}
@@ -155,13 +159,13 @@ const Tickets = () => {
             <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
               <Card className='shadow'>
                 <CardHeader>
-                  <h3 className='mb-0'>Tickets Cerrados Primer Semestre</h3>
+                  <h3 className='mb-0'>Tickets cerrados primer semestre</h3>
                 </CardHeader>
                 <Table className='align-items-center table-flush' responsive>
                   <thead className='thead-light'>
                     <tr>
                       <th scope='col'>Agente</th>
-                      <th scope='col'>Tickets Cerrados</th>
+                      <th scope='col'>Tickets cerrados</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -176,7 +180,7 @@ const Tickets = () => {
                               {lastname}
                             </span>
                           </th>
-                          <td>{primer_cuatri} Tickets Cerrados</td>
+                          <td>{primer_cuatri} Tickets cerrados</td>
                         </tr>
                       )
                     })}
@@ -192,13 +196,13 @@ const Tickets = () => {
             <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
               <Card className='shadow'>
                 <CardHeader>
-                  <h3 className='mb-0'>Tickets Cerrados Segundo Semestre</h3>
+                  <h3 className='mb-0'>Tickets cerrados segundo semestre</h3>
                 </CardHeader>
                 <Table className='align-items-center table-flush' responsive>
                   <thead className='thead-light'>
                     <tr>
                       <th scope='col'>Agente</th>
-                      <th scope='col'>Tickets Cerrados</th>
+                      <th scope='col'>Tickets cerrados</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -213,7 +217,7 @@ const Tickets = () => {
                               {lastname}
                             </span>
                           </th>
-                          <td>{segundo_cuatri} Tickets Cerrados</td>
+                          <td>{segundo_cuatri} Tickets cerrados</td>
                         </tr>
                       )
                     })}
@@ -229,7 +233,7 @@ const Tickets = () => {
             <div className='col-xl-8 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
               <Card className='shadow'>
                 <CardHeader>
-                  <h3 className='mb-0'>Estadísticas de incidencias</h3>
+                  <h3 className='mb-0'>Estadísticas de incidencias del mes: {mesActual}</h3>
                 </CardHeader>
                 <CardBody>
                   <Pie data={pieChartData} />

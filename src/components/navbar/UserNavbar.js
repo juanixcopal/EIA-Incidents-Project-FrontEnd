@@ -3,7 +3,7 @@ import Avatar from '../../images/userImage.jpg'
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Navbar, Nav, Container, Media } from 'reactstrap'
 
 const UserNavbar = props => {
-  const username = localStorage.getItem('username')
+  const fullName = localStorage.getItem('fullName')
 
   const logout = () => {
     localStorage.clear()
@@ -26,7 +26,7 @@ const UserNavbar = props => {
                     <img alt='...' src={Avatar} />
                   </span>
                   <Media className='ml-2 d-lg-block'>
-                    <span className='mb-0 text-sm font-weight-bold'>{username || 'User'}</span>
+                    <span className='mb-0 text-sm font-weight-bold'>{fullName || 'User'}</span>
                   </Media>
                 </Media>
               </DropdownToggle>

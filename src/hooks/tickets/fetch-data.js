@@ -4,7 +4,6 @@ import {
   getClosedTicketsFirstSemester,
   getClosedTicketsSecondSemester,
   getOpenTickets,
-  getTypeIncidencesClosed,
   getpermissionPageDatosOsTicket
 } from '../../data/tickets/get.js'
 
@@ -120,33 +119,6 @@ export const useFetchOpenTickets = () => {
   }, [])
 
   return { openTickets, totalTickets }
-}
-
-export const useFetchTypeIncidencesClosed = () => {
-  const [typeIncidencesClosed, setTypeIncidencesClosed] = useState([])
-
-  const _getTypeIncidencesClosed = async () => {
-    await getTypeIncidencesClosed()
-      .then(({ data }) => {
-        setTypeIncidencesClosed(data[0])
-      })
-      .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
-        console.log('Error', response)
-      })
-  }
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      _getTypeIncidencesClosed()
-    }, 120000)
-    _getTypeIncidencesClosed()
-    return () => clearInterval(timer)
-  }, [])
-  return { typeIncidencesClosed }
 }
 
 export const useFetchPermissionPageDatosOsTicket = () => {

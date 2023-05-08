@@ -23,9 +23,6 @@ const AuthProvider = ({ children }) => {
   const itemTablaSegundoSemestre = permissionPageOsTicket.find(item => item.nombre_item === 'segundo_semestre')
   const verTablaSegundoSemestre = itemTablaSegundoSemestre ? itemTablaSegundoSemestre.ver_item : null
 
-  const itemGrafica = permissionPageOsTicket.find(item => item.nombre_item === 'grafica')
-  const verGrafica = itemGrafica ? itemGrafica.ver_item : null
-
   const [authData, setAuthData] = useState(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -57,7 +54,6 @@ const AuthProvider = ({ children }) => {
         verTablaMesActual,
         verTablaPrimerSemestre,
         verTablaSegundoSemestre,
-        verGrafica,
         permissionPageOsTicket
       }}
     >

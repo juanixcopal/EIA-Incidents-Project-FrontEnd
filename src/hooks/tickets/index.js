@@ -5,7 +5,6 @@ import {
   useFetchClosedTicketsFirstSemester,
   useFetchClosedTicketsSecondSemester,
   useFetchOpenTickets,
-  useFetchTypeIncidencesClosed,
   useFetchPermissionPageDatosOsTicket
 } from './fetch-data'
 import { useActions } from './actions'
@@ -40,7 +39,6 @@ export const useFetchTickets = () => {
   const FetchClosedTicketsFirstSemester = useFetchClosedTicketsFirstSemester()
   const FetchClosedTicketsSecondSemester = useFetchClosedTicketsSecondSemester()
   const FetchOpenTickets = useFetchOpenTickets()
-  const FetchTypeIncidencesClosed = useFetchTypeIncidencesClosed()
   const FetchPermissionPageDatosOsTicket = useFetchPermissionPageDatosOsTicket()
   const Actions = useActions({})
 
@@ -52,7 +50,6 @@ export const useFetchTickets = () => {
     FetchClosedTicketsFirstSemester,
     FetchClosedTicketsSecondSemester,
     FetchOpenTickets,
-    FetchTypeIncidencesClosed,
     FetchPermissionPageDatosOsTicket,
     handleCheckboxChange,
     handleSubmit

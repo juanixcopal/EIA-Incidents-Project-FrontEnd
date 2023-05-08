@@ -5,11 +5,10 @@ import Header from '../../../components/header/Header'
 import GradingIcon from '@mui/icons-material/Grading'
 import '../../../styles/tickets/index.css'
 import MainModal from './modal-component'
-import { Pie } from 'react-chartjs-2'
 import { useContext } from 'react'
 
 const Tickets = () => {
-  const { authData, verItemTermometro, verTablaMesActual, verTablaPrimerSemestre, verTablaSegundoSemestre, verGrafica } = useContext(AuthContext)
+  const { authData, verItemTermometro, verTablaMesActual, verTablaPrimerSemestre, verTablaSegundoSemestre } = useContext(AuthContext)
   const rol = authData.rol_usuario
 
   const fecha = new Date()
@@ -17,20 +16,12 @@ const Tickets = () => {
   const mesActual = fecha.toLocaleString('default', { month: 'long' }).replace(/^\w/, c => c.toUpperCase())
 
   const mainHook = useFetchTickets()
-  const {
-    FetchClosedTicketsCurrentMonth,
-    FetchClosedTicketsFirstSemester,
-    FetchClosedTicketsSecondSemester,
-    FetchOpenTickets,
-    FetchTypeIncidencesClosed,
-    toggle
-  } = mainHook
+  const { FetchClosedTicketsCurrentMonth, FetchClosedTicketsFirstSemester, FetchClosedTicketsSecondSemester, FetchOpenTickets, toggle } = mainHook
 
   const { closedMonth } = FetchClosedTicketsCurrentMonth
   const { closedFirstSemester } = FetchClosedTicketsFirstSemester
   const { closedSecondSemester } = FetchClosedTicketsSecondSemester
   const { totalTickets } = FetchOpenTickets
-  const { typeIncidencesClosed } = FetchTypeIncidencesClosed
 
   const mercuryHeight = () => {
     if (totalTickets === 0) {
@@ -53,30 +44,6 @@ const Tickets = () => {
       const hue = (1 - newOpenTickets / 100) * 120
       return `hsl(${hue}, 100%, 50%)`
     }
-  }
-
-  const pieChartData = {
-    labels: Object.keys(typeIncidencesClosed),
-    datasets: [
-      {
-        data: Object.values(typeIncidencesClosed),
-        backgroundColor: [
-          '#A2DED0',
-          '#36A2EB',
-          '#FFCE56',
-          '#DAB7F8',
-          '#D8F8B7',
-          '#C9CBCF',
-          '#DBAFAB',
-          '#3B3E6F',
-          '#EECBAD',
-          '#708D81',
-          '#FF6384',
-          '#F8DDB7',
-          '#bb73Fa'
-        ]
-      }
-    ]
   }
 
   return (
@@ -223,21 +190,6 @@ const Tickets = () => {
                     })}
                   </tbody>
                 </Table>
-              </Card>
-            </div>
-          ) : (
-            <></>
-          )}
-
-          {verGrafica === 1 ? (
-            <div className='col-xl-8 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
-              <Card className='shadow'>
-                <CardHeader>
-                  <h3 className='mb-0'>Estadísticas de incidencias del mes: {mesActual}</h3>
-                </CardHeader>
-                <CardBody>
-                  <Pie data={pieChartData} />
-                </CardBody>
               </Card>
             </div>
           ) : (

@@ -61,7 +61,7 @@ var routes = [
     icon: 'bi bi-graph-up  text-primary',
     component: Statistics,
     layout: '/staff',
-    roles: ['superadmin']
+    roles: ['superadmin', 'usuario', 'administrador']
   }
 
   //    text-primary

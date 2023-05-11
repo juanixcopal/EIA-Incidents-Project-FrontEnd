@@ -1,27 +1,34 @@
+import { useContext } from 'react'
 import { Container, Card, CardHeader, CardBody, Row, Table, Button } from 'reactstrap'
+import GradingIcon from '@mui/icons-material/Grading'
+
 import { useFetchTickets } from '../../../hooks/tickets/index'
 import { AuthContext } from '../../../provider/global.provider'
 import Header from '../../../components/header/Header'
-import GradingIcon from '@mui/icons-material/Grading'
-import '../../../styles/tickets/index.css'
 import MainModal from './modal-component'
-import { useContext } from 'react'
+
+import '../../../styles/tickets/index.css'
 
 const Tickets = () => {
-  const { authData, verItemTermometro, verTablaMesActual, verTablaPrimerSemestre, verTablaSegundoSemestre } = useContext(AuthContext)
+  const { authData, verItemTermometro, verTablaMesActual, verTablaPrimerSemestre, verTablaSegundoSemestre, verTablaSemanal } = useContext(AuthContext)
   const rol = authData.rol_usuario
 
-  const fecha = new Date()
-
-  const mesActual = fecha.toLocaleString('default', { month: 'long' }).replace(/^\w/, c => c.toUpperCase())
-
   const mainHook = useFetchTickets()
-  const { FetchClosedTicketsCurrentMonth, FetchClosedTicketsFirstSemester, FetchClosedTicketsSecondSemester, FetchOpenTickets, toggle } = mainHook
+
+  const {
+    FetchClosedTicketsCurrentMonth,
+    FetchClosedTicketsFirstSemester,
+    FetchClosedTicketsSecondSemester,
+    FetchOpenTickets,
+    toggle,
+    FetchClosedTicketsByWeek
+  } = mainHook
 
   const { closedMonth } = FetchClosedTicketsCurrentMonth
   const { closedFirstSemester } = FetchClosedTicketsFirstSemester
   const { closedSecondSemester } = FetchClosedTicketsSecondSemester
   const { totalTickets } = FetchOpenTickets
+  const { closedWeek } = FetchClosedTicketsByWeek
 
   const mercuryHeight = () => {
     if (totalTickets === 0) {
@@ -45,6 +52,9 @@ const Tickets = () => {
       return `hsl(${hue}, 100%, 50%)`
     }
   }
+
+  const fecha = new Date()
+  const mesActual = fecha.toLocaleString('default', { month: 'long' }).replace(/^\w/, c => c.toUpperCase())
 
   return (
     <>
@@ -111,6 +121,59 @@ const Tickets = () => {
                             </span>
                           </th>
                           <td>{mes_actual} Tickets cerrados</td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </Table>
+              </Card>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {verTablaSemanal === 1 ? (
+            <div className='col-xl-4 col-md-12 col-sm-12' style={{ paddingBottom: '40px' }}>
+              <Card className='shadow'>
+                <CardHeader>
+                  <h3 className='mb-0'>Tickets cerrados semana actual</h3>
+                </CardHeader>
+                <Table className='align-items-center table-flush' responsive>
+                  <thead className='thead-light'>
+                    <tr>
+                      <th scope='col'>Agente</th>
+                      <th scope='col'>Tickets cerrados</th>
+                      {/* <th scope='col'>Acciones</th> */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {closedWeek.map(item => {
+                      const { firstname, lastname, semana_actual, staff_id } = item
+
+                      return (
+                        <tr
+                          key={staff_id}
+                          onClick={() => toggle(null, 'Tickets Cerrados por el usuario', 'view-closed-ticket-by-staff', item)}
+                          className='ticket-by-staff'
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <th scope='row'>
+                            <span className='mb-0 text-sm'>
+                              {firstname}
+                              {lastname}
+                            </span>
+                          </th>
+                          <td>{semana_actual} Tickets cerrados</td>
+                          {/* <td>
+                            <IconButton
+                              color='primary'
+                              aria-label='upload picture'
+                              component='label'
+                              onClick={() => toggle(null, 'Tickets Cerrados por el usuario', 'view-closed-ticket-by-staff', item)}
+                            >
+                              <PersonSearchIcon />
+                            </IconButton>
+                          </td> */}
                         </tr>
                       )
                     })}

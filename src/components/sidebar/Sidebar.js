@@ -147,7 +147,7 @@ const Sidebar = props => {
             <NavItem className='active-pro active'>
               <NavLink href='#version'>
                 <i className='bi bi-info-circle' />
-                Version 0.9.10
+                Version 0.10.11 Beta
               </NavLink>
             </NavItem>
           </Nav>

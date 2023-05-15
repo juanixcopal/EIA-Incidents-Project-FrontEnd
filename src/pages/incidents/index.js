@@ -39,7 +39,7 @@ const Incidents = () => {
 
       <MainModal useFetchInit={mainHook} />
 
-      <Box sx={{ width: '100%', typography: 'body1' }}>
+      <Box sx={{ width: '100%' }}>
         <TabContext value={String(id_floor)}>
           <Box>
             <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })}>
@@ -73,7 +73,7 @@ const Incidents = () => {
                         />
 
                         <CardContent>
-                          <Typography>
+                          <Typography variant='h6'>
                             {tipo_aula} {aula}
                           </Typography>
                         </CardContent>

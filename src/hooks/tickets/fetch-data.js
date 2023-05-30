@@ -4,8 +4,9 @@ import {
   getClosedTicketsFirstSemester,
   getClosedTicketsSecondSemester,
   getOpenTickets,
-  getTypeIncidencesClosed,
-  getpermissionPageDatosOsTicket
+  getpermissionPageDatosOsTicket,
+  getClosedTicketsByWeek,
+  getDataTicketByStaff
 } from '../../data/tickets/get.js'
 
 export const useFetchClosedTicketsCurrentMonth = () => {
@@ -122,33 +123,6 @@ export const useFetchOpenTickets = () => {
   return { openTickets, totalTickets }
 }
 
-export const useFetchTypeIncidencesClosed = () => {
-  const [typeIncidencesClosed, setTypeIncidencesClosed] = useState([])
-
-  const _getTypeIncidencesClosed = async () => {
-    await getTypeIncidencesClosed()
-      .then(({ data }) => {
-        setTypeIncidencesClosed(data[0])
-      })
-      .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
-        console.log('Error', response)
-      })
-  }
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      _getTypeIncidencesClosed()
-    }, 120000)
-    _getTypeIncidencesClosed()
-    return () => clearInterval(timer)
-  }, [])
-  return { typeIncidencesClosed }
-}
-
 export const useFetchPermissionPageDatosOsTicket = () => {
   const [permissionPageOsTicket, setPermissionPageOsTicket] = useState([])
   const [loadingPermission, setLoadingPermission] = useState(false)
@@ -167,4 +141,54 @@ export const useFetchPermissionPageDatosOsTicket = () => {
     })()
   }, [])
   return { permissionPageOsTicket, loadingPermission }
+}
+
+export const useFetchClosedTicketsByWeek = ({ weekly }) => {
+  const [closedWeek, setClosedWeek] = useState([])
+
+  const _getClosedTicketsByWeek = async () => {
+    await getClosedTicketsByWeek({ weekly })
+      .then(({ data }) => {
+        setClosedWeek(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error', response)
+      })
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      _getClosedTicketsByWeek()
+    }, 120000)
+    _getClosedTicketsByWeek()
+    return () => clearInterval(timer)
+  }, [])
+
+  return { closedWeek }
+}
+
+export const useFetchDataTicketsByStaff = ({ dataModal, weekly }) => {
+  const [dataTicketByStaff, setDataTicketByStaff] = useState([])
+
+  const _getDataTicketByStaff = async () => {
+    await getDataTicketByStaff({ dataModal, weekly })
+      .then(({ data }) => {
+        setDataTicketByStaff(data)
+      })
+      .catch(error => {
+        console.log('Error', error)
+      })
+  }
+
+  useEffect(() => {
+    if (dataModal.params?.staff_id) {
+      _getDataTicketByStaff()
+    }
+  }, [dataModal.params])
+
+  return { dataTicketByStaff }
 }

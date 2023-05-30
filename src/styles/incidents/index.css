@@ -1,13 +1,17 @@
 /*Tab Button*/
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+.Mui-selected {
   color: #e6e6e6 !important;
   border-radius: 50px !important;
-  background-color: #797979;
+  background-color: #797979 !important;
   padding-left: 25px !important;
   padding-right: 25px !important;
 }
 
-.css-heg063-MuiTabs-flexContainer {
+.MuiTabs-indicator {
+  width: 0 !important;
+}
+
+.MuiTabs-flexContainer {
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
   display: flex !important;
@@ -16,18 +20,13 @@
   width: max-content !important;
 }
 
-.css-1aquho2-MuiTabs-indicator {
-  width: 0 !important;
-}
-
-/*MODIFICAR TAMAÑO CUANDO ES CELULAR*/
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  color: #424242 !important;
+.MuiTabs-root {
+  /* color: #424242 !important; */
   padding: 12px 18px !important;
 }
 
 @media screen and (max-width: 390px) {
-  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  .MuiButtonBase-root {
     width: 80px !important;
   }
 
@@ -53,15 +52,63 @@
   }
 }
 
+/*
+.css-heg063-MuiTabs-flexContainer {
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  background-color: #c5c5c5 !important;
+  border-radius: 50px !important;
+  width: max-content !important;
+}
+
+
+.css-1aquho2-MuiTabs-indicator {
+  width: 0 !important;
+} */
+
+/*MODIFICAR TAMAÑO CUANDO ES CELULAR*/
+/* .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  color: #424242 !important;
+  padding: 12px 18px !important;
+} */
+/* 
+@media screen and (max-width: 390px) {
+  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    width: 80px !important;
+  }
+
+  .logoUneat {
+    height: 40px !important;
+  }
+
+  .Title-Content {
+    padding-top: 30px !important;
+  }
+
+  .Title {
+    font-size: 20px !important;
+    width: 100px !important;
+  }
+
+  .Button-Content {
+    padding-top: 0 !important;
+  }
+
+  .Button-Login {
+    font-size: 10px !important;
+  }
+} */
+
 /*Hover*/
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root:hover {
+/* .css-1h9z7r5-MuiButtonBase-root-MuiTab-root:hover {
   background-color: #5c5c5c;
   border-radius: 50px;
 }
 
 .css-1ujnqem-MuiTabs-root {
   padding: 6vh 0 0 0;
-}
+} */
 
 /*-------------------------------------------*/
 
@@ -135,12 +182,12 @@ body {
   height: 15px;
 }
 
-.css-ahj2mt-MuiTypography-root {
+/* .css-ahj2mt-MuiTypography-root {
   font-family: sans-serif !important;
   font-size: 1.4rem !important;
   line-height: 1.334 !important;
   letter-spacing: 0em !important;
-}
+} */
 
 .Content-Cards {
   padding-top: 20px;
@@ -157,15 +204,21 @@ body {
 }
 
 /*-------------------------*/
-.css-106c1u2-MuiBadge-badge {
+/* .css-106c1u2-MuiBadge-badge {
   right: -7px !important;
   top: -4px !important;
+}
+ */
+
+.Cards {
+  box-shadow: 15px 15px 15px rgb(0 0 0 / 15%) !important;
 }
 
 .navbar-vertical.navbar-expand-md .navbar-brand-img {
   max-height: 3rem !important;
 }
 
-.Cards {
-  box-shadow: 15px 15px 15px rgb(0 0 0 / 15%) !important;
+.MuiBadge-badge {
+  right: -7px !important;
+  top: -4px !important;
 }

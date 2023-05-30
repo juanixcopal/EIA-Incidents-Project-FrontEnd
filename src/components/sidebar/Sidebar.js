@@ -22,7 +22,7 @@ import {
 
 const Sidebar = props => {
   const { authData } = useContext(AuthContext)
-  const username = localStorage.getItem('username')
+  const fullName = localStorage.getItem('fullName')
   const rol = authData.rol_usuario
 
   const logout = () => {
@@ -94,7 +94,7 @@ const Sidebar = props => {
                   <img alt='...' src={Avatar} />
                 </span>
                 <Media className='ml-2 d-lg-block'>
-                  <span className='mb-0 text-sm font-weight-bold'>{username || 'User'}</span>
+                  <span className='mb-0 text-sm font-weight-bold'>{fullName || 'User'}</span>
                 </Media>
               </Media>
             </DropdownToggle>
@@ -147,7 +147,7 @@ const Sidebar = props => {
             <NavItem className='active-pro active'>
               <NavLink href='#version'>
                 <i className='bi bi-info-circle' />
-                Version 0.9.10
+                Version 0.10.11 Beta
               </NavLink>
             </NavItem>
           </Nav>

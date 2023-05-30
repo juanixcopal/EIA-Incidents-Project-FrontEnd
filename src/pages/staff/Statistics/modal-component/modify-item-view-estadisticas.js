@@ -1,7 +1,7 @@
 import { ModalBody, ModalFooter, Table, Button } from 'reactstrap'
-const ModifyItemView = ({ useFetchInit }) => {
-  const { FetchPermissionPageDatosOsTicket, handleCheckboxChange, handleSubmit, toggle } = useFetchInit
-  const { permissionPageOsTicket, loadingPermission } = FetchPermissionPageDatosOsTicket
+const ModifyItemViewEstadisticas = ({ useFetchInit }) => {
+  const { FetchPermissionPageEstadisticas, handleCheckboxChange, handleSubmitItemPage, toggle } = useFetchInit
+  const { permissionPageEstadistica, loadingPermission } = FetchPermissionPageEstadisticas
 
   return (
     <>
@@ -14,7 +14,7 @@ const ModifyItemView = ({ useFetchInit }) => {
             </tr>
           </thead>
           <tbody>
-            {permissionPageOsTicket.map(item => {
+            {permissionPageEstadistica.map(item => {
               const { ver_item, id_item_pagina, label } = item
               return (
                 <tr key={id_item_pagina}>
@@ -32,7 +32,7 @@ const ModifyItemView = ({ useFetchInit }) => {
       </ModalBody>
       <ModalFooter>
         <div className='col-12'>
-          <Button onClick={handleSubmit}>Enviar</Button>
+          <Button onClick={handleSubmitItemPage}>Enviar</Button>
           <Button disabled={loadingPermission} type='submit' style={{ float: 'right' }} color='success'>
             Guardar
           </Button>
@@ -45,4 +45,4 @@ const ModifyItemView = ({ useFetchInit }) => {
   )
 }
 
-export default ModifyItemView
+export default ModifyItemViewEstadisticas

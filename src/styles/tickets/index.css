@@ -66,9 +66,12 @@ p {
   /* box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25), 0px 0px 3px 1px rgba(0, 0, 0, 0.1); */
   transition: height 0.5s ease-out;
   z-index: 1;
-
 }
 
 p {
   font-size: 20px;
+}
+
+.ticket-by-staff:hover {
+  background-color: #f6f9fc;
 }

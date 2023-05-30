@@ -5,15 +5,22 @@ import {
   useFetchClosedTicketsFirstSemester,
   useFetchClosedTicketsSecondSemester,
   useFetchOpenTickets,
-  useFetchTypeIncidencesClosed,
-  useFetchPermissionPageDatosOsTicket
+  useFetchPermissionPageDatosOsTicket,
+  useFetchClosedTicketsByWeek,
+  useFetchDataTicketsByStaff
 } from './fetch-data'
 import { useActions } from './actions'
 
 export const useFetchTickets = () => {
   const [dataModal, setDataModal] = useState(defaultDataModal)
-
   const [checkedItems, setCheckedItems] = useState({})
+
+  const now = new Date()
+  const onejan = new Date(now.getFullYear(), 0, 1)
+  const week = Math.ceil(((now - onejan) / 86400000 + onejan.getDay() + 1) / 7)
+  const year = now.getFullYear()
+  const weekString = week < 10 ? '0' + week : week.toString()
+  const weekly = year.toString() + weekString
 
   const handleCheckboxChange = event => {
     setCheckedItems({
@@ -40,8 +47,9 @@ export const useFetchTickets = () => {
   const FetchClosedTicketsFirstSemester = useFetchClosedTicketsFirstSemester()
   const FetchClosedTicketsSecondSemester = useFetchClosedTicketsSecondSemester()
   const FetchOpenTickets = useFetchOpenTickets()
-  const FetchTypeIncidencesClosed = useFetchTypeIncidencesClosed()
   const FetchPermissionPageDatosOsTicket = useFetchPermissionPageDatosOsTicket()
+  const FetchClosedTicketsByWeek = useFetchClosedTicketsByWeek({ weekly })
+  const FetchDataTicketsByStaff = useFetchDataTicketsByStaff({ dataModal, weekly })
   const Actions = useActions({})
 
   return {
@@ -52,9 +60,10 @@ export const useFetchTickets = () => {
     FetchClosedTicketsFirstSemester,
     FetchClosedTicketsSecondSemester,
     FetchOpenTickets,
-    FetchTypeIncidencesClosed,
     FetchPermissionPageDatosOsTicket,
     handleCheckboxChange,
-    handleSubmit
+    handleSubmit,
+    FetchClosedTicketsByWeek,
+    FetchDataTicketsByStaff
   }
 }

@@ -4,6 +4,7 @@ import Tickets from './pages/staff/Tickets/index.js'
 import Chromebooks from './pages/staff/Chromebooks/index.js'
 import Score from './pages/staff/Score/index.js'
 import Usuarios from './pages/staff/Usuarios/index.js'
+import Statistics from './pages/staff/Statistics/index.js'
 
 var routes = [
   {
@@ -53,6 +54,14 @@ var routes = [
     component: Usuarios,
     layout: '/staff',
     roles: ['superadmin']
+  },
+  {
+    path: '/estadisticas',
+    name: 'Estadísticas',
+    icon: 'bi bi-graph-up  text-primary',
+    component: Statistics,
+    layout: '/staff',
+    roles: ['superadmin', 'usuario', 'administrador']
   }
 
   //    text-primary

@@ -39,10 +39,10 @@ const Incidents = () => {
 
       <MainModal useFetchInit={mainHook} />
 
-      <Box sx={{ width: '100%', typography: 'body1' }}>
+      <Box sx={{ width: '100%' }}>
         <TabContext value={String(id_floor)}>
           <Box>
-            <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })} aria-label='lab API tabs example'>
+            <TabList onChange={(_, value) => handleInputChange({ target: { name: 'id_floor', value } })}>
               {floors.map(({ id_planta, planta }) => {
                 return (
                   <Tab
@@ -73,7 +73,7 @@ const Incidents = () => {
                         />
 
                         <CardContent>
-                          <Typography>
+                          <Typography variant='h6'>
                             {tipo_aula} {aula}
                           </Typography>
                         </CardContent>

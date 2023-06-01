@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getpermissionPageDatosOsTicket = async () => {
   return await axios
-    .get(`${process.env.REACT_APP_API_BASE}/v1/permissionPage/query`, {
+    .get(`${process.env.REACT_APP_API_BASE_PRODUCTION}/v1/permissionPage/query`, {
       headers: { service: 'permission-page-OsTicket' }
     })
     .then(response => {
@@ -15,7 +15,7 @@ export const getpermissionPageDatosOsTicket = async () => {
 
 export const getpermissionPageEstadistica = async () => {
   return await axios
-    .get(`${process.env.REACT_APP_API_BASE}/v1/permissionPage/query`, {
+    .get(`${process.env.REACT_APP_API_BASE_PRODUCTION}/v1/permissionPage/query`, {
       headers: { service: 'permission-page-estadistica' }
     })
     .then(response => {

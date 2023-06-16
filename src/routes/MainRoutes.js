@@ -1,24 +1,22 @@
 import { lazy } from 'react'
 
-// project imports
+import { Navigate } from 'react-router-dom'
+
 import MainLayout from '../layout/MainLayout/index'
 import Loadable from '../ui-component/Loadable'
 
-// dashboard routing
-const DashboardDefault = Loadable(lazy(() => import('../pages/others/index')))
-const Others = Loadable(lazy(() => import('../pages/Staff/index')))
+const OsTicket = Loadable(lazy(() => import('../pages/Staff/Dashboard/index')))
+const Dashboard = Loadable(lazy(() => import('../pages/Staff/Incidences/index')))
+const Chromebooks = Loadable(lazy(() => import('../pages/Staff/Chromebooks/index')))
+const Users = Loadable(lazy(() => import('../pages/Staff/Users/index')))
+const Statistics = Loadable(lazy(() => import('../pages/Staff/Statistics/index')))
 
-// utilities routing
-// const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')))
-// const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')))
-// const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')))
-// const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')))
-// const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')))
+const Profile = Loadable(lazy(() => import('../pages/Staff/Profile/index')))
 
-// sample page routing
-// const SamplePage = Loadable(lazy(() => import('views/sample-page')))
-
-// ==============================|| MAIN ROUTING ||============================== //
+const isAuthenticated = () => {
+  const token = localStorage.getItem('token')
+  return !!token
+}
 
 const MainRoutes = {
   path: '/',
@@ -26,75 +24,32 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: <DashboardDefault />
+      element: isAuthenticated() ? <Dashboard /> : <Navigate to='/login' replace={true} />
     },
     {
-      path: 'dashboard',
-      children: [
-        {
-          // path: 'default',
-          element: <DashboardDefault />
-        }
-      ]
+      path: 'datos-os-ticket',
+      element: isAuthenticated() ? <OsTicket /> : <Navigate to='/login' replace={true} />
     },
     {
-      path: 'que',
-      children: [
-        {
-          // path: 'default',
-          element: <Others />
-        }
-      ]
+      path: 'incidencias',
+      element: isAuthenticated() ? <Dashboard /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'chromebooks',
+      element: isAuthenticated() ? <Chromebooks /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'usuarios',
+      element: isAuthenticated() ? <Users /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'estadisticas',
+      element: isAuthenticated() ? <Statistics /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'perfil',
+      element: isAuthenticated() ? <Profile /> : <Navigate to='/login' replace={true} />
     }
-    // {
-    //   path: 'utils',
-    //   children: [
-    //     {
-    //       path: 'util-typography',
-    //       element: <UtilsTypography />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'utils',
-    //   children: [
-    //     {
-    //       path: 'util-color',
-    //       element: <UtilsColor />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'utils',
-    //   children: [
-    //     {
-    //       path: 'util-shadow',
-    //       element: <UtilsShadow />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'tabler-icons',
-    //       element: <UtilsTablerIcons />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'material-icons',
-    //       element: <UtilsMaterialIcons />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'sample-page',
-    //   element: <SamplePage />
-    // }
   ]
 }
 

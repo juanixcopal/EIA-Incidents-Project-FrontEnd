@@ -1,43 +1,65 @@
-// assets
-import { IconKey } from '@tabler/icons';
+import DataThresholdingOutlinedIcon from '@mui/icons-material/DataThresholdingOutlined'
+import ComputerOutlinedIcon from '@mui/icons-material/ComputerOutlined'
+import DomainAddOutlinedIcon from '@mui/icons-material/DomainAddOutlined'
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
+import InsertChartOutlinedOutlinedIcon from '@mui/icons-material/InsertChartOutlinedOutlined'
 
-// constant
-const icons = {
-  IconKey
-};
+const icons = { DataThresholdingOutlinedIcon, ComputerOutlinedIcon, DomainAddOutlinedIcon, GroupOutlinedIcon, InsertChartOutlinedOutlinedIcon }
 
-// ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
+const userRoles = ['admin', 'user', 'superadmin']
+const adminRoles = ['admin', 'superadmin']
 
 const pages = {
-  id: 'pages',
-  title: 'Pages',
-  caption: 'Pages Caption',
+  id: 'dashboard',
+  title: 'Paginas principales',
   type: 'group',
   children: [
     {
-      id: 'authentication',
-      title: 'Authentication',
-      type: 'collapse',
-      icon: icons.IconKey,
-
-      children: [
-        {
-          id: 'login3',
-          title: 'Login',
-          type: 'item',
-          url: '/pages/login/login3',
-          target: true
-        },
-        {
-          id: 'register3',
-          title: 'Register',
-          type: 'item',
-          url: '/pages/register/register3',
-          target: true
-        }
-      ]
+      id: 'incidencias',
+      title: 'Incidencias',
+      type: 'item',
+      url: '/incidencias',
+      icon: icons.DomainAddOutlinedIcon,
+      breadcrumbs: false,
+      visible: userRoles
+    },
+    {
+      id: 'datos-os-ticket',
+      title: 'Datos OsTicket',
+      type: 'item',
+      url: '/datos-os-ticket',
+      icon: icons.DataThresholdingOutlinedIcon,
+      breadcrumbs: false,
+      visible: userRoles
+    },
+    {
+      id: 'chromebooks',
+      title: 'Chromebooks',
+      type: 'item',
+      url: '/chromebooks',
+      icon: icons.ComputerOutlinedIcon,
+      breadcrumbs: false,
+      visible: userRoles
+    },
+    {
+      id: 'usuarios',
+      title: 'Usuarios',
+      type: 'item',
+      url: '/usuarios',
+      icon: icons.GroupOutlinedIcon,
+      breadcrumbs: false,
+      visible: adminRoles
+    },
+    {
+      id: 'estadisticas',
+      title: 'Estadisticas',
+      type: 'item',
+      url: '/estadisticas',
+      icon: icons.InsertChartOutlinedOutlinedIcon,
+      breadcrumbs: false,
+      visible: userRoles
     }
   ]
-};
+}
 
-export default pages;
+export default pages

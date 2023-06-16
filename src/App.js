@@ -13,14 +13,16 @@ const App = () => {
   const customizacion = useSelector(state => state.customization)
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={themes(customizacion)}>
-        <CssBaseline />
-        <NavigationScroll>
-          <Routes />
-        </NavigationScroll>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={themes(customizacion)}>
+          <CssBaseline />
+          <NavigationScroll>
+            <Routes />
+          </NavigationScroll>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </>
   )
 }
 

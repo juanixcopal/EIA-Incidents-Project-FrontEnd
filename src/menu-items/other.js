@@ -1,33 +1,20 @@
-// assets
-import { IconBrandChrome, IconHelp } from '@tabler/icons';
-
-// constant
-const icons = { IconBrandChrome, IconHelp };
-
-// ==============================|| SAMPLE PAGE & DOCUMENTATION MENU ITEMS ||============================== //
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+const icons = { AccountCircleOutlinedIcon }
 
 const other = {
-  id: 'sample-docs-roadmap',
+  id: 'others',
+  title: 'Perfil',
   type: 'group',
   children: [
     {
-      id: 'sample-page',
-      title: 'Sample Page',
+      id: 'perfil',
+      title: 'Perfil',
       type: 'item',
-      url: '/sample-page',
-      icon: icons.IconBrandChrome,
+      url: '/perfil',
+      icon: icons.AccountCircleOutlinedIcon,
       breadcrumbs: false
-    },
-    {
-      id: 'documentation',
-      title: 'Documentation',
-      type: 'item',
-      url: 'https://codedthemes.gitbook.io/berry/',
-      icon: icons.IconHelp,
-      external: true,
-      target: true
     }
   ]
-};
+}
 
-export default other;
+export default other

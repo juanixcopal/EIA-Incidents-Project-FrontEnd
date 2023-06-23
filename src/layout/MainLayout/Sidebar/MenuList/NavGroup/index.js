@@ -1,22 +1,28 @@
+import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
-// material-ui
 import { useTheme } from '@mui/material/styles'
 import { Divider, List, Typography } from '@mui/material'
 
-// project imports
+import { AuthContext } from 'provider/global.provider'
+
 import NavItem from '../NavItem'
 import NavCollapse from '../NavCollapse'
-
-// ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
 
 const NavGroup = ({ item }) => {
   const theme = useTheme()
 
-  // menu list collapse & items
+  const { authData } = useContext(AuthContext)
+  const rol = authData.rol_usuario
+
   const items = item.children?.map(menu => {
-    if (menu.visible === false) {
-      // Si la página no es visible para el usuario, no se muestra en el menú
+    if (menu.visible) {
+      if (Array.isArray(menu.visible) && !menu.visible.includes(rol)) {
+        return null
+      } else if (typeof menu.visible === 'string' && menu.visible !== rol) {
+        return null
+      }
+    } else {
       return null
     }
 
@@ -37,7 +43,6 @@ const NavGroup = ({ item }) => {
   const visibleItems = items.filter(item => item !== null)
 
   if (visibleItems.length === 0) {
-    // Si no hay elementos visibles, no se muestra el grupo en el menú
     return null
   }
 
@@ -57,11 +62,9 @@ const NavGroup = ({ item }) => {
           )
         }
       >
-        {/* {items} */}
         {visibleItems}
       </List>
 
-      {/* group divider */}
       <Divider sx={{ mt: 0.25, mb: 1.25 }} />
     </>
   )

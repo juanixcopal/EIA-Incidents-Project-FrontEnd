@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 import MainLayout from '../layout/MainLayout/index'
 import Loadable from '../ui-component/Loadable'
 
-const OsTicket = Loadable(lazy(() => import('../pages/Staff/Dashboard/index')))
+const OsTicket = Loadable(lazy(() => import('../pages/Staff/OsTicket_Data/index')))
 const Dashboard = Loadable(lazy(() => import('../pages/Staff/Incidences/index')))
 const Chromebooks = Loadable(lazy(() => import('../pages/Staff/Chromebooks/index')))
 const Users = Loadable(lazy(() => import('../pages/Staff/Users/index')))

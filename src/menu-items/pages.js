@@ -6,8 +6,8 @@ import InsertChartOutlinedOutlinedIcon from '@mui/icons-material/InsertChartOutl
 
 const icons = { DataThresholdingOutlinedIcon, ComputerOutlinedIcon, DomainAddOutlinedIcon, GroupOutlinedIcon, InsertChartOutlinedOutlinedIcon }
 
-const userRoles = ['admin', 'user', 'superadmin']
-const adminRoles = ['admin', 'superadmin']
+const userRoles = ['administrador', 'usuario', 'superadmin']
+const adminRoles = ['administrador', 'superadmin']
 
 const pages = {
   id: 'dashboard',

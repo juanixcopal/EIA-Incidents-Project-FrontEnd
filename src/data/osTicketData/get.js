@@ -51,7 +51,7 @@ export const getClosedTicketsCurrentMonth = async () => {
 export const getpermissionPageDatosOsTicket = async () => {
   return await axios
     .get(`${process.env.REACT_APP_API_BASE}/v1/tickets/query`, {
-      headers: { service: 'permission-page-items', token: localStorage.getItem('token') }
+      headers: { service: 'permission-items-page-tickets', token: localStorage.getItem('token') }
     })
     .then(response => {
       return response
@@ -61,12 +61,11 @@ export const getpermissionPageDatosOsTicket = async () => {
     })
 }
 
-export const getClosedTicketsByWeek = async ({ weekly }) => {
+export const getClosedTicketsCurrentWeek = async () => {
   return await axios
 
     .get(`${process.env.REACT_APP_API_BASE}/v1/tickets/query`, {
-      headers: { service: 'closed-tickets-weekly', token: localStorage.getItem('token') },
-      params: { weekly }
+      headers: { service: 'closed-tickets-current-week', token: localStorage.getItem('token') }
     })
     .then(response => {
       return response
@@ -76,13 +75,13 @@ export const getClosedTicketsByWeek = async ({ weekly }) => {
     })
 }
 
-export const getDataTicketByStaff = async ({ dataModal, weekly }) => {
+export const getDataTicketByStaff = async ({ dataModal }) => {
   const { staff_id } = dataModal.params
   return await axios
 
     .get(`${process.env.REACT_APP_API_BASE}/v1/tickets/query`, {
-      headers: { service: 'data-ticket-by-staff', token: localStorage.getItem('token') },
-      params: { weekly, staff_id }
+      headers: { service: 'closed-tickets-by-staff-and-weekly', token: localStorage.getItem('token') },
+      params: { staff_id }
     })
     .then(response => {
       return response

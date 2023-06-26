@@ -5,7 +5,7 @@ export const useActions = ({ selectedItems, toggle, FetchPermissionPageDatosOsTi
 
   const modifyItemViewPage = async e => {
     e.preventDefault()
-    modifyItemView({ selectedItems, toggle, _permissionPageDatosOsTicket })
+    modifyItemView({ selectedItems, _permissionPageDatosOsTicket, toggle })
   }
 
   return { modifyItemViewPage }

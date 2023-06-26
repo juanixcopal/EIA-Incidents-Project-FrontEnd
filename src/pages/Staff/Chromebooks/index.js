@@ -20,13 +20,13 @@ const ChromebooksPage = () => {
   const mainHook = useFetchInitChromebooks()
 
   const { FetchCarritosChromebook, toggle } = mainHook
-  const { loadingCarritos } = FetchCarritosChromebook
+  const { loadingArmarios } = FetchCarritosChromebook
 
   return (
     <>
-      <Loading loading={loadingCarritos} />
+      <Loading loading={loadingArmarios} />
       <MainModal useFetchInit={mainHook} />
-      {!loadingCarritos && (
+      {!loadingArmarios && (
         <Grid container spacing={gridSpacing}>
           {(rol === 'superadmin' || rol === 'administrador') && (
             <Grid item xs={12}>

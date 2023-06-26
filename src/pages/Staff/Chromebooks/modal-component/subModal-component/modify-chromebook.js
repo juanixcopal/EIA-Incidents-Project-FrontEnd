@@ -1,36 +1,29 @@
 import { useState } from 'react'
 
-import { TextField, Box, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import { TextField, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
 const ModifyChromebook = ({ useFetchInit }) => {
-  const { dataSubModal, FetchCarritosChromebook, handleInputChangeModify, FetchEstadosChromebook } = useFetchInit
+  const { dataSubModal, FetchCarritosChromebook, FetchEstadosChromebook, handleInputChange } = useFetchInit
 
-  const { armario, estado_chromebook, id_chromebook, id_estado_chromebook, numero_chromebook, prodid, sn } = dataSubModal.subParams
+  const { armario, id_estado_chromebook, numero_chromebook, prodid, sn } = dataSubModal.subParams
   const { armarios } = FetchCarritosChromebook
   const { estadoChromebook } = FetchEstadosChromebook
 
   const [id_Carrito, setId_Carrito] = useState(armario)
   const [id_Estado_Chromebook, setId_Estado_Chromebook] = useState(id_estado_chromebook)
 
-  const handleChangeCarrito = e => {
+  const handleChangeCupboard = e => {
     setId_Carrito(e.target.value)
-    handleInputChangeModify(e)
+    handleInputChange(e)
   }
 
-  const handleChangeEstadoChromebook = e => {
+  const handleChangeStateChromebook = e => {
     setId_Estado_Chromebook(e.target.value)
-    handleInputChangeModify(e)
+    handleInputChange(e)
   }
 
   return (
     <>
-      {/* <Box
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: 'auto' }
-        }}
-        noValidate
-        autoComplete='off'
-      > */}
       <Grid container direction='row' spacing={1} sx={{ pt: '16px !important' }}>
         <Grid item>
           <TextField label='Chromebook #' disabled defaultValue={numero_chromebook} />
@@ -48,7 +41,7 @@ const ModifyChromebook = ({ useFetchInit }) => {
         <Grid item>
           <FormControl fullWidth>
             <InputLabel>Armario Chromebook</InputLabel>
-            <Select value={id_Carrito} label='Carrito de Chromebook' onChange={handleChangeCarrito} name='id_carrito' required>
+            <Select value={id_Carrito} label='Carrito de Chromebook' onChange={handleChangeCupboard} name='id_carrito' required>
               {armarios.map(item => {
                 const { id_armario, numero_carrito } = item
                 return (
@@ -66,7 +59,7 @@ const ModifyChromebook = ({ useFetchInit }) => {
         <Grid item>
           <FormControl fullWidth>
             <InputLabel>Estado de la Chromebook</InputLabel>
-            <Select value={id_Estado_Chromebook} label='Estado de la Chromebook' onChange={handleChangeEstadoChromebook} name='id_estado_chromebook' required>
+            <Select value={id_Estado_Chromebook} label='Estado de la Chromebook' onChange={handleChangeStateChromebook} name='id_estado_chromebook' required>
               {estadoChromebook.map(item => {
                 const { id_estado_chromebook, estado_chromebook } = item
                 return (
@@ -79,8 +72,6 @@ const ModifyChromebook = ({ useFetchInit }) => {
           </FormControl>
         </Grid>
       </Grid>
-
-      {/* </Box> */}
     </>
   )
 }

@@ -94,7 +94,7 @@ const ViewChromebook = ({ useFetchInit }) => {
                                     ></span>
                                   </Grid>
                                 </StyledTableCell>
-                                {(rol === 'superadmin' || rol === 'administrador') && (
+                                {rol === 'superadmin' && (
                                   <StyledTableCell>
                                     <Button
                                       endIcon={<EditIcon />}

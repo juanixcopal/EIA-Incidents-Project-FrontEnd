@@ -3,11 +3,11 @@ import { getCarritosChromebook, getEstadosChromebook, getChromebooksByArmario } 
 
 export const useFetchCarritosChromebook = () => {
   const [armarios, setArmarios] = useState([])
-  const [loadingCarritos, setLoadingCarritos] = useState(false)
+  const [loadingArmarios, setLoadingArmarios] = useState(false)
 
   useEffect(() => {
     ;(async () => {
-      setLoadingCarritos(true)
+      setLoadingArmarios(true)
       await getCarritosChromebook()
         .then(({ data }) => {
           setArmarios(data)
@@ -19,10 +19,10 @@ export const useFetchCarritosChromebook = () => {
           }
           console.log('Error fetch-data armarios', response)
         })
-      setLoadingCarritos(false)
+      setLoadingArmarios(false)
     })()
   }, [])
-  return { armarios, loadingCarritos }
+  return { armarios, loadingArmarios }
 }
 
 export const useFetchEstadosChromebook = () => {

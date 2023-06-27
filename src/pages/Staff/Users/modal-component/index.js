@@ -1,6 +1,7 @@
 import { Modal, Box, Typography } from '@mui/material'
 import EditUser from './edit-user'
 import DeleteUser from './delete-user'
+import CreateUser from './create-user'
 
 const MainModal = ({ useFetchInit }) => {
   const { dataModal, onClose } = useFetchInit
@@ -29,6 +30,7 @@ const MainModal = ({ useFetchInit }) => {
           </Typography>
           {component === 'edit-user-data' && <EditUser useFetchInit={useFetchInit} />}
           {component === 'delete-user' && <DeleteUser useFetchInit={useFetchInit} />}
+          {component === 'create-user' && <CreateUser useFetchInit={useFetchInit} />}
         </Box>
       </Modal>
     </>

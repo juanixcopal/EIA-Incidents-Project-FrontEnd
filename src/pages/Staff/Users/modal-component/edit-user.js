@@ -6,7 +6,7 @@ import Loading from 'ui-component/loading'
 import { CancelButton, SaveButton } from 'ui-component/button'
 
 const EditUser = ({ useFetchInit }) => {
-  const { dataModal, FetchRoles, onClose, Actions, prueba } = useFetchInit
+  const { dataModal, FetchRoles, onClose, Actions, handleChangeData } = useFetchInit
 
   const { updateDataUser } = Actions
   const { id_rol, username, name, lastname, id_user } = dataModal.params
@@ -29,8 +29,8 @@ const EditUser = ({ useFetchInit }) => {
   }
 
   useEffect(() => {
-    prueba(formData)
-  }, [formData, prueba])
+    handleChangeData(formData)
+  }, [formData, handleChangeData])
 
   return (
     <>

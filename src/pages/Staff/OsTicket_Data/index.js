@@ -86,7 +86,7 @@ const DashboardPage = () => {
                   <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
                     <Grid item>
                       <Button variant='contained' endIcon={<CreateIcon />} color='inherit' onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}>
-                        Modificar vista
+                        Administrar la vista
                       </Button>
                     </Grid>
                   </Grid>

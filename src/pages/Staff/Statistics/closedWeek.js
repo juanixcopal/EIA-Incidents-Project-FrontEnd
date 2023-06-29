@@ -1,14 +1,18 @@
-import { Grid, Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody, styled, tableCellClasses, Typography } from '@mui/material'
-import { useFetchTickets } from '../../../hooks/osTicketData/index'
-import { gridSpacing } from 'store/constant'
+import { Grid, Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody, styled, tableCellClasses, Typography, Input } from '@mui/material'
+
 import MainCard from 'ui-component/cards/MainCard'
+
+import { gridSpacing } from 'store/constant'
+
+import { useFetchInitStatistics } from 'hooks/statistics'
+
 import MainModal from './modal-component'
 import Loading from 'ui-component/loading'
 
-const ClosedCurrentWeek = () => {
-  const mainHook = useFetchTickets()
+const ClosedWeek = () => {
+  const mainHook = useFetchInitStatistics()
 
-  const { FetchClosedTicketsCurrentWeek, toggle } = mainHook
+  const { FetchClosedTicketsCurrentWeek, toggle, handleWeekChange, selectedDate } = mainHook
 
   const { closedCurrentWeek, loadingClosedCurrentWeek } = FetchClosedTicketsCurrentWeek
 
@@ -41,7 +45,10 @@ const ClosedCurrentWeek = () => {
             <Grid item xs={12}>
               <Grid container alignContent='center' justifyContent='space-between'>
                 <Grid item>
-                  <Typography variant='h4'>Tickets cerrados semana actual</Typography>
+                  <Typography variant='h4'>Tickets cerrados por semana</Typography>
+                </Grid>
+                <Grid item>
+                  <Input type='date' onChange={handleWeekChange} value={selectedDate} />
                 </Grid>
               </Grid>
             </Grid>
@@ -67,7 +74,7 @@ const ClosedCurrentWeek = () => {
                                 <StyledTableRow
                                   key={staff_id}
                                   style={{ cursor: 'pointer' }}
-                                  onClick={() => toggle(null, 'Tickets Cerrados por el usuario', 'view-closed-ticket-by-staff-osTicket', item)}
+                                  onClick={() => toggle(null, 'Tickets Cerrados por el usuario', 'view-closed-ticket-by-staff-statistics', item)}
                                 >
                                   <StyledTableCell component='th' scope='row'>
                                     {firstname} {lastname}
@@ -95,4 +102,4 @@ const ClosedCurrentWeek = () => {
   )
 }
 
-export default ClosedCurrentWeek
+export default ClosedWeek

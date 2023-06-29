@@ -3,7 +3,7 @@ import axios from 'axios'
 export const getTypeIncidencesClosed = async () => {
   return await axios
 
-    .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, { headers: { service: 'type-incidences-closed', token: localStorage.getItem('token') } })
+    .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, { headers: { service: 'closed-ticket-current-month', token: localStorage.getItem('token') } })
     .then(response => {
       return response
     })
@@ -16,7 +16,7 @@ export const getTypeIncidencesClosedByRangeDate = async ({ formattedStartDate, f
   return await axios
 
     .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, {
-      headers: { service: 'type-incidences-closed-by-range-date', token: localStorage.getItem('token') },
+      headers: { service: 'closed-tickets-by-range-date', token: localStorage.getItem('token') },
       params: { formattedStartDate, formattedEndDate }
     })
     .then(response => {
@@ -30,7 +30,7 @@ export const getTypeIncidencesClosedByRangeDate = async ({ formattedStartDate, f
 export const getpermissionPageEstadistica = async () => {
   return await axios
     .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, {
-      headers: { service: 'permission-page-items', token: localStorage.getItem('token') }
+      headers: { service: 'permission-items-page-statistics', token: localStorage.getItem('token') }
     })
     .then(response => {
       return response
@@ -40,11 +40,11 @@ export const getpermissionPageEstadistica = async () => {
     })
 }
 
-export const getClosedTicketsByWeek = async ({ weekly }) => {
+export const getClosedTicketsCurrentWeek = async ({ weekly }) => {
   return await axios
 
     .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, {
-      headers: { service: 'closed-tickets-weekly', token: localStorage.getItem('token') },
+      headers: { service: 'tickets-closed-by-week', token: localStorage.getItem('token') },
       params: { weekly }
     })
     .then(response => {
@@ -61,7 +61,7 @@ export const getDataTicketByStaff = async ({ dataModal, weekly }) => {
   return await axios
 
     .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, {
-      headers: { service: 'data-ticket-by-staff', token: localStorage.getItem('token') },
+      headers: { service: 'closed-tickets-by-staff-and-weekly', token: localStorage.getItem('token') },
       params: { weekly, staff_id }
     })
     .then(response => {

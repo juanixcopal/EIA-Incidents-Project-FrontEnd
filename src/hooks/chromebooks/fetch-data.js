@@ -59,8 +59,12 @@ export const useFetchChromebooksByArmario = ({ dataModal }) => {
       .then(({ data }) => {
         setChromebooksByArmario(data)
       })
-      .catch(error => {
-        console.log('Error', error)
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error fetch-data chromebooks by armario', response)
       })
     setLoadingChromebooksByArmario(false)
   }

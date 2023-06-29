@@ -21,7 +21,7 @@ export const useFetchClosedTicketsCurrentMonth = () => {
         setClosedCurrentMonth(data)
       })
       .catch(({ response }) => {
-        if (response.status === 500) {
+        if (response.status === 401) {
           localStorage.clear()
           window.location.reload()
         }
@@ -52,7 +52,7 @@ export const useFetchClosedTicketsFirstSemester = () => {
         setClosedTicketsFirstSemester(data)
       })
       .catch(({ response }) => {
-        if (response.status === 500) {
+        if (response.status === 401) {
           localStorage.clear()
           window.location.reload()
         }
@@ -83,7 +83,7 @@ export const useFetchClosedTicketsSecondSemester = () => {
         setClosedTicketsSecondSemester(data)
       })
       .catch(({ response }) => {
-        if (response.status === 500) {
+        if (response.status === 401) {
           localStorage.clear()
           window.location.reload()
         }
@@ -116,7 +116,7 @@ export const useFetchOpenTickets = () => {
         setTotalTickets(data[0].tickets_abiertos)
       })
       .catch(({ response }) => {
-        if (response.status === 500) {
+        if (response.status === 401) {
           localStorage.clear()
           window.location.reload()
         }
@@ -147,6 +147,10 @@ export const useFetchPermissionPageDatosOsTicket = () => {
         setPermissionPageOsTicket(data)
       })
       .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
         console.log('Error useFetchPermissionPageDatosOsTicket', response)
       })
     setLoadingPermissionItems(false)
@@ -201,8 +205,12 @@ export const useFetchDataTicketsByStaff = ({ dataModal }) => {
       .then(({ data }) => {
         setDataTicketByStaff(data)
       })
-      .catch(error => {
-        console.log('Error useFetchDataTicketsByStaff', error)
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error useFetchDataTicketsByStaff', response)
       })
     setLoadingDataTicketByStaff(false)
   }

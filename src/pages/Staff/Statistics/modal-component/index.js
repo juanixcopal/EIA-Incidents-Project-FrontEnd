@@ -1,6 +1,6 @@
 import { Modal, Box, Typography } from '@mui/material'
-import ViewTicketsClosedByStaff from './view-closed-ticket-week-by-staff'
 import ModifyItemsView from './modify-items-view'
+import ViewTicketsClosedByStaff from './view-closed-ticket-week-by-staff'
 
 const MainModal = ({ useFetchInit }) => {
   const { dataModal, onClose } = useFetchInit
@@ -27,8 +27,8 @@ const MainModal = ({ useFetchInit }) => {
           <Typography id='modal-modal-title' variant='h6' component='h2'>
             {title}
           </Typography>
-          {component === 'view-closed-ticket-by-staff-osTicket' && <ViewTicketsClosedByStaff useFetchInit={useFetchInit} />}
           {component === 'modify-items-view' && <ModifyItemsView useFetchInit={useFetchInit} />}
+          {component === 'view-closed-ticket-by-staff-statistics' && <ViewTicketsClosedByStaff useFetchInit={useFetchInit} />}
         </Box>
       </Modal>
     </>

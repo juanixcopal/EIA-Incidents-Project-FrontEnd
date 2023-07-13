@@ -13,3 +13,8 @@ export const defaultData = {
   password_repeat: '',
   id_rol: ''
 }
+
+export const defaultDataUpdatePassword = {
+  password: '',
+  password_repeat: ''
+}

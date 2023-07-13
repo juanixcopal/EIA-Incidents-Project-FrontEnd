@@ -5,6 +5,7 @@ import { AuthContext } from 'provider/global.provider'
 import { useFetchInitUsers } from 'hooks/users'
 
 import UsersTable from './usersTable'
+import SuperAdminTable from './SuperAdminTable'
 import MainModal from './modal-component'
 
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
@@ -12,6 +13,7 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
 const UsersPages = () => {
   const { authData } = useContext(AuthContext)
   const rol = authData.rol_usuario
+  const id_user = authData.id_user
 
   const mainHook = useFetchInitUsers()
 
@@ -39,7 +41,15 @@ const UsersPages = () => {
 
         <Grid item xs={12}>
           <Grid container spacing={gridSpacing}>
-            <UsersTable />
+            <Grid item lg={6} md={12} sm={12} xs={12}>
+              <UsersTable rol={rol} />
+            </Grid>
+
+            {id_user === 1 && (
+              <Grid item lg={6} md={12} sm={12} xs={12}>
+                <SuperAdminTable rol={rol} />
+              </Grid>
+            )}
           </Grid>
         </Grid>
       </Grid>

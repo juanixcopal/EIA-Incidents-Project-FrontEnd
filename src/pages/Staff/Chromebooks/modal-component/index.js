@@ -1,4 +1,4 @@
-import { Modal, Box, Typography } from '@mui/material'
+import { Modal, Box, Typography, Divider } from '@mui/material'
 import ViewChromebook from './view-chromebook'
 import CreateChromebook from './create-chromebook'
 
@@ -20,13 +20,20 @@ const MainModal = ({ useFetchInit }) => {
     borderRadius: '10px'
   }
 
+  const titleStyle = {
+    color: 'rgba(0, 0, 0, 0.54)',
+    fontSize: '0.9rem',
+    marginBottom: '16px'
+  }
+
   return (
     <>
       <Modal open={open} onClose={onClose}>
         <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2'>
+          <Typography id='modal-modal-title' variant='h6' component='h2' sx={titleStyle}>
             {title}
           </Typography>
+          <Divider sx={{ marginBottom: '16px' }} />
           {component === 'view-chromebook' && <ViewChromebook useFetchInit={useFetchInit} />}
           {component === 'create-chromebook' && <CreateChromebook useFetchInit={useFetchInit} />}
         </Box>

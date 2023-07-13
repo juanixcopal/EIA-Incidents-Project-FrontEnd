@@ -11,9 +11,10 @@ import {
   TableContainer,
   tableCellClasses,
   Tooltip,
-  IconButton,
-  Box
+  Box,
+  IconButton
 } from '@mui/material'
+
 import { gridSpacing } from 'store/constant'
 import MainCard from 'ui-component/cards/MainCard'
 import Loading from 'ui-component/loading'
@@ -26,11 +27,11 @@ import MainModal from './modal-component'
 
 import { useFetchInitUsers } from 'hooks/users'
 
-const UsersTable = ({ rol }) => {
+const SuperAdminTable = ({ rol }) => {
   const mainHook = useFetchInitUsers()
-  const { FetchAllUsers, toggle } = mainHook
+  const { FetchAllSuperadmins, toggle } = mainHook
 
-  const { users, loadingUsers } = FetchAllUsers
+  const { superadmins, loadingSuperadmins } = FetchAllSuperadmins
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -50,18 +51,17 @@ const UsersTable = ({ rol }) => {
       border: 0
     }
   }))
-
   return (
     <>
       <MainCard>
-        <MainModal useFetchInit={mainHook} rol={rol} />
-        <Loading loading={loadingUsers} />
-        {!loadingUsers && (
+        <MainModal useFetchInit={mainHook} />
+        <Loading loading={loadingSuperadmins} />
+        {!loadingSuperadmins && (
           <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
               <Grid container alignContent='center' justifyContent='space-between'>
                 <Grid item>
-                  <Typography variant='h4'>Usuarios</Typography>
+                  <Typography variant='h4'>Superadmins</Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -80,7 +80,7 @@ const UsersTable = ({ rol }) => {
                           </TableRow>
                         </TableHead>
                         <TableBody>
-                          {users.map(item => {
+                          {superadmins.map(item => {
                             const { id_user, rol_usuario, username } = item
 
                             return (
@@ -127,4 +127,4 @@ const UsersTable = ({ rol }) => {
   )
 }
 
-export default UsersTable
+export default SuperAdminTable

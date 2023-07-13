@@ -59,9 +59,9 @@ const Login = () => {
                   }}
                 />
                 {loading ? (
-                  <span className='text-success'>Ingresando.........</span>
+                  <Typography color='green'>Ingresando.........</Typography>
                 ) : (
-                  <span className={`text-${result ? 'success' : 'danger'}`}>{_message}</span>
+                  <Typography color={`${result ? 'green' : 'red'}`}>{_message}</Typography>
                 )}
                 <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
                   Acceder

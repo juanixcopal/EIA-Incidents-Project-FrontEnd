@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { useFetchAllUsers, useFetchRoles } from './fetch-data'
-import { defaultDataModal, defaultData } from './default-data'
+import { useFetchAllUsers, useFetchRoles, useFetchAllSuperadmins } from './fetch-data'
+import { defaultDataModal, defaultData, defaultDataUpdatePassword } from './default-data'
 import { useActions } from './actions'
 export const useFetchInitUsers = () => {
   const [dataModal, setDataModal] = useState(defaultDataModal)
-  const [data, setData] = useState([])
   const [dataUser, setDataUser] = useState(defaultData)
+  const [dataUpdatePassword, setDataUpdatePassword] = useState(defaultDataUpdatePassword)
+  const [data, setData] = useState([])
   const [showPassword, setShowPassword] = useState(false)
   const [showPasswordRepeat, setShowPasswordRepeat] = useState(false)
 
@@ -37,6 +38,10 @@ export const useFetchInitUsers = () => {
     setDataUser({ ...dataUser, [event.target.name]: event.target.value })
   }
 
+  const handleInputChangeUpdatePassword = event => {
+    setDataUpdatePassword({ ...dataUpdatePassword, [event.target.name]: event.target.value })
+  }
+
   const handleTogglePasswordVisibility = () => {
     setShowPassword(prevShowPassword => !prevShowPassword)
   }
@@ -47,11 +52,13 @@ export const useFetchInitUsers = () => {
 
   const FetchAllUsers = useFetchAllUsers()
   const FetchRoles = useFetchRoles()
-  const Actions = useActions({ FetchAllUsers, toggle, dataModal, data, dataUser })
+  const FetchAllSuperadmins = useFetchAllSuperadmins()
+  const Actions = useActions({ FetchAllUsers, FetchAllSuperadmins, toggle, dataModal, data, dataUser, dataUpdatePassword })
 
   return {
     FetchAllUsers,
     FetchRoles,
+    FetchAllSuperadmins,
     dataModal,
     toggle,
     Actions,
@@ -62,6 +69,8 @@ export const useFetchInitUsers = () => {
     handleTogglePasswordVisibility,
     showPassword,
     handleTogglePasswordRepeatVisibility,
-    showPasswordRepeat
+    showPasswordRepeat,
+    dataUpdatePassword,
+    handleInputChangeUpdatePassword
   }
 }

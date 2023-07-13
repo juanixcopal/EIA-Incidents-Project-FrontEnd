@@ -79,7 +79,12 @@ const StatisticsPage = () => {
                 <Grid item xs={12}>
                   <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
                     <Grid item>
-                      <Button variant='contained' endIcon={<CreateIcon />} color='inherit' onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}>
+                      <Button
+                        variant='contained'
+                        startIcon={<CreateIcon />}
+                        color='inherit'
+                        onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}
+                      >
                         Administrar la vista
                       </Button>
                     </Grid>

@@ -14,9 +14,9 @@ const CancelButton = ({ disabled, onClick, title }) => {
       variant='contained'
       endIcon={<CancelIcon />}
       sx={{
-        backgroundColor: theme.palette.error.dark,
+        backgroundColor: theme.palette.error.main,
         '&:hover': {
-          backgroundColor: theme.palette.error.main
+          backgroundColor: theme.palette.error.dark
         }
       }}
       onClick={onClick}
@@ -36,9 +36,9 @@ const SaveButton = ({ disabled, title }) => {
       variant='contained'
       startIcon={<SaveIcon />}
       sx={{
-        backgroundColor: theme.palette.success.dark,
+        backgroundColor: theme.palette.success.main,
         '&:hover': {
-          backgroundColor: theme.palette.success.main
+          backgroundColor: theme.palette.success.dark
         }
       }}
     >
@@ -57,9 +57,9 @@ const DeleteButton = ({ disabled, title }) => {
       variant='contained'
       startIcon={<DeleteIcon />}
       sx={{
-        backgroundColor: theme.palette.warning.dark,
+        backgroundColor: theme.palette.info.main,
         '&:hover': {
-          backgroundColor: theme.palette.warning.main
+          backgroundColor: theme.palette.info.dark
         }
       }}
     >

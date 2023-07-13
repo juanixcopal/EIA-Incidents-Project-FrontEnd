@@ -1,12 +1,12 @@
-import { updateUserData } from '../../data/users/put.js'
+import { updateUserData, updatePasswordUser } from '../../data/users/put.js'
 import { deleteUserData } from '../../data/users/delete.js'
 import { createUserData } from '../../data/users/post.js'
 
-export const useActions = ({ FetchAllUsers, toggle, data, dataModal, dataUser }) => {
+export const useActions = ({ FetchAllUsers, FetchAllSuperadmins, toggle, data, dataModal, dataUser, dataUpdatePassword }) => {
   const updateDataUser = async e => {
     e.preventDefault()
 
-    updateUserData({ FetchAllUsers, toggle, data })
+    updateUserData({ FetchAllUsers, FetchAllSuperadmins, toggle, data })
   }
 
   const deleteUser = async e => {
@@ -21,5 +21,11 @@ export const useActions = ({ FetchAllUsers, toggle, data, dataModal, dataUser })
     createUserData({ FetchAllUsers, toggle, dataUser })
   }
 
-  return { updateDataUser, deleteUser, createUser }
+  const updatePassword = async e => {
+    e.preventDefault()
+
+    updatePasswordUser({ toggle, dataModal, dataUpdatePassword })
+  }
+
+  return { updateDataUser, deleteUser, createUser, updatePassword }
 }

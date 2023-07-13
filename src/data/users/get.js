@@ -21,3 +21,14 @@ export const getRoles = async () => {
       throw error
     })
 }
+
+export const getAllSuperadmins = async () => {
+  return await axios
+    .get(`${process.env.REACT_APP_API_BASE}/v1/users/query`, { headers: { service: 'superadmins-users', token: localStorage.getItem('token') } })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

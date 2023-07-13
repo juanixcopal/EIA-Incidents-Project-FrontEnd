@@ -4,10 +4,11 @@ import '../../../styles/osTicketData/index.css'
 import MainCard from 'ui-component/cards/MainCard'
 import { gridSpacing } from '../../../store/constant'
 import Loading from 'ui-component/loading'
+import MainModal from './modal-component'
 
 const Thermometer = () => {
   const mainHook = useFetchTickets()
-  const { FetchOpenTickets } = mainHook
+  const { FetchOpenTickets, toggle } = mainHook
 
   const { totalTickets, loading } = FetchOpenTickets
 
@@ -36,6 +37,7 @@ const Thermometer = () => {
 
   return (
     <MainCard>
+      <MainModal useFetchInit={mainHook} />
       <Loading loading={loading} />
       {!loading && (
         <Grid container spacing={gridSpacing}>
@@ -47,7 +49,7 @@ const Thermometer = () => {
             </Grid>
 
             <Grid item xs={12} sx={{ pt: '16px !important' }}>
-              <Card>
+              <Card style={{ cursor: 'pointer' }} onClick={() => toggle(null, 'Datos de tickets abiertos', 'open-tickets-data')}>
                 <Grid item>
                   <div className='App'>
                     <div className='thermometer'>

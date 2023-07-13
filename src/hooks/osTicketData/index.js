@@ -8,7 +8,8 @@ import {
   useFetchClosedTicketsSecondSemester,
   useFetchDataTicketsByStaff,
   useFetchOpenTickets,
-  useFetchPermissionPageDatosOsTicket
+  useFetchPermissionPageDatosOsTicket,
+  useFetchOpenTicketsData
 } from './fetch_data'
 
 export const useFetchTickets = () => {
@@ -42,6 +43,7 @@ export const useFetchTickets = () => {
   const FetchPermissionPageDatosOsTicket = useFetchPermissionPageDatosOsTicket()
   const FetchClosedTicketsCurrentWeek = useFetchClosedTicketsCurrentWeek()
   const FetchDataTicketsByStaff = useFetchDataTicketsByStaff({ dataModal })
+  const FetchOpenTicketsData = useFetchOpenTicketsData()
   const Actions = useActions({ selectedItems, toggle, FetchPermissionPageDatosOsTicket })
 
   return {
@@ -55,6 +57,7 @@ export const useFetchTickets = () => {
     FetchPermissionPageDatosOsTicket,
     FetchDataTicketsByStaff,
     FetchClosedTicketsCurrentWeek,
+    FetchOpenTicketsData,
     onClose,
     setSelectedItems,
     selectedItems

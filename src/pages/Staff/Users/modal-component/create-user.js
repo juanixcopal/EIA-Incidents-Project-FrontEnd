@@ -59,7 +59,7 @@ const CreateUser = ({ useFetchInit }) => {
 
             <Grid item>
               <TextField
-                label='Contraseña'
+                label='Repite Contraseña'
                 name='password_repeat'
                 type={showPasswordRepeat ? 'text' : 'password'}
                 onChange={handleInputChange}

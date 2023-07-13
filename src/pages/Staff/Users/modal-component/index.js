@@ -1,9 +1,10 @@
-import { Modal, Box, Typography } from '@mui/material'
+import { Modal, Box, Typography, Divider } from '@mui/material'
 import EditUser from './edit-user'
 import DeleteUser from './delete-user'
 import CreateUser from './create-user'
+import UpdatePassword from './update-password'
 
-const MainModal = ({ useFetchInit }) => {
+const MainModal = ({ useFetchInit, rol }) => {
   const { dataModal, onClose } = useFetchInit
   const { open, title, component } = dataModal
 
@@ -21,16 +22,24 @@ const MainModal = ({ useFetchInit }) => {
     borderRadius: '10px'
   }
 
+  const titleStyle = {
+    color: 'rgba(0, 0, 0, 0.54)',
+    fontSize: '0.9rem',
+    marginBottom: '16px'
+  }
+
   return (
     <>
       <Modal open={open} onClose={onClose}>
         <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2'>
+          <Typography variant='h6' component='h2' sx={titleStyle}>
             {title}
           </Typography>
-          {component === 'edit-user-data' && <EditUser useFetchInit={useFetchInit} />}
+          <Divider sx={{ marginBottom: '16px' }} />
+          {component === 'edit-user-data' && <EditUser useFetchInit={useFetchInit} rol={rol} />}
           {component === 'delete-user' && <DeleteUser useFetchInit={useFetchInit} />}
           {component === 'create-user' && <CreateUser useFetchInit={useFetchInit} />}
+          {component === 'update-password' && <UpdatePassword useFetchInit={useFetchInit} />}
         </Box>
       </Modal>
     </>

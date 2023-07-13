@@ -7,7 +7,8 @@ import {
   getClosedTicketsSecondSemester,
   getDataTicketByStaff,
   getOpenTickets,
-  getpermissionPageDatosOsTicket
+  getpermissionPageDatosOsTicket,
+  getOpenTicketsData
 } from '../../data/osTicketData/get.js'
 
 export const useFetchClosedTicketsCurrentMonth = () => {
@@ -223,4 +224,31 @@ export const useFetchDataTicketsByStaff = ({ dataModal }) => {
   }, [dataModal.params])
 
   return { dataTicketByStaff, loadingDataTicketByStaff }
+}
+
+export const useFetchOpenTicketsData = () => {
+  const [openTicketsData, setOpenTicketsData] = useState([])
+  const [loadingOpenTicketsData, setLoadingOpenTicketsData] = useState(false)
+
+  const _openTicketsData = async () => {
+    setLoadingOpenTicketsData(true)
+    await getOpenTicketsData()
+      .then(({ data }) => {
+        setOpenTicketsData(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error useFetchPermissionPageDatosOsTicket', response)
+      })
+    setLoadingOpenTicketsData(false)
+  }
+
+  useEffect(() => {
+    _openTicketsData()
+  }, [])
+
+  return { openTicketsData, loadingOpenTicketsData, _openTicketsData }
 }

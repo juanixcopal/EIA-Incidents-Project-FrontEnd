@@ -1,6 +1,6 @@
 const config = {
   basename: '/staff',
-  defaultPath: '/dashboard',
+  defaultPath: '/incidencias',
   fontFamily: `'Roboto', sans-serif`,
   borderRadius: 12
 }

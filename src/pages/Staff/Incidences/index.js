@@ -1,7 +1,18 @@
+import { Grid } from '@mui/material'
+import { gridSpacing } from 'store/constant'
+
+import OpenIncidences from './openIncidences'
+
 const IncidencesPage = () => {
   return (
     <>
-      <h1>Incidencias</h1>
+      <Grid container spacing={gridSpacing}>
+        <Grid item xs={12}>
+          <Grid container spacing={gridSpacing}>
+            <OpenIncidences />
+          </Grid>
+        </Grid>
+      </Grid>
     </>
   )
 }

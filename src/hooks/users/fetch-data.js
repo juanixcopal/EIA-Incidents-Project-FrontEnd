@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getAllUsers, getRoles } from '../../data/users/get.js'
+import { getAllUsers, getRoles, getAllSuperadmins } from '../../data/users/get.js'
 
 export const useFetchAllUsers = () => {
   const [users, setUsers] = useState([])
@@ -50,4 +50,31 @@ export const useFetchRoles = () => {
     })()
   }, [])
   return { roles, loadingRoles }
+}
+
+export const useFetchAllSuperadmins = () => {
+  const [superadmins, setSuperadmins] = useState([])
+  const [loadingSuperadmins, setLoadingSuperadmins] = useState(false)
+
+  const _getAllSuperadmins = async () => {
+    setLoadingSuperadmins(true)
+    await getAllSuperadmins()
+      .then(({ data }) => {
+        setSuperadmins(data)
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          localStorage.clear()
+          window.location.reload()
+        }
+        console.log('Error fetch-data all users', response)
+      })
+    setLoadingSuperadmins(false)
+  }
+
+  useEffect(() => {
+    _getAllSuperadmins()
+  }, [])
+
+  return { superadmins, loadingSuperadmins, _getAllSuperadmins }
 }

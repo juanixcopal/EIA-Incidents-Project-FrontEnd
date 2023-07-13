@@ -20,9 +20,16 @@ const ProfileSection = () => {
   const [open, setOpen] = useState(false)
 
   const anchorRef = useRef(null)
-  const handleLogout = async () => {
+
+  const handleLogout = (event, index, route = '') => {
+    setSelectedIndex(index)
+    handleClose(event)
+
+    if (route && route !== '') {
+      navigate(route)
+    }
+
     localStorage.clear()
-    navigate('/login')
   }
 
   const handleClose = event => {
@@ -40,6 +47,7 @@ const ProfileSection = () => {
       navigate(route)
     }
   }
+
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
   }
@@ -52,6 +60,8 @@ const ProfileSection = () => {
 
     prevOpen.current = open
   }, [open])
+
+  const fullName = localStorage.getItem('fullName')
 
   return (
     <>
@@ -121,9 +131,9 @@ const ProfileSection = () => {
                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                   <Box sx={{ p: 2 }}>
                     <Stack direction='row' spacing={0.5} alignItems='center'>
-                      <Typography variant='h4'>Bienvenido,</Typography>
+                      <Typography variant='h4'>Bienvenid@,</Typography>
                       <Typography component='span' variant='h4' sx={{ fontWeight: 400 }}>
-                        Rene
+                        {fullName || 'User'}
                       </Typography>
                     </Stack>
                   </Box>
@@ -135,7 +145,6 @@ const ProfileSection = () => {
                         maxWidth: 350,
                         minWidth: 300,
                         backgroundColor: theme.palette.background.paper,
-                        borderRadius: '10px',
                         [theme.breakpoints.down('md')]: {
                           minWidth: '100%'
                         },
@@ -155,7 +164,11 @@ const ProfileSection = () => {
                         <ListItemText primary={<Typography variant='body2'>Ajuste de cuenta</Typography>} />
                       </ListItemButton>
 
-                      <ListItemButton sx={{ borderRadius: `${customization.borderRadius}px` }} selected={selectedIndex === 4} onClick={handleLogout}>
+                      <ListItemButton
+                        sx={{ borderRadius: `${customization.borderRadius}px` }}
+                        selected={selectedIndex === 1}
+                        onClick={event => handleLogout(event, 1, 'login')}
+                      >
                         <ListItemIcon>
                           <IconLogout stroke={1.5} size='1.3rem' />
                         </ListItemIcon>

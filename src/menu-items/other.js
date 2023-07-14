@@ -1,11 +1,11 @@
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 const icons = { AccountCircleOutlinedIcon }
 
-const userRoles = ['administrador', 'usuario', 'superadmin']
+const superAdminRole = ['superadmin']
 
 const other = {
   id: 'others',
-  title: 'Perfil',
+  title: 'Páginas administración',
   type: 'group',
   children: [
     {
@@ -15,7 +15,7 @@ const other = {
       url: '/perfil',
       icon: icons.AccountCircleOutlinedIcon,
       breadcrumbs: false,
-      visible: userRoles
+      visible: superAdminRole
     }
   ]
 }

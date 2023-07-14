@@ -9,7 +9,7 @@ import { Avatar, Box, Chip, ClickAwayListener, List, ListItemButton, ListItemIco
 import MainCard from '../../../../ui-component/cards/MainCard'
 import Transitions from 'ui-component/extended/Transitions'
 
-import { IconLogout, IconSettings } from '@tabler/icons'
+import { IconLogout, IconSettings, IconTicket } from '@tabler/icons'
 
 const ProfileSection = () => {
   const theme = useTheme()
@@ -39,14 +39,14 @@ const ProfileSection = () => {
     setOpen(false)
   }
 
-  const handleListItemClick = (event, index, route = '') => {
-    setSelectedIndex(index)
-    handleClose(event)
+  // const handleListItemClick = (event, index, route = '') => {
+  //   setSelectedIndex(index)
+  //   handleClose(event)
 
-    if (route && route !== '') {
-      navigate(route)
-    }
-  }
+  //   if (route && route !== '') {
+  //     navigate(route)
+  //   }
+  // }
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
@@ -156,12 +156,12 @@ const ProfileSection = () => {
                       <ListItemButton
                         sx={{ borderRadius: `${customization.borderRadius}px` }}
                         selected={selectedIndex === 0}
-                        onClick={event => handleListItemClick(event, 0, '#')}
+                        onClick={() => window.open('https://soporte.uneatlantico.es/scp/', '_blank')}
                       >
                         <ListItemIcon>
-                          <IconSettings stroke={1.5} size='1.3rem' />
+                          <IconTicket stroke={1.5} size='1.3rem' />
                         </ListItemIcon>
-                        <ListItemText primary={<Typography variant='body2'>Ajuste de cuenta</Typography>} />
+                        <ListItemText primary={<Typography variant='body2'>Página de OsTicket</Typography>} />
                       </ListItemButton>
 
                       <ListItemButton

@@ -54,7 +54,7 @@ const UsersTable = ({ rol }) => {
   return (
     <>
       <MainCard>
-        <MainModal useFetchInit={mainHook} rol={rol} />
+        <MainModal useFetchInit={mainHook} />
         <Loading loading={loadingUsers} />
         {!loadingUsers && (
           <Grid container spacing={gridSpacing}>

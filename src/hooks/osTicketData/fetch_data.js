@@ -11,6 +11,8 @@ import {
   getOpenTicketsData
 } from '../../data/osTicketData/get.js'
 
+import ExecutionPermit from 'helpers/execution-permit.helper.js'
+
 export const useFetchClosedTicketsCurrentMonth = () => {
   const [closedCurrentMonth, setClosedCurrentMonth] = useState([])
   const [loadingClosedCurrentMonth, setLoadingClosedCurrentMonth] = useState(false)
@@ -22,10 +24,7 @@ export const useFetchClosedTicketsCurrentMonth = () => {
         setClosedCurrentMonth(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchClosedTicketsCurrentMonth', response)
       })
     setLoadingClosedCurrentMonth(false)
@@ -53,10 +52,7 @@ export const useFetchClosedTicketsFirstSemester = () => {
         setClosedTicketsFirstSemester(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchClosedTicketsFirstSemester', response)
       })
     setLoadingClosedTicketsFirstSemester(false)
@@ -84,10 +80,7 @@ export const useFetchClosedTicketsSecondSemester = () => {
         setClosedTicketsSecondSemester(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchClosedTicketsSecondSemester', response)
       })
     setLoadingClosedTicketsSecondSemester(false)
@@ -117,10 +110,7 @@ export const useFetchOpenTickets = () => {
         setTotalTickets(data[0].tickets_abiertos)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchOpenTickets', response)
       })
     setLoading(false)
@@ -148,10 +138,7 @@ export const useFetchPermissionPageDatosOsTicket = () => {
         setPermissionPageOsTicket(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchPermissionPageDatosOsTicket', response)
       })
     setLoadingPermissionItems(false)
@@ -175,10 +162,7 @@ export const useFetchClosedTicketsCurrentWeek = () => {
         setClosedCurrentWeek(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchClosedTicketsByWeek', response)
       })
     setLoadingClosedCurrentWeek(false)
@@ -207,10 +191,7 @@ export const useFetchDataTicketsByStaff = ({ dataModal }) => {
         setDataTicketByStaff(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchDataTicketsByStaff', response)
       })
     setLoadingDataTicketByStaff(false)
@@ -237,17 +218,19 @@ export const useFetchOpenTicketsData = () => {
         setOpenTicketsData(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchPermissionPageDatosOsTicket', response)
       })
     setLoadingOpenTicketsData(false)
   }
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      _openTicketsData()
+    }, 120000)
     _openTicketsData()
+    return () => clearInterval(timer)
+    // eslint-disable-next-line
   }, [])
 
   return { openTicketsData, loadingOpenTicketsData, _openTicketsData }

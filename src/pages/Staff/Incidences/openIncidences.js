@@ -112,7 +112,7 @@ const OpenIncidences = () => {
               <Grid container alignContent='center' justifyContent='space-between'>
                 <Grid item>
                   <Typography variant='h3' color='inherit'>
-                    No hay incidencias :)
+                    No hay incidencias
                   </Typography>
                 </Grid>
               </Grid>

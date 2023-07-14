@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getAllUsers, getRoles, getAllSuperadmins } from '../../data/users/get.js'
+import ExecutionPermit from 'helpers/execution-permit.helper.js'
 
 export const useFetchAllUsers = () => {
   const [users, setUsers] = useState([])
@@ -12,10 +13,7 @@ export const useFetchAllUsers = () => {
         setUsers(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error fetch-data all users', response)
       })
     setLoadingUsers(false)
@@ -40,10 +38,7 @@ export const useFetchRoles = () => {
           setRoles(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error fetch-data roles', response)
         })
       setLoadingRoles(false)
@@ -63,10 +58,7 @@ export const useFetchAllSuperadmins = () => {
         setSuperadmins(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error fetch-data all users', response)
       })
     setLoadingSuperadmins(false)

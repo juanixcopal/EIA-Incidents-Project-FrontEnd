@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getCarritosChromebook, getEstadosChromebook, getChromebooksByArmario } from '../../data/chromebooks/get.js'
+import ExecutionPermit from 'helpers/execution-permit.helper.js'
 
 export const useFetchCarritosChromebook = () => {
   const [armarios, setArmarios] = useState([])
@@ -13,10 +14,7 @@ export const useFetchCarritosChromebook = () => {
           setArmarios(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error fetch-data armarios', response)
         })
       setLoadingArmarios(false)
@@ -37,10 +35,7 @@ export const useFetchEstadosChromebook = () => {
           setEstadoChromebook(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error fetch-data states', response)
         })
       setLoadingEstadoChromebook(false)
@@ -60,10 +55,7 @@ export const useFetchChromebooksByArmario = ({ dataModal }) => {
         setChromebooksByArmario(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error fetch-data chromebooks by armario', response)
       })
     setLoadingChromebooksByArmario(false)
@@ -76,5 +68,5 @@ export const useFetchChromebooksByArmario = ({ dataModal }) => {
     // eslint-disable-next-line
   }, [dataModal.params])
 
-  return { chromebooksByArmario, loadingChromebooksByArmario }
+  return { chromebooksByArmario, loadingChromebooksByArmario, _getChromebooksByArmario }
 }

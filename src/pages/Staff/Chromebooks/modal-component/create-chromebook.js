@@ -43,7 +43,7 @@ const CreateChromebook = ({ useFetchInit }) => {
           <Grid item>
             <FormControl fullWidth>
               <InputLabel required>Armario Chromebook</InputLabel>
-              <Select value={id_Carrito} label='Carrito de Chromebook' onChange={handleChangeCupboard} name='id_carrito' required>
+              <Select value={id_Carrito} label='Carrito de Chromebook' onChange={handleChangeCupboard} name='id_armario' required>
                 {armarios.map(item => {
                   const { id_armario, numero_carrito } = item
                   return (

@@ -4,7 +4,7 @@ import DeleteUser from './delete-user'
 import CreateUser from './create-user'
 import UpdatePassword from './update-password'
 
-const MainModal = ({ useFetchInit, rol }) => {
+const MainModal = ({ useFetchInit }) => {
   const { dataModal, onClose } = useFetchInit
   const { open, title, component } = dataModal
 
@@ -36,7 +36,7 @@ const MainModal = ({ useFetchInit, rol }) => {
             {title}
           </Typography>
           <Divider sx={{ marginBottom: '16px' }} />
-          {component === 'edit-user-data' && <EditUser useFetchInit={useFetchInit} rol={rol} />}
+          {component === 'edit-user-data' && <EditUser useFetchInit={useFetchInit} />}
           {component === 'delete-user' && <DeleteUser useFetchInit={useFetchInit} />}
           {component === 'create-user' && <CreateUser useFetchInit={useFetchInit} />}
           {component === 'update-password' && <UpdatePassword useFetchInit={useFetchInit} />}

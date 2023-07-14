@@ -8,6 +8,8 @@ import {
   getTypeIncidencesClosedWeek
 } from '../../data/statistics/get.js'
 
+import ExecutionPermit from 'helpers/execution-permit.helper.js'
+
 export const useFetchTypeIncidencesClosed = () => {
   const [typeIncidencesClosed, setTypeIncidencesClosed] = useState([])
   const [loadingTypeIncidencesClosed, setLoadingTypeIncidencesClosed] = useState(false)
@@ -19,10 +21,7 @@ export const useFetchTypeIncidencesClosed = () => {
         setTypeIncidencesClosed(data[0])
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error', response)
       })
     setLoadingTypeIncidencesClosed(false)
@@ -51,10 +50,7 @@ export const useFetchTypeIncidencesClosedByRangeDate = ({ formattedStartDate, fo
         })
         .catch(({ response }) => {
           console.log(response.status)
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error', response)
         })
       setLoadingTypeIncidencesClosedByRangeDate(false)
@@ -76,10 +72,7 @@ export const useFetchPermissionPageEstadisticas = () => {
         setPermissionPageEstadistica(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchPermissionPageEstadisticas', response)
       })
     setLoadingPermission(false)
@@ -104,10 +97,7 @@ export const useFetchClosedTicketsCurrentWeek = ({ weekly }) => {
           setClosedCurrentWeek(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error useFetchClosedTicketsByWeek', response)
         })
       setLoadingClosedCurrentWeek(false)
@@ -128,10 +118,7 @@ export const useFetchDataTicketsByStaff = ({ dataModal, weekly }) => {
         setDataTicketByStaff(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchDataTicketsByStaff', response)
       })
     setLoadingDataTicketByStaff(false)
@@ -158,10 +145,7 @@ export const useFetchTypeIncidencesClosedWeek = () => {
         setTypeIncidencesClosedWeek(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error useFetchTypeIncidencesClosedWeek', response)
       })
     setLoadingTypeIncidencesClosedWeek(false)

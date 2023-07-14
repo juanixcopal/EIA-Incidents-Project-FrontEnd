@@ -5,7 +5,7 @@ import Loading from 'ui-component/loading'
 
 import { CancelButton, SaveButton } from 'ui-component/button'
 
-const EditUser = ({ useFetchInit, rol }) => {
+const EditUser = ({ useFetchInit }) => {
   const { dataModal, FetchRoles, onClose, Actions, handleChangeData } = useFetchInit
 
   const { updateDataUser } = Actions

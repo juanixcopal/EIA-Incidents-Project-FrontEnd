@@ -7,6 +7,7 @@ export const useFetchInitChromebooks = () => {
   const [dataModal, setDataModal] = useState(defaultDataModal)
   const [dataSubModal, setDataSubModal] = useState(defaultDataSubModal)
   const [data, setData] = useState(defaultData)
+  const [updateData, setUpdateData] = useState([])
 
   const toggle = (_, title, component, params) => {
     setDataModal({
@@ -52,10 +53,14 @@ export const useFetchInitChromebooks = () => {
     setData({ ...data, [event.target.name]: event.target.value })
   }
 
+  const handleChangeData = formData => {
+    setUpdateData(formData)
+  }
+
   const FetchCarritosChromebook = useFetchCarritosChromebook()
   const FetchEstadosChromebook = useFetchEstadosChromebook()
   const FetchChromebooksByArmario = useFetchChromebooksByArmario({ dataModal })
-  const Actions = useActions({ data, toggle })
+  const Actions = useActions({ data, toggle, updateData, FetchChromebooksByArmario, subToggle })
 
   return {
     dataModal,
@@ -68,6 +73,8 @@ export const useFetchInitChromebooks = () => {
     handleInputChange,
     Actions,
     onClose,
-    subOnClose
+    subOnClose,
+    handleChangeData,
+    updateData
   }
 }

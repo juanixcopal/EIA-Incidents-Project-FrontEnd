@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getStates, getReports } from '../../data/dashboard/get.js'
+import ExecutionPermit from 'helpers/execution-permit.helper.js'
 
 export const useFetchReports = ({ sockets }) => {
   const [dataReports, setDataReports] = useState([])
@@ -12,10 +13,7 @@ export const useFetchReports = ({ sockets }) => {
         setDataReports(data)
       })
       .catch(({ response }) => {
-        if (response.status === 401) {
-          localStorage.clear()
-          window.location.reload()
-        }
+        ExecutionPermit({ response })
         console.log('Error', response)
       })
     setLoadingDataReports(false)
@@ -53,10 +51,7 @@ export const useFetchStates = () => {
           setState(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error fetch-data states', response)
         })
       setLoadingState(false)

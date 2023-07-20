@@ -6,13 +6,9 @@ import { Grid, Typography } from '@mui/material'
 
 import { gridSpacing } from 'store/constant'
 
-import { useFetchInitStatistics } from 'hooks/statistics'
-
 import Loading from 'ui-component/loading'
 
-const CurrentWeekLinearGraph = () => {
-  const mainHook = useFetchInitStatistics()
-
+const CurrentWeekLinearGraph = ({ mainHook }) => {
   const { FetchTypeIncidencesClosedWeek } = mainHook
 
   const { loadingTypeIncidencesClosedWeek, typeIncidencesClosedWeek } = FetchTypeIncidencesClosedWeek

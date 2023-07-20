@@ -5,13 +5,9 @@ import MainCard from 'ui-component/cards/MainCard'
 
 import { gridSpacing } from 'store/constant'
 
-import { useFetchInitStatistics } from 'hooks/statistics'
-
 import Loading from 'ui-component/loading'
 
-const PieChartDateRange = () => {
-  const mainHook = useFetchInitStatistics()
-
+const PieChartDateRange = ({ mainHook }) => {
   const { FetchTypeIncidencesClosedByRangeDate, formattedStartDate, formattedEndDate, setFormattedStartDate, setFormattedEndDate } = mainHook
 
   const { loadingTypeIncidencesClosedByRangeDate, typeIncidencesClosedByRangeDate } = FetchTypeIncidencesClosedByRangeDate
@@ -75,10 +71,8 @@ const PieChartDateRange = () => {
 
             <Grid item xs={12} sx={{ pt: '16px !important' }}>
               <Grid item>
-                <Grid container direction='column' spacing={1}>
-                  <Grid item>
-                    <Pie data={pieChartDataByRangeDate} />
-                  </Grid>
+                <Grid item>
+                  <Pie data={pieChartDataByRangeDate} />
                 </Grid>
               </Grid>
             </Grid>

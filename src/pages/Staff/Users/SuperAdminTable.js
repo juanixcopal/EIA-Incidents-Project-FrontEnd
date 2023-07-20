@@ -23,12 +23,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import LockClockIcon from '@mui/icons-material/LockClock'
 
-import MainModal from './modal-component'
-
-import { useFetchInitUsers } from 'hooks/users'
-
-const SuperAdminTable = ({ rol }) => {
-  const mainHook = useFetchInitUsers()
+const SuperAdminTable = ({ rol, mainHook }) => {
   const { FetchAllSuperadmins, toggle } = mainHook
 
   const { superadmins, loadingSuperadmins } = FetchAllSuperadmins
@@ -54,7 +49,6 @@ const SuperAdminTable = ({ rol }) => {
   return (
     <>
       <MainCard>
-        <MainModal useFetchInit={mainHook} />
         <Loading loading={loadingSuperadmins} />
         {!loadingSuperadmins && (
           <Grid container spacing={gridSpacing}>

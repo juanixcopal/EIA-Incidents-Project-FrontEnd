@@ -5,13 +5,9 @@ import MainCard from 'ui-component/cards/MainCard'
 
 import { gridSpacing } from 'store/constant'
 
-import { useFetchInitStatistics } from 'hooks/statistics'
-
 import Loading from 'ui-component/loading'
 
-const PieChartCurrentMonth = () => {
-  const mainHook = useFetchInitStatistics()
-
+const PieChartCurrentMonth = ({ mainHook }) => {
   const { FetchTypeIncidencesClosed } = mainHook
 
   const { loadingTypeIncidencesClosed, typeIncidencesClosed } = FetchTypeIncidencesClosed

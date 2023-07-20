@@ -98,25 +98,25 @@ const StatisticsPage = () => {
             <Grid container spacing={gridSpacing}>
               {verPastelMesActual === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <PieChartCurrentMonth />
+                  <PieChartCurrentMonth mainHook={mainHook} />
                 </Grid>
               )}
 
               {verPastelRangoFecha === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <PieChartDateRange />
+                  <PieChartDateRange mainHook={mainHook} />
                 </Grid>
               )}
 
               {verLinealSemanal === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <CurrentWeekLinearGraph />
+                  <CurrentWeekLinearGraph mainHook={mainHook} />
                 </Grid>
               )}
 
               {verTablaTicketSemana === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <ClosedWeek />
+                  <ClosedWeek mainHook={mainHook} />
                 </Grid>
               )}
             </Grid>

@@ -4,14 +4,9 @@ import MainCard from 'ui-component/cards/MainCard'
 
 import { gridSpacing } from 'store/constant'
 
-import { useFetchInitStatistics } from 'hooks/statistics'
-
-import MainModal from './modal-component'
 import Loading from 'ui-component/loading'
 
-const ClosedWeek = () => {
-  const mainHook = useFetchInitStatistics()
-
+const ClosedWeek = ({ mainHook }) => {
   const { FetchClosedTicketsCurrentWeek, toggle, handleWeekChange, selectedDate } = mainHook
 
   const { closedCurrentWeek, loadingClosedCurrentWeek } = FetchClosedTicketsCurrentWeek
@@ -38,7 +33,6 @@ const ClosedWeek = () => {
   return (
     <>
       <MainCard>
-        <MainModal useFetchInit={mainHook} />
         <Loading loading={loadingClosedCurrentWeek} />
         {!loadingClosedCurrentWeek && (
           <Grid container spacing={gridSpacing}>

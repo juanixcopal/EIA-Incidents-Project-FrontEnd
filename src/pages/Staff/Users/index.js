@@ -42,12 +42,12 @@ const UsersPages = () => {
         <Grid item xs={12}>
           <Grid container spacing={gridSpacing}>
             <Grid item lg={6} md={12} sm={12} xs={12}>
-              <UsersTable rol={rol} />
+              <UsersTable rol={rol} mainHook={mainHook} />
             </Grid>
 
             {id_user === 1 && (
               <Grid item lg={6} md={12} sm={12} xs={12}>
-                <SuperAdminTable rol={rol} />
+                <SuperAdminTable rol={rol} mainHook={mainHook} />
               </Grid>
             )}
           </Grid>

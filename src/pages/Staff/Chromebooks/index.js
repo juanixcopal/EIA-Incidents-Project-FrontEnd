@@ -51,7 +51,7 @@ const ChromebooksPage = () => {
 
           <Grid item xs={12}>
             <Grid container spacing={gridSpacing}>
-              <ChromebooksCabinets />
+              <ChromebooksCabinets mainHook={mainHook} />
             </Grid>
           </Grid>
         </Grid>

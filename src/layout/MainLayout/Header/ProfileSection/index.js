@@ -9,7 +9,7 @@ import { Avatar, Box, Chip, ClickAwayListener, List, ListItemButton, ListItemIco
 import MainCard from '../../../../ui-component/cards/MainCard'
 import Transitions from 'ui-component/extended/Transitions'
 
-import { IconLogout, IconSettings, IconTicket } from '@tabler/icons'
+import { IconLogout, IconSettings, IconTicket, IconHourglass } from '@tabler/icons'
 
 const ProfileSection = () => {
   const theme = useTheme()
@@ -153,6 +153,17 @@ const ProfileSection = () => {
                         }
                       }}
                     >
+                      <ListItemButton
+                        sx={{ borderRadius: `${customization.borderRadius}px` }}
+                        selected={selectedIndex === 0}
+                        onClick={() => window.open('https://kronos.ctdesarrollo-sdr.org/', '_blank')}
+                      >
+                        <ListItemIcon>
+                          <IconHourglass stroke={1.5} size='1.3rem' />
+                        </ListItemIcon>
+                        <ListItemText primary={<Typography variant='body2'>Página Kronos</Typography>} />
+                      </ListItemButton>
+
                       <ListItemButton
                         sx={{ borderRadius: `${customization.borderRadius}px` }}
                         selected={selectedIndex === 0}

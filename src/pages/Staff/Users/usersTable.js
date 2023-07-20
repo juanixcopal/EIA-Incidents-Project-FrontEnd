@@ -22,12 +22,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import LockClockIcon from '@mui/icons-material/LockClock'
 
-import MainModal from './modal-component'
-
-import { useFetchInitUsers } from 'hooks/users'
-
-const UsersTable = ({ rol }) => {
-  const mainHook = useFetchInitUsers()
+const UsersTable = ({ rol, mainHook }) => {
   const { FetchAllUsers, toggle } = mainHook
 
   const { users, loadingUsers } = FetchAllUsers
@@ -54,7 +49,6 @@ const UsersTable = ({ rol }) => {
   return (
     <>
       <MainCard>
-        <MainModal useFetchInit={mainHook} />
         <Loading loading={loadingUsers} />
         {!loadingUsers && (
           <Grid container spacing={gridSpacing}>

@@ -3,18 +3,11 @@ import MainCard from 'ui-component/cards/MainCard'
 
 import { gridSpacing } from 'store/constant'
 
-import MainModal from './modal-component'
-
-import { useFetchInitChromebooks } from 'hooks/chromebooks'
-
-const ChromebooksCabinets = () => {
-  const mainHook = useFetchInitChromebooks()
+const ChromebooksCabinets = ({ mainHook }) => {
   const { toggle, FetchCarritosChromebook } = mainHook
   const { armarios } = FetchCarritosChromebook
   return (
     <>
-      <MainModal useFetchInit={mainHook} />
-
       {armarios.map(item => {
         const { id_armario, numero_carrito } = item
 

@@ -4,7 +4,7 @@ const ExecutionPermit = ({ response }) => {
     window.location.reload()
   }
   if (response.status === 403) {
-    window.location.href = '/incidencias'
+    window.location.href = '/datos-os-ticket'
   }
 }
 

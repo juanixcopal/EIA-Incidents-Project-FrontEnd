@@ -1,6 +1,6 @@
 const config = {
   basename: '/staff',
-  defaultPath: '/incidencias',
+  defaultPath: '/datos-os-ticket',
   fontFamily: `'Roboto', sans-serif`,
   borderRadius: 12
 }

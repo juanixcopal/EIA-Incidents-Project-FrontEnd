@@ -1,13 +1,10 @@
-import { useFetchTickets } from '../../../hooks/osTicketData/index'
 import { Grid, Typography, Card } from '@mui/material'
 import '../../../styles/osTicketData/index.css'
 import MainCard from 'ui-component/cards/MainCard'
 import { gridSpacing } from '../../../store/constant'
 import Loading from 'ui-component/loading'
-import MainModal from './modal-component'
 
-const Thermometer = () => {
-  const mainHook = useFetchTickets()
+const Thermometer = ({ mainHook }) => {
   const { FetchOpenTickets, toggle } = mainHook
 
   const { totalTickets, loading } = FetchOpenTickets
@@ -37,7 +34,6 @@ const Thermometer = () => {
 
   return (
     <MainCard>
-      <MainModal useFetchInit={mainHook} />
       <Loading loading={loading} />
       {!loading && (
         <Grid container spacing={gridSpacing}>

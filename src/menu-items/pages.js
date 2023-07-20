@@ -8,6 +8,7 @@ const icons = { DataThresholdingOutlinedIcon, ComputerOutlinedIcon, DomainAddOut
 
 const userRoles = ['administrador', 'usuario', 'superadmin']
 const adminRoles = ['administrador', 'superadmin']
+const superadminRol = ['superadmin']
 
 const pages = {
   id: 'dashboard',
@@ -21,7 +22,7 @@ const pages = {
       url: '/incidencias',
       icon: icons.DomainAddOutlinedIcon,
       breadcrumbs: false,
-      visible: userRoles
+      visible: superadminRol
     },
     {
       id: 'datos-os-ticket',

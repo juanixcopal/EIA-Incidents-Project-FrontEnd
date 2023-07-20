@@ -1,15 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
-// import { Link } from 'react-router-dom'
 
-// material-ui
 import { useTheme } from '@mui/material/styles'
 import {
   Avatar,
   Box,
-  Button,
   ButtonBase,
-  CardActions,
-  // Chip,
   ClickAwayListener,
   Divider,
   Grid,
@@ -17,32 +12,33 @@ import {
   Popper,
   Stack,
   Typography,
-  useMediaQuery
+  useMediaQuery,
+  CardActions,
+  Button,
+  Badge
 } from '@mui/material'
 
-// third-party
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
-// project imports
 import MainCard from '../../../../ui-component/cards/MainCard'
 import Transitions from '../../../../ui-component/extended/Transitions'
-// import NotificationList from './NotificationList'
+import NotificationList from './NotificationList'
 
-// assets
 import { IconBell } from '@tabler/icons'
 
-// notification status options
-
-// ==============================|| NOTIFICATION ||============================== //
+import { useFetchInitNotifications } from 'hooks/notifications'
 
 const NotificationSection = () => {
+  const mainHook = useFetchInitNotifications()
+
+  const { fetchAllNotificationsActive } = mainHook
+
+  const { notifications } = fetchAllNotificationsActive
+
   const theme = useTheme()
   const matchesXs = useMediaQuery(theme.breakpoints.down('md'))
 
   const [open, setOpen] = useState(false)
-  /**
-   * anchorRef is used on different componets and specifying one type leads to other components throwing an error
-   * */
   const anchorRef = useRef(null)
 
   const handleToggle = () => {
@@ -75,29 +71,31 @@ const NotificationSection = () => {
           }
         }}
       >
-        <ButtonBase sx={{ borderRadius: '12px' }}>
-          <Avatar
-            variant='rounded'
-            sx={{
-              ...theme.typography.commonAvatar,
-              ...theme.typography.mediumAvatar,
-              transition: 'all .2s ease-in-out',
-              background: theme.palette.secondary.light,
-              color: theme.palette.secondary.dark,
-              '&[aria-controls="menu-list-grow"],&:hover': {
-                background: theme.palette.secondary.dark,
-                color: theme.palette.secondary.light
-              }
-            }}
-            ref={anchorRef}
-            aria-controls={open ? 'menu-list-grow' : undefined}
-            aria-haspopup='true'
-            onClick={handleToggle}
-            color='inherit'
-          >
-            <IconBell stroke={1.5} size='1.3rem' />
-          </Avatar>
-        </ButtonBase>
+        <Badge badgeContent={notifications.length} color='primary'>
+          <ButtonBase sx={{ borderRadius: '12px' }}>
+            <Avatar
+              variant='rounded'
+              sx={{
+                ...theme.typography.commonAvatar,
+                ...theme.typography.mediumAvatar,
+                transition: 'all .2s ease-in-out',
+                background: theme.palette.secondary.light,
+                color: theme.palette.secondary.dark,
+                '&[aria-controls="menu-list-grow"],&:hover': {
+                  background: theme.palette.secondary.dark,
+                  color: theme.palette.secondary.light
+                }
+              }}
+              ref={anchorRef}
+              aria-controls={open ? 'menu-list-grow' : undefined}
+              aria-haspopup='true'
+              onClick={handleToggle}
+              color='inherit'
+            >
+              <IconBell stroke={1.5} size='1.3rem' />
+            </Avatar>
+          </ButtonBase>
+        </Badge>
       </Box>
       <Popper
         placement={matchesXs ? 'bottom' : 'bottom-end'}
@@ -128,21 +126,8 @@ const NotificationSection = () => {
                         <Grid item>
                           <Stack direction='row' spacing={2}>
                             <Typography variant='subtitle1'>Notificaciones</Typography>
-                            {/* <Chip
-                              size='small'
-                              label='01'
-                              sx={{
-                                color: theme.palette.background.default,
-                                bgcolor: theme.palette.warning.dark
-                              }}
-                            /> */}
                           </Stack>
                         </Grid>
-                        {/* <Grid item>
-                          <Typography component={Link} to='#' variant='subtitle2' color='primary'>
-                            Mark as all read
-                          </Typography>
-                        </Grid> */}
                       </Grid>
                     </Grid>
                     <Grid item xs={12}>
@@ -155,14 +140,14 @@ const NotificationSection = () => {
                             <Divider sx={{ my: 0 }} />
                           </Grid>
                         </Grid>
-                        {/* <NotificationList /> */}
+                        <NotificationList mainHook={mainHook} />
                       </PerfectScrollbar>
                     </Grid>
                   </Grid>
                   <Divider />
                   <CardActions sx={{ p: 1.25, justifyContent: 'center' }}>
                     <Button size='small' disableElevation>
-                      View All
+                      Ver todo
                     </Button>
                   </CardActions>
                 </MainCard>

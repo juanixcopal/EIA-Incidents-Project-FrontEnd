@@ -1,12 +1,9 @@
 import { Grid, Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody, styled, tableCellClasses, Typography, Card } from '@mui/material'
-import { useFetchTickets } from '../../../hooks/osTicketData/index'
 import { gridSpacing } from '../../../store/constant'
 import MainCard from 'ui-component/cards/MainCard'
 import Loading from 'ui-component/loading'
 
-const ClosedCurrentMonth = () => {
-  const mainHook = useFetchTickets()
-
+const ClosedCurrentMonth = ({ mainHook }) => {
   const { FetchClosedTicketsCurrentMonth } = mainHook
 
   const { closedCurrentMonth, loadingClosedCurrentMonth } = FetchClosedTicketsCurrentMonth

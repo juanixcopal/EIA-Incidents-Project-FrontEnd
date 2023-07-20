@@ -1,13 +1,9 @@
 import { Grid, Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody, styled, tableCellClasses, Typography } from '@mui/material'
-import { useFetchTickets } from '../../../hooks/osTicketData/index'
 import { gridSpacing } from 'store/constant'
 import MainCard from 'ui-component/cards/MainCard'
-import MainModal from './modal-component'
 import Loading from 'ui-component/loading'
 
-const ClosedCurrentWeek = () => {
-  const mainHook = useFetchTickets()
-
+const ClosedCurrentWeek = ({ mainHook }) => {
   const { FetchClosedTicketsCurrentWeek, toggle } = mainHook
 
   const { closedCurrentWeek, loadingClosedCurrentWeek } = FetchClosedTicketsCurrentWeek
@@ -34,7 +30,6 @@ const ClosedCurrentWeek = () => {
   return (
     <>
       <MainCard>
-        <MainModal useFetchInit={mainHook} />
         <Loading loading={loadingClosedCurrentWeek} />
         {!loadingClosedCurrentWeek && (
           <Grid container spacing={gridSpacing}>

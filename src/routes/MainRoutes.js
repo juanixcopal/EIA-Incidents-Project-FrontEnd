@@ -11,7 +11,7 @@ const Chromebooks = Loadable(lazy(() => import('../pages/Staff/Chromebooks/index
 const Users = Loadable(lazy(() => import('../pages/Staff/Users/index')))
 const Statistics = Loadable(lazy(() => import('../pages/Staff/Statistics/index')))
 
-const Profile = Loadable(lazy(() => import('../pages/Staff/Profile/index')))
+const NotificactionPage = Loadable(lazy(() => import('../pages/Staff/NotificationsManager/index')))
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token')
@@ -47,8 +47,8 @@ const MainRoutes = {
       element: isAuthenticated() ? <Statistics /> : <Navigate to='/login' replace={true} />
     },
     {
-      path: 'perfil',
-      element: isAuthenticated() ? <Profile /> : <Navigate to='/login' replace={true} />
+      path: 'notificaciones',
+      element: isAuthenticated() ? <NotificactionPage /> : <Navigate to='/login' replace={true} />
     }
   ]
 }

@@ -48,7 +48,7 @@ export const useFetchInitLogin = () => {
           localStorage.setItem('fullName', full_name)
           window.location.href = redirect
           setTimeout(() => {
-            navigate('/incidencias')
+            navigate('/datos-os-ticket')
           }, 200)
         }
       })

@@ -1,5 +1,5 @@
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-const icons = { AccountCircleOutlinedIcon }
+import CircleNotificationsOutlinedIcon from '@mui/icons-material/CircleNotificationsOutlined'
+const icons = { CircleNotificationsOutlinedIcon }
 
 const superAdminRole = ['superadmin']
 
@@ -9,11 +9,11 @@ const other = {
   type: 'group',
   children: [
     {
-      id: 'perfil',
-      title: 'Perfil',
+      id: 'notificaciones',
+      title: 'Notificaciones',
       type: 'item',
-      url: '/perfil',
-      icon: icons.AccountCircleOutlinedIcon,
+      url: '/notificaciones',
+      icon: icons.CircleNotificationsOutlinedIcon,
       breadcrumbs: false,
       visible: superAdminRole
     }

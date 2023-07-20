@@ -99,31 +99,31 @@ const DashboardPage = () => {
             <Grid container spacing={gridSpacing}>
               {verItemTermometro === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <Thermometer />
+                  <Thermometer mainHook={mainHook} />
                 </Grid>
               )}
 
               {verTablaMesActual === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <ClosedCurrentMonth />
+                  <ClosedCurrentMonth mainHook={mainHook} />
                 </Grid>
               )}
 
               {verTablaSemanaActual === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <ClosedCurrentWeek />
+                  <ClosedCurrentWeek mainHook={mainHook} />
                 </Grid>
               )}
 
               {verTablaPrimerSemestre === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <ClosedFirstSemester />
+                  <ClosedFirstSemester mainHook={mainHook} />
                 </Grid>
               )}
 
               {verTablaSegundoSemestre === 1 && (
                 <Grid item {...calculateGridSizes()}>
-                  <ClosedSecondSemester />
+                  <ClosedSecondSemester mainHook={mainHook} />
                 </Grid>
               )}
             </Grid>

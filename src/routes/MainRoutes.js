@@ -10,8 +10,9 @@ const Dashboard = Loadable(lazy(() => import('../pages/Staff/Incidences/index'))
 const Chromebooks = Loadable(lazy(() => import('../pages/Staff/Chromebooks/index')))
 const Users = Loadable(lazy(() => import('../pages/Staff/Users/index')))
 const Statistics = Loadable(lazy(() => import('../pages/Staff/Statistics/index')))
+const Classrooms = Loadable(lazy(() => import('../pages/Staff/Classrooms/index')))
 
-const NotificactionPage = Loadable(lazy(() => import('../pages/Staff/NotificationsManager/index')))
+const Notificaction = Loadable(lazy(() => import('../pages/Staff/NotificationsManager/index')))
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token')
@@ -48,7 +49,11 @@ const MainRoutes = {
     },
     {
       path: 'notificaciones',
-      element: isAuthenticated() ? <NotificactionPage /> : <Navigate to='/login' replace={true} />
+      element: isAuthenticated() ? <Notificaction /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'aulas',
+      element: isAuthenticated() ? <Classrooms /> : <Navigate to='/login' replace={true} />
     }
   ]
 }

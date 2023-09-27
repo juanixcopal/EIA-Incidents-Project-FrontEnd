@@ -5,7 +5,6 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertChartOutlinedOutlinedIcon from '@mui/icons-material/InsertChartOutlinedOutlined'
 import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook'
 import ApartmentIcon from '@mui/icons-material/Apartment'
-import CampaignIcon from '@mui/icons-material/Campaign'
 
 const icons = {
   DataThresholdingOutlinedIcon,
@@ -14,28 +13,18 @@ const icons = {
   GroupOutlinedIcon,
   InsertChartOutlinedOutlinedIcon,
   LaptopChromebookIcon,
-  ApartmentIcon,
-  CampaignIcon
+  ApartmentIcon
 }
 
 const userRoles = ['administrador', 'usuario', 'superadmin']
 const adminRoles = ['administrador', 'superadmin']
-const superadminRol = ['superadmin']
+// const superadminRol = ['superadmin']
 
 const pages = {
   id: 'dashboard',
   title: 'Paginas principales',
   type: 'group',
   children: [
-    {
-      id: 'incidencias',
-      title: 'Incidencias',
-      type: 'item',
-      url: '/incidencias',
-      icon: icons.CampaignIcon,
-      breadcrumbs: false,
-      visible: superadminRol
-    },
     {
       id: 'datos-os-ticket',
       title: 'Datos OsTicket',

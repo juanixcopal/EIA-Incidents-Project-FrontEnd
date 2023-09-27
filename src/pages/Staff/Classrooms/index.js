@@ -1,7 +1,13 @@
 import { Grid, Typography } from '@mui/material'
 import { gridSpacing } from 'store/constant'
+import { useFetchInitClassrooms } from 'hooks/classrooms'
 
 const ClassroomsPage = () => {
+  const mainHook = useFetchInitClassrooms()
+
+  const { FetchFloors } = mainHook
+  const { floors, loadingFloors } = FetchFloors
+
   return (
     <>
       <Grid container spacing={gridSpacing}>

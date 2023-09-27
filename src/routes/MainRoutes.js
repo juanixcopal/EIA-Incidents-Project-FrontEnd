@@ -6,7 +6,6 @@ import MainLayout from '../layout/MainLayout/index'
 import Loadable from '../ui-component/Loadable'
 
 const OsTicket = Loadable(lazy(() => import('../pages/Staff/OsTicket_Data/index')))
-const Dashboard = Loadable(lazy(() => import('../pages/Staff/Incidences/index')))
 const Chromebooks = Loadable(lazy(() => import('../pages/Staff/Chromebooks/index')))
 const Users = Loadable(lazy(() => import('../pages/Staff/Users/index')))
 const Statistics = Loadable(lazy(() => import('../pages/Staff/Statistics/index')))
@@ -25,15 +24,11 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: isAuthenticated() ? <Dashboard /> : <Navigate to='/login' replace={true} />
+      element: isAuthenticated() ? <OsTicket /> : <Navigate to='/login' replace={true} />
     },
     {
       path: 'datos-os-ticket',
       element: isAuthenticated() ? <OsTicket /> : <Navigate to='/login' replace={true} />
-    },
-    {
-      path: 'incidencias',
-      element: isAuthenticated() ? <Dashboard /> : <Navigate to='/login' replace={true} />
     },
     {
       path: 'chromebooks',

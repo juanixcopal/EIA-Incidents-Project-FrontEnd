@@ -13,7 +13,18 @@ export const getAllUsers = async () => {
 
 export const getRoles = async () => {
   return await axios
-    .get(`${process.env.REACT_APP_API_BASE}/v1/users/query`, { headers: { service: 'roles', token: localStorage.getItem('token') } })
+    .get(`${process.env.REACT_APP_API_BASE}/v1/users/query`, { headers: { service: 'all-roles', token: localStorage.getItem('token') } })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}
+
+export const getAllSuperadmins = async () => {
+  return await axios
+    .get(`${process.env.REACT_APP_API_BASE}/v1/users/query`, { headers: { service: 'superadmins-users', token: localStorage.getItem('token') } })
     .then(response => {
       return response
     })

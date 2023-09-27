@@ -1,45 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Incidents from './pages/incidents/index.js'
+import { createRoot } from 'react-dom/client'
+
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import AuthProvider from './provider/global.provider.js'
+import AuthProvider from 'provider/global.provider.js'
 
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import * as serviceWorker from './serviceWorker'
 
-import './assets/plugins/nucleo/css/nucleo.css'
-import './assets/scss/argon-dashboard-react.scss'
+import App from './App'
 
-import UserLayout from './components/layouts/UserLayouts.js'
+import { store } from 'store'
 
-const Login = React.lazy(() => import('./pages/login/index'))
+import './assets/scss/style.scss'
 
-const App = () => {
-  const token = localStorage.getItem('token')
+const container = document.getElementById('root')
+const root = createRoot(container)
 
-  return (
+root.render(
+  <Provider store={store}>
     <BrowserRouter>
       <ToastContainer />
       <AuthProvider>
-        <Switch>
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Incidents} />
-          {token ? (
-            <>
-              <Route exact path={`/`} />
-              <Route path='/staff' render={props => <UserLayout {...props} />} />
-            </>
-          ) : (
-            <Route to={'/login'} component={Login} />
-          )}
-        </Switch>
+        <App />
       </AuthProvider>
     </BrowserRouter>
-  )
-}
+  </Provider>
+)
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-
-root.render(<App />)
+serviceWorker.unregister()

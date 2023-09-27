@@ -1,49 +1,22 @@
 import { useState } from 'react'
+import { format } from 'date-fns'
+import { useActions } from './actions'
 import {
   useFetchTypeIncidencesClosed,
   useFetchTypeIncidencesClosedByRangeDate,
   useFetchPermissionPageEstadisticas,
-  useFetchClosedTicketsByWeek,
+  useFetchClosedTicketsCurrentWeek,
   useFetchDataTicketsByStaff,
   useFetchTypeIncidencesClosedWeek
 } from './fetch-data'
 import { defaultDataModal } from './default-data'
 
-export const useFetchStatistics = () => {
+export const useFetchInitStatistics = () => {
   const [dataModal, setDataModal] = useState(defaultDataModal)
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
   const [formattedStartDate, setFormattedStartDate] = useState(getFirstDayOfMonth())
   const [formattedEndDate, setFormattedEndDate] = useState(new Date().toISOString().substring(0, 10))
-  const [checkedItems, setCheckedItems] = useState({})
-
-  const handleStartDateChange = date => {
-    setStartDate(date)
-  }
-
-  const handleEndDateChange = date => {
-    setEndDate(date)
-  }
-
-  const handleCheckboxChange = event => {
-    setCheckedItems({
-      ...checkedItems,
-      [event.target.name]: event.target.checked
-    })
-  }
-
-  const handleSubmit = () => {
-    const startDateFormatted = startDate.format('YYYY-MM-DD')
-    const endDateFormatted = endDate.format('YYYY-MM-DD')
-    setFormattedStartDate(startDateFormatted)
-    setFormattedEndDate(endDateFormatted)
-  }
-
-  const handleSubmitItemPage = event => {
-    event.preventDefault()
-  }
-
-  const currentDate = new Date()
+  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedDate, setSelectedDate] = useState('')
 
   const getWeekNumber = date => {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1)
@@ -54,6 +27,8 @@ export const useFetchStatistics = () => {
     return year + paddedWeekNumber
   }
 
+  const currentDate = new Date()
+
   const currentWeek = getWeekNumber(currentDate)
   const currentweekly = `${currentWeek.toString().padStart(2, '0')}`
 
@@ -62,6 +37,8 @@ export const useFetchStatistics = () => {
   const handleWeekChange = event => {
     const selectedDate = new Date(event.target.value)
     const selectedWeekNumber = getWeekNumber(selectedDate)
+    const formattedDate = format(new Date(selectedDate), 'yyyy-MM-dd')
+    setSelectedDate(formattedDate)
     setNewWeek(selectedWeekNumber)
   }
 
@@ -75,30 +52,43 @@ export const useFetchStatistics = () => {
     })
   }
 
+  const onClose = (_, title, component, params) => {
+    setDataModal({
+      ...dataModal,
+      open: !dataModal.open,
+      title,
+      component,
+      params
+    })
+  }
+
   const FetchTypeIncidencesClosed = useFetchTypeIncidencesClosed()
   const FetchTypeIncidencesClosedByRangeDate = useFetchTypeIncidencesClosedByRangeDate({ formattedStartDate, formattedEndDate })
   const FetchPermissionPageEstadisticas = useFetchPermissionPageEstadisticas()
-  const FetchClosedTicketsByWeek = useFetchClosedTicketsByWeek({ weekly })
+  const Actions = useActions({ selectedItems, toggle, FetchPermissionPageEstadisticas })
+  const FetchClosedTicketsCurrentWeek = useFetchClosedTicketsCurrentWeek({ weekly })
   const FetchDataTicketsByStaff = useFetchDataTicketsByStaff({ dataModal, weekly })
   const FetchTypeIncidencesClosedWeek = useFetchTypeIncidencesClosedWeek()
 
   return {
-    FetchTypeIncidencesClosed,
-    startDate,
-    endDate,
-    handleStartDateChange,
-    handleEndDateChange,
-    handleSubmit,
-    FetchTypeIncidencesClosedByRangeDate,
+    FetchClosedTicketsCurrentWeek,
     FetchPermissionPageEstadisticas,
+    FetchDataTicketsByStaff,
+    FetchTypeIncidencesClosed,
+    FetchTypeIncidencesClosedWeek,
+    FetchTypeIncidencesClosedByRangeDate,
     toggle,
     dataModal,
-    handleCheckboxChange,
-    handleSubmitItemPage,
-    FetchClosedTicketsByWeek,
-    FetchDataTicketsByStaff,
+    onClose,
+    setSelectedItems,
+    selectedItems,
+    Actions,
     handleWeekChange,
-    FetchTypeIncidencesClosedWeek
+    selectedDate,
+    formattedStartDate,
+    formattedEndDate,
+    setFormattedStartDate,
+    setFormattedEndDate
   }
 }
 

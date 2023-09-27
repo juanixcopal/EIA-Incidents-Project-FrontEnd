@@ -13,7 +13,7 @@ export const defaultDataSubModal = {
 }
 
 export const defaultData = {
-  id_carrito: '',
+  id_armario: '',
   id_estado_chromebook: '',
   numero_chromebook: '',
   prodid: '',

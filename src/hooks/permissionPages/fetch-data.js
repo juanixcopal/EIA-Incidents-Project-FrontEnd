@@ -18,6 +18,27 @@ export const useFetchPermissionPageDatosOsTicket = () => {
       setLoadingPermission(false)
     })()
   }, [])
+
+  // const _permissionPageOsTicket = async () => {
+  //   setLoadingPermission(true)
+  //   await getpermissionPageDatosOsTicket()
+  //     .then(({ data }) => {
+  //       setPermissionPageOsTicket(data)
+  //     })
+  //     .catch(({ response }) => {
+  //       if (response.status === 401) {
+  //         localStorage.clear()
+  //         window.location.reload()
+  //       }
+  //       console.log('Error', response)
+  //     })
+  //   setLoadingPermission(false)
+  // }
+
+  // useEffect(() => {
+  //   _permissionPageOsTicket()
+  // }, [])
+
   return { permissionPageOsTicket, loadingPermission }
 }
 

@@ -1,20 +1,27 @@
 import { useState } from 'react'
 import { defaultData, defuaultMessage } from './default-data'
 import { postLogin } from '../../data/login/post'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const useFetchInitLogin = () => {
-  const history = useHistory()
   const [data, setData] = useState(defaultData)
   const [message, setMessage] = useState(defuaultMessage)
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleInputChange = event => {
     setData({ ...data, [event.target.name]: event.target.value })
   }
 
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(prevShowPassword => !prevShowPassword)
+  }
+
   const login = async e => {
     e.preventDefault()
+
     const { username, password } = data
 
     if (!username || !password) {
@@ -41,7 +48,7 @@ export const useFetchInitLogin = () => {
           localStorage.setItem('fullName', full_name)
           window.location.href = redirect
           setTimeout(() => {
-            history.push(`/staff/dashboard`)
+            navigate('/datos-os-ticket')
           }, 200)
         }
       })
@@ -62,5 +69,13 @@ export const useFetchInitLogin = () => {
     setLoading(false)
   }
 
-  return { data, handleInputChange, login, message, loading }
+  return {
+    data,
+    handleInputChange,
+    login,
+    message,
+    loading,
+    showPassword,
+    handleTogglePasswordVisibility
+  }
 }

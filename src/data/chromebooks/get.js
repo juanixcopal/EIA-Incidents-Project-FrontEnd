@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getEstadosChromebook = async () => {
   return await axios
-    .get(`${process.env.REACT_APP_API_BASE}/v1/chromebooks/query`, { headers: { service: 'get-estados-chromebooks', token: localStorage.getItem('token') } })
+    .get(`${process.env.REACT_APP_API_BASE}/v1/chromebooks/query`, { headers: { service: 'state-chromebooks', token: localStorage.getItem('token') } })
     .then(response => {
       return response
     })
@@ -13,7 +13,7 @@ export const getEstadosChromebook = async () => {
 
 export const getCarritosChromebook = async () => {
   return await axios
-    .get(`${process.env.REACT_APP_API_BASE}/v1/chromebooks/query`, { headers: { service: 'get-carritos-chromebooks', token: localStorage.getItem('token') } })
+    .get(`${process.env.REACT_APP_API_BASE}/v1/chromebooks/query`, { headers: { service: 'wardrobes-chromebooks', token: localStorage.getItem('token') } })
     .then(response => {
       return response
     })
@@ -27,7 +27,7 @@ export const getChromebooksByArmario = async ({ dataModal }) => {
 
   return await axios
     .get(`${process.env.REACT_APP_API_BASE}/v1/chromebooks/query`, {
-      headers: { service: 'get-chromebooks-by-armario', token: localStorage.getItem('token') },
+      headers: { service: 'chromebooks-trolley', token: localStorage.getItem('token') },
       params: { id_armario: id_armario }
     })
     .then(response => {

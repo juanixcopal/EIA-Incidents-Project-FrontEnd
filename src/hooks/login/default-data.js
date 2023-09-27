@@ -1,9 +1,9 @@
 export const defaultData = {
-    username: '',
-    password: ''
+  username: '',
+  password: ''
 }
 
 export const defuaultMessage = {
-    message: '',
-    result: true
+  message: '',
+  result: true
 }

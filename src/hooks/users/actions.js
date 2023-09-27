@@ -1,29 +1,31 @@
-import { useState } from 'react'
-import { alertMessage } from '../common/toast-alert'
-import axios from 'axios'
+import { updateUserData, updatePasswordUser } from '../../data/users/put.js'
+import { deleteUserData } from '../../data/users/delete.js'
+import { createUserData } from '../../data/users/post.js'
 
-export const useActions = ({ FetchAllUsers, data, toggle, dataModal }) => {
-  const [loadingOperation, setLoadingOperation] = useState(false)
-  const { _getAllUsers } = FetchAllUsers
-
-  const updateRoleUser = async e => {
+export const useActions = ({ FetchAllUsers, FetchAllSuperadmins, toggle, data, dataModal, dataUser, dataUpdatePassword }) => {
+  const updateDataUser = async e => {
     e.preventDefault()
 
-    const { id_user } = dataModal.params
-
-    const update_rol = {
-      ...data,
-      id_user
-    }
-
-    setLoadingOperation(true)
-    await axios
-      .put(`${process.env.REACT_APP_API_BASE}/v1/users/update`, update_rol, { headers: { service: 'update-rol-user', token: localStorage.token } })
-      .then(({ data }) => {
-        alertMessage(data, _getAllUsers, toggle)
-      })
-    setLoadingOperation(false)
+    updateUserData({ FetchAllUsers, FetchAllSuperadmins, toggle, data })
   }
 
-  return { updateRoleUser, loadingOperation }
+  const deleteUser = async e => {
+    e.preventDefault()
+
+    deleteUserData({ FetchAllUsers, toggle, dataModal })
+  }
+
+  const createUser = async e => {
+    e.preventDefault()
+
+    createUserData({ FetchAllUsers, toggle, dataUser })
+  }
+
+  const updatePassword = async e => {
+    e.preventDefault()
+
+    updatePasswordUser({ toggle, dataModal, dataUpdatePassword })
+  }
+
+  return { updateDataUser, deleteUser, createUser, updatePassword }
 }

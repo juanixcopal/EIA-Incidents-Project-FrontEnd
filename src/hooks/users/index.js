@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { useFetchAllUsers, useFetchRoles } from './fetch-data'
-import { defaultData, defaultDataModal } from './default-data'
+import { useFetchAllUsers, useFetchRoles, useFetchAllSuperadmins } from './fetch-data'
+import { defaultDataModal, defaultData, defaultDataUpdatePassword } from './default-data'
 import { useActions } from './actions'
 export const useFetchInitUsers = () => {
-  const [data, setData] = useState(defaultData)
   const [dataModal, setDataModal] = useState(defaultDataModal)
-
-  const handleInputChange = event => {
-    setData({ ...data, [event.target.name]: event.target.value })
-  }
+  const [dataUser, setDataUser] = useState(defaultData)
+  const [dataUpdatePassword, setDataUpdatePassword] = useState(defaultDataUpdatePassword)
+  const [data, setData] = useState([])
+  const [showPassword, setShowPassword] = useState(false)
+  const [showPasswordRepeat, setShowPasswordRepeat] = useState(false)
 
   const toggle = (_, title, component, params) => {
     setDataModal({
@@ -20,17 +20,57 @@ export const useFetchInitUsers = () => {
     })
   }
 
+  const onClose = (_, title, component, params) => {
+    setDataModal({
+      ...dataModal,
+      open: !dataModal.open,
+      title,
+      component,
+      params
+    })
+  }
+
+  const handleChangeData = formData => {
+    setData(formData)
+  }
+
+  const handleInputChange = event => {
+    setDataUser({ ...dataUser, [event.target.name]: event.target.value })
+  }
+
+  const handleInputChangeUpdatePassword = event => {
+    setDataUpdatePassword({ ...dataUpdatePassword, [event.target.name]: event.target.value })
+  }
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(prevShowPassword => !prevShowPassword)
+  }
+
+  const handleTogglePasswordRepeatVisibility = () => {
+    setShowPasswordRepeat(prevShowPassword => !prevShowPassword)
+  }
+
   const FetchAllUsers = useFetchAllUsers()
   const FetchRoles = useFetchRoles()
-  const Actions = useActions({ FetchAllUsers, data, toggle, dataModal })
+  const FetchAllSuperadmins = useFetchAllSuperadmins()
+  const Actions = useActions({ FetchAllUsers, FetchAllSuperadmins, toggle, dataModal, data, dataUser, dataUpdatePassword })
 
   return {
     FetchAllUsers,
     FetchRoles,
-    data,
-    handleInputChange,
+    FetchAllSuperadmins,
     dataModal,
     toggle,
-    Actions
+    Actions,
+    onClose,
+    handleChangeData,
+    setData,
+    handleInputChange,
+    handleTogglePasswordVisibility,
+    showPassword,
+    handleTogglePasswordRepeatVisibility,
+    showPasswordRepeat,
+    dataUpdatePassword,
+    handleInputChangeUpdatePassword
   }
 }

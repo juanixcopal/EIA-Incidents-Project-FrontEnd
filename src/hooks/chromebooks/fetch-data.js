@@ -1,28 +1,26 @@
 import { useState, useEffect } from 'react'
 import { getCarritosChromebook, getEstadosChromebook, getChromebooksByArmario } from '../../data/chromebooks/get.js'
+import ExecutionPermit from 'helpers/execution-permit.helper.js'
 
 export const useFetchCarritosChromebook = () => {
-  const [carritos, setCarritos] = useState([])
-  const [loadingCarritos, setLoadingCarritos] = useState(false)
+  const [armarios, setArmarios] = useState([])
+  const [loadingArmarios, setLoadingArmarios] = useState(false)
 
   useEffect(() => {
     ;(async () => {
-      setLoadingCarritos(true)
+      setLoadingArmarios(true)
       await getCarritosChromebook()
         .then(({ data }) => {
-          setCarritos(data)
+          setArmarios(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error fetch-data armarios', response)
         })
-      setLoadingCarritos(false)
+      setLoadingArmarios(false)
     })()
   }, [])
-  return { carritos, loadingCarritos }
+  return { armarios, loadingArmarios }
 }
 
 export const useFetchEstadosChromebook = () => {
@@ -37,10 +35,7 @@ export const useFetchEstadosChromebook = () => {
           setEstadoChromebook(data)
         })
         .catch(({ response }) => {
-          if (response.status === 401) {
-            localStorage.clear()
-            window.location.reload()
-          }
+          ExecutionPermit({ response })
           console.log('Error fetch-data states', response)
         })
       setLoadingEstadoChromebook(false)
@@ -59,8 +54,9 @@ export const useFetchChromebooksByArmario = ({ dataModal }) => {
       .then(({ data }) => {
         setChromebooksByArmario(data)
       })
-      .catch(error => {
-        console.log('Error', error)
+      .catch(({ response }) => {
+        ExecutionPermit({ response })
+        console.log('Error fetch-data chromebooks by armario', response)
       })
     setLoadingChromebooksByArmario(false)
   }
@@ -69,7 +65,8 @@ export const useFetchChromebooksByArmario = ({ dataModal }) => {
     if (dataModal.params?.id_armario) {
       _getChromebooksByArmario()
     }
+    // eslint-disable-next-line
   }, [dataModal.params])
 
-  return { chromebooksByArmario, loadingChromebooksByArmario }
+  return { chromebooksByArmario, loadingChromebooksByArmario, _getChromebooksByArmario }
 }

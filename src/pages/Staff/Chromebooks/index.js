@@ -10,6 +10,7 @@ import MainModal from './modal-component'
 import { useFetchInitChromebooks } from 'hooks/chromebooks'
 
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 import ChromebooksCabinets from './chromebooksCabinets'
 
@@ -41,6 +42,16 @@ const ChromebooksPage = () => {
                         onClick={() => toggle(null, 'Crear Chromebook', 'create-chromebook')}
                       >
                         Crear Chromebook
+                      </Button>
+                    </Grid>
+                    <Grid item>
+                      <Button
+                        variant='contained'
+                        startIcon={<CalendarMonthIcon />}
+                        color='inherit'
+                        onClick={() => toggle(null, 'Horario Chromebooks', 'view-calendar')}
+                      >
+                        Horario Chromebook's
                       </Button>
                     </Grid>
                   </Grid>

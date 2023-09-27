@@ -1,6 +1,7 @@
 import { Modal, Box, Typography, Divider } from '@mui/material'
 import ViewChromebook from './view-chromebook'
 import CreateChromebook from './create-chromebook'
+import ViewCalendar from './view-calendar'
 
 const MainModal = ({ useFetchInit }) => {
   const { dataModal, onClose } = useFetchInit
@@ -36,6 +37,7 @@ const MainModal = ({ useFetchInit }) => {
           <Divider sx={{ marginBottom: '16px' }} />
           {component === 'view-chromebook' && <ViewChromebook useFetchInit={useFetchInit} />}
           {component === 'create-chromebook' && <CreateChromebook useFetchInit={useFetchInit} />}
+          {component === 'view-calendar' && <ViewCalendar useFetchInit={useFetchInit} />}
         </Box>
       </Modal>
     </>

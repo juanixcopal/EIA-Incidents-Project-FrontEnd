@@ -37,3 +37,19 @@ export const getChromebooksByArmario = async ({ dataModal }) => {
       throw error
     })
 }
+
+export const getChromebooksActiveByCupboard = async ({ dataModal }) => {
+  const { id_armario } = dataModal.params
+
+  return await axios
+    .get(`${process.env.REACT_APP_API_BASE}/v1/chromebooks/query`, {
+      headers: { service: 'chromebooks-active-cupboard', token: localStorage.getItem('token') },
+      params: { id_armario: id_armario }
+    })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

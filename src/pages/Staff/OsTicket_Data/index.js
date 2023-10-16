@@ -18,7 +18,7 @@ import { useFetchTickets } from '../../../hooks/osTicketData/index'
 import { AuthContext } from 'provider/global.provider'
 
 const DashboardPage = () => {
-  const { authData } = useContext(AuthContext)
+  const { authData, rolAccess } = useContext(AuthContext)
 
   const mainHook = useFetchTickets()
 
@@ -79,7 +79,7 @@ const DashboardPage = () => {
 
       {!loadingPermissionItems && (
         <Grid container spacing={gridSpacing}>
-          {(rol === 'superadmin' || rol === 'administrador') && (
+          {rolAccess[rol] && (
             <Grid item xs={12}>
               <Grid container spacing={gridSpacing}>
                 <Grid item xs={12}>

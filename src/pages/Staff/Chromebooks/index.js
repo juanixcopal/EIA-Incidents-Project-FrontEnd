@@ -14,7 +14,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import ChromebooksCabinets from './chromebooksCabinets'
 
 const ChromebooksPage = () => {
-  const { authData } = useContext(AuthContext)
+  const { authData, rolAccess } = useContext(AuthContext)
   const rol = authData.rol_usuario
 
   const mainHook = useFetchInitChromebooks()
@@ -28,7 +28,7 @@ const ChromebooksPage = () => {
       <MainModal useFetchInit={mainHook} />
       {!loadingArmarios && (
         <Grid container spacing={gridSpacing}>
-          {(rol === 'superadmin' || rol === 'administrador') && (
+          {rolAccess[rol] && (
             <Grid item xs={12}>
               <Grid container spacing={gridSpacing}>
                 <Grid item xs={12}>

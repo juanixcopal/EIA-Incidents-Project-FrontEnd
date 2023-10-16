@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { defaultDataModal, defaultData, defaultDataSubModal } from './default-data'
-import { useFetchCarritosChromebook, useFetchEstadosChromebook, useFetchChromebooksByArmario } from './fetch-data'
+import { useFetchCarritosChromebook, useFetchEstadosChromebook, useFetchChromebooksByArmario, useFetchChromebooksActiveByCupboard } from './fetch-data'
 import { useActions } from './actions.js'
 
 export const useFetchInitChromebooks = () => {
@@ -60,7 +60,8 @@ export const useFetchInitChromebooks = () => {
   const FetchCarritosChromebook = useFetchCarritosChromebook()
   const FetchEstadosChromebook = useFetchEstadosChromebook()
   const FetchChromebooksByArmario = useFetchChromebooksByArmario({ dataModal })
-  const Actions = useActions({ data, toggle, updateData, FetchChromebooksByArmario, subToggle })
+  const FetchChromebooksActiveByCupboard = useFetchChromebooksActiveByCupboard({ dataModal })
+  const Actions = useActions({ data, toggle, updateData, FetchChromebooksByArmario, subToggle, FetchChromebooksActiveByCupboard })
 
   return {
     dataModal,
@@ -70,6 +71,7 @@ export const useFetchInitChromebooks = () => {
     FetchCarritosChromebook,
     FetchEstadosChromebook,
     FetchChromebooksByArmario,
+    FetchChromebooksActiveByCupboard,
     handleInputChange,
     Actions,
     onClose,

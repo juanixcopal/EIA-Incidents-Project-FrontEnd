@@ -20,7 +20,7 @@ import { AuthContext } from 'provider/global.provider'
 const StatisticsPage = () => {
   const [visibleElements, setVisibleElements] = useState(0)
 
-  const { authData } = useContext(AuthContext)
+  const { authData, rolAccess } = useContext(AuthContext)
 
   const rol = authData.rol_usuario
 
@@ -73,7 +73,7 @@ const StatisticsPage = () => {
 
       {!loadingPermission && (
         <Grid container spacing={gridSpacing}>
-          {(rol === 'superadmin' || rol === 'administrador') && (
+          {rolAccess[rol] && (
             <Grid item xs={12}>
               <Grid container spacing={gridSpacing}>
                 <Grid item xs={12}>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getCarritosChromebook, getEstadosChromebook, getChromebooksByArmario } from '../../data/chromebooks/get.js'
+import { getCarritosChromebook, getEstadosChromebook, getChromebooksByArmario, getChromebooksActiveByCupboard } from '../../data/chromebooks/get.js'
 import ExecutionPermit from 'helpers/execution-permit.helper.js'
 
 export const useFetchCarritosChromebook = () => {
@@ -69,4 +69,31 @@ export const useFetchChromebooksByArmario = ({ dataModal }) => {
   }, [dataModal.params])
 
   return { chromebooksByArmario, loadingChromebooksByArmario, _getChromebooksByArmario }
+}
+
+export const useFetchChromebooksActiveByCupboard = ({ dataModal }) => {
+  const [chromebooksActiveByCupboard, setChromebooksActiveByCupboard] = useState([])
+  const [loadingChromebooksActiveByCupboard, setLoadingChromebooksActiveByCupboard] = useState(false)
+
+  const _getChromebooksActiveByCupboard = async () => {
+    setLoadingChromebooksActiveByCupboard(true)
+    await getChromebooksActiveByCupboard({ dataModal })
+      .then(({ data }) => {
+        setChromebooksActiveByCupboard(data[0].chromebooksActivas)
+      })
+      .catch(({ response }) => {
+        ExecutionPermit({ response })
+        console.log('Error fetch-data total chromebooks by cupboard', response)
+      })
+    setLoadingChromebooksActiveByCupboard(false)
+  }
+
+  useEffect(() => {
+    if (dataModal.params?.id_armario) {
+      _getChromebooksActiveByCupboard()
+    }
+    // eslint-disable-next-line
+  }, [dataModal.params])
+
+  return { chromebooksActiveByCupboard, loadingChromebooksActiveByCupboard, _getChromebooksActiveByCupboard }
 }

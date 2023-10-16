@@ -65,7 +65,7 @@ const Row = props => {
       </TableRow>
 
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0, maxWidth: 100 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0, maxWidth: 10, maxHeight: 50 }} colSpan={6}>
           <Collapse in={open} timeout='auto' unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant='h4' gutterBottom component='div'>
@@ -122,7 +122,7 @@ const OpenTicketsData = ({ useFetchInit }) => {
               <Grid item>
                 <Grid container direction='column' spacing={1}>
                   <Grid item>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} style={{ maxHeight: 550, overflowY: 'auto' }}>
                       <Table aria-label='collapsible table'>
                         <TableHead>
                           <TableRow>

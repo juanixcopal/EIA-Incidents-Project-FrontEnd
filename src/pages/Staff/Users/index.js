@@ -11,7 +11,7 @@ import MainModal from './modal-component'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
 
 const UsersPages = () => {
-  const { authData } = useContext(AuthContext)
+  const { authData, rolAccess } = useContext(AuthContext)
   const rol = authData.rol_usuario
   const id_user = authData.id_user
 
@@ -23,7 +23,7 @@ const UsersPages = () => {
     <>
       <MainModal useFetchInit={mainHook} />
       <Grid container spacing={gridSpacing}>
-        {(rol === 'superadmin' || rol === 'administrador') && (
+        {rolAccess[rol] && (
           <Grid item xs={12}>
             <Grid container spacing={gridSpacing}>
               <Grid item xs={12}>

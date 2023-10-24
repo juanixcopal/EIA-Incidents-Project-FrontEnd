@@ -1,6 +1,7 @@
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
 import { useContext, useState, useEffect } from 'react'
+import { useTheme } from '@emotion/react'
 
 import Thermometer from './thermometer'
 import ClosedCurrentMonth from './closedCurrentMonth'
@@ -18,6 +19,7 @@ import { useFetchTickets } from '../../../hooks/osTicketData/index'
 import { AuthContext } from 'provider/global.provider'
 
 const DashboardPage = () => {
+  const theme = useTheme()
   const { authData, rolAccess } = useContext(AuthContext)
 
   const mainHook = useFetchTickets()
@@ -85,7 +87,12 @@ const DashboardPage = () => {
                 <Grid item xs={12}>
                   <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
                     <Grid item>
-                      <Button variant='contained' endIcon={<CreateIcon />} color='inherit' onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}>
+                      <Button
+                        variant='contained'
+                        endIcon={<CreateIcon />}
+                        style={{ background: theme.palette.primary[800] }}
+                        onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}
+                      >
                         Administrar la vista
                       </Button>
                     </Grid>

@@ -18,19 +18,21 @@ import {
 import { gridSpacing } from 'store/constant'
 import MainCard from 'ui-component/cards/MainCard'
 import Loading from 'ui-component/loading'
+import { useTheme } from '@mui/material/styles'
 
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import LockClockIcon from '@mui/icons-material/LockClock'
 
 const SuperAdminTable = ({ rol, mainHook }) => {
+  const theme = useTheme()
   const { FetchAllSuperadmins, toggle } = mainHook
 
   const { superadmins, loadingSuperadmins } = FetchAllSuperadmins
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.primary.dark,
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -86,18 +88,27 @@ const SuperAdminTable = ({ rol, mainHook }) => {
                                 <StyledTableCell align='center'>
                                   <Box>
                                     <Tooltip title='Editar datos de usuario'>
-                                      <IconButton color='inherit' onClick={() => toggle(null, 'Editar datos de usuario', 'edit-user-data', item)}>
+                                      <IconButton
+                                        style={{ color: theme.palette.warning.dark }}
+                                        onClick={() => toggle(null, 'Editar datos de usuario', 'edit-user-data', item)}
+                                      >
                                         <EditIcon />
                                       </IconButton>
                                     </Tooltip>
                                     <Tooltip title='Eliminar usuario'>
-                                      <IconButton color='error' onClick={() => toggle(null, 'Eliminar usuario', 'delete-user', item)}>
+                                      <IconButton
+                                        style={{ color: theme.palette.error.main }}
+                                        onClick={() => toggle(null, 'Eliminar usuario', 'delete-user', item)}
+                                      >
                                         <DeleteIcon />
                                       </IconButton>
                                     </Tooltip>
                                     {rol === 'superadmin' && (
                                       <Tooltip title='Cambiar contraseña'>
-                                        <IconButton color='secondary' onClick={() => toggle(null, 'Actualizar contraseña de usuario', 'update-password', item)}>
+                                        <IconButton
+                                          style={{ color: theme.palette.primary[800] }}
+                                          onClick={() => toggle(null, 'Actualizar contraseña de usuario', 'update-password', item)}
+                                        >
                                           <LockClockIcon />
                                         </IconButton>
                                       </Tooltip>

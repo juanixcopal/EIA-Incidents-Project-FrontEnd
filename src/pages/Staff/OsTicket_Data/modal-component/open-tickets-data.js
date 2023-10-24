@@ -24,7 +24,7 @@ const Row = props => {
   const { row } = props
   const [open, setOpen] = useState(false)
 
-  const { ticket_id, number, created, topic, poster, body, subject, priority, priority_color } = row
+  const { ticket_id, number, created, topic, poster, body, subject, priority_desc, priority_color } = row
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -60,7 +60,7 @@ const Row = props => {
         <StyledTableCell align='center'>{subject}</StyledTableCell>
         <StyledTableCell align='center'>{poster}</StyledTableCell>
         <StyledTableCell align='center' style={{ backgroundColor: priority_color }}>
-          {priority}
+          {priority_desc}
         </StyledTableCell>
       </TableRow>
 

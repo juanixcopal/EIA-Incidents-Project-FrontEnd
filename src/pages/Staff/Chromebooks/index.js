@@ -1,6 +1,7 @@
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
 import { useContext } from 'react'
+import { useTheme } from '@mui/material/styles'
 
 import { AuthContext } from 'provider/global.provider'
 
@@ -14,6 +15,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import ChromebooksCabinets from './chromebooksCabinets'
 
 const ChromebooksPage = () => {
+  const theme = useTheme()
   const { authData, rolAccess } = useContext(AuthContext)
   const rol = authData.rol_usuario
 
@@ -37,7 +39,7 @@ const ChromebooksPage = () => {
                       <Button
                         variant='contained'
                         startIcon={<AddCircleOutlineIcon />}
-                        color='inherit'
+                        style={{ background: theme.palette.primary[800] }}
                         onClick={() => toggle(null, 'Crear Chromebook', 'create-chromebook')}
                       >
                         Crear Chromebook

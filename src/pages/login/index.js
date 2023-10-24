@@ -7,10 +7,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { useFetchInitLogin } from '../../hooks/login/index'
 
 const Login = () => {
-  const homepage = () => {
-    console.log('Homepage')
-  }
-
   const theme = useTheme()
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -63,11 +59,8 @@ const Login = () => {
                 ) : (
                   <Typography color={`${result ? 'green' : 'red'}`}>{_message}</Typography>
                 )}
-                <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
+                <Button type='submit' fullWidth variant='contained' style={{ background: theme.palette.primary[800] }} sx={{ mt: 3, mb: 2 }}>
                   Acceder
-                </Button>
-                <Button fullWidth sx={{ mt: 3, mb: 2 }} onClick={homepage}>
-                  Página Principal
                 </Button>
               </Box>
             </Box>

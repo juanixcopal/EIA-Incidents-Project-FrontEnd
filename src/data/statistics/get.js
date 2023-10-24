@@ -83,3 +83,18 @@ export const getTypeIncidencesClosedWeek = async () => {
       throw error
     })
 }
+
+export const getClosedTicketsDataByRange = async ({ formattedStartDateMonth, formattedEndDateMonth }) => {
+  return await axios
+
+    .get(`${process.env.REACT_APP_API_BASE}/v1/statistics/query`, {
+      headers: { service: 'closed-tickets-data-by-range', token: localStorage.getItem('token') },
+      params: { formattedStartDateMonth, formattedEndDateMonth }
+    })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

@@ -1,11 +1,12 @@
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
 import { useFetchInitClassrooms } from 'hooks/inventory'
-import { useContext } from 'react'
 
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import { useTheme } from '@emotion/react'
 
-import { AuthContext } from 'provider/global.provider'
+import { Link } from 'react-router-dom'
+
+import DomainAddIcon from '@mui/icons-material/DomainAdd'
 
 import Loading from 'ui-component/loading'
 import MainModal from './modal-component'
@@ -13,8 +14,7 @@ import MainModal from './modal-component'
 import Floors from './floors'
 
 const ClassroomsPage = () => {
-  const { authData, rolAccess } = useContext(AuthContext)
-  const rol = authData.rol_usuario
+  const theme = useTheme()
 
   const mainHook = useFetchInitClassrooms()
 
@@ -28,26 +28,45 @@ const ClassroomsPage = () => {
 
       {!loadingFloors && (
         <Grid container spacing={gridSpacing}>
-          {rolAccess[rol] && (
-            <Grid item xs={12}>
-              <Grid container spacing={gridSpacing}>
-                <Grid item xs={12}>
-                  <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
-                    <Grid item>
-                      <Button
-                        variant='contained'
-                        startIcon={<AddCircleOutlineIcon />}
-                        color='primary'
-                        // onClick={() => toggle(null, 'Crear Chromebook', 'create-chromebook')}
-                      >
-                        Agregar al inventario
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Grid>
+          <Grid item xs={12}>
+            <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
+              <Grid item>
+                <Link to='/inventario/UEA-A'>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                    UEA-A
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link to='/inventario/UEA-B'>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                    UEA-B
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link to='/inventario/UEA-C'>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                    UEA-C
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link to='/inventario/UEA-D'>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                    UEA-D
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link to='/inventario/UEA-E'>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                    UEA-E
+                  </Button>
+                </Link>
               </Grid>
             </Grid>
-          )}
+          </Grid>
 
           <Grid item xs={12}>
             <Floors mainHook={mainHook} />

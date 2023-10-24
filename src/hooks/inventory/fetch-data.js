@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getFloors, getClassroomsByFloor, getComputerByRoom } from '../../data/inventory/get.js'
+import { getFloors, getClassroomsByFloor, getComputerByRoom, getDataComputerByComputer } from '../../data/inventory/get.js'
 import ExecutionPermit from 'helpers/execution-permit.helper.js'
 
 export const useFetchFloors = () => {
@@ -73,4 +73,32 @@ export const useFetchComputerByRoom = ({ dataModal }) => {
   }, [dataModal.params])
 
   return { computerByRoom, loadingComputerByRoom, _getComputerByRoom }
+}
+
+export const useFetchDataComputer = ({ dataComputer }) => {
+  const [computerData, setComputerData] = useState([])
+  const [loadingComputerData, setLoadingComputerData] = useState(false)
+
+  const _getComputerData = async () => {
+    setLoadingComputerData(true)
+
+    await getDataComputerByComputer({ dataComputer })
+      .then(({ data }) => {
+        setComputerData(data)
+      })
+      .catch(({ response }) => {
+        ExecutionPermit({ response })
+        console.log('Error fetch-data Computer By Room', response)
+      })
+    setLoadingComputerData(false)
+  }
+
+  useEffect(() => {
+    // if (dataComputer?.id_dg_ordenador) {
+    _getComputerData()
+    // }
+    // eslint-disable-next-line
+  }, [dataComputer])
+
+  return { computerData, loadingComputerData, _getComputerData }
 }

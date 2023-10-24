@@ -39,15 +39,6 @@ const ProfileSection = () => {
     setOpen(false)
   }
 
-  // const handleListItemClick = (event, index, route = '') => {
-  //   setSelectedIndex(index)
-  //   handleClose(event)
-
-  //   if (route && route !== '') {
-  //     navigate(route)
-  //   }
-  // }
-
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
   }
@@ -71,14 +62,14 @@ const ProfileSection = () => {
           alignItems: 'center',
           borderRadius: '27px',
           transition: 'all .2s ease-in-out',
-          borderColor: theme.palette.primary.light,
-          backgroundColor: theme.palette.primary.light,
+          borderColor: theme.palette.primary[50],
+          backgroundColor: theme.palette.primary[50],
           '&[aria-controls="menu-list-grow"], &:hover': {
             borderColor: theme.palette.primary.main,
             background: `${theme.palette.primary.main}!important`,
-            color: theme.palette.primary.light,
+            color: theme.palette.primary[50],
             '& svg': {
-              stroke: theme.palette.primary.light
+              stroke: theme.palette.primary[50]
             }
           },
           '& .MuiChip-label': {

@@ -7,7 +7,8 @@ import {
   useFetchPermissionPageEstadisticas,
   useFetchClosedTicketsCurrentWeek,
   useFetchDataTicketsByStaff,
-  useFetchTypeIncidencesClosedWeek
+  useFetchTypeIncidencesClosedWeek,
+  useFetchClosedTicketsDataByRange
 } from './fetch-data'
 import { defaultDataModal } from './default-data'
 
@@ -17,6 +18,8 @@ export const useFetchInitStatistics = () => {
   const [formattedEndDate, setFormattedEndDate] = useState(new Date().toISOString().substring(0, 10))
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedDate, setSelectedDate] = useState('')
+  const [formattedStartDateMonth, setFormattedStartDateMonth] = useState(getFirstDayOfMonth())
+  const [formattedEndDateMonth, setFormattedEndDateMonth] = useState(new Date().toISOString().substring(0, 10))
 
   const getWeekNumber = date => {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1)
@@ -69,6 +72,7 @@ export const useFetchInitStatistics = () => {
   const FetchClosedTicketsCurrentWeek = useFetchClosedTicketsCurrentWeek({ weekly })
   const FetchDataTicketsByStaff = useFetchDataTicketsByStaff({ dataModal, weekly })
   const FetchTypeIncidencesClosedWeek = useFetchTypeIncidencesClosedWeek()
+  const FetchClosedTicketsDataByRange = useFetchClosedTicketsDataByRange({ formattedStartDateMonth, formattedEndDateMonth })
 
   return {
     FetchClosedTicketsCurrentWeek,
@@ -88,7 +92,12 @@ export const useFetchInitStatistics = () => {
     formattedStartDate,
     formattedEndDate,
     setFormattedStartDate,
-    setFormattedEndDate
+    setFormattedEndDate,
+    setFormattedStartDateMonth,
+    setFormattedEndDateMonth,
+    formattedStartDateMonth,
+    formattedEndDateMonth,
+    FetchClosedTicketsDataByRange
   }
 }
 

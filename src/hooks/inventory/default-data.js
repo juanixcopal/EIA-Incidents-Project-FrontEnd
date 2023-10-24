@@ -8,3 +8,7 @@ export const defaultDataModal = {
 export const defaultData = {
   id_planta: ''
 }
+
+export const defaultIdComputer = {
+  id_dg_ordenador: ''
+}

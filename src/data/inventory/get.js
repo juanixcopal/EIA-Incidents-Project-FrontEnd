@@ -42,3 +42,19 @@ export const getComputerByRoom = async ({ dataModal }) => {
       throw error
     })
 }
+
+export const getDataComputerByComputer = async ({ dataComputer }) => {
+  const { id_dg_ordenador } = dataComputer
+
+  return await axios
+    .get(`${process.env.REACT_APP_API_BASE}/v1/classrooms/query`, {
+      headers: { service: 'data-computer-by-computer', token: localStorage.getItem('token') },
+      params: { id_computer: id_dg_ordenador }
+    })
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      throw error
+    })
+}

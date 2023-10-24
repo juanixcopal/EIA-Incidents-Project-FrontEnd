@@ -3,12 +3,14 @@ import { Grid, TableContainer, Paper, Table, TableHead, TableRow, TableCell, Tab
 import Loading from 'ui-component/loading'
 import { gridSpacing } from 'store/constant'
 import EditIcon from '@mui/icons-material/Edit'
+import { useTheme } from '@mui/material/styles'
 
 import { AuthContext } from 'provider/global.provider'
 
 import MainSubModal from './subModal-component'
 
 const ViewChromebook = ({ useFetchInit }) => {
+  const theme = useTheme()
   const { authData, rolAccess } = useContext(AuthContext)
 
   const rol = authData.rol_usuario
@@ -20,7 +22,7 @@ const ViewChromebook = ({ useFetchInit }) => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.primary[800],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -44,7 +46,10 @@ const ViewChromebook = ({ useFetchInit }) => {
       {!loadingChromebooksByArmario && (
         <Grid container spacing={gridSpacing}>
           <Grid item xs={12}>
-            <Typography color='gray'>Chromebooks Operativas: {chromebooksActiveByCupboard}</Typography>
+            <Typography color='gray'>
+              Chromebooks Operativas: {''}
+              <b>{chromebooksActiveByCupboard}</b>
+            </Typography>
             <Grid item xs={12} sx={{ pt: '16px !important' }}>
               <Grid item>
                 <Grid container direction='column' spacing={1}>
@@ -88,7 +93,7 @@ const ViewChromebook = ({ useFetchInit }) => {
                                   <StyledTableCell>
                                     <Button
                                       endIcon={<EditIcon />}
-                                      color='info'
+                                      style={{ color: theme.palette.primary[800] }}
                                       onClick={() => subToggle(null, 'Editar Chromebook', 'modify-chromebook', item)}
                                     />
                                   </StyledTableCell>

@@ -1,11 +1,13 @@
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
 import { useContext, useState, useEffect } from 'react'
+import { useTheme } from '@emotion/react'
 
 import PieChartCurrentMonth from './pieChartCurrentMonth'
 import PieChartDateRange from './pieChartDateRange'
 import CurrentWeekLinearGraph from './currentWeekLinearGraph'
 import ClosedWeek from './closedWeek'
+import ClosedTicketsDataByRange from './closedTicketDataByRange'
 
 import MainModal from './modal-component'
 
@@ -18,6 +20,8 @@ import { useFetchInitStatistics } from 'hooks/statistics'
 import { AuthContext } from 'provider/global.provider'
 
 const StatisticsPage = () => {
+  const theme = useTheme()
+
   const [visibleElements, setVisibleElements] = useState(0)
 
   const { authData, rolAccess } = useContext(AuthContext)
@@ -42,14 +46,18 @@ const StatisticsPage = () => {
   const itemTablaTicketsRangoSemana = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_semana')
   const verTablaTicketSemana = itemTablaTicketsRangoSemana ? itemTablaTicketsRangoSemana.ver_item : null
 
+  const itemTablaTicketsMensualmente = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_mes')
+  const verTablaTicketsMensual = itemTablaTicketsMensualmente ? itemTablaTicketsMensualmente.ver_item : null
+
   useEffect(() => {
     let count = 0
     if (verPastelMesActual === 1) count++
     if (verPastelRangoFecha === 1) count++
     if (verLinealSemanal === 1) count++
     if (verTablaTicketSemana === 1) count++
+    if (verTablaTicketsMensual === 1) count++
     setVisibleElements(count)
-  }, [verPastelMesActual, verPastelRangoFecha, verLinealSemanal, verTablaTicketSemana])
+  }, [verPastelMesActual, verPastelRangoFecha, verLinealSemanal, verTablaTicketSemana, verTablaTicketsMensual])
 
   const calculateGridSizes = () => {
     switch (visibleElements) {
@@ -82,7 +90,7 @@ const StatisticsPage = () => {
                       <Button
                         variant='contained'
                         startIcon={<CreateIcon />}
-                        color='inherit'
+                        style={{ background: theme.palette.primary[800] }}
                         onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}
                       >
                         Administrar la vista
@@ -117,6 +125,12 @@ const StatisticsPage = () => {
               {verTablaTicketSemana === 1 && (
                 <Grid item {...calculateGridSizes()}>
                   <ClosedWeek mainHook={mainHook} />
+                </Grid>
+              )}
+
+              {verTablaTicketsMensual === 1 && (
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                  <ClosedTicketsDataByRange mainHook={mainHook} />
                 </Grid>
               )}
             </Grid>

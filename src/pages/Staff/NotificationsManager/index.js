@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
+import { useTheme } from '@emotion/react'
 
 import ExpiredNotifications from './expiredNotifications'
 
@@ -12,6 +13,7 @@ import NotificationAddIcon from '@mui/icons-material/NotificationAdd'
 import MainModal from './modal-component'
 
 const NotificactionPage = () => {
+  const theme = useTheme()
   const { authData } = useContext(AuthContext)
   const rol = authData.rol_usuario
 
@@ -32,7 +34,7 @@ const NotificactionPage = () => {
                     <Button
                       variant='contained'
                       startIcon={<NotificationAddIcon />}
-                      color='inherit'
+                      style={{ background: theme.palette.primary[800] }}
                       onClick={() => toggle(null, 'Crear Notificacion', 'create-notification')}
                     >
                       Crear Notificacion

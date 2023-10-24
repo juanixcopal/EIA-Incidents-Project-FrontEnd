@@ -10,7 +10,7 @@ const ClosedCurrentWeek = ({ mainHook }) => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.primary.dark,
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {

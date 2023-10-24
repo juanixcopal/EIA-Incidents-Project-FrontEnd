@@ -1,6 +1,6 @@
 import { Modal, Box, Typography, Divider } from '@mui/material'
 
-import Classrooms from './classrooms'
+import Computers from './computers'
 
 const MainModal = ({ useFetchInit }) => {
   const { dataModal, onClose } = useFetchInit
@@ -12,10 +12,11 @@ const MainModal = ({ useFetchInit }) => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 'auto',
+    height: 'auto',
     bgcolor: 'background.paper',
     border: 'none',
     boxShadow: 'none',
-    p: 4,
+    p: 3,
     outline: 'none',
     borderRadius: '10px'
   }
@@ -34,7 +35,7 @@ const MainModal = ({ useFetchInit }) => {
             {title}
           </Typography>
           <Divider sx={{ marginBottom: '16px' }} />
-          {component === 'view-classrooms' && <Classrooms useFetchInit={useFetchInit} />}
+          {component === 'view-classrooms' && <Computers useFetchInit={useFetchInit} />}
         </Box>
       </Modal>
     </>

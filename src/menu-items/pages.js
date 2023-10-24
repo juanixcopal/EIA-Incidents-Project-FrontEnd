@@ -6,6 +6,7 @@ import InsertChartOutlinedOutlinedIcon from '@mui/icons-material/InsertChartOutl
 import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook'
 import ApartmentIcon from '@mui/icons-material/Apartment'
 import DomainAddIcon from '@mui/icons-material/DomainAdd'
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck'
 
 const icons = {
   DataThresholdingOutlinedIcon,
@@ -15,7 +16,8 @@ const icons = {
   InsertChartOutlinedOutlinedIcon,
   LaptopChromebookIcon,
   ApartmentIcon,
-  DomainAddIcon
+  DomainAddIcon,
+  PlaylistAddCheckIcon
 }
 
 const userRoles = ['administrador', 'usuario', 'superadmin']
@@ -64,11 +66,11 @@ const pages = {
       visible: userRoles
     },
     {
-      id: 'aulas',
+      id: 'inventario',
       title: 'Inventario',
       type: 'item',
-      url: '/aulas',
-      icon: icons.DomainAddIcon,
+      url: '/inventario',
+      icon: icons.PlaylistAddCheckIcon,
       breadcrumbs: false,
       visible: userRoles
     }

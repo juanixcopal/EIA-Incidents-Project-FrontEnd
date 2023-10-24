@@ -1,35 +1,78 @@
 // paper & background
 $paper: #ffffff;
 
-// primary
-$primaryLight: #eef2f6;
-$primaryMain: #2196f3;
+// primary theme
+$primaryMain: #01579b;
 $primaryDark: #1e88e5;
-$primary200: #90caf9;
-$primary800: #1565c0;
+$primary50: #eef2f6; // FONDO
+$primary100: #b3e5fc;
+$primary200: #81d4fa;
+$primary300: #4fc3f7;
+$primary400: #29b6f6;
+$primary500: #03a9f4;
+$primary600: #039be5;
+$primary700: #0288d1;
+$primary800: #0277bd;
 
-// secondary
-$secondaryLight: #eef2f6;
-$secondaryMain: #2196f3;
-$secondaryDark: #1e88e5;
-$secondary200: #90caf9;
-$secondary800: #1565c0;
+// error theme
+$errorMain: #e53935;
+$error50: #ffebee;
+$error100: #ffcdd2;
+$error200: #ef9a9a;
+$error300: #e57373;
+$error400: #ef5350;
+$error500: #f44336;
+$error700: #d32f2f;
+$error800: #c62828;
+$error900: #b71c1c;
 
-// success Colors
-$successLight: #b9f6ca;
-$success200: #69f0ae;
-$successMain: #00e676;
-$successDark: #00c853;
+// high theme
+$highMain: #fb8c00;
+$high50: #fff3e0;
+$high100: #ffe0b2;
+$high200: #ffcc80;
+$high300: #ffb74d;
+$high400: #ffa726;
+$high500: #ff9800;
+$high700: #f57c00;
+$high800: #ef6c00;
+$high900: #e65100;
 
-// error
-$errorLight: #ef9a9a;
-$errorMain: #f44336;
-$errorDark: #c62828;
+// medium theme
+$mediumMain: #fbc02d;
+$medium50: #fffde7;
+$medium100: #fff9c4;
+$medium200: #fff59d;
+$medium300: #fff176;
+$medium400: #ffee58;
+$medium500: #ffeb3b;
+$medium600: #fdd835;
+$medium800: #f9a825;
+$medium900: #f57f17;
 
-// orange
-$orangeLight: #fbe9e7;
-$orangeMain: #ffab91;
-$orangeDark: #d84315;
+// success theme
+$successMain: #43a047;
+$success50: #e8f5e9;
+$success100: #c8e6c9;
+$success200: #a5d6a7;
+$success300: #81c784;
+$success400: #66bb6a;
+$success500: #4caf50;
+$success700: #388e3c;
+$success800: #2e7d32;
+$success900: #1b5e20;
+
+// informative theme
+$informativeMain: #2873f6;
+$informative50: #e8f0fe;
+$informative100: #c4d9fd;
+$informative200: #9dbffb;
+$informative300: #76a6f9;
+$informative400: #4f8df8;
+$informative600: #0a5ceb;
+$informative700: #084dc4;
+$informative800: #073e9d;
+$informative900: #052e76;
 
 // warning
 $warningLight: #fff8e1;
@@ -46,32 +89,7 @@ $grey600: #4b5565;
 $grey700: #364152;
 $grey900: #121926;
 
-// ==============================|| DARK THEME VARIANTS ||============================== //
-
-// paper & background
-$darkBackground: #1a223f; // level 3
-$darkPaper: #111936; // level 4
-
-// dark 800 & 900
-$darkLevel1: #29314f; // level 1
-$darkLevel2: #212946; // level 2
-
-// primary dark
-$darkPrimaryLight: #eef2f6;
-$darkPrimaryMain: #2196f3;
-$darkPrimaryDark: #1e88e5;
-$darkPrimary200: #90caf9;
-$darkPrimary800: #1565c0;
-
-// secondary dark
-$darkSecondaryLight: #d1c4e9;
-$darkSecondaryMain: #7c4dff;
-$darkSecondaryDark: #651fff;
-$darkSecondary200: #b39ddb;
-$darkSecondary800: #6200ea;
-
-// text variants
-$darkTextTitle: #d7dcec;
+$darkPaper: #111936;
 $darkTextPrimary: #bdc8f0;
 $darkTextSecondary: #8492c4;
 
@@ -81,42 +99,85 @@ $darkTextSecondary: #8492c4;
   // paper & background
   paper: $paper;
 
-  // primary
-  primaryLight: $primaryLight;
-  primary200: $primary200;
+  // primary theme
   primaryMain: $primaryMain;
   primaryDark: $primaryDark;
+  primary50: $primary50;
+  primary100: $primary100;
+  primary200: $primary200;
+  primary300: $primary300;
+  primary400: $primary400;
+  primary500: $primary500;
+  primary600: $primary600;
+  primary700: $primary700;
   primary800: $primary800;
 
-  // secondary
-  secondaryLight: $secondaryLight;
-  secondary200: $secondary200;
-  secondaryMain: $secondaryMain;
-  secondaryDark: $secondaryDark;
-  secondary800: $secondary800;
-
-  // success
-  successLight: $successLight;
-  success200: $success200;
-  successMain: $successMain;
-  successDark: $successDark;
-
-  // error
-  errorLight: $errorLight;
+  // error theme
   errorMain: $errorMain;
-  errorDark: $errorDark;
+  error50: $error50;
+  error100: $error100;
+  error200: $error200;
+  error300: $error300;
+  error400: $error400;
+  error500: $error500;
+  error700: $error700;
+  error800: $error800;
+  error900: $error900;
 
-  // orange
-  orangeLight: $orangeLight;
-  orangeMain: $orangeMain;
-  orangeDark: $orangeDark;
+  // high theme
+  highMain: $highMain;
+  high50: $high50;
+  high100: $high100;
+  high200: $high200;
+  high300: $high300;
+  high400: $high400;
+  high500: $high500;
+  high700: $high700;
+  high800: $high800;
+  high900: $high900;
 
-  // warning
-  warningLight: $warningLight;
+  // medium theme
+  mediumMain: $mediumMain;
+  medium50: $medium50;
+  medium100: $medium100;
+  medium200: $medium200;
+  medium300: $medium300;
+  medium400: $medium400;
+  medium500: $medium500;
+  medium600: $medium600;
+  medium800: $medium800;
+  medium900: $medium900;
+
+  // success theme
+  successMain: $successMain;
+  success50: $success50;
+  success100: $success100;
+  success200: $success200;
+  success300: $success300;
+  success400: $success400;
+  success500: $success500;
+  success700: $success700;
+  success800: $success800;
+  success900: $success900;
+
+  // informative theme
+  informativeMain: $informativeMain;
+  informative50: $informative50;
+  informative100: $informative100;
+  informative200: $informative200;
+  informative300: $informative300;
+  informative400: $informative400;
+  informative600: $informative600;
+  informative700: $informative700;
+  informative800: $informative800;
+  informative900: $informative900;
+
+  // warning theme
   warningMain: $warningMain;
+  warningLight: $warningLight;
   warningDark: $warningDark;
 
-  // grey
+  // grey theme
   grey50: $grey50;
   grey100: $grey100;
   grey200: $grey200;
@@ -126,32 +187,8 @@ $darkTextSecondary: #8492c4;
   grey700: $grey700;
   grey900: $grey900;
 
-  // ==============================|| DARK THEME VARIANTS ||============================== //
-
-  // paper & background
+  // common
   darkPaper: $darkPaper;
-  darkBackground: $darkBackground;
-
-  // dark 800 & 900
-  darkLevel1: $darkLevel1;
-  darkLevel2: $darkLevel2;
-
-  // text variants
-  darkTextTitle: $darkTextTitle;
   darkTextPrimary: $darkTextPrimary;
   darkTextSecondary: $darkTextSecondary;
-
-  // primary dark
-  darkPrimaryLight: $darkPrimaryLight;
-  darkPrimaryMain: $darkPrimaryMain;
-  darkPrimaryDark: $darkPrimaryDark;
-  darkPrimary200: $darkPrimary200;
-  darkPrimary800: $darkPrimary800;
-
-  // secondary dark
-  darkSecondaryLight: $darkSecondaryLight;
-  darkSecondaryMain: $darkSecondaryMain;
-  darkSecondaryDark: $darkSecondaryDark;
-  darkSecondary200: $darkSecondary200;
-  darkSecondary800: $darkSecondary800;
 }

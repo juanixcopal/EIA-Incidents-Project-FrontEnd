@@ -24,11 +24,11 @@ const Row = props => {
   const { row } = props
   const [open, setOpen] = useState(false)
 
-  const { ticket_id, number, created, topic, poster, body, subject, priority_desc, priority_color } = row
+  const { ticket_id, number, dateCreated, hourCreated, topic, poster, body, subject, priority_desc, priority_color } = row
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -56,7 +56,8 @@ const Row = props => {
         <StyledTableCell component='th' scope='row'>
           #{number}
         </StyledTableCell>
-        <StyledTableCell align='center'>{created}</StyledTableCell>
+        <StyledTableCell align='center'>{dateCreated}</StyledTableCell>
+        <StyledTableCell align='center'>{hourCreated}</StyledTableCell>
         <StyledTableCell align='center'>{subject}</StyledTableCell>
         <StyledTableCell align='center'>{poster}</StyledTableCell>
         <StyledTableCell align='center' style={{ backgroundColor: priority_color }}>
@@ -104,7 +105,7 @@ const OpenTicketsData = ({ useFetchInit }) => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -128,7 +129,8 @@ const OpenTicketsData = ({ useFetchInit }) => {
                           <TableRow>
                             <StyledTableCell />
                             <StyledTableCell align='center'>Ticket</StyledTableCell>
-                            <StyledTableCell align='center'>Fecha creación</StyledTableCell>
+                            <StyledTableCell align='center'>Fecha</StyledTableCell>
+                            <StyledTableCell align='center'>Hora</StyledTableCell>
                             <StyledTableCell align='center'>Asunto</StyledTableCell>
                             <StyledTableCell align='center'>De</StyledTableCell>
                             <StyledTableCell align='center'>Prioridad</StyledTableCell>

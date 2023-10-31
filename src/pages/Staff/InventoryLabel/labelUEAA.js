@@ -1,3 +1,5 @@
+import { useFetchInitLabelInventory } from '../../../hooks/labelInventory/index'
+
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
 
@@ -9,15 +11,20 @@ import { useTheme } from '@emotion/react'
 
 const LabelUEAA = () => {
   const theme = useTheme()
+
+  const mainHook = useFetchInitLabelInventory()
+  const { FetchIdentifierUEAA } = mainHook
+  console.log(FetchIdentifierUEAA)
   return (
     <>
       <Grid container spacing={gridSpacing}>
         <Grid item xs={12}>
           <ButtonReturn />
-
+        </Grid>
+        <Grid item xs={12}>
           <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
             <Grid item>
-              <Button variant='contained' startIcon={<PersonAddAltIcon />} style={{ background: theme.palette.primary[800] }}>
+              <Button variant='contained' startIcon={<PersonAddAltIcon />} style={{ background: theme.palette.primary.main }}>
                 Agregar al inventario
               </Button>
             </Grid>

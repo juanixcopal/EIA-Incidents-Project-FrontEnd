@@ -32,7 +32,7 @@ const UsersPages = () => {
                 <Button
                   variant='contained'
                   startIcon={<PersonAddAltIcon />}
-                  style={{ background: theme.palette.primary[800] }}
+                  style={{ background: theme.palette.primary.main }}
                   onClick={() => toggle(null, 'Crear Usuario', 'create-user')}
                 >
                   Crear Usuario

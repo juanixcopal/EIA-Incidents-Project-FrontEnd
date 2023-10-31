@@ -9,7 +9,7 @@ const ViewTicketsClosedByStaff = ({ useFetchInit }) => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {

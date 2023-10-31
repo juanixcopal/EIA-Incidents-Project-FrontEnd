@@ -59,9 +59,9 @@ const DeleteButton = ({ disabled, title }) => {
       variant='contained'
       startIcon={<DeleteIcon />}
       sx={{
-        backgroundColor: theme.palette.informative[500],
+        backgroundColor: theme.palette.warning.main,
         '&:hover': {
-          backgroundColor: theme.palette.informative.main
+          backgroundColor: theme.palette.warning.dark
         }
       }}
     >

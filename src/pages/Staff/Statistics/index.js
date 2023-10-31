@@ -46,8 +46,8 @@ const StatisticsPage = () => {
   const itemTablaTicketsRangoSemana = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_semana')
   const verTablaTicketSemana = itemTablaTicketsRangoSemana ? itemTablaTicketsRangoSemana.ver_item : null
 
-  const itemTablaTicketsMensualmente = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_mes')
-  const verTablaTicketsMensual = itemTablaTicketsMensualmente ? itemTablaTicketsMensualmente.ver_item : null
+  const itemTablaTicketsRangoFecha = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_fecha')
+  const verTablaTicketsRangoFecha = itemTablaTicketsRangoFecha ? itemTablaTicketsRangoFecha.ver_item : null
 
   useEffect(() => {
     let count = 0
@@ -55,9 +55,9 @@ const StatisticsPage = () => {
     if (verPastelRangoFecha === 1) count++
     if (verLinealSemanal === 1) count++
     if (verTablaTicketSemana === 1) count++
-    if (verTablaTicketsMensual === 1) count++
+    if (verTablaTicketsRangoFecha === 1) count++
     setVisibleElements(count)
-  }, [verPastelMesActual, verPastelRangoFecha, verLinealSemanal, verTablaTicketSemana, verTablaTicketsMensual])
+  }, [verPastelMesActual, verPastelRangoFecha, verLinealSemanal, verTablaTicketSemana, verTablaTicketsRangoFecha])
 
   const calculateGridSizes = () => {
     switch (visibleElements) {
@@ -68,6 +68,8 @@ const StatisticsPage = () => {
       case 3:
         return { lg: 6, md: 6, sm: 6, xs: 12 }
       case 4:
+        return { lg: 6, md: 6, sm: 6, xs: 12 }
+      case 5:
         return { lg: 6, md: 6, sm: 6, xs: 12 }
       default:
         return { lg: 12, md: 12, sm: 12, xs: 12 }
@@ -90,7 +92,7 @@ const StatisticsPage = () => {
                       <Button
                         variant='contained'
                         startIcon={<CreateIcon />}
-                        style={{ background: theme.palette.primary[800] }}
+                        style={{ background: theme.palette.primary.main }}
                         onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}
                       >
                         Administrar la vista
@@ -128,7 +130,7 @@ const StatisticsPage = () => {
                 </Grid>
               )}
 
-              {verTablaTicketsMensual === 1 && (
+              {verTablaTicketsRangoFecha === 1 && (
                 <Grid item lg={12} md={12} sm={12} xs={12}>
                   <ClosedTicketsDataByRange mainHook={mainHook} />
                 </Grid>

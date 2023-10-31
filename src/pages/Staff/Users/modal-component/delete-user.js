@@ -16,7 +16,7 @@ const DeleteUser = ({ useFetchInit }) => {
 
   const StyledTypography = styled(Typography)(({ theme }) => ({
     textAlign: 'center',
-    color: theme.palette.error.light
+    color: theme.palette.error[700]
   }))
 
   return (

@@ -1,14 +1,13 @@
 import { useTheme } from '@mui/material/styles'
-import { Avatar, Button, TextField, Box, Typography, Container, Card, CardContent, InputAdornment, IconButton, useMediaQuery } from '@mui/material'
-import LockPersonIcon from '@mui/icons-material/LockPerson'
+import { Avatar, Button, TextField, Box, Typography, Container, Card, CardContent, InputAdornment, IconButton, Grid, CardActions } from '@mui/material'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import LanguageIcon from '@mui/icons-material/Language'
 
 import { useFetchInitLogin } from '../../hooks/login/index'
 
 const Login = () => {
   const theme = useTheme()
-  const matchDownSM = useMediaQuery(theme.breakpoints.down('md'))
 
   const FetchInitLoging = useFetchInitLogin()
 
@@ -18,54 +17,59 @@ const Login = () => {
 
   return (
     <>
-      <Container component='main' maxWidth='xs' style={{ paddingTop: '8%' }}>
-        <Card style={{ borderRadius: '5%', background: '#EFEEEE' }}>
-          <CardContent>
-            <Box
-              sx={{
-                marginTop: 8,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-              }}
-            >
-              <Avatar style={{ background: '#7ac4eb' }}>
-                <LockPersonIcon />
-              </Avatar>
-              <Typography color={theme.palette.primary.main} gutterBottom variant={matchDownSM ? 'h3' : 'h2'}>
-                Inicio de sesión
-              </Typography>
-              <Box component='form' noValidate sx={{ mt: 1 }} onSubmit={login}>
-                <TextField margin='normal' required fullWidth label='Usuario' name='username' autoComplete='username' onChange={handleInputChange} autoFocus />
-                <TextField
-                  margin='normal'
-                  required
-                  fullWidth
-                  name='password'
-                  label='Contraseña'
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete='current-password'
-                  onChange={handleInputChange}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <IconButton onClick={handleTogglePasswordVisibility}>{showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}</IconButton>
-                      </InputAdornment>
-                    )
-                  }}
-                />
-                {loading ? (
-                  <Typography color='green'>Ingresando.........</Typography>
-                ) : (
-                  <Typography color={`${result ? 'green' : 'red'}`}>{_message}</Typography>
-                )}
-                <Button type='submit' fullWidth variant='contained' style={{ background: theme.palette.primary[800] }} sx={{ mt: 3, mb: 2 }}>
+      <Container component='main' maxWidth='xs' style={{ paddingTop: '10%' }}>
+        <Grid container justifyContent='center'>
+          <Card style={{ background: theme.palette.primary[50] }}>
+            <form onSubmit={login}>
+              <CardContent>
+                <Box
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center' //Se quita cuando se ponga imagen
+                  paddingBottom={'30px'}
+                >
+                  <Avatar>
+                    <LanguageIcon />
+                  </Avatar>
+                  <Typography variant='h2' style={{ marginLeft: '16px' }}>
+                    ATLAS
+                  </Typography>
+                </Box>
+
+                <Box>
+                  <TextField label='Usuario' margin='normal' required fullWidth name='username' autoComplete='username' onChange={handleInputChange} />
+                  <TextField
+                    label='Contraseña'
+                    margin='normal'
+                    required
+                    fullWidth
+                    name='password'
+                    type={showPassword ? 'text' : 'password'}
+                    autoComplete='current-password'
+                    onChange={handleInputChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position='end'>
+                          <IconButton onClick={handleTogglePasswordVisibility}> {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />} </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                  {loading ? (
+                    <Typography color='green'>Ingresando.........</Typography>
+                  ) : (
+                    <Typography color={`${result ? 'green' : 'red'}`}>{_message}</Typography>
+                  )}
+                </Box>
+              </CardContent>
+              <CardActions>
+                <Button type='submit' fullWidth variant='contained' style={{ background: theme.palette.primary.main }}>
                   Acceder
                 </Button>
-              </Box>
-            </Box>
-          </CardContent>
-        </Card>
+              </CardActions>
+            </form>
+          </Card>
+        </Grid>
       </Container>
     </>
   )

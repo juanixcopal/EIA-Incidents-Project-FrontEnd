@@ -12,11 +12,11 @@ const Statistics = Loadable(lazy(() => import('../pages/Staff/Statistics/index')
 const Inventory = Loadable(lazy(() => import('../pages/Staff/Classrooms/index')))
 const Notificaction = Loadable(lazy(() => import('../pages/Staff/NotificationsManager/index')))
 
-const LabelUEAA = Loadable(lazy(() => import('../pages/Staff/Classrooms/inventoryLabel/labelUEAA')))
-const LabelUEAB = Loadable(lazy(() => import('../pages/Staff/Classrooms/inventoryLabel/labelUEAB')))
-const LabelUEAC = Loadable(lazy(() => import('../pages/Staff/Classrooms/inventoryLabel/labelUEAC')))
-const LabelUEAD = Loadable(lazy(() => import('../pages/Staff/Classrooms/inventoryLabel/labelUEAD')))
-const LabelUEAE = Loadable(lazy(() => import('../pages/Staff/Classrooms/inventoryLabel/labelUEAE')))
+const LabelUEAA = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAA')))
+const LabelUEAB = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAB')))
+const LabelUEAC = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAC')))
+const LabelUEAD = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAD')))
+const LabelUEAE = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAE')))
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token')

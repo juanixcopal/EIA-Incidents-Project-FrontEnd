@@ -68,7 +68,7 @@ const DashboardPage = () => {
       case 4:
         return { lg: 3, md: 4, sm: 6, xs: 12 }
       case 5:
-        return { lg: 3, md: 3, sm: 4, xs: 12 }
+        return { lg: 4, md: 4, sm: 4, xs: 12 }
       default:
         return { lg: 12, md: 12, sm: 12, xs: 12 }
     }
@@ -90,7 +90,7 @@ const DashboardPage = () => {
                       <Button
                         variant='contained'
                         endIcon={<CreateIcon />}
-                        style={{ background: theme.palette.primary[800] }}
+                        style={{ background: theme.palette.primary.main }}
                         onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}
                       >
                         Administrar la vista

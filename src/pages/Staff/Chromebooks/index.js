@@ -39,7 +39,7 @@ const ChromebooksPage = () => {
                       <Button
                         variant='contained'
                         startIcon={<AddCircleOutlineIcon />}
-                        style={{ background: theme.palette.primary[800] }}
+                        style={{ background: theme.palette.primary.main }}
                         onClick={() => toggle(null, 'Crear Chromebook', 'create-chromebook')}
                       >
                         Crear Chromebook

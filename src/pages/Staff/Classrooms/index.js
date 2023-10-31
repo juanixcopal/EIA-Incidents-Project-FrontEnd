@@ -32,35 +32,35 @@ const ClassroomsPage = () => {
             <Grid container alignContent='center' justifyContent='space-between' sx={{ pb: '16px !important' }}>
               <Grid item>
                 <Link to='/inventario/UEA-A'>
-                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary.main }}>
                     UEA-A
                   </Button>
                 </Link>
               </Grid>
               <Grid item>
                 <Link to='/inventario/UEA-B'>
-                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary.main }}>
                     UEA-B
                   </Button>
                 </Link>
               </Grid>
               <Grid item>
                 <Link to='/inventario/UEA-C'>
-                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary.main }}>
                     UEA-C
                   </Button>
                 </Link>
               </Grid>
               <Grid item>
                 <Link to='/inventario/UEA-D'>
-                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary.main }}>
                     UEA-D
                   </Button>
                 </Link>
               </Grid>
               <Grid item>
                 <Link to='/inventario/UEA-E'>
-                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary[800] }}>
+                  <Button variant='contained' startIcon={<DomainAddIcon />} style={{ background: theme.palette.primary.main }}>
                     UEA-E
                   </Button>
                 </Link>

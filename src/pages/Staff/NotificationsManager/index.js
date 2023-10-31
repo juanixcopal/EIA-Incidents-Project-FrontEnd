@@ -34,7 +34,7 @@ const NotificactionPage = () => {
                     <Button
                       variant='contained'
                       startIcon={<NotificationAddIcon />}
-                      style={{ background: theme.palette.primary[800] }}
+                      style={{ background: theme.palette.primary.main }}
                       onClick={() => toggle(null, 'Crear Notificacion', 'create-notification')}
                     >
                       Crear Notificacion

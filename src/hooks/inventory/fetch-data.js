@@ -15,7 +15,7 @@ export const useFetchFloors = () => {
         })
         .catch(({ response }) => {
           ExecutionPermit({ response })
-          console.log('Error fetch-data armarios', response)
+          console.log('Error fetch-data Floors', response)
         })
       setLoadingFloors(false)
     })()

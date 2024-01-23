@@ -72,7 +72,7 @@ const pages = {
       url: '/inventario',
       icon: icons.PlaylistAddCheckIcon,
       breadcrumbs: false,
-      visible: userRoles
+      visible: adminRoles
     }
   ]
 }

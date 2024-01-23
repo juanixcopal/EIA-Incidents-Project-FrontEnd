@@ -1,5 +1,5 @@
-import { Pie } from 'react-chartjs-2'
 import { Grid, Typography } from '@mui/material'
+import { Pie } from 'react-chartjs-2'
 
 import MainCard from 'ui-component/cards/MainCard'
 
@@ -56,10 +56,8 @@ const PieChartCurrentMonth = ({ mainHook }) => {
 
             <Grid item xs={12} sx={{ pt: '16px !important' }}>
               <Grid item>
-                <Grid container direction='column' spacing={1}>
-                  <Grid item>
-                    <Pie data={pieChartData} />
-                  </Grid>
+                <Grid item>
+                  <Pie data={pieChartData} />
                 </Grid>
               </Grid>
             </Grid>

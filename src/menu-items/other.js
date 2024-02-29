@@ -1,5 +1,7 @@
 import CircleNotificationsOutlinedIcon from '@mui/icons-material/CircleNotificationsOutlined'
-const icons = { CircleNotificationsOutlinedIcon }
+import PestControlIcon from '@mui/icons-material/PestControl'
+
+const icons = { CircleNotificationsOutlinedIcon, PestControlIcon }
 
 const superAdminRole = ['superadmin']
 

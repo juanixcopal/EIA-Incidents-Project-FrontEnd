@@ -9,9 +9,14 @@ const OsTicket = Loadable(lazy(() => import('../pages/Staff/OsTicket_Data/index'
 const Chromebooks = Loadable(lazy(() => import('../pages/Staff/Chromebooks/index')))
 const Users = Loadable(lazy(() => import('../pages/Staff/Users/index')))
 const Statistics = Loadable(lazy(() => import('../pages/Staff/Statistics/index')))
-const Classrooms = Loadable(lazy(() => import('../pages/Staff/Classrooms/index')))
-
+const Inventory = Loadable(lazy(() => import('../pages/Staff/Classrooms/index')))
 const Notificaction = Loadable(lazy(() => import('../pages/Staff/NotificationsManager/index')))
+
+const LabelUEAA = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAA')))
+const LabelUEAB = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAB')))
+const LabelUEAC = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAC')))
+const LabelUEAD = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAD')))
+const LabelUEAE = Loadable(lazy(() => import('../pages/Staff/InventoryLabel/labelUEAE')))
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token')
@@ -47,8 +52,28 @@ const MainRoutes = {
       element: isAuthenticated() ? <Notificaction /> : <Navigate to='/login' replace={true} />
     },
     {
-      path: 'aulas',
-      element: isAuthenticated() ? <Classrooms /> : <Navigate to='/login' replace={true} />
+      path: 'inventario',
+      element: isAuthenticated() ? <Inventory /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'inventario/UEA-A',
+      element: isAuthenticated() ? <LabelUEAA /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'inventario/UEA-B',
+      element: isAuthenticated() ? <LabelUEAB /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'inventario/UEA-C',
+      element: isAuthenticated() ? <LabelUEAC /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'inventario/UEA-D',
+      element: isAuthenticated() ? <LabelUEAD /> : <Navigate to='/login' replace={true} />
+    },
+    {
+      path: 'inventario/UEA-E',
+      element: isAuthenticated() ? <LabelUEAE /> : <Navigate to='/login' replace={true} />
     }
   ]
 }

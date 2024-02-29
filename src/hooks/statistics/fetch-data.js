@@ -5,7 +5,8 @@ import {
   getpermissionPageEstadistica,
   getClosedTicketsCurrentWeek,
   getDataTicketByStaff,
-  getTypeIncidencesClosedWeek
+  getTypeIncidencesClosedWeek,
+  getClosedTicketsDataByRange
 } from '../../data/statistics/get.js'
 
 import ExecutionPermit from 'helpers/execution-permit.helper.js'
@@ -56,7 +57,7 @@ export const useFetchTypeIncidencesClosedByRangeDate = ({ formattedStartDate, fo
       setLoadingTypeIncidencesClosedByRangeDate(false)
     })()
     // eslint-disable-next-line
-  }, [formattedStartDate && formattedEndDate])
+  }, [formattedStartDate, formattedEndDate])
 
   return { typeIncidencesClosedByRangeDate, loadingTypeIncidencesClosedByRangeDate }
 }
@@ -159,4 +160,28 @@ export const useFetchTypeIncidencesClosedWeek = () => {
     return () => clearInterval(timer)
   }, [])
   return { typeIncidencesClosedWeek, loadingTypeIncidencesClosedWeek }
+}
+
+export const useFetchClosedTicketsDataByRange = ({ formattedStartDateMonth, formattedEndDateMonth }) => {
+  const [closedTicketsDataByRange, setClosedTicketsDataByRange] = useState([])
+  const [loadingClosedTicketsDataByRange, setLoadingClosedTicketsDataByRange] = useState(false)
+
+  useEffect(() => {
+    ;(async () => {
+      setLoadingClosedTicketsDataByRange(true)
+      await getClosedTicketsDataByRange({ formattedStartDateMonth, formattedEndDateMonth })
+        .then(({ data }) => {
+          setClosedTicketsDataByRange(data)
+        })
+        .catch(({ response }) => {
+          console.log(response.status)
+          ExecutionPermit({ response })
+          console.log('Error', response)
+        })
+      setLoadingClosedTicketsDataByRange(false)
+    })()
+    // eslint-disable-next-line
+  }, [formattedStartDateMonth, formattedEndDateMonth])
+
+  return { closedTicketsDataByRange, loadingClosedTicketsDataByRange }
 }

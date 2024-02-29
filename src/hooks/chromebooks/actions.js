@@ -1,7 +1,7 @@
 import { postChromebooks } from '../../data/chromebooks/post.js'
 import { updateDataChromebook } from '../../data/chromebooks/put.js'
 
-export const useActions = ({ data, toggle, updateData, FetchChromebooksByArmario, subToggle }) => {
+export const useActions = ({ data, toggle, updateData, FetchChromebooksByArmario, subToggle, FetchChromebooksActiveByCupboard }) => {
   const createChromebook = async e => {
     e.preventDefault()
 
@@ -10,7 +10,7 @@ export const useActions = ({ data, toggle, updateData, FetchChromebooksByArmario
 
   const updateDataChromebookAction = async e => {
     e.preventDefault()
-    updateDataChromebook({ updateData, FetchChromebooksByArmario, subToggle })
+    updateDataChromebook({ updateData, FetchChromebooksByArmario, subToggle, FetchChromebooksActiveByCupboard })
   }
 
   return { createChromebook, updateDataChromebookAction }

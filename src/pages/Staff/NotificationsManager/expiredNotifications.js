@@ -10,7 +10,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import EditIcon from '@mui/icons-material/Edit'
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.dark,
+  backgroundColor: theme.palette.primary.dark,
   color: '#fff',
   overflow: 'hidden',
   position: 'relative',
@@ -19,7 +19,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     position: 'absolute',
     width: 210,
     height: 210,
-    background: theme.palette.secondary[800],
+    background: theme.palette.primary[800],
     borderRadius: '50%',
     top: -85,
     right: -95,
@@ -33,7 +33,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     position: 'absolute',
     width: 210,
     height: 210,
-    background: theme.palette.secondary[800],
+    background: theme.palette.primary[800],
     borderRadius: '50%',
     top: -125,
     right: -15,
@@ -58,8 +58,8 @@ const ExpiredNotifications = ({ mainHook }) => {
   }
   const chipErrorSX = {
     ...chipSX,
-    color: theme.palette.orange.dark,
-    backgroundColor: theme.palette.orange.light,
+    color: theme.palette.high[900],
+    backgroundColor: theme.palette.high[50],
     marginRight: '5px'
   }
 
@@ -71,8 +71,8 @@ const ExpiredNotifications = ({ mainHook }) => {
 
   const chipSuccessSX = {
     ...chipSX,
-    color: theme.palette.success.dark,
-    backgroundColor: theme.palette.success.light,
+    color: theme.palette.success[800],
+    backgroundColor: theme.palette.success[50],
     height: 28
   }
 
@@ -112,15 +112,15 @@ const ExpiredNotifications = ({ mainHook }) => {
                                     sx={{
                                       ...theme.typography.commonAvatar,
                                       ...theme.typography.mediumAvatar,
-                                      backgroundColor: theme.palette.secondary.dark,
-                                      color: theme.palette.secondary[200],
+                                      backgroundColor: theme.palette.primary[50],
+                                      color: theme.palette.primary[100],
                                       zIndex: 1
                                     }}
                                   >
                                     <Button
                                       disableElevation
                                       size='small'
-                                      sx={{ color: 'inherit' }}
+                                      sx={{ color: theme.palette.primary[800] }}
                                       onClick={() => toggle(null, 'Editar Notificacion', 'edit-notification', item)}
                                     >
                                       <EditIcon />

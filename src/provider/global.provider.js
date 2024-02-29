@@ -18,11 +18,14 @@ const AuthProvider = ({ children }) => {
     setAuthData(jwt_decode(token))
   }
 
+  const rolAccess = { administrador: true, superadmin: true, usuario: false }
+
   return (
     <AuthContext.Provider
       value={{
         authData,
-        setToken
+        setToken,
+        rolAccess
       }}
     >
       {children}

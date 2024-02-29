@@ -24,11 +24,11 @@ const Row = props => {
   const { row } = props
   const [open, setOpen] = useState(false)
 
-  const { ticket_id, number, created, topic, poster, body, subject, priority, priority_color } = row
+  const { ticket_id, number, dateCreated, hourCreated, topic, poster, body, subject, priority_desc, priority_color } = row
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -56,16 +56,17 @@ const Row = props => {
         <StyledTableCell component='th' scope='row'>
           #{number}
         </StyledTableCell>
-        <StyledTableCell align='center'>{created}</StyledTableCell>
+        <StyledTableCell align='center'>{dateCreated}</StyledTableCell>
+        <StyledTableCell align='center'>{hourCreated}</StyledTableCell>
         <StyledTableCell align='center'>{subject}</StyledTableCell>
         <StyledTableCell align='center'>{poster}</StyledTableCell>
         <StyledTableCell align='center' style={{ backgroundColor: priority_color }}>
-          {priority}
+          {priority_desc}
         </StyledTableCell>
       </TableRow>
 
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0, maxWidth: 100 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0, maxWidth: 10, maxHeight: 50 }} colSpan={6}>
           <Collapse in={open} timeout='auto' unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant='h4' gutterBottom component='div'>
@@ -104,7 +105,7 @@ const OpenTicketsData = ({ useFetchInit }) => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.primary[700],
       color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -122,13 +123,14 @@ const OpenTicketsData = ({ useFetchInit }) => {
               <Grid item>
                 <Grid container direction='column' spacing={1}>
                   <Grid item>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} style={{ maxHeight: 550, overflowY: 'auto' }}>
                       <Table aria-label='collapsible table'>
                         <TableHead>
                           <TableRow>
                             <StyledTableCell />
                             <StyledTableCell align='center'>Ticket</StyledTableCell>
-                            <StyledTableCell align='center'>Fecha creación</StyledTableCell>
+                            <StyledTableCell align='center'>Fecha</StyledTableCell>
+                            <StyledTableCell align='center'>Hora</StyledTableCell>
                             <StyledTableCell align='center'>Asunto</StyledTableCell>
                             <StyledTableCell align='center'>De</StyledTableCell>
                             <StyledTableCell align='center'>Prioridad</StyledTableCell>

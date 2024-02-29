@@ -1,11 +1,13 @@
 import { Grid, Button } from '@mui/material'
 import { gridSpacing } from 'store/constant'
 import { useContext, useState, useEffect } from 'react'
+import { useTheme } from '@emotion/react'
 
 import PieChartCurrentMonth from './pieChartCurrentMonth'
 import PieChartDateRange from './pieChartDateRange'
 import CurrentWeekLinearGraph from './currentWeekLinearGraph'
 import ClosedWeek from './closedWeek'
+import ClosedTicketsDataByRange from './closedTicketDataByRange'
 
 import MainModal from './modal-component'
 
@@ -18,9 +20,11 @@ import { useFetchInitStatistics } from 'hooks/statistics'
 import { AuthContext } from 'provider/global.provider'
 
 const StatisticsPage = () => {
+  const theme = useTheme()
+
   const [visibleElements, setVisibleElements] = useState(0)
 
-  const { authData } = useContext(AuthContext)
+  const { authData, rolAccess } = useContext(AuthContext)
 
   const rol = authData.rol_usuario
 
@@ -42,14 +46,18 @@ const StatisticsPage = () => {
   const itemTablaTicketsRangoSemana = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_semana')
   const verTablaTicketSemana = itemTablaTicketsRangoSemana ? itemTablaTicketsRangoSemana.ver_item : null
 
+  const itemTablaTicketsRangoFecha = permissionPageEstadistica.find(item => item.nombre_item === 'tickets_rango_fecha')
+  const verTablaTicketsRangoFecha = itemTablaTicketsRangoFecha ? itemTablaTicketsRangoFecha.ver_item : null
+
   useEffect(() => {
     let count = 0
     if (verPastelMesActual === 1) count++
     if (verPastelRangoFecha === 1) count++
     if (verLinealSemanal === 1) count++
     if (verTablaTicketSemana === 1) count++
+    if (verTablaTicketsRangoFecha === 1) count++
     setVisibleElements(count)
-  }, [verPastelMesActual, verPastelRangoFecha, verLinealSemanal, verTablaTicketSemana])
+  }, [verPastelMesActual, verPastelRangoFecha, verLinealSemanal, verTablaTicketSemana, verTablaTicketsRangoFecha])
 
   const calculateGridSizes = () => {
     switch (visibleElements) {
@@ -60,6 +68,8 @@ const StatisticsPage = () => {
       case 3:
         return { lg: 6, md: 6, sm: 6, xs: 12 }
       case 4:
+        return { lg: 6, md: 6, sm: 6, xs: 12 }
+      case 5:
         return { lg: 6, md: 6, sm: 6, xs: 12 }
       default:
         return { lg: 12, md: 12, sm: 12, xs: 12 }
@@ -73,7 +83,7 @@ const StatisticsPage = () => {
 
       {!loadingPermission && (
         <Grid container spacing={gridSpacing}>
-          {(rol === 'superadmin' || rol === 'administrador') && (
+          {rolAccess[rol] && (
             <Grid item xs={12}>
               <Grid container spacing={gridSpacing}>
                 <Grid item xs={12}>
@@ -82,7 +92,7 @@ const StatisticsPage = () => {
                       <Button
                         variant='contained'
                         startIcon={<CreateIcon />}
-                        color='inherit'
+                        style={{ background: theme.palette.primary.main }}
                         onClick={() => toggle(null, 'Modificar vista', 'modify-items-view')}
                       >
                         Administrar la vista
@@ -117,6 +127,12 @@ const StatisticsPage = () => {
               {verTablaTicketSemana === 1 && (
                 <Grid item {...calculateGridSizes()}>
                   <ClosedWeek mainHook={mainHook} />
+                </Grid>
+              )}
+
+              {verTablaTicketsRangoFecha === 1 && (
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                  <ClosedTicketsDataByRange mainHook={mainHook} />
                 </Grid>
               )}
             </Grid>

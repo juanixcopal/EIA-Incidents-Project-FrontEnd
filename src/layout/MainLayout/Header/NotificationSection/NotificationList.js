@@ -9,7 +9,7 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
   cursor: 'pointer',
   padding: 16,
   '&:hover': {
-    background: theme.palette.primary.light
+    background: theme.palette.primary[100]
   },
   '& .MuiListItem-root': {
     padding: 0
@@ -29,8 +29,8 @@ const NotificationList = ({ mainHook }) => {
   }
   const chipErrorSX = {
     ...chipSX,
-    color: theme.palette.orange.dark,
-    backgroundColor: theme.palette.orange.light,
+    color: theme.palette.high[700],
+    backgroundColor: theme.palette.high[100],
     marginRight: '5px'
   }
 
@@ -42,8 +42,8 @@ const NotificationList = ({ mainHook }) => {
 
   const chipSuccessSX = {
     ...chipSX,
-    color: theme.palette.success.dark,
-    backgroundColor: theme.palette.success.light,
+    color: theme.palette.success[700],
+    backgroundColor: theme.palette.success[100],
     height: 28
   }
 

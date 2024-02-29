@@ -1,5 +1,5 @@
 export default function componentStyleOverrides(theme) {
-  const bgColor = theme.colors?.grey50;
+  const bgColor = theme.colors?.grey50
   return {
     MuiButton: {
       styleOverrides: {
@@ -108,7 +108,7 @@ export default function componentStyleOverrides(theme) {
             borderColor: theme.colors?.grey400
           },
           '&:hover $notchedOutline': {
-            borderColor: theme.colors?.primaryLight
+            borderColor: theme.colors?.primary50
           },
           '&.MuiInputBase-multiline': {
             padding: 1
@@ -146,7 +146,7 @@ export default function componentStyleOverrides(theme) {
           width: '4px'
         },
         valueLabel: {
-          color: theme?.colors?.primaryLight
+          color: theme?.colors?.primary50
         }
       }
     },
@@ -183,5 +183,5 @@ export default function componentStyleOverrides(theme) {
         }
       }
     }
-  };
+  }
 }
